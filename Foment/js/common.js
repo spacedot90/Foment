@@ -145,6 +145,8 @@ window.onload = function () {
     
     });  
     
+    // 마커 위치 표시
+
     var marker = new naver.maps.Marker({
     
         position: new naver.maps.LatLng(37.555073, 126.892030),
