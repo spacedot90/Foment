@@ -1,0 +1,55 @@
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobileInvitation</title>
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/detail.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://fengyuanchen.github.io/cropperjs/css/cropper.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://fengyuanchen.github.io/cropper/js/cropper.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+
+    <div class="photo_box">
+        <div class="upload_btn">
+          <div class="upload">
+              <input type="file" name="photoBtn" accept="image/jpeg, image/png" capture="camera" id="photoBtn"><label for="photoBtn">사진 첨부하기</label>
+          </div>
+            <a href="javascript:void(0);" id="resetPhoto">다시 올리기</a>
+        </div>
+        <div class="photo_them">
+          <div class="them_img">
+              <img id="image" src="">
+          </div>
+        </div>
+        <a href="javascript:void(0);" id="complete">업로드</a>
+      </div>
+
+    <div id="test">ddddd</div>
+    <div class="changeMe">셀렉트 박스의 옵션 값을 바꾸면 폰트가 바뀌어요!</div>
+
+    <form id="myform">
+        <select id="fs"> 
+            <option value="BinggraeSamanco-Bold">BinggraeSamanco-Bold</option>
+            <option value="TmoneyRoundWindExtraBold">TmoneyRoundWindExtraBold</option>
+            <option value="Bazzi">Bazzi </option>
+            <option value="NanumBarunGothic">NanumBarunGothic</option>
+                  <option value="KBIZHanmaumGothic">KBIZHanmaumGothic</option>
+                     <option value="Noto Sans KR">Noto Sans KR</option>
+        </select>
+    
+    </form>
+    <script>
+        $("#fs").change(function() {
+            //alert($(this).val());
+            $('.changeMe').css("font-family", $(this).val());
+        });
+    </script>
+
+</body>
+</html>

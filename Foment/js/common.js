@@ -137,6 +137,25 @@ window.onload = function () {
     //옵션 없이 지도 객체를 생성하면 서울 시청을 중심으로 하는 16 레벨의 지도가 생성됩니다.
     var map = new naver.maps.Map(mapDiv);
 
+    var map = new naver.maps.Map('map', {
+
+        center: new naver.maps.LatLng(37.555073, 126.892030),
+    
+        zoom: 17
+    
+    });  
+    
+    var marker = new naver.maps.Marker({
+    
+        position: new naver.maps.LatLng(37.555073, 126.892030),
+    
+        map: map
+    
+    });
+    
+
+
+
     
 
     //--> 확대방지
