@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/detail.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <style>
+      #multipleContainer {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+      }
+      .image {
+          display: block;
+          width: 100%;
+      }
+      .image-label {
+          position: relative;
+          bottom: 22px;
+          left: 5px;
+          color: white;
+          text-shadow: 2px 2px 2px black;
+      }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <h2>멀티파일 처리</h2>
+  <input style="display: block;" type="file" id="inputMultipleImage" multiple>
+  <div id="multipleContainer"></div>
+  
+  <script>
+  function readMultipleImage(input) {
+    const multipleContainer = document.getElementById('multipleContainer')
+    
+    if(input.files) {
+        console.log(input.files)
+        const fileArr = Array.from(input.files)
+        const $colDiv1 = document.createElement('div')
+        const $colDiv2 = document.createElement('div')
+        $colDiv1.classList.add('column')
+        $colDiv2.classList.add('column')
+        fileArr.forEach((file, index) => {
+            const reader = new FileReader()
+            const $imgDiv = document.createElement('div')   
+            const $img = document.createElement('img')
+            $img.classList.add('image')
+            const $label = document.createElement('label')
+            $label.classList.add('image-label')
+            $label.textContent = file.name
+            $imgDiv.appendChild($img)
+            $imgDiv.appendChild($label)
+            reader.onload = e => {
+                $img.src = e.target.result
+                
+                //$imgDiv.style.width = ($img.naturalWidth) * 0.2 + "px"
+                //$imgDiv.style.height = ($img.naturalHeight) * 0.2 + "px"
+            }
+            
+            console.log(file.name)
+            if(index % 2 == 0) {
+                $colDiv1.appendChild($imgDiv)
+            } else {
+                $colDiv2.appendChild($imgDiv)
+            }
+            
+            reader.readAsDataURL(file)
+        })
+        multipleContainer.appendChild($colDiv1)
+        multipleContainer.appendChild($colDiv2)
+    }
+}
+// 이벤트 리스너
+document.getElementById('inputMultipleImage').addEventListener('change', (e) => {
+    readMultipleImage(e.target);
+})
+</script>
+  
+
+</body>
+</html>

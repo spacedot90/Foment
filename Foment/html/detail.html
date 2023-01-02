@@ -1,0 +1,486 @@
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포먼트 청첩장</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/detail.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">    <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://fengyuanchen.github.io/cropper/js/cropper.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vy07krn7cz"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- 이미지 크롭영역 -->
+    <div class="BgDimmed">
+        <div class="ImgCropModal">
+            <div class="photo_them">
+                <div class="them_img">
+                    <img id="image" src="">
+                </div>
+            </div>
+            <a href="javascript:void(0);" id="complete">업로드</a>
+        </div>
+    </div>
+
+    <!-- 헤더 -->
+    <div class="header">
+        <div class="header_wrap">
+            <div class="LogoWrap">
+                <a class="SymbolLink" href="../html/index.html">
+                    <img class="LogoSymbol" src="../Resource/Logo_Symbol.svg" alt="">
+                </a>
+                <div class="HeaderTitle">
+                    심플럭셔리 스타일
+                </div>
+            </div>
+            <div class="BtnBasic" id="SaveDataBtn">
+                저장하기
+            </div>
+        </div>
+    </div>
+
+    <div class="main_contents">
+        <!-- 좌측 네비게이션 -->
+        <div class="side_contents">
+            <!-- 지도 API 연동 -->
+            <!-- 타이틀 -->
+            <div class="TitleSection">
+                <div class="DateTitle" id="DateTitle">
+                    08/17
+                </div>
+                <div class="WeddingBodyText">
+                    강석환 그리고 김예름 우리 결혼합니다
+                </div>
+            </div>
+
+            <!-- 대표이미지 -->
+            <div class="image-container">
+                <img id="preview-image" src="../Resource/WeddingTitleImg.jpg">
+            </div>
+
+            <!-- 웨딩날짜&장소 -->
+            <div class="DateLocation">
+                <div class="WeddingBodyText">
+                    2023년 2월 25일 토요일 오후 1시 30분
+                </div>
+                <div class="WeddingBodyText">
+                    아펠가모 광화문 B2 로스타뇨홀
+                </div>
+            </div>
+
+            <!-- 구분선 -->
+            <div class="Divider"></div>
+
+            <!-- 초대문구 -->
+            <div class="InvitationTextArea">
+                <div class="WeddingBodyTitle">
+                    초대합니다
+                </div>
+                <div class="WeddingBodyText">
+                    더 이상 헤어지는 길을 아쉬워하고 싶지 않습니다<br>오랜 만남 끝에 저희 둘이 하나 되는 날<br>귀한 분들을 모시고 평생의 서약을 올리고자 합니다. 저희의 첫 시작을 내딛는 날<br>참석해 주셔서 함께 축복해주시면 감사하겠습니다.<br> 신랑 신부 올림
+                </div>
+            </div>
+            <!-- 구분선 -->
+            <div class="Divider"></div>
+
+            <!-- 가족정보 -->
+            <div class="FamilyInfo">
+                <div class="WeddingBodyText">
+                    <span>강재만</span>
+                    <span>∙</span>
+                    <span>서미숙</span>
+                    <span>의 아들</span>
+                    <span>석환</span>
+                </div>
+                <div class="WeddingBodyText">
+                    <span>강재만</span>
+                    <span>∙</span>
+                    <span>서미숙</span>
+                    <span>의 아들</span>
+                    <span>석환</span>
+                </div>
+            </div>
+
+            <!-- 캘린더 -->
+            <div class="sec_cal">
+                <div class="cal_nav">
+                  <div class="year-month" id="TextDateCalendar"></div>
+                </div>
+                <div class="cal_wrap">
+                  <div class="days">
+                    <div class="day">MON</div>
+                    <div class="day">TUE</div>
+                    <div class="day">WED</div>
+                    <div class="day">THU</div>
+                    <div class="day">FRI</div>
+                    <div class="day">SAT</div>
+                    <div class="day">SUN</div>
+                  </div>
+                  <div class="dates"></div>
+                </div>
+            </div>
+
+            <!-- 웨딩 갤러리 -->
+            <div class="WeddingBodyTitle">
+                갤러리
+            </div>
+            <div class="WeddingBodyText">
+                GALLERY
+            </div>
+            <div class="grid-container">
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+            </div>
+
+            
+            <div class="map_area">
+                <div id="map" style="width:100%; height:400px;">asdasdasdasd</div>
+            </div>
+            
+            <!-- 캘린더 Input 데이터 -->
+            <div class="changeMe" id="TextDate">ㅇㅇㅇㅇㅇ</div>
+
+            
+            
+
+            <!-- 실시간INPUT 입력 데이터 -->
+            <div class="changeMe" id="PrintResult"></div>
+            <div class="changeMe" id="PrintResult_2"></div>
+
+            <!-- 서체변경 타입 -->
+            <div class="changeMe">서체가바뀌어요</div>
+
+            <!-- 탭UI구현 -->
+            <div class="TabContent" id="Tab-1" class="TabContent Active">
+                첫번째 탭의 콘텐츠가 여기 노출
+            </div>
+            <div class="TabContent" id="Tab-2" class="TabContent">
+                두번째 탭의 콘텐츠가 여기 노출
+            </div>
+            <div class="TabContent" id="Tab-3" class="TabContent">
+                세번째 탭의 콘텐츠가 여기 노출
+            </div>
+
+            <!-- 아코디언 메뉴 -->
+            <div class="WeddingBodyTitle">
+                마음 전할 곳
+            </div>
+            <ul class="accodian">
+              <li class="accodian--box">
+                <h3>신랑측 계좌번호</h3>
+                <div>입력해보세요</div>
+              </li>
+              <li class="accodian--box">
+                <h3>신부측 계좌번호</h3>
+                <div>입력해보세요/div>
+              </li>
+            </ul>
+
+            <!-- <iframe id="WebView" src="https://mcard.gyulban.com/wday/sample(white)" frameborder="0"></iframe> -->
+            <!-- 셀렉트박스 세부속성 Onchange에 아이디값을 매칭 -->
+            <div id="select-result1"></div>
+            <div id="select-result2"></div>
+            <!-- 푸터 -->
+            <div class="footer">
+                Copyright © 2022 SpaceDot All rights reserved.
+            </div>
+        </div>
+
+        <!-- 우측 네비게이션 -->
+        <div class="right_contents">
+            <div class="RightContentsArea">
+                <!-- 첫번째 섹션 -->
+                <div class="DesignSection">
+                    <div class="section-title">
+                        Title Info
+                    </div>
+                    <div class="contents_detail">
+                        <!-- 사진업로드 -->
+                        <div class="photo_box">
+                            <label class="upload_btn" for="photoBtn">
+                            <div class="upload">
+                                <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg" capture="camera" id="photoBtn">
+                                <label class="attatch" for="photoBtn">사진 첨부하기</label>
+                            </div>
+                            </label>
+                        </div>
+                        
+                        <!-- 사진 다중업로드 -->
+                        <div class = "selectbox_detail">
+                            <label class = "selectbox_label">
+                                Select Imgs (최대 20개까지 가능)
+                            </label>
+                            <label class="ImgGroupUpload_Btn" for="ImgBtn">
+                                <input type = "file" id="ImgBtn" name = "upload" multiple = "multiple" class = "form-control user_picked_files" accept="image/jpeg, image/png, image/jpg"/>                 
+                                <label class="attatch" for="ImgBtn">사진 첨부하기</label>
+                            </label>                                     
+                            <!-- <input type = "submit" class = "cvf_upload_btn btn btn-primary" value = "Upload" /> -->
+                            <ul class = "cvf_uploaded_files"></ul>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this,'select-result1')">
+                                <option value="base">옵션을 선택하세요</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </div>
+                        
+                        <!-- 예식장 위치 검색 -->
+                        <div class="search">
+                            <input id="address" type="text" placeholder="검색할 주소">
+                            <input id="submit" type="button" value="주소검색">
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <form class="selectgroup" id="myform">
+                                <select class="selectboxname" id="fs"> 
+                                    <option value="MapoFlowerIsland">마포꽃섬</option>
+                                    <option value="Cafe24Oneprettynight">카페24 고운밤</option>
+                                    <option value="Cafe24Shiningstar">카페24 빛나는별</option>
+                                    <option value="KCC-eunyoung">KCC 은영체</option>
+                                        <option value="Flower_tree">아름드리 꽃나무</option>
+                                            <option value="Pretendard-Regular">프리텐다드</option>
+                                </select>  
+                                <select class="selectboxname" id="size">
+                                    <option value="16">보통</option>
+                                    <option value="20">크게</option>
+                                    <option value="24">아주크게</option>
+                                </select>
+                            </form>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">ImgUpload</label>
+                            <input id="ImgSelectBox" type="file" name="upload" multiple>
+                        </div>
+                        <div class="img_area" id="pictures">
+                            <div id="photoframe"></div>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">Calendar</label>
+                            <input type="date" id="date" onchange="dateChange()" />
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">InputData</label>
+                            <input id="base" name="base" type="base" onkeyup="printInput()" >
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">InputData</label>
+                            <input id="base_2" name="base_2" type="base_2" onkeyup="printInput()" >
+                        </div>
+
+                        <div class="TabUI">
+                            <ul class="TabList">
+                                <li class="TabItem Active" data-tab="Tab-1">탭메뉴1</li>
+                                <li class="TabItem" data-tab="Tab-2">탭메뉴2</li>
+                                <li class="TabItem" data-tab="Tab-3">탭메뉴3</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 두번째 섹션 -->
+                <div class="DesignSection">
+                    <div class="section-title">
+                        Title Info
+                    </div>
+                    <div class="contents_detail">
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this,'select-result2')">
+                                <option value="base">옵션을 선택하세요</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </div>
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
+                                <option value="base">옵션을 선택하세요</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </div>
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
+                                <option value="base">옵션을 선택하세요</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 세번째 섹션 -->
+                <div class="DesignSection">
+                    <div class="section-title">
+                        Title Info
+                    </div>
+                    <div class="contents_detail">
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
+                                <option value="base">옵션을 선택하세요</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 네번째 섹션 -->
+                <div class="DesignSection">
+                    <div class="section-title">
+                        Title Info
+                    </div>
+                    <div class="contents_detail">
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
+                                <option value="base">옵션을 선택하세요</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">ImgUpload</label>
+                            <input type="file" name="upload" multiple>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">Date</label>
+                            <input id="date" name="date" type="date" >
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">Date</label>
+                            <input id="base" name="base" type="base" >
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 네번째 섹션 -->
+                <div class="DesignSection">
+                    <div class="section-title">
+                        Title Info
+                    </div>
+                    <div class="contents_detail">
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
+                                <option value="base">옵션을 선택하세요</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">ImgUpload</label>
+                            <input type="file" name="upload" multiple>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">Date</label>
+                            <input id="date" name="date" type="date" >
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">Date</label>
+                            <input id="base" name="base" type="base" >
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 네번째 섹션 -->
+                <div class="DesignSection">
+                    <div class="section-title">
+                        Title Info
+                    </div>
+                    <div class="contents_detail">
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
+                                <option value="base">옵션을 선택하세요</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">ImgUpload</label>
+                            <input class="UploadFile" type="file" name="upload" multiple>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">Date</label>
+                            <input id="date" name="date" type="date" >
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">Date</label>
+                            <input id="base" name="base" type="base" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</body>
+</html>
