@@ -55,8 +55,25 @@
                 <div class="DateTitle" id="DateTitle">
                     08/17
                 </div>
-                <div class="WeddingBodyText">
-                    강석환 그리고 김예름 우리 결혼합니다
+                <div class="BrideGroom">
+                    <span class="WeddingBodyText" id="GroomFirstName">
+                        강
+                    </span>
+                    <span class="WeddingBodyText" id="GroomLastName">
+                        석환
+                    </span>
+                    <span class="WeddingBodyText" id="">
+                        그리고
+                    </span>
+                    <span class="WeddingBodyText" id="BrideFirstName">
+                        김
+                    </span>
+                    <span class="WeddingBodyText" id="BrideLastName">
+                        예름
+                    </span>
+                    <span class="WeddingBodyText" id="">
+                        우리 결혼합니다
+                    </span>
                 </div>
             </div>
 
@@ -262,12 +279,19 @@
                                         <option value="Flower_tree">아름드리 꽃나무</option>
                                             <option value="Pretendard-Regular">프리텐다드</option>
                                 </select>  
-                                <select class="selectboxname" id="size">
-                                    <option value="16">보통</option>
-                                    <option value="20">크게</option>
-                                    <option value="24">아주크게</option>
-                                </select>
                             </form>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">글자 크기</label>
+                            <div class="TabUI">
+                                <ul class="TabListFont">
+                                    <li class="TabItemFont Active" value="16" data-tab="Tab-1">기본</li>
+                                    <li class="TabItemFont" value="18" data-tab="Tab-3">중간</li>
+                                    <li class="TabItemFont" value="20" data-tab="Tab-3">크게</li>
+                                    <li class="TabItemFont" value="22" data-tab="Tab-3">아주크게</li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="selectbox_detail">
@@ -284,21 +308,27 @@
                         </div>
 
                         <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">InputData</label>
-                            <input id="base" name="base" type="base" onkeyup="printInput()" >
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">InputData</label>
-                            <input id="base_2" name="base_2" type="base_2" onkeyup="printInput()" >
+                            <label class="selectbox_label" for="file">신랑님</label>
+                            <div class="NameBox">
+                                <input class="base" id="GroomFirstNameInput" name="base" type="base" onkeyup="printGroom()" placeholder="성" >
+                                <input class="base" id="GroomLastNameInput" name="base" type="base" onkeyup="printGroom()" placeholder="이름" >
+                            </div>
                         </div>
 
                         <div class="TabUI">
                             <ul class="TabList">
-                                <li class="TabItem Active" data-tab="Tab-1">탭메뉴1</li>
-                                <li class="TabItem" data-tab="Tab-2">탭메뉴2</li>
-                                <li class="TabItem" data-tab="Tab-3">탭메뉴3</li>
+                                <li class="TabItem Active" id="fontsize" value="16" data-tab="Tab-1">탭아이템1</li>
+                                <li class="TabItem" id="fontsize" value="20" data-tab="Tab-2">탭아이템2</li>
+                                <li class="TabItem" id="fontsize" value="24" data-tab="Tab-3">탭아이템3</li>
                             </ul>
+                        </div>
+
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">신부님</label>
+                            <div class="NameBox">
+                                <input class="base" id="BrideFirstNameInput" name="base_2" type="base_2" onkeyup="printBride()" placeholder="성" >
+                                <input class="base" id="BrideLastNameInput" name="base_2" type="base_2" onkeyup="printBride()" placeholder="이름" >
+                            </div>
                         </div>
 
                     </div>

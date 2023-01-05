@@ -13,15 +13,21 @@ function handleOnChange(e, target) {
 }
 
 // Input 값 타이핑시 출력
-function printInput() {
-    let name = document.getElementById('base').value;
-    let name2 = document.getElementById('base_2').value;
+function printGroom() {
+    let GroomFirstName = document.getElementById('GroomFirstNameInput').value;
+    let GroomLastName = document.getElementById('GroomLastNameInput').value;
 
-    console.log(printInput);
-    document.getElementById("PrintResult").innerText = name;
-    document.getElementById("PrintResult_2").innerText = name2;
+    document.getElementById("GroomFirstName").innerText = GroomFirstName;
+    document.getElementById("GroomLastName").innerText = GroomLastName;
 };
 
+function printBride() {
+    let BrideFirstName = document.getElementById('BrideFirstNameInput').value;
+    let BrideLastName = document.getElementById('BrideLastNameInput').value;
+
+    document.getElementById("BrideFirstName").innerText = BrideFirstName;
+    document.getElementById("BrideLastName").innerText = BrideLastName;
+};
 
 // 인풋 캘린더
 
@@ -29,7 +35,8 @@ var dateChange = () => {
     let date_input = document.getElementById("date");
     document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
     document.getElementById("TextDateCalendar").innerText = date_input.value + " 추가할데이터";
-    document.getElementById("DateTitle").innerText = date_input.value;
+    document.getElementById("DateTitle").innerText = date_input.value.split('-');
+    console.log(date_input.value);
 
     // 여기에다가 추가
     let currentMonthDate = document.querySelectorAll('.dates .current');
@@ -154,11 +161,7 @@ window.onload = function () {
         map: map
     
     });
-    
-
-
-
-    
+        
 
     //--> 확대방지
     document.body.addEventListener('touchstart', function (e) {
@@ -271,19 +274,27 @@ window.onload = function () {
     // 탭 변경 UI JS
 
 
-    $(document).ready(function () {
+    $('ul.TabList li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
+        var tab_id = $(this).attr('data-tab');
+        console.log(tab_id);
 
-        $('ul.TabList li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
-            var tab_id = $(this).attr('data-tab');
-            console.log(tab_id);
+        $('ul.TabList li').removeClass('Active');			//선택 되있던 탭의 Active css를 제거하고 
+        $('.TabContent').removeClass('Active');
 
-            $('ul.TabList li').removeClass('Active');			//선택 되있던 탭의 Active css를 제거하고 
-            $('.TabContent').removeClass('Active');
+        $(this).addClass('Active');								////선택된 탭에 Active class를 삽입해줍니다.
+        $("#" + tab_id).addClass('Active');
+    });
 
-            $(this).addClass('Active');								////선택된 탭에 Active class를 삽입해줍니다.
-            $("#" + tab_id).addClass('Active');
-        })
+    $('ul.TabListFont li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
+        var tab_id = $(this).attr('data-tab');
 
+        $('ul.TabListFont li').removeClass('Active');			//선택 되있던 탭의 Active css를 제거하고 
+
+        $(this).addClass('Active');								////선택된 탭에 Active class를 삽입해줍니다.
+
+        $('.WeddingBodyText').css("font-size", $(this).val() + "px");
+        $('.WeddingBodyTitle').css("font-size", $(this).val() + "px");
+        $('.sec_cal').css("font-size", $(this).val() + "px");
     });
 
 
