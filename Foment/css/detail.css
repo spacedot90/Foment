@@ -338,9 +338,6 @@ li.TabItem , li.TabItemFont , li.TabItemEffect{
 
 /* 사진업로드 CSS */
 
-.photo_box {
-  /* max-width:500px; */
-}
 
 .upload_btn {
   overflow: hidden;
