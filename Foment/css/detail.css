@@ -297,7 +297,7 @@
   width: 100%;
 }
 
-ul.Tablist , ul.TabListFont {
+ul.Tablist , ul.TabListFont , ul.TabListEffect{
   gap: 8px;
   list-style-type: none;
   display: flex;
@@ -305,7 +305,7 @@ ul.Tablist , ul.TabListFont {
   margin: 0;
 }
 
-li.TabItem.Active , li.TabItemFont.Active {
+li.TabItem.Active , li.TabItemFont.Active , li.TabItemEffect.Active{
   transition: var(--transition);
   width: 100%;
   text-align: center;
@@ -316,7 +316,7 @@ li.TabItem.Active , li.TabItemFont.Active {
   color: var(--ColorTextOnSurface);
 }
 
-li.TabItem , li.TabItemFont {
+li.TabItem , li.TabItemFont , li.TabItemEffect{
   transition: var(--transition);
   width: 100%;
   text-align: center;
@@ -455,6 +455,16 @@ li.TabItem , li.TabItemFont {
 .image-container {
   width: auto;
 }
+
+.VideoEffect{
+  position: absolute;
+}
+
+.effects{
+  mix-blend-mode: screen;
+  width: 100%;
+}
+
 
 .image-container img {
   width: 100%

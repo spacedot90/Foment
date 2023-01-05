@@ -79,6 +79,10 @@
 
             <!-- 대표이미지 -->
             <div class="image-container">
+                <div class="VideoEffect">
+                    <video class="effects" src="../Resource/effects/flower_00.mp4" autoplay="autoplay" loop="loop" playsinline muted="muted">                        
+                    </video>
+                </div>
                 <img id="preview-image" src="../Resource/WeddingTitleImg.jpg">
             </div>
 
@@ -225,6 +229,7 @@
                     <div class="section-title">
                         Title Info
                     </div>
+                    
                     <div class="contents_detail">
                         <!-- 사진업로드 -->
                         <div class="photo_box">
@@ -234,6 +239,18 @@
                                 <label class="attatch" for="photoBtn">사진 첨부하기</label>
                             </div>
                             </label>
+                        </div>
+
+                        <!-- 이펙트 적용 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">효과 적용</label>
+                            <div class="TabUI">
+                                <ul class="TabListEffect">
+                                    <li class="TabItemEffect Active">효과 없음</li>
+                                    <li class="TabItemEffect">벚꽃 효과</li>
+                                    <li class="TabItemEffect">눈 효과</li>
+                                </ul>
+                            </div>
                         </div>
                         
                         <!-- 사진 다중업로드 -->

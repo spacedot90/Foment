@@ -286,7 +286,6 @@ window.onload = function () {
     });
 
     $('ul.TabListFont li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
-        var tab_id = $(this).attr('data-tab');
 
         $('ul.TabListFont li').removeClass('Active');			//선택 되있던 탭의 Active css를 제거하고 
 
@@ -295,6 +294,14 @@ window.onload = function () {
         $('.WeddingBodyText').css("font-size", $(this).val() + "px");
         $('.WeddingBodyTitle').css("font-size", $(this).val() + "px");
         $('.sec_cal').css("font-size", $(this).val() + "px");
+    });
+
+    $('ul.TabListEffect li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
+
+        $('ul.TabListEffect li').removeClass('Active');			//선택 되있던 탭의 Active css를 제거하고 
+        
+        $(this).addClass('Active');								////선택된 탭에 Active class를 삽입해줍니다.
+        $('.effects').attr("src","../Resource/effects/snow_00.mp4")
     });
 
 
