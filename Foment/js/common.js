@@ -33,10 +33,11 @@ function printBride() {
 
 var dateChange = () => {
     let date_input = document.getElementById("date");
+    let arr = date_input.value.split('-');
+    
+    document.getElementById("DateTitle").innerText = arr[1] + "/" + arr[2];
     document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
-    document.getElementById("TextDateCalendar").innerText = date_input.value + " 추가할데이터";
-    document.getElementById("DateTitle").innerText = date_input.value.split('-');
-    console.log(date_input.value);
+    document.getElementById("TextDateCalendar").innerText = arr[1] + "월" + arr[2] + "일";
 
     // 여기에다가 추가
     let currentMonthDate = document.querySelectorAll('.dates .current');
@@ -103,7 +104,7 @@ function calendarInit() {
         // console.log(prevDate, prevDay, nextDate, nextDay);
 
         // 현재 월 표기
-        $('.year-month').text(currentYear + '.' + (currentMonth + 1));
+        $('.year-month').text((currentMonth + 1)+ '월' +currentDate + '일');
 
         // 렌더링 html 요소 생성
         calendar = document.querySelector('.dates')

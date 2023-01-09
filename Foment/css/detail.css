@@ -9,17 +9,22 @@
   font-family: 'Nanum Myeongjo', 'sanserif';
   background: var(--ColorSurface);
   min-width: 400px;
-  padding: 48px;
+  padding: 32px;
   max-width: 400px;
   border-radius: var(--BorderRadius-Lg);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: var(--ColorTextPrimary);
-  height: calc(100vh - 240px);
+  max-height: 800px;
   overflow: scroll;
   position: fixed;
+  -ms-overflow-style: none;
 }
+.side_contents::-webkit-scrollbar{
+  display:none;
+}
+
 .TitleSection{
   display: flex;
   flex-direction: column;
@@ -29,7 +34,8 @@
 .DateTitle{
   font-size: var(--Text-Title);
   font-family:'Cormorant Garamond', serif;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
+  color: var(--ColorBrand);
 }
 
 .changeMe, .WeddingBodyText{
