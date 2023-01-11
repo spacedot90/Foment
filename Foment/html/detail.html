@@ -1,4 +1,5 @@
 <html lang="kor">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +9,21 @@
     <link rel="stylesheet" href="../css/detail.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/font.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">    <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.2.js"
+        integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="https://fengyuanchen.github.io/cropper/js/cropper.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vy07krn7cz"></script>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vy07krn7cz"></script>
     <script src="../js/common.js"></script>
 </head>
+
 <body>
     <!-- 이미지 크롭영역 -->
     <div class="BgDimmed">
@@ -50,6 +58,11 @@
         <!-- 좌측 네비게이션 -->
         <div class="side_contents">
             <!-- 지도 API 연동 -->
+            <div class="AudioPlayPause">
+                <div class="AudioControl">
+                    <button class='button'></button>
+                </div>
+            </div>
             <!-- 타이틀 -->
             <div class="TitleSection">
                 <div class="DateTitle" id="DateTitle">
@@ -80,10 +93,15 @@
             <!-- 대표이미지 -->
             <div class="image-container">
                 <div class="VideoEffect">
-                    <video class="effects" src="" autoplay="autoplay" loop="loop" playsinline muted="muted">                        
+                    <video class="effects" src="" autoplay="autoplay" loop="loop">
                     </video>
                 </div>
                 <img id="preview-image" src="../Resource/WeddingTitleImg.jpg">
+                <div class="AudioBGM">
+                    <audio autoplay="true" id="audio" loop controls>
+                        <source src="../Resource/Audio/wedding_1.mp3" type="audio/mp3">
+                    </audio>
+                </div>
             </div>
 
             <!-- 웨딩날짜&장소 -->
@@ -100,12 +118,37 @@
             <div class="Divider"></div>
 
             <!-- 초대문구 -->
-            <div class="InvitationTextArea">
-                <div class="WeddingBodyTitle">
-                    초대합니다
+            <div class="TabContent Active" id="Tab-1">
+                <div class="InvitationTextArea">
+                    <div class="WeddingBodyTitle">
+                        초대합니다1111111
+                    </div>
+                    <div class="WeddingBodyText">
+                        더 이상 헤어지는 길을 아쉬워하고 싶지 않습니다<br>오랜 만남 끝에 저희 둘이 하나 되는 날<br>귀한 분들을 모시고 평생의 서약을 올리고자 합니다. 저희의 첫 시작을
+                        내딛는 날<br>참석해 주셔서 함께 축복해주시면 감사하겠습니다.<br> 신랑 신부 올림
+                    </div>
                 </div>
-                <div class="WeddingBodyText">
-                    더 이상 헤어지는 길을 아쉬워하고 싶지 않습니다<br>오랜 만남 끝에 저희 둘이 하나 되는 날<br>귀한 분들을 모시고 평생의 서약을 올리고자 합니다. 저희의 첫 시작을 내딛는 날<br>참석해 주셔서 함께 축복해주시면 감사하겠습니다.<br> 신랑 신부 올림
+            </div>
+            <div class="TabContent" id="Tab-2">
+                <div class="InvitationTextArea">
+                    <div class="WeddingBodyTitle">
+                        초대합니다222222
+                    </div>
+                    <div class="WeddingBodyText">
+                        더 이상 헤어지는 길을 아쉬워하고 싶지 않습니다<br>오랜 만남 끝에 저희 둘이 하나 되는 날<br>귀한 분들을 모시고 평생의 서약을 올리고자 합니다. 저희의 첫 시작을
+                        내딛는 날<br>참석해 주셔서 함께 축복해주시면 감사하겠습니다.<br> 신랑 신부 올림
+                    </div>
+                </div>
+            </div>
+            <div class="TabContent" id="Tab-3">
+                <div class="InvitationTextArea">
+                    <div class="WeddingBodyTitle">
+                        초대합니다333333
+                    </div>
+                    <div class="WeddingBodyText">
+                        더 이상 헤어지는 길을 아쉬워하고 싶지 않습니다<br>오랜 만남 끝에 저희 둘이 하나 되는 날<br>귀한 분들을 모시고 평생의 서약을 올리고자 합니다. 저희의 첫 시작을
+                        내딛는 날<br>참석해 주셔서 함께 축복해주시면 감사하겠습니다.<br> 신랑 신부 올림
+                    </div>
                 </div>
             </div>
             <!-- 구분선 -->
@@ -132,19 +175,19 @@
             <!-- 캘린더 -->
             <div class="sec_cal">
                 <div class="cal_nav">
-                  <div class="year-month" id="TextDateCalendar"></div>
+                    <div class="year-month" id="TextDateCalendar"></div>
                 </div>
                 <div class="cal_wrap">
-                  <div class="days">
-                    <div class="day">MON</div>
-                    <div class="day">TUE</div>
-                    <div class="day">WED</div>
-                    <div class="day">THU</div>
-                    <div class="day">FRI</div>
-                    <div class="day">SAT</div>
-                    <div class="day">SUN</div>
-                  </div>
-                  <div class="dates"></div>
+                    <div class="days">
+                        <div class="day">MON</div>
+                        <div class="day">TUE</div>
+                        <div class="day">WED</div>
+                        <div class="day">THU</div>
+                        <div class="day">FRI</div>
+                        <div class="day">SAT</div>
+                        <div class="day">SUN</div>
+                    </div>
+                    <div class="dates"></div>
                 </div>
             </div>
 
@@ -167,16 +210,16 @@
                 <div class="grid-item"></div>
             </div>
 
-            
+
             <div class="map_area">
                 <div id="map" style="width:100%; height:400px;">asdasdasdasd</div>
             </div>
-            
+
             <!-- 캘린더 Input 데이터 -->
             <div class="changeMe" id="TextDate">ㅇㅇㅇㅇㅇ</div>
 
-            
-            
+
+
 
             <!-- 실시간INPUT 입력 데이터 -->
             <div class="changeMe" id="PrintResult"></div>
@@ -185,30 +228,19 @@
             <!-- 서체변경 타입 -->
             <div class="changeMe">서체가바뀌어요</div>
 
-            <!-- 탭UI구현 -->
-            <div class="TabContent" id="Tab-1" class="TabContent Active">
-                첫번째 탭의 콘텐츠가 여기 노출
-            </div>
-            <div class="TabContent" id="Tab-2" class="TabContent">
-                두번째 탭의 콘텐츠가 여기 노출
-            </div>
-            <div class="TabContent" id="Tab-3" class="TabContent">
-                세번째 탭의 콘텐츠가 여기 노출
-            </div>
-
             <!-- 아코디언 메뉴 -->
             <div class="WeddingBodyTitle">
                 마음 전할 곳
             </div>
             <ul class="accodian">
-              <li class="accodian--box">
-                <h3>신랑측 계좌번호</h3>
-                <div>입력해보세요</div>
-              </li>
-              <li class="accodian--box">
-                <h3>신부측 계좌번호</h3>
-                <div>입력해보세요/div>
-              </li>
+                <li class="accodian--box">
+                    <h3>신랑측 계좌번호</h3>
+                    <div>입력해보세요</div>
+                </li>
+                <li class="accodian--box">
+                    <h3>신부측 계좌번호</h3>
+                    <div>입력해보세요/div>
+                </li>
             </ul>
 
             <!-- <iframe id="WebView" src="https://mcard.gyulban.com/wday/sample(white)" frameborder="0"></iframe> -->
@@ -229,16 +261,35 @@
                     <div class="section-title">
                         Title Info
                     </div>
-                    
+
                     <div class="contents_detail">
                         <!-- 사진업로드 -->
                         <div class="photo_box">
                             <label class="upload_btn" for="photoBtn">
-                            <div class="upload">
-                                <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg" capture="camera" id="photoBtn">
-                                <label class="attatch" for="photoBtn">사진 첨부하기</label>
-                            </div>
+                                <div class="upload">
+                                    <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
+                                        capture="camera" id="photoBtn">
+                                    <label class="attatch" for="photoBtn">사진 첨부하기</label>
+                                </div>
                             </label>
+                        </div>
+
+                        <!-- BGM 적용 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">배경음악 적용</label>
+                            <div class="TabUI">
+                                <ul class="TabListBGM">
+                                    <li class="TabItemBGM Active" id="NoneAudio">적용 안함</li>
+                                    <li class="TabItemBGM" id="BaseAudio_1">기본 배경음1</li>
+                                    <li class="TabItemBGM" id="BaseAudio_2">기본 배경음2</li>
+                                    <li class="TabItemBGM" id="BaseAudio_3">기본 배경음3</li>
+                                    <label class="BgmUpload_Btn" for="ImgBtn">
+                                        <input type="file" id="BgmBtn" name="upload" multiple="multiple"
+                                            class="form-control user_picked_files" accept="image/jpeg, image/png, image/jpg" />
+                                        <label class="attatch" for="ImgBtn">직접 업로드</label>
+                                    </label>
+                                </ul>
+                            </div>
                         </div>
 
                         <!-- 이펙트 적용 -->
@@ -254,23 +305,25 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <!-- 사진 다중업로드 -->
-                        <div class = "selectbox_detail">
-                            <label class = "selectbox_label">
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label">
                                 Select Imgs (최대 20개까지 가능)
                             </label>
                             <label class="ImgGroupUpload_Btn" for="ImgBtn">
-                                <input type = "file" id="ImgBtn" name = "upload" multiple = "multiple" class = "form-control user_picked_files" accept="image/jpeg, image/png, image/jpg"/>                 
+                                <input type="file" id="ImgBtn" name="upload" multiple="multiple"
+                                    class="form-control user_picked_files" accept="image/jpeg, image/png, image/jpg" />
                                 <label class="attatch" for="ImgBtn">사진 첨부하기</label>
-                            </label>                                     
+                            </label>
                             <!-- <input type = "submit" class = "cvf_upload_btn btn btn-primary" value = "Upload" /> -->
-                            <ul class = "cvf_uploaded_files"></ul>
+                            <ul class="cvf_uploaded_files"></ul>
                         </div>
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this,'select-result1')">
+                            <select class="selectboxname" name="pets" id="select"
+                                onchange="handleOnChange(this,'select-result1')">
                                 <option value="base">옵션을 선택하세요</option>
                                 <option value="dog">Dog</option>
                                 <option value="cat">Cat</option>
@@ -280,7 +333,7 @@
                                 <option value="goldfish">Goldfish</option>
                             </select>
                         </div>
-                        
+
                         <!-- 예식장 위치 검색 -->
                         <div class="search">
                             <input id="address" type="text" placeholder="검색할 주소">
@@ -290,14 +343,14 @@
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="pet-select">Choose a pet:</label>
                             <form class="selectgroup" id="myform">
-                                <select class="selectboxname" id="fs"> 
+                                <select class="selectboxname" id="fs">
                                     <option value="MapoFlowerIsland">마포꽃섬</option>
                                     <option value="Cafe24Oneprettynight">카페24 고운밤</option>
                                     <option value="Cafe24Shiningstar">카페24 빛나는별</option>
                                     <option value="KCC-eunyoung">KCC 은영체</option>
-                                        <option value="Flower_tree">아름드리 꽃나무</option>
-                                            <option value="Pretendard-Regular">프리텐다드</option>
-                                </select>  
+                                    <option value="Flower_tree">아름드리 꽃나무</option>
+                                    <option value="Pretendard-Regular">프리텐다드</option>
+                                </select>
                             </form>
                         </div>
 
@@ -329,24 +382,28 @@
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">신랑님</label>
                             <div class="NameBox">
-                                <input class="base" id="GroomFirstNameInput" name="base" type="base" onkeyup="printGroom()" placeholder="성" >
-                                <input class="base" id="GroomLastNameInput" name="base" type="base" onkeyup="printGroom()" placeholder="이름" >
+                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    onkeyup="printGroom()" placeholder="성">
+                                <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                    onkeyup="printGroom()" placeholder="이름">
                             </div>
                         </div>
 
                         <div class="TabUI">
                             <ul class="TabList">
-                                <li class="TabItem Active" id="fontsize" value="16" data-tab="Tab-1">탭아이템1</li>
-                                <li class="TabItem" id="fontsize" value="20" data-tab="Tab-2">탭아이템2</li>
-                                <li class="TabItem" id="fontsize" value="24" data-tab="Tab-3">탭아이템3</li>
+                                <li class="TabItem Active" id="fontsize" value="16" data-tab="Tab-1">초대문구1</li>
+                                <li class="TabItem" id="fontsize" value="20" data-tab="Tab-2">초대문구2</li>
+                                <li class="TabItem" id="fontsize" value="24" data-tab="Tab-3">초대문구3</li>
                             </ul>
                         </div>
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">신부님</label>
                             <div class="NameBox">
-                                <input class="base" id="BrideFirstNameInput" name="base_2" type="base_2" onkeyup="printBride()" placeholder="성" >
-                                <input class="base" id="BrideLastNameInput" name="base_2" type="base_2" onkeyup="printBride()" placeholder="이름" >
+                                <input class="base" id="BrideFirstNameInput" name="base_2" type="base_2"
+                                    onkeyup="printBride()" placeholder="성">
+                                <input class="base" id="BrideLastNameInput" name="base_2" type="base_2"
+                                    onkeyup="printBride()" placeholder="이름">
                             </div>
                         </div>
 
@@ -361,7 +418,8 @@
                     <div class="contents_detail">
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this,'select-result2')">
+                            <select class="selectboxname" name="pets" id="select"
+                                onchange="handleOnChange(this,'select-result2')">
                                 <option value="base">옵션을 선택하세요</option>
                                 <option value="dog">Dog</option>
                                 <option value="cat">Cat</option>
@@ -445,12 +503,12 @@
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">Date</label>
-                            <input id="date" name="date" type="date" >
+                            <input id="date" name="date" type="date">
                         </div>
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">Date</label>
-                            <input id="base" name="base" type="base" >
+                            <input id="base" name="base" type="base">
                         </div>
                     </div>
                 </div>
@@ -482,12 +540,12 @@
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">Date</label>
-                            <input id="date" name="date" type="date" >
+                            <input id="date" name="date" type="date">
                         </div>
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">Date</label>
-                            <input id="base" name="base" type="base" >
+                            <input id="base" name="base" type="base">
                         </div>
                     </div>
                 </div>
@@ -519,17 +577,18 @@
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">Date</label>
-                            <input id="date" name="date" type="date" >
+                            <input id="date" name="date" type="date">
                         </div>
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">Date</label>
-                            <input id="base" name="base" type="base" >
+                            <input id="base" name="base" type="base">
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
 
 </body>
+
 </html>

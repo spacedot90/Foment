@@ -1,5 +1,4 @@
 
-
 //--> 셀렉트 박스 선택
 function handleOnChange(e, target) {
     // 선택된 데이터의 텍스트값 가져오기
@@ -27,25 +26,6 @@ function printBride() {
 
     document.getElementById("BrideFirstName").innerText = BrideFirstName;
     document.getElementById("BrideLastName").innerText = BrideLastName;
-};
-
-// 인풋 캘린더
-
-var dateChange = () => {
-    let date_input = document.getElementById("date");
-    let arr = date_input.value.split('-');
-    
-    document.getElementById("DateTitle").innerText = arr[1] + "/" + arr[2];
-    document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
-    document.getElementById("TextDateCalendar").innerText = arr[1] + "월" + arr[2] + "일";
-
-    // 여기에다가 추가
-    let currentMonthDate = document.querySelectorAll('.dates .current');
-    currentMonthDate.forEach(r => {
-        r.classList.remove('today');
-    });
-
-    currentMonthDate[parseInt(date_input.value.split('-')[2]) - 1].classList.add('today');
 };
 
 
@@ -104,7 +84,7 @@ function calendarInit() {
         // console.log(prevDate, prevDay, nextDate, nextDay);
 
         // 현재 월 표기
-        $('.year-month').text((currentMonth + 1)+ '월' +currentDate + '일');
+        $('.year-month').text((currentMonth + 1) + '월' + currentDate + '일');
 
         // 렌더링 html 요소 생성
         calendar = document.querySelector('.dates')
@@ -133,12 +113,42 @@ function calendarInit() {
 
 }
 
+// 인풋 캘린더
 
+var dateChange = () => {
+    let date_input = document.getElementById("date");
+    let arr = date_input.value.split('-');
+
+    document.getElementById("DateTitle").innerText = arr[1] + "/" + arr[2];
+    document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
+    document.getElementById("TextDateCalendar").innerText = arr[1] + "월" + arr[2] + "일";
+
+    // 여기에다가 추가
+    let currentMonthDate = document.querySelectorAll('.dates .current');
+    currentMonthDate.forEach(r => {
+        r.classList.remove('today');
+    });
+
+    currentMonthDate[parseInt(date_input.value.split('-')[2]) - 1].classList.add('today');
+    console.log(date_input.value);
+    // 지난달
+    for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
+        calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
+    }
+    // 이번달
+    for (var i = 1; i <= nextDate; i++) {
+        calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
+    }
+    // 다음달
+    for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
+        calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
+    }
+};
 
 window.onload = function () {
 
     // 지도
-    
+
     //지도를 삽입할 HTML 요소 또는 HTML 요소의 id를 지정합니다.
     var mapDiv = document.getElementById('map'); // 'map'으로 선언해도 동일
 
@@ -148,21 +158,21 @@ window.onload = function () {
     var map = new naver.maps.Map('map', {
 
         center: new naver.maps.LatLng(37.555073, 126.892030),
-    
+
         zoom: 17
-    
-    });  
-    
+
+    });
+
     // 마커 위치 표시
 
     var marker = new naver.maps.Marker({
-    
+
         position: new naver.maps.LatLng(37.555073, 126.892030),
-    
+
         map: map
-    
+
     });
-        
+
 
     //--> 확대방지
     document.body.addEventListener('touchstart', function (e) {
@@ -303,17 +313,55 @@ window.onload = function () {
         $('ul.TabListEffect li').removeClass('Active');     //선택 되있던 탭의 Active css를 제거하고 
         $(this).addClass('Active');							////선택된 탭에 Active class를 삽입해줍니다.
 
-        if(this.id == 'NoneEffect'){  //효과 미적용
+        if (this.id == 'NoneEffect') {  //효과 미적용
             console.log('아무것도 선택안된상태');
-            $('.effects').attr("src","");
-        }else if(this.id == 'CherryblossomEffect'){  //벚꽃 효과 적용
+            $('.effects').attr("src", "");
+        } else if (this.id == 'CherryblossomEffect') {  //벚꽃 효과 적용
             console.log('체리블라썸');
-            $('.effects').attr("src","../Resource/effects/flower_00.mp4");
-        }else if(this.id == 'SnowEffect'){  // 눈 효과 적용
+            $('.effects').attr("src", "../Resource/effects/flower_00.mp4");
+        } else if (this.id == 'SnowEffect') {  // 눈 효과 적용
             console.log('스노우');
-            $('.effects').attr("src","../Resource/effects/snow_00.mp4");
+            $('.effects').attr("src", "../Resource/effects/snow_00.mp4");
         }
-        else{
+        else {
+            console.log('null');
+        }
+    });
+
+    // PlayButton
+    $(document).ready(function() {
+        var btn = $(".button");
+        btn.click(function() {
+            btn.toggleClass("paused");
+            if(this.btn == '.button'){
+                console.log('플레이');
+            }else{
+                console.log('ㅠㅠ;')
+            }
+        });
+    });
+  
+
+    // 배경음악 탭
+    $('ul.TabListBGM li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
+
+        $('ul.TabListBGM li').removeClass('Active');     //선택 되있던 탭의 Active css를 제거하고 
+        $(this).addClass('Active');							////선택된 탭에 Active class를 삽입해줍니다.
+
+        if (this.id == 'NoneAudio') {  //BGM 미적용
+            console.log('아무것도 선택안된상태');
+            $('.effects').attr("src", "");
+        } else if (this.id == 'BaseAudio_1') {  //베이스오디오_1
+            console.log('BaseAudio_1');
+            $('.effects').attr("src", "../Resource/Audio/wedding_1.mp3");
+        } else if (this.id == 'BaseAudio_2') {  //베이스오디오_2
+            console.log('BaseAudio_2');
+            $('.effects').attr("src", "../Resource/Audio/wedding_2.mp3");
+        }  else if (this.id == 'BaseAudio_3') {  //베이스오디오_3
+            console.log('BaseAudio_3');
+            $('.effects').attr("src", "../Resource/Audio/wedding_3.mp3");
+        }
+        else {
             console.log('null');
         }
     });

@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: space-between;
   color: var(--ColorTextPrimary);
-  max-height: 800px;
+  max-height: 900px;
   overflow: scroll;
   position: fixed;
   -ms-overflow-style: none;
@@ -186,7 +186,7 @@
   justify-content: center;
   width: calc(100% / 7);
   text-align: left;
-  color: #999;
+  color: #333;
   font-size: 12px;
   text-align: center;
   border-radius: 50%;
@@ -204,15 +204,15 @@
 }
 
 .sec_cal .cal_wrap .day:nth-child(7n -1) {
-  color: #999;
+  color: red;
 }
 
 .sec_cal .cal_wrap .day:nth-child(7n) {
-  color: #999;
+  color: red;
 }
 
 .sec_cal .cal_wrap .day.disable {
-  color: #999;
+  color: #eee;
 }
 
 /* 지도 API */
@@ -266,6 +266,29 @@
   float: right;
 }
 
+.button {
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  width: 0;
+  width: 32px;
+  height: 32px;
+  border-color: transparent transparent transparent #202020;
+  transition: 100ms all ease;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 16px 0 16px 24px;
+  }
+
+  .paused {
+    border-style: double;
+    border-width: 0px 0 0px 20px;
+  }
+
+  .button:hover {
+    border-color: transparent transparent transparent #404040;
+  }
+
 .DesignSection {
   overflow: hidden;
   border-radius: var(--BorderRadius-Lg);
@@ -303,7 +326,7 @@
   width: 100%;
 }
 
-ul.Tablist , ul.TabListFont , ul.TabListEffect{
+ul.Tablist , ul.TabListFont , ul.TabListEffect , ul.TabListBGM{
   gap: 8px;
   list-style-type: none;
   display: flex;
@@ -311,30 +334,29 @@ ul.Tablist , ul.TabListFont , ul.TabListEffect{
   margin: 0;
 }
 
-li.TabItem.Active , li.TabItemFont.Active , li.TabItemEffect.Active{
+li.TabItem.Active , li.TabItemFont.Active , li.TabItemEffect.Active, li.TabItemBGM.Active{
   transition: var(--transition);
   width: 100%;
   cursor: pointer;
   text-align: center;
   border-radius: 4px;
-  padding: 8px 12px;
   background-color: var(--ColorBrand);
   color: var(--ColorTextOnSurface);
 }
 
-li.TabItem , li.TabItemFont , li.TabItemEffect{
+li.TabItem , li.TabItemFont , li.TabItemEffect, li.TabItemBGM{
+  height: 50px;
+  line-height: 50px;
   transition: var(--transition);
   width: 100%;
   text-align: center;
   border-radius: 4px;
   cursor: pointer;
-  padding: 8px 12px;
   background-color: var(--ColorBase);
 }
 
 .TabContent {
   display: none;
-  background: var(--ColorBase);
   padding: 12px 0px;
 }
 
@@ -380,7 +402,7 @@ li.TabItem , li.TabItemFont , li.TabItemEffect{
   margin-left: 20px;
 }
 
-#ImgBtn {
+#ImgBtn, #BgmBtn {
   display: none;
 }
 
@@ -388,13 +410,13 @@ li.TabItem , li.TabItemFont , li.TabItemEffect{
   cursor: pointer;
 }
 
-.ImgGroupUpload_Btn {
+.ImgGroupUpload_Btn, .BgmUpload_Btn {
   background: var(--ColorBrand);
   cursor: pointer;
   color: var(--ColorSurface);
   text-align: center;
   height: 50px;
-  /* width: calc(50% - 10px); */
+  width: 100%;
   border-radius: var(--BorderRadius-Xs);
   line-height: 50px;
   transition: var(--transition);
@@ -462,12 +484,27 @@ li.TabItem , li.TabItemFont , li.TabItemEffect{
 .VideoEffect{
   position: absolute;
 }
+.AudioPlayPause{
+  display: flex;
+}
+.AudioBGM{
+  display: none;
+}
 
 .effects{
   mix-blend-mode: screen;
   width: 100%;
 }
-
+.AudioControl{
+  display: flex;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  /* background: rgb(0,0,0,0.2); */
+  position: absolute;
+  /* border: 1px solid rgb(0,0,0,0.1); */
+  border-radius: 24px;
+}
 
 .image-container img {
   width: 100%
