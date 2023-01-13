@@ -266,28 +266,25 @@
   float: right;
 }
 
-.button {
-  border: 0;
-  background: transparent;
-  box-sizing: border-box;
-  width: 0;
-  width: 32px;
-  height: 32px;
-  border-color: transparent transparent transparent #202020;
-  transition: 100ms all ease;
+#button{
+  display: block;
   cursor: pointer;
-  border-style: solid;
-  border-width: 16px 0 16px 24px;
-  }
+  transition: var(--transition);
+}
 
-  .paused {
-    border-style: double;
-    border-width: 0px 0 0px 20px;
-  }
+#button:hover{
+  opacity: 0.8;
+}
 
-  .button:hover {
-    border-color: transparent transparent transparent #404040;
-  }
+#buttonpause{
+  display: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#buttonpause:hover{
+  opacity: 0.8;
+}
 
 .DesignSection {
   overflow: hidden;

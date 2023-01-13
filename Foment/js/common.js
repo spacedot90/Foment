@@ -328,19 +328,36 @@ window.onload = function () {
         }
     });
 
-    // PlayButton
-    $(document).ready(function() {
-        var btn = $(".button");
-        btn.click(function() {
-            btn.toggleClass("paused");
-            if(this.btn == '.button'){
-                console.log('플레이');
-            }else{
-                console.log('ㅠㅠ;')
-            }
+        // PlayButton
+        $(document).ready(function() {
+            var btn = $(".button"); 
+            btn.click(function() {               
+                if(this.id == 'button'){
+                    $('#button').hide();
+                    $('#buttonpause').show();
+                    console.log("잘 숨겨짐");
+                } else if(this.id == 'buttonpause'){
+                    $('#button').show();
+                    $('#buttonpause').hide();
+                } else{
+                    console.log("포즈버튼");
+                }
+            });
         });
-    });
-  
+
+    // function playPause() {
+    //     var mediaPlayer = document.getElementById('media-video');
+    //     if (mediaPlayer.paused) {
+    //         mediaPlayer.play(); 
+    //         $('.pause-btn').show();
+    //         $('.play-btn').hide();
+    //     } else {
+    //         mediaPlayer.pause(); 
+    //         $('.play-btn').show();
+    //         $('.pause-btn').hide();
+    //     }
+    // }
+
 
     // 배경음악 탭
     $('ul.TabListBGM li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
@@ -516,11 +533,18 @@ window.onload = function () {
                 return;
             }
 
+            // 이미지 타입 매칭 후 노출
             if (file.type.match('image.*')) {
                 storedFiles.push(file);
                 readImg.onload = (function (file) {
                     return function (e) {
                         $('.cvf_uploaded_files').append(
+                            "<li file = '" + file.name + "'>" +
+                            "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
+                            "</li>"
+                        );
+
+                        $('.grid-item').append(
                             "<li file = '" + file.name + "'>" +
                             "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
                             "</li>"
