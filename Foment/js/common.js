@@ -345,19 +345,6 @@ window.onload = function () {
             });
         });
 
-    // function playPause() {
-    //     var mediaPlayer = document.getElementById('media-video');
-    //     if (mediaPlayer.paused) {
-    //         mediaPlayer.play(); 
-    //         $('.pause-btn').show();
-    //         $('.play-btn').hide();
-    //     } else {
-    //         mediaPlayer.pause(); 
-    //         $('.play-btn').show();
-    //         $('.pause-btn').hide();
-    //     }
-    // }
-
 
     // 배경음악 탭
     $('ul.TabListBGM li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
@@ -525,6 +512,31 @@ window.onload = function () {
             //     return; 
             //     }
 
+
+            // 이미지 삭제
+
+            $('body').on('click', 'a.cvf_delete_image', function (e) {
+                e.preventDefault();
+                var file = $(this).parent().attr('file');
+                var viewimg = document.getElementById('appendimg');
+
+                $(this).parent().remove('');
+                // $(viewimg).parent().remove('');
+                $(viewimg).remove(e.target.result);
+
+                var file = $(this).parent().attr('file');
+                for (var i = 0; i < storedFiles.length; i++) {
+                    if (storedFiles[i].name == file) {
+                        storedFiles.splice(i, 1);
+                        break;
+                    }
+                }
+
+                cvf_reload_order();
+
+            });
+
+
             // 이미지 갯수 확인 후 노출
             img_count = files.length;
             if (img_count > 20) {
@@ -538,17 +550,29 @@ window.onload = function () {
                 storedFiles.push(file);
                 readImg.onload = (function (file) {
                     return function (e) {
+                        $('.GalleryTitleArea').show();
                         $('.cvf_uploaded_files').append(
-                            "<li file = '" + file.name + "'>" +
+                            "<li id='multiimg' file = '" + file.name + "'>" +
                             "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
+                            "<a href = '#' class = 'cvf_delete_image' id='deleteimg' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Delete.svg' /></a>" +
                             "</li>"
                         );
 
-                        $('.grid-item').append(
-                            "<li file = '" + file.name + "'>" +
-                            "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
+                        $('.grid-container').append(
+                            "<li class = 'grid-item' file = '" + file.name + "'>" +
+                            "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
                             "</li>"
                         );
+                        // Hover시 삭제버튼
+                        var HoverImg = document.getElementById('multiimg');
+                        var DeleteImg = document.getElementById('deleteimg');
+                    
+                        HoverImg.onmouseover = function(){
+                            DeleteImg.style.opacity = "1";
+                        }
+                        HoverImg.onmouseout = function(){
+                            DeleteImg.style.opacity = "0";
+                        }
                     };
                 })(file);
                 readImg.readAsDataURL(file);
@@ -562,24 +586,8 @@ window.onload = function () {
                     cvf_add_order();
                 }, 1000);
             }
+
         }
-    });
-
-    // Delete Image from Queue
-    $('body').on('click', 'a.cvf_delete_image', function (e) {
-        e.preventDefault();
-        $(this).parent().remove('');
-
-        var file = $(this).parent().attr('file');
-        for (var i = 0; i < storedFiles.length; i++) {
-            if (storedFiles[i].name == file) {
-                storedFiles.splice(i, 1);
-                break;
-            }
-        }
-
-        cvf_reload_order();
-
     });
 
 
