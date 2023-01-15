@@ -494,6 +494,7 @@ li.TabItem , li.TabItemFont , li.TabItemEffect, li.TabItemBGM{
 
 .VideoEffect{
   position: absolute;
+  min-width: 400px;
 }
 .AudioPlayPause{
   display: flex;
@@ -504,7 +505,7 @@ li.TabItem , li.TabItemFont , li.TabItemEffect, li.TabItemBGM{
 
 .effects{
   mix-blend-mode: screen;
-  width: 100%;
+  min-width: 400px;
 }
 .AudioControl{
   display: flex;
@@ -514,7 +515,6 @@ li.TabItem , li.TabItemFont , li.TabItemEffect, li.TabItemBGM{
   /* background: rgb(0,0,0,0.2); */
   position: absolute;
   /* border: 1px solid rgb(0,0,0,0.1); */
-  border-radius: 24px;
 }
 
 .image-container img {
