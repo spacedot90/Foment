@@ -48,9 +48,6 @@
                     심플럭셔리 스타일
                 </div>
             </div>
-            <div class="BtnBasic" id="SaveDataBtn">
-                저장하기
-            </div>
         </div>
     </div>
 
@@ -256,22 +253,36 @@
         <!-- 우측 네비게이션 -->
         <div class="right_contents">
             <div class="RightContentsArea">
-                <!-- 첫번째 섹션 -->
+                <!-- Section 1 디자인 포멧 선택 -->
                 <div class="DesignSection">
-                    <div class="section-title">
-                        Title Info
+                    <div class="section">
+                        <div class="section-mark">
+                            #1
+                        </div>
+                        <div class="section-title">
+                            디자인 선택
+                        </div>
                     </div>
-
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
+                    </div>
                     <div class="contents_detail">
-                        <!-- 사진업로드 -->
-                        <div class="photo_box">
-                            <label class="upload_btn" for="photoBtn">
-                                <div class="upload">
-                                    <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
-                                        capture="camera" id="photoBtn">
-                                    <label class="attatch" for="photoBtn">사진 첨부하기</label>
-                                </div>
-                            </label>
+                        <!-- 디자인 테마 선택 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">디자인 테마 선택</label>
+                            <div class="TabUI">
+                                <ul class="TabListEffect">
+                                    <li class="TabItemEffect Active" id="NoneEffect">아치</li>
+                                    <li class="TabItemEffect" id="CherryblossomEffect">여정</li>
+                                    <li class="TabItemEffect" id="SnowEffect">투게더</li>
+                                </ul>
+                            </div>
                         </div>
 
                         <!-- BGM 적용 -->
@@ -281,12 +292,10 @@
                                 <ul class="TabListBGM">
                                     <li class="TabItemBGM Active" id="NoneAudio">적용 안함</li>
                                     <li class="TabItemBGM" id="BaseAudio_1">기본 배경음1</li>
-                                    <li class="TabItemBGM" id="BaseAudio_2">기본 배경음2</li>
-                                    <li class="TabItemBGM" id="BaseAudio_3">기본 배경음3</li>
-                                    <label class="BgmUpload_Btn" for="ImgBtn">
+                                    <label class="BgmUpload_Btn" for="BGMBtn">
                                         <input type="file" id="BgmBtn" name="upload" multiple="multiple"
                                             class="form-control user_picked_files" accept="image/jpeg, image/png, image/jpg" />
-                                        <label class="attatch" for="ImgBtn">직접 업로드</label>
+                                        <label class="attatch" for="BGMBtn">직접 업로드</label>
                                     </label>
                                 </ul>
                             </div>
@@ -300,48 +309,12 @@
                                     <li class="TabItemEffect Active" id="NoneEffect">효과 없음</li>
                                     <li class="TabItemEffect" id="CherryblossomEffect">벚꽃 효과</li>
                                     <li class="TabItemEffect" id="SnowEffect">눈 효과</li>
-                                    <li class="TabItemEffect" id="SnowEffect">눈 효과</li>
-                                    <li class="TabItemEffect" id="SnowEffect">눈 효과</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <!-- 사진 다중업로드 -->
                         <div class="selectbox_detail">
-                            <label class="selectbox_label">
-                                Select Imgs (최대 20개까지 가능)
-                            </label>
-                            <label class="ImgGroupUpload_Btn" for="ImgBtn">
-                                <input type="file" id="ImgBtn" name="upload" multiple="multiple"
-                                    class="form-control user_picked_files" accept="image/jpeg, image/png, image/jpg" />
-                                <label class="attatch" for="ImgBtn">사진 첨부하기</label>
-                            </label>
-                            <!-- <input type = "submit" class = "cvf_upload_btn btn btn-primary" value = "Upload" /> -->
-                            <ul class="cvf_uploaded_files"></ul>
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select"
-                                onchange="handleOnChange(this,'select-result1')">
-                                <option value="base">옵션을 선택하세요</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
-                            </select>
-                        </div>
-
-                        <!-- 예식장 위치 검색 -->
-                        <div class="search">
-                            <input id="address" type="text" placeholder="검색할 주소">
-                            <input id="submit" type="button" value="주소검색">
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
+                            <label class="selectbox_label" for="pet-select">서체 선택</label>
                             <form class="selectgroup" id="myform">
                                 <select class="selectboxname" id="fs">
                                     <option value="MapoFlowerIsland">마포꽃섬</option>
@@ -358,35 +331,341 @@
                             <label class="selectbox_label" for="pet-select">글자 크기</label>
                             <div class="TabUI">
                                 <ul class="TabListFont">
-                                    <li class="TabItemFont Active" value="16" data-tab="Tab-1">기본</li>
-                                    <li class="TabItemFont" value="18" data-tab="Tab-3">중간</li>
-                                    <li class="TabItemFont" value="20" data-tab="Tab-3">크게</li>
-                                    <li class="TabItemFont" value="22" data-tab="Tab-3">아주크게</li>
+                                    <li class="TabItemFont Active" value="16" data-tab="Tab-1">1</li>
+                                    <li class="TabItemFont" value="18" data-tab="Tab-3">2</li>
+                                    <li class="TabItemFont" value="20" data-tab="Tab-3">3</li>
+                                    <li class="TabItemFont" value="22" data-tab="Tab-3">4</li>
                                 </ul>
                             </div>
                         </div>
 
+                    </div>
+                </div>
+
+                <!-- Section 메인 꾸미기 선택 -->
+                <div class="DesignSection">
+                    <div class="section">
+                        <div class="section-mark">
+                            #1
+                        </div>
+                        <div class="section-title">
+                            디자인 선택
+                        </div>
+                    </div>
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
+                    </div>
+                    <div class="contents_detail">
+
+                        <!-- 청첩장 URL 입력란 -->
                         <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">ImgUpload</label>
-                            <input id="ImgSelectBox" type="file" name="upload" multiple>
+                            <label class="selectbox_label" for="file">청첩장 URL(필수)</label>
+                            <div class="InputArea">
+                                <div class="NameBox">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="URL 입력">
+                                    <button class="BtnBasic">
+                                        중복 체크
+                                    </button>
+                                </div>
+                                <div class="inputdescription">https://foment.co.kr/</div>
+                                <div class="info">※ 영문,숫자 및 일부 특수문자(&+-)만 사용 가능합니다.</div>
+                            </div>
                         </div>
-                        <div class="img_area" id="pictures">
-                            <div id="photoframe"></div>
+                        <!-- 청첩장 제목 입력란 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">청첩장 제목</label>
+                            <div class="NameBox">
+                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    onkeyup="printGroom()" placeholder="청첩장 제목을 입력하세요">
+                            </div>
                         </div>
+                        <!-- 대표이미지, 공유이미지 영역 -->
+                        <div class="ImgSection">
+                            <div class="TitleImgSection">
+                                <div class="sectiondes">
+                                    <label class="selectbox_label" for="file">청첩장 URL(필수)</label>
+                                    <div class="info">
+                                        98x98픽셀 이상, 4MB 이하의 사진이 권장됩니다.<br>PNG 또는 JPG 파일을 사용하세요.
+                                    </div>
+                                </div>
+
+                                <!-- 메인 사진업로드 -->
+                                <div class="photo_box">
+                                    <label class="upload_btn" for="photoBtn">
+                                        <div class="upload">
+                                            <div class="uploadarea">
+                                                <div class="edit">
+                                                    <label class="AttatchTitleImg" for="photoBtn">편집하기</label>
+                                                </div>
+                                                <img class="uploadsrc" src="../Resource/mainasset/WeddingTitleImg.jpg" alt="">
+                                            </div>
+                                            <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
+                                                capture="camera" id="photoBtn">
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                            </div>
+                            <div class="TitleImgSection">
+                            <div class="sectiondes">
+                                <label class="selectbox_label" for="file">청첩장 URL(필수)</label>
+                                <div class="info">
+                                    98x98픽셀 이상, 4MB 이하의 사진이 권장됩니다.<br>PNG 또는 JPG 파일을 사용하세요.
+                                </div>
+                            </div>
+                            <!-- 메인 사진업로드 -->
+                            <div class="photo_box">
+                                <label class="upload_btn" for="photoBtn">
+                                    <div class="upload">
+                                        <div class="uploadarea">
+                                            <div class="edit">
+                                                <label class="AttatchTitleImg" for="photoBtn">편집하기</label>
+                                            </div>
+                                            <img class="uploadsrc" src="../Resource/mainasset/WeddingTitleImg.jpg" alt="">
+                                        </div>
+                                        <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
+                                            capture="camera" id="photoBtn">
+                                    </div>
+                                </label>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 신랑측 정보 -->
+                <div class="DesignSection">
+                    <div class="section">
+                        <div class="section-mark">
+                            #1
+                        </div>
+                        <div class="section-title">
+                            신랑 정보
+                        </div>
+                    </div>
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
+                    </div>
+                    <div class="contents2">
+                        <div class="IllustImg">
+                            <img src="../Resource/mainasset/illust_bride.png" alt="">
+                        </div>
+                        <div class="contents_detail">
+                            <!-- 신랑 정보 -->
+                            <div class="selectbox_detail">
+                                <label class="selectbox_label" for="file">신랑 성함 (필수)</label>
+                                <div class="NameBox">
+                                    <div class="inputtype1">
+                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="성">
+                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="이름">
+                                    </div>
+                                        <select class="selectboxname" name="pets" id="select"
+                                            onchange="handleOnChange(this,'select-result2')">
+                                            <option value="base">옵션을 선택하세요</option>
+                                            <option value="dog">Dog</option>
+                                            <option value="cat">Cat</option>
+                                            <option value="hamster">Hamster</option>
+                                            <option value="parrot">Parrot</option>
+                                            <option value="spider">Spider</option>
+                                            <option value="goldfish">Goldfish</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <!-- 아버님 -->
+                            <div class="selectbox_detail">
+                                <label class="selectbox_label" for="file">신랑 아버님</label>
+                                <div class="NameBox">
+                                    <div class="inputtype1">
+                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="성">
+                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="이름">
+                                    </div>
+                                        <div class="checkselection">
+                                            <select class="innerselectbox" name="pets" id="select"
+                                                onchange="handleOnChange(this,'select-result2')">
+                                                <option value="base">故</option>
+                                                <option value="dog">Dog</option>
+                                                <option value="cat">Cat</option>
+                                                <option value="hamster">Hamster</option>
+                                                <option value="parrot">Parrot</option>
+                                                <option value="spider">Spider</option>
+                                                <option value="goldfish">Goldfish</option>
+                                            </select>
+                                            <img class="checkboxsel" src="../Resource/assets/Checkbox.svg" alt="">
+                                        </div>
+                                </div>
+                            </div>
+                            <!-- 어머님 -->
+                            <div class="selectbox_detail">
+                                <label class="selectbox_label" for="file">신랑 어머님</label>
+                                <div class="NameBox">
+                                    <div class="inputtype1">
+                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="성">
+                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="이름">
+                                    </div>
+                                    <div class="checkselection">
+                                        <select class="innerselectbox" name="pets" id="select"
+                                            onchange="handleOnChange(this,'select-result2')">
+                                            <option value="base">故</option>
+                                            <option value="dog">Dog</option>
+                                            <option value="cat">Cat</option>
+                                            <option value="hamster">Hamster</option>
+                                            <option value="parrot">Parrot</option>
+                                            <option value="spider">Spider</option>
+                                            <option value="goldfish">Goldfish</option>
+                                        </select>
+                                        <img class="checkboxsel" src="../Resource/assets/Checkbox.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 신부측 정보 -->
+                <div class="DesignSection">
+                    <div class="section">
+                        <div class="section-mark">
+                            #1
+                        </div>
+                        <div class="section-title">
+                            신부 정보
+                        </div>
+                    </div>
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
+                    </div>
+                    <div class="contents2">
+                        <div class="IllustImg">
+                            <img src="../Resource/mainasset/illust_bride.png" alt="">
+                        </div>
+                        <div class="contents_detail">
+                            <!-- 신랑 정보 -->
+                            <div class="selectbox_detail">
+                                <label class="selectbox_label" for="file">신랑 성함 (필수)</label>
+                                <div class="NameBox">
+                                    <div class="inputtype1">
+                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="성">
+                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="이름">
+                                    </div>
+                                        <select class="selectboxname" name="pets" id="select"
+                                            onchange="handleOnChange(this,'select-result2')">
+                                            <option value="base">옵션을 선택하세요</option>
+                                            <option value="dog">Dog</option>
+                                            <option value="cat">Cat</option>
+                                            <option value="hamster">Hamster</option>
+                                            <option value="parrot">Parrot</option>
+                                            <option value="spider">Spider</option>
+                                            <option value="goldfish">Goldfish</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <!-- 아버님 -->
+                            <div class="selectbox_detail">
+                                <label class="selectbox_label" for="file">신랑 아버님</label>
+                                <div class="NameBox">
+                                    <div class="inputtype1">
+                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="성">
+                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="이름">
+                                    </div>
+                                        <div class="checkselection">
+                                            <select class="innerselectbox" name="pets" id="select"
+                                                onchange="handleOnChange(this,'select-result2')">
+                                                <option value="base">故</option>
+                                                <option value="dog">Dog</option>
+                                                <option value="cat">Cat</option>
+                                                <option value="hamster">Hamster</option>
+                                                <option value="parrot">Parrot</option>
+                                                <option value="spider">Spider</option>
+                                                <option value="goldfish">Goldfish</option>
+                                            </select>
+                                            <img class="checkboxsel" src="../Resource/assets/Checkbox.svg" alt="">
+                                        </div>
+                                </div>
+                            </div>
+                            <!-- 어머님 -->
+                            <div class="selectbox_detail">
+                                <label class="selectbox_label" for="file">신랑 어머님</label>
+                                <div class="NameBox">
+                                    <div class="inputtype1">
+                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="성">
+                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                            onkeyup="printGroom()" placeholder="이름">
+                                    </div>
+                                    <div class="checkselection">
+                                        <select class="innerselectbox" name="pets" id="select"
+                                            onchange="handleOnChange(this,'select-result2')">
+                                            <option value="base">故</option>
+                                            <option value="dog">Dog</option>
+                                            <option value="cat">Cat</option>
+                                            <option value="hamster">Hamster</option>
+                                            <option value="parrot">Parrot</option>
+                                            <option value="spider">Spider</option>
+                                            <option value="goldfish">Goldfish</option>
+                                        </select>
+                                        <img class="checkboxsel" src="../Resource/assets/Checkbox.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 
+
+                <!-- Section 예식 정보 -->
+                <div class="DesignSection">
+                    <div class="section">
+                        <div class="section-mark">
+                            #1
+                        </div>
+                        <div class="section-title">
+                            예식 정보
+                        </div>
+                    </div>
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
+                    </div>
+                    <div class="contents_detail">
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">Calendar</label>
                             <input type="date" id="date" onchange="dateChange()" />
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">신랑님</label>
-                            <div class="NameBox">
-                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
-                                    onkeyup="printGroom()" placeholder="성">
-                                <input class="base" id="GroomLastNameInput" name="base" type="base"
-                                    onkeyup="printGroom()" placeholder="이름">
-                            </div>
                         </div>
 
                         <div class="TabUI">
@@ -397,195 +676,77 @@
                             </ul>
                         </div>
 
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">신부님</label>
-                            <div class="NameBox">
-                                <input class="base" id="BrideFirstNameInput" name="base_2" type="base_2"
-                                    onkeyup="printBride()" placeholder="성">
-                                <input class="base" id="BrideLastNameInput" name="base_2" type="base_2"
-                                    onkeyup="printBride()" placeholder="이름">
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
-                <!-- 두번째 섹션 -->
+                <!-- Section 초대글 정보 -->
                 <div class="DesignSection">
-                    <div class="section-title">
-                        Title Info
+                    <div class="section">
+                        <div class="section-mark">
+                            #1
+                        </div>
+                        <div class="section-title">
+                            초대 글
+                        </div>
+                    </div>
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
                     </div>
                     <div class="contents_detail">
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select"
-                                onchange="handleOnChange(this,'select-result2')">
-                                <option value="base">옵션을 선택하세요</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
-                            </select>
+
+                        <div class="TabUI">
+                            <ul class="TabList">
+                                <li class="TabItem Active" id="fontsize" value="16" data-tab="Tab-1">초대문구1</li>
+                                <li class="TabItem" id="fontsize" value="20" data-tab="Tab-2">초대문구2</li>
+                                <li class="TabItem" id="fontsize" value="24" data-tab="Tab-3">초대문구3</li>
+                            </ul>
                         </div>
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
-                                <option value="base">옵션을 선택하세요</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
-                            </select>
-                        </div>
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
-                                <option value="base">옵션을 선택하세요</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
-                            </select>
-                        </div>
+
                     </div>
                 </div>
 
-                <!-- 세번째 섹션 -->
+                <!-- Section 사진 갤러리 -->
                 <div class="DesignSection">
-                    <div class="section-title">
-                        Title Info
-                    </div>
-                    <div class="contents_detail">
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
-                                <option value="base">옵션을 선택하세요</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
-                            </select>
+                    <div class="section">
+                        <div class="section-mark">
+                            #1
+                        </div>
+                        <div class="section-title">
+                            사진 갤러리
                         </div>
                     </div>
-                </div>
-
-                <!-- 네번째 섹션 -->
-                <div class="DesignSection">
-                    <div class="section-title">
-                        Title Info
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
                     </div>
-                    <div class="contents_detail">
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
-                                <option value="base">옵션을 선택하세요</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
-                            </select>
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">ImgUpload</label>
-                            <input type="file" name="upload" multiple>
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">Date</label>
-                            <input id="date" name="date" type="date">
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">Date</label>
-                            <input id="base" name="base" type="base">
-                        </div>
+                <div class="contents_detail">
+                    <!-- 사진 다중업로드 -->
+                    <div class="selectbox_detail">
+                        <label class="selectbox_label">
+                            Select Imgs (최대 20개까지 가능)
+                        </label>
+                        <label class="ImgGroupUpload_Btn" for="ImgBtn">
+                            <input type="file" id="ImgBtn" name="upload" multiple="multiple"
+                                class="form-control user_picked_files" accept="image/jpeg, image/png, image/jpg" />
+                            <label class="attatch" for="ImgBtn">편집하기</label>
+                        </label>
+                        <!-- <input type = "submit" class = "cvf_upload_btn btn btn-primary" value = "Upload" /> -->
+                        <ul class="cvf_uploaded_files"></ul>
                     </div>
                 </div>
+            </div>
 
-
-                <!-- 네번째 섹션 -->
-                <div class="DesignSection">
-                    <div class="section-title">
-                        Title Info
-                    </div>
-                    <div class="contents_detail">
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
-                                <option value="base">옵션을 선택하세요</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
-                            </select>
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">ImgUpload</label>
-                            <input type="file" name="upload" multiple>
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">Date</label>
-                            <input id="date" name="date" type="date">
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">Date</label>
-                            <input id="base" name="base" type="base">
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- 네번째 섹션 -->
-                <div class="DesignSection">
-                    <div class="section-title">
-                        Title Info
-                    </div>
-                    <div class="contents_detail">
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="pet-select">Choose a pet:</label>
-                            <select class="selectboxname" name="pets" id="select" onchange="handleOnChange(this)">
-                                <option value="base">옵션을 선택하세요</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
-                            </select>
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">ImgUpload</label>
-                            <input class="UploadFile" type="file" name="upload" multiple>
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">Date</label>
-                            <input id="date" name="date" type="date">
-                        </div>
-
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">Date</label>
-                            <input id="base" name="base" type="base">
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 

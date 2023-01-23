@@ -1,151 +1,74 @@
-
-//--> 셀렉트 박스 선택
-function handleOnChange(e, target) {
-    // 선택된 데이터의 텍스트값 가져오기
-    const text = e.options[e.selectedIndex].text;
-
-    console.log(e.options);
-
-    // 선택한 텍스트 출력
-    document.getElementById(target).innerText
-        = text;
-}
-
-// Input 값 타이핑시 출력
-function printGroom() {
-    let GroomFirstName = document.getElementById('GroomFirstNameInput').value;
-    let GroomLastName = document.getElementById('GroomLastNameInput').value;
-
-    document.getElementById("GroomFirstName").innerText = GroomFirstName;
-    document.getElementById("GroomLastName").innerText = GroomLastName;
-};
-
-function printBride() {
-    let BrideFirstName = document.getElementById('BrideFirstNameInput').value;
-    let BrideLastName = document.getElementById('BrideLastNameInput').value;
-
-    document.getElementById("BrideFirstName").innerText = BrideFirstName;
-    document.getElementById("BrideLastName").innerText = BrideLastName;
-};
-
-
-// 연동할 캘린더
-
-$(document).ready(function () {
-    calendarInit();
-});
-/*
-    달력 렌더링 할 때 필요한 정보 목록 
- 
-    현재 월(초기값 : 현재 시간)
-    금월 마지막일 날짜와 요일
-    전월 마지막일 날짜와 요일
-*/
-// calendar init 에 인풋값이 대치
-function calendarInit() {
-
-    // 날짜 정보 가져오기
-    var date = new Date(); // 현재 날짜(로컬 기준) 가져오기
-    var utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000); // uct 표준시 도출
-    var kstGap = 9 * 60 * 60 * 1000; // 한국 kst 기준시간 더하기
-    var today = new Date(utc + kstGap); // 한국 시간으로 date 객체 만들기(오늘)
-
-    var thisMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    // 달력에서 표기하는 날짜 객체
-
-
-    var currentYear = thisMonth.getFullYear(); // 달력에서 표기하는 연
-    var currentMonth = thisMonth.getMonth(); // 달력에서 표기하는 월
-    var currentDate = thisMonth.getDate(); // 달력에서 표기하는 일
-
-    // kst 기준 현재시간
-    // console.log(thisMonth);
-
-    // 캘린더 렌더링
-    renderCalender(thisMonth);
-
-    function renderCalender(thisMonth) {
-
-        // 렌더링을 위한 데이터 정리
-        currentYear = thisMonth.getFullYear();
-        currentMonth = thisMonth.getMonth();
-        currentDate = thisMonth.getDate();
-
-        // 이전 달의 마지막 날 날짜와 요일 구하기
-        var startDay = new Date(currentYear, currentMonth, 0);
-        var prevDate = startDay.getDate();
-        var prevDay = startDay.getDay();
-
-        // 이번 달의 마지막날 날짜와 요일 구하기
-        var endDay = new Date(currentYear, currentMonth + 1, 0);
-        var nextDate = endDay.getDate();
-        var nextDay = endDay.getDay();
-
-        // console.log(prevDate, prevDay, nextDate, nextDay);
-
-        // 현재 월 표기
-        $('.year-month').text((currentMonth + 1) + '월' + currentDate + '일');
-
-        // 렌더링 html 요소 생성
-        calendar = document.querySelector('.dates')
-        calendar.innerHTML = '';
-
-        // 지난달
-        for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
-            calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
-        }
-        // 이번달
-        for (var i = 1; i <= nextDate; i++) {
-            calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
-        }
-        // 다음달
-        for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
-            calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
-        }
-
-        // 오늘 날짜 표기
-        if (today.getMonth() == currentMonth) {
-            todayDate = today.getDate();
-            var currentMonthDate = document.querySelectorAll('.dates .current');
-            currentMonthDate[todayDate - 1].classList.add('today');
-        }
-    }
-
-}
-
-// 인풋 캘린더
-
-var dateChange = () => {
-    let date_input = document.getElementById("date");
-    let arr = date_input.value.split('-');
-
-    document.getElementById("DateTitle").innerText = arr[1] + "/" + arr[2];
-    document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
-    document.getElementById("TextDateCalendar").innerText = arr[1] + "월" + arr[2] + "일";
-
-    // 여기에다가 추가
-    let currentMonthDate = document.querySelectorAll('.dates .current');
-    currentMonthDate.forEach(r => {
-        r.classList.remove('today');
-    });
-
-    currentMonthDate[parseInt(date_input.value.split('-')[2]) - 1].classList.add('today');
-    console.log(date_input.value);
-    // 지난달
-    for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
-        calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
-    }
-    // 이번달
-    for (var i = 1; i <= nextDate; i++) {
-        calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
-    }
-    // 다음달
-    for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
-        calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
-    }
-};
-
 window.onload = function () {
+        // 대표 이미지 업로드 크롭
+        $(function () {
+            var cropper;
+            // 사진 업로드 버튼
+            $('#photoBtn').on('change', function () {
+                $('.photo_them').css("display", "block");
+                $('#complete').css("display", "block");
+                $('.them_img').empty().append('<img id="image" src="">');
+                var image = $('#image');
+                var imgFile = $('#photoBtn').val();
+                var fileForm = /(.*?)\.(jpg|jpeg|png)$/;
+    
+                let BG = document.querySelector('.BgDimmed');
+    
+                // 이미지가 확장자 확인 후 노출
+                if (imgFile.match(fileForm)) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        image.attr("src", event.target.result);
+                        cropper = image.cropper({
+                            dragMode: 'move',
+                            viewMode: 1,
+                            aspectRatio: 200 / 300,
+                            autoCropArea: 0.9,
+                            minContainerWidth: 600,
+                            minContainerHeight: 600,
+                            restore: false,
+                            guides: true,
+                            center: true,
+                            highlight: true,
+                            cropBoxMovable: false,
+                            cropBoxResizable: false,
+                            toggleDragModeOnDblclick: false,
+                        });
+                    };
+                    BG.classList.toggle('is-active');
+                    reader.readAsDataURL(event.target.files[0]);
+                } else {
+                    alert("이미지 파일(jpg, png형식의 파일)만 올려주세요");
+                    $('#photoBtn').focus();
+                    $('.photo_them').css("display", "none");
+                    $('#complete').css("display", "none");
+                    return;
+                }
+            });
+    
+            // 대표이미지 업로드 버튼
+    
+            $('#complete').on('click', function () {
+                alert('선택하신 이미지로 대표이미지가 변경되었습니다.');
+                $('.photo_them').css("display", "none");
+                $('#complete').css("display", "none");
+                var image = $('#image');
+                var result = $('#preview-image');
+                var canvas;
+                var BG = document.querySelector('.BgDimmed');
+    
+                if ($('input[type="file"]').val() != "") {
+                    canvas = image.cropper('getCroppedCanvas', {
+                        width: 1000,
+                        height: 1000,
+                    });
+                    BG.classList.toggle('is-active');
+                    result.attr('src', canvas.toDataURL("image/jpg"));
+                    $("#preview-image").attr('src', canvas.toDataURL("image/jpg"));
+                } else{
+                    console.log('오류가 있군..');
+                }
+            });
+        });
 
     // 지도
 
@@ -162,17 +85,12 @@ window.onload = function () {
         zoom: 17
 
     });
-
     // 마커 위치 표시
 
     var marker = new naver.maps.Marker({
-
         position: new naver.maps.LatLng(37.555073, 126.892030),
-
         map: map
-
     });
-
 
     //--> 확대방지
     document.body.addEventListener('touchstart', function (e) {
@@ -182,30 +100,6 @@ window.onload = function () {
             e.stopImmediatePropagation();
         }
     }, { passive: false });
-
-    //--> 이미지 첨부시 사진노출
-
-    var fileInput = document.getElementById("ImgSelectBox");
-    //값이 변경될때 호출 되는 이벤트 리스너
-    fileInput.addEventListener('change', function (e) {
-        console.log(e.target.files)
-        var file = e.target.files[0]; //선택된 파일
-        var reader = new FileReader();
-        reader.readAsDataURL(file); //파일을 읽는 메서드 
-
-        reader.onload = function () {
-            var photoFrame = document.createElement("div");
-            photoFrame.style = `background : url(${reader.result}); background-size : cover`;
-            photoFrame.className = "photoFrame";
-            document.getElementById("pictures").appendChild(photoFrame);
-            // e.target.value = "";
-
-            // 이미지 삭제 코드
-            // photoFrame.addEventListener("click",function(){
-            // document.getElementById("pictures").removeChild(photoFrame);
-            // })
-        }
-    })
 
     // --> 미리보기 팝업띄우기
 
@@ -369,78 +263,7 @@ window.onload = function () {
             console.log('null');
         }
     });
-
-
-    // 사진 업로드 JS
-
-    $(function () {
-        var cropper;
-        // 사진 업로드 버튼
-        $('#photoBtn').on('change', function () {
-            $('.photo_them').css("display", "block");
-            $('#complete').css("display", "block");
-            $('.them_img').empty().append('<img id="image" src="">');
-            var image = $('#image');
-            var imgFile = $('#photoBtn').val();
-            var fileForm = /(.*?)\.(jpg|jpeg|png)$/;
-
-            let BG = document.querySelector('.BgDimmed');
-
-            // 이미지가 확장자 확인 후 노출
-            if (imgFile.match(fileForm)) {
-                var reader = new FileReader();
-                reader.onload = function (event) {
-                    image.attr("src", event.target.result);
-                    cropper = image.cropper({
-                        dragMode: 'move',
-                        viewMode: 1,
-                        aspectRatio: 200 / 300,
-                        autoCropArea: 0.9,
-                        minContainerWidth: 600,
-                        minContainerHeight: 600,
-                        restore: false,
-                        guides: true,
-                        center: true,
-                        highlight: true,
-                        cropBoxMovable: false,
-                        cropBoxResizable: false,
-                        toggleDragModeOnDblclick: false,
-                    });
-                };
-                BG.classList.toggle('is-active');
-                reader.readAsDataURL(event.target.files[0]);
-            } else {
-                alert("이미지 파일(jpg, png형식의 파일)만 올려주세요");
-                $('#photoBtn').focus();
-                $('.photo_them').css("display", "none");
-                $('#complete').css("display", "none");
-                return;
-            }
-        });
-
-        // 대표이미지 업로드 버튼
-
-        $('#complete').on('click', function () {
-            alert('선택하신 이미지로 대표이미지가 변경되었습니다.');
-            $('.photo_them').css("display", "none");
-            $('#complete').css("display", "none");
-            let image = $('#image');
-            let result = $('#preview-image');
-            let canvas;
-            let BG = document.querySelector('.BgDimmed');
-
-            if ($('input[type="file"]').val() != "") {
-                canvas = image.cropper('getCroppedCanvas', {
-                    width: 1000,
-                    height: 1000,
-                });
-                BG.classList.toggle('is-active');
-                result.attr('src', canvas.toDataURL("image/jpg"));
-                $("#preview-image").attr('src', canvas.toDataURL("image/jpg"));
-            }
-        });
-    });
-
+        
 
     // 사진 다중업로드 JS
 
@@ -625,3 +448,149 @@ window.onload = function () {
     //   });  
 
 }
+
+
+// 연동할 캘린더
+
+$(document).ready(function () {
+    calendarInit();
+});
+/*
+    달력 렌더링 할 때 필요한 정보 목록 
+ 
+    현재 월(초기값 : 현재 시간)
+    금월 마지막일 날짜와 요일
+    전월 마지막일 날짜와 요일
+*/
+// calendar init 에 인풋값이 대치
+function calendarInit() {
+
+    // 날짜 정보 가져오기
+    var date = new Date(); // 현재 날짜(로컬 기준) 가져오기
+    var utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000); // uct 표준시 도출
+    var kstGap = 9 * 60 * 60 * 1000; // 한국 kst 기준시간 더하기
+    var today = new Date(utc + kstGap); // 한국 시간으로 date 객체 만들기(오늘)
+
+    var thisMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    // 달력에서 표기하는 날짜 객체
+
+
+    var currentYear = thisMonth.getFullYear(); // 달력에서 표기하는 연
+    var currentMonth = thisMonth.getMonth(); // 달력에서 표기하는 월
+    var currentDate = thisMonth.getDate(); // 달력에서 표기하는 일
+
+    // kst 기준 현재시간
+    // console.log(thisMonth);
+
+    // 캘린더 렌더링
+    renderCalender(thisMonth);
+
+    function renderCalender(thisMonth) {
+
+        // 렌더링을 위한 데이터 정리
+        currentYear = thisMonth.getFullYear();
+        currentMonth = thisMonth.getMonth();
+        currentDate = thisMonth.getDate();
+
+        // 이전 달의 마지막 날 날짜와 요일 구하기
+        var startDay = new Date(currentYear, currentMonth, 0);
+        var prevDate = startDay.getDate();
+        var prevDay = startDay.getDay();
+
+        // 이번 달의 마지막날 날짜와 요일 구하기
+        var endDay = new Date(currentYear, currentMonth + 1, 0);
+        var nextDate = endDay.getDate();
+        var nextDay = endDay.getDay();
+
+        // console.log(prevDate, prevDay, nextDate, nextDay);
+
+        // 현재 월 표기
+        $('.year-month').text((currentMonth + 1) + '월' + currentDate + '일');
+
+        // 렌더링 html 요소 생성
+        calendar = document.querySelector('.dates')
+        calendar.innerHTML = '';
+
+        // 지난달
+        for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
+            calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
+        }
+        // 이번달
+        for (var i = 1; i <= nextDate; i++) {
+            calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
+        }
+        // 다음달
+        for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
+            calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
+        }
+
+        // 오늘 날짜 표기
+        if (today.getMonth() == currentMonth) {
+            todayDate = today.getDate();
+            var currentMonthDate = document.querySelectorAll('.dates .current');
+            currentMonthDate[todayDate - 1].classList.add('today');
+        }
+    }
+
+}
+
+// 인풋 캘린더
+
+var dateChange = () => {
+    let date_input = document.getElementById("date");
+    let arr = date_input.value.split('-');
+
+    document.getElementById("DateTitle").innerText = arr[1] + "/" + arr[2];
+    document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
+    document.getElementById("TextDateCalendar").innerText = arr[1] + "월" + arr[2] + "일";
+
+    // 여기에다가 추가
+    let currentMonthDate = document.querySelectorAll('.dates .current');
+    currentMonthDate.forEach(r => {
+        r.classList.remove('today');
+    });
+
+    currentMonthDate[parseInt(date_input.value.split('-')[2]) - 1].classList.add('today');
+    console.log(date_input.value);
+    // 지난달
+    for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
+        calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
+    }
+    // 이번달
+    for (var i = 1; i <= nextDate; i++) {
+        calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
+    }
+    // 다음달
+    for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
+        calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
+    }
+};
+
+    //--> 셀렉트 박스 선택
+    function handleOnChange(e, target) {
+        // 선택된 데이터의 텍스트값 가져오기
+        const text = e.options[e.selectedIndex].text;
+    
+        console.log(e.options);
+    
+        // 선택한 텍스트 출력
+        document.getElementById(target).innerText
+            = text;
+    }
+    
+    // Input 값 타이핑시 출력
+    function printGroom() {
+        let GroomFirstName = document.getElementById('GroomFirstNameInput').value;
+        let GroomLastName = document.getElementById('GroomLastNameInput').value;
+    
+        document.getElementById("GroomFirstName").innerText = GroomFirstName;
+        document.getElementById("GroomLastName").innerText = GroomLastName;
+    };
+    
+    function printBride() {
+        let BrideFirstName = document.getElementById('BrideFirstNameInput').value;
+        let BrideLastName = document.getElementById('BrideLastNameInput').value;
+    
+        document.getElementById("BrideFirstName").innerText = BrideFirstName;
+        document.getElementById("BrideLastName").innerText = BrideLastName;
+    };

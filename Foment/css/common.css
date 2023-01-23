@@ -1,10 +1,12 @@
 :root {
     /* 폰트사이즈 */
-    --Text-Title: 60px;
-    --Text-Subtitle: 15px;
-    --Text-BodyText: 14px;
-    --Text-Supported: 12px;
-    --Text-Button: 15px;
+    --Text-Title: 20px;
+    --Text-Subtitle: 20px;
+    --Text-SectionTitle: 18px;
+    --Text-Button: 14px;
+    --Text-Paragraph: 18px;
+    --Text-SectionSubTitle: 14px;
+    --Text-Supported: 14px;
 
     /* 간격값 */
     --Space-Sm: 8px;
@@ -12,21 +14,22 @@
     --Space-Lg: 32px;
 
     /* 컬러값 */
-    --ColorBrand: #557373;
+    --ColorBrand: rgb(241,239,228,0.6);
     /* --ColorBase:#F1EFE4; */
-    --ColorBase: rgb(245, 245, 247);
+    --ColorBase: #F5F7F7;
     --ColorSurface: #fff;
     --ColorTextPrimary: #333;
     --ColorTextSecondary: #666;
     --ColorTextTertiary: #999;
     --ColorTextOnSurface: #fff;
+    --ColorBorder5: rgb(0, 0, 0, 0.05);
     --ColorBorder10: rgb(0, 0, 0, 0.1);
-    --ColorBorder20: rgb(0, 0, 0, 0.2);
+    --ColorBorderSolid: #EFF0F5;
 
     /* R값 */
     --BorderRadius-Xs: 4px;
     --BorderRadius-Md: 8px;
-    --BorderRadius-Lg: 20px;
+    --BorderRadius-Lg: 12px;
 
     /* Transition */
     --transition: 100ms all;
@@ -84,16 +87,19 @@ body {
     font-size: var(--Text-Button);
     cursor: pointer;
     background: var(--ColorBrand);
-    height: 40px;
-    color: #fff;
+    color: var(--ColorTextPrimary);
     padding: 0px 16px;
-    border-radius: var(--BorderRadius-Xs);
+    border-radius: var(--BorderRadius-Md);
+    border: 1px solid var(--ColorBorder5);
     transition: var(--transition);
+    width: 200px;
 }
 
 .BtnBasic:hover {
-    opacity: 0.9;
+    opacity: 0.7;
 }
+
+
 
 /* 공통 css */
 .main_contents {
@@ -106,8 +112,8 @@ body {
 
 .section-title {
     color: var(--ColorTextPrimary);
-    font-size: var(T);
-    margin-bottom: var(--Space-Sm);
+    font-weight: 700;
+    font-size: var(--Text-SectionTitle);
 }
 
 .section-subtitle {
@@ -118,31 +124,86 @@ body {
 #date,
 .base {
     width: 100%;
-    height: 100%;
+    height: 48px;
     background: var(--ColorBase);
-    border: 1px solid var(--ColorBorder10);
+    border: 1px solid var(--ColorBorderSolid);
     padding: 16px;
     appearance: none;
     cursor: pointer;
     transition: var(--transition);
-    border-radius: var(--BorderRadius-Xs)
+    border-radius: var(--BorderRadius-Md);
+}
+.innerselectbox{
+    width: 100%;
+    height: 100%;
+    padding: 0px 12px;
+    background: var(--ColorSurface);
+    border: 1px solid var(--ColorBorderSolid);
+    appearance: none;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: var(--BorderRadius-Md);
+}
+
+.checkboxsel{
+    width: 20px;
+    height: 20px;
+    margin-left: 24px;
+}
+
+.checkselection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px 8px 8px;
+    background: var(--ColorBase);
+    border: 1px solid var(--ColorBorderSolid);
+    border-radius: var(--BorderRadius-Md);
+}
+
+.base:hover{
+    border: 1px solid var(--ColorTextPrimary);
 }
 
 .selectbox_detail {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
+    flex-direction: row;
+    margin-top: 12px;
+    /* margin-bottom: 16px; */
+}
+.section{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 28px;
+}
+
+.section-mark{
+    color: var(--ColorTextPrimary);
+    font-size: var(--Text-SectionTitle);
+    font-weight: 500;
+    margin-right: 4px;
+    color: #5CB7AD;
+}
+
+.borderline{
+    height: 1px;
+    background: var(--ColorBorder5);
+    margin-bottom: 20px;
 }
 
 .selectbox_label {
     color: var(--ColorTextPrimary);
-    font-size: var(--Text-Subtitle);
-    font-weight: 400;
-    margin: 16px 0px 8px 0px;
+    font-size: var(--Text-SectionSubTitle);
+    font-weight: 500;
+    line-height: 28px;
+    min-width: 120px;
+    margin-right: 48px;
 }
 
 .selectgroup {
     height: 48px;
+    width: 100%;
     display: flex;
     gap: 24px;
     align-items: center;
