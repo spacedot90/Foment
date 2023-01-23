@@ -57,8 +57,8 @@
             <!-- 지도 API 연동 -->
             <div class="AudioPlayPause">
                 <div class="AudioControl">
-                        <img src="../Resource/assets/BtnPlay.svg" alt="" class="button" id="button">
-                        <img src="../Resource/assets/BtnPause.svg" alt="" class="button" id="buttonpause">
+                    <img src="../Resource/assets/BtnPlay.svg" alt="" class="button" id="button">
+                    <img src="../Resource/assets/BtnPause.svg" alt="" class="button" id="buttonpause">
                 </div>
             </div>
             <!-- 타이틀 -->
@@ -208,9 +208,9 @@
             <div class="WeddingBodyText">
                 Wedding Location
             </div>
-            <div class="map_area">
+            <!-- <div class="map_area">
                 <div id="map" style="width:100%; height:400px;"></div>
-            </div>
+            </div> -->
 
             <!-- 캘린더 Input 데이터 -->
             <div class="changeMe" id="TextDate">ㅇㅇㅇㅇㅇ</div>
@@ -294,7 +294,8 @@
                                     <li class="TabItemBGM" id="BaseAudio_1">기본 배경음1</li>
                                     <label class="BgmUpload_Btn" for="BGMBtn">
                                         <input type="file" id="BgmBtn" name="upload" multiple="multiple"
-                                            class="form-control user_picked_files" accept="image/jpeg, image/png, image/jpg" />
+                                            class="form-control user_picked_files"
+                                            accept="image/jpeg, image/png, image/jpg" />
                                         <label class="attatch" for="BGMBtn">직접 업로드</label>
                                     </label>
                                 </ul>
@@ -404,37 +405,39 @@
                                                 <div class="edit">
                                                     <label class="AttatchTitleImg" for="photoBtn">편집하기</label>
                                                 </div>
-                                                <img class="uploadsrc" src="../Resource/mainasset/WeddingTitleImg.jpg" alt="">
+                                                <img class="uploadsrc" src="../Resource/mainasset/WeddingTitleImg.jpg"
+                                                    alt="">
                                             </div>
                                             <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
                                                 capture="camera" id="photoBtn">
                                         </div>
                                     </label>
                                 </div>
-                                
+
                             </div>
                             <div class="TitleImgSection">
-                            <div class="sectiondes">
-                                <label class="selectbox_label" for="file">청첩장 URL(필수)</label>
-                                <div class="info">
-                                    98x98픽셀 이상, 4MB 이하의 사진이 권장됩니다.<br>PNG 또는 JPG 파일을 사용하세요.
-                                </div>
-                            </div>
-                            <!-- 메인 사진업로드 -->
-                            <div class="photo_box">
-                                <label class="upload_btn" for="photoBtn">
-                                    <div class="upload">
-                                        <div class="uploadarea">
-                                            <div class="edit">
-                                                <label class="AttatchTitleImg" for="photoBtn">편집하기</label>
-                                            </div>
-                                            <img class="uploadsrc" src="../Resource/mainasset/WeddingTitleImg.jpg" alt="">
-                                        </div>
-                                        <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
-                                            capture="camera" id="photoBtn">
+                                <div class="sectiondes">
+                                    <label class="selectbox_label" for="file">청첩장 URL(필수)</label>
+                                    <div class="info">
+                                        98x98픽셀 이상, 4MB 이하의 사진이 권장됩니다.<br>PNG 또는 JPG 파일을 사용하세요.
                                     </div>
-                                </label>
-                            </div>
+                                </div>
+                                <!-- 메인 사진업로드 -->
+                                <div class="photo_box">
+                                    <label class="upload_btn" for="photoBtn">
+                                        <div class="upload">
+                                            <div class="uploadarea">
+                                                <div class="edit">
+                                                    <label class="AttatchTitleImg" for="photoBtn">편집하기</label>
+                                                </div>
+                                                <img class="uploadsrc" src="../Resource/mainasset/WeddingTitleImg.jpg"
+                                                    alt="">
+                                            </div>
+                                            <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
+                                                capture="camera" id="photoBtn">
+                                        </div>
+                                    </label>
+                                </div>
 
                             </div>
                         </div>
@@ -475,16 +478,16 @@
                                         <input class="base" id="GroomLastNameInput" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="이름">
                                     </div>
-                                        <select class="selectboxname" name="pets" id="select"
-                                            onchange="handleOnChange(this,'select-result2')">
-                                            <option value="base">옵션을 선택하세요</option>
-                                            <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="hamster">Hamster</option>
-                                            <option value="parrot">Parrot</option>
-                                            <option value="spider">Spider</option>
-                                            <option value="goldfish">Goldfish</option>
-                                        </select>
+                                    <select class="selectboxname" name="pets" id="select"
+                                        onchange="handleOnChange(this,'select-result2')">
+                                        <option value="base">옵션을 선택하세요</option>
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                        <option value="hamster">Hamster</option>
+                                        <option value="parrot">Parrot</option>
+                                        <option value="spider">Spider</option>
+                                        <option value="goldfish">Goldfish</option>
+                                    </select>
                                 </div>
                             </div>
                             <!-- 아버님 -->
@@ -497,19 +500,19 @@
                                         <input class="base" id="GroomLastNameInput" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="이름">
                                     </div>
-                                        <div class="checkselection">
-                                            <select class="innerselectbox" name="pets" id="select"
-                                                onchange="handleOnChange(this,'select-result2')">
-                                                <option value="base">故</option>
-                                                <option value="dog">Dog</option>
-                                                <option value="cat">Cat</option>
-                                                <option value="hamster">Hamster</option>
-                                                <option value="parrot">Parrot</option>
-                                                <option value="spider">Spider</option>
-                                                <option value="goldfish">Goldfish</option>
-                                            </select>
-                                            <img class="checkboxsel" src="../Resource/assets/Checkbox.svg" alt="">
-                                        </div>
+                                    <div class="checkselection">
+                                        <select class="innerselectbox" name="pets" id="select"
+                                            onchange="handleOnChange(this,'select-result2')">
+                                            <option value="base">故</option>
+                                            <option value="dog">Dog</option>
+                                            <option value="cat">Cat</option>
+                                            <option value="hamster">Hamster</option>
+                                            <option value="parrot">Parrot</option>
+                                            <option value="spider">Spider</option>
+                                            <option value="goldfish">Goldfish</option>
+                                        </select>
+                                        <img class="checkboxsel" src="../Resource/assets/Checkbox.svg" alt="">
+                                    </div>
                                 </div>
                             </div>
                             <!-- 어머님 -->
@@ -575,16 +578,16 @@
                                         <input class="base" id="GroomLastNameInput" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="이름">
                                     </div>
-                                        <select class="selectboxname" name="pets" id="select"
-                                            onchange="handleOnChange(this,'select-result2')">
-                                            <option value="base">옵션을 선택하세요</option>
-                                            <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="hamster">Hamster</option>
-                                            <option value="parrot">Parrot</option>
-                                            <option value="spider">Spider</option>
-                                            <option value="goldfish">Goldfish</option>
-                                        </select>
+                                    <select class="selectboxname" name="pets" id="select"
+                                        onchange="handleOnChange(this,'select-result2')">
+                                        <option value="base">옵션을 선택하세요</option>
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                        <option value="hamster">Hamster</option>
+                                        <option value="parrot">Parrot</option>
+                                        <option value="spider">Spider</option>
+                                        <option value="goldfish">Goldfish</option>
+                                    </select>
                                 </div>
                             </div>
                             <!-- 아버님 -->
@@ -597,19 +600,19 @@
                                         <input class="base" id="GroomLastNameInput" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="이름">
                                     </div>
-                                        <div class="checkselection">
-                                            <select class="innerselectbox" name="pets" id="select"
-                                                onchange="handleOnChange(this,'select-result2')">
-                                                <option value="base">故</option>
-                                                <option value="dog">Dog</option>
-                                                <option value="cat">Cat</option>
-                                                <option value="hamster">Hamster</option>
-                                                <option value="parrot">Parrot</option>
-                                                <option value="spider">Spider</option>
-                                                <option value="goldfish">Goldfish</option>
-                                            </select>
-                                            <img class="checkboxsel" src="../Resource/assets/Checkbox.svg" alt="">
-                                        </div>
+                                    <div class="checkselection">
+                                        <select class="innerselectbox" name="pets" id="select"
+                                            onchange="handleOnChange(this,'select-result2')">
+                                            <option value="base">故</option>
+                                            <option value="dog">Dog</option>
+                                            <option value="cat">Cat</option>
+                                            <option value="hamster">Hamster</option>
+                                            <option value="parrot">Parrot</option>
+                                            <option value="spider">Spider</option>
+                                            <option value="goldfish">Goldfish</option>
+                                        </select>
+                                        <img class="checkboxsel" src="../Resource/assets/Checkbox.svg" alt="">
+                                    </div>
                                 </div>
                             </div>
                             <!-- 어머님 -->
@@ -640,7 +643,7 @@
                         </div>
                     </div>
                 </div>
-                 
+
 
                 <!-- Section 예식 정보 -->
                 <div class="DesignSection">
@@ -666,14 +669,77 @@
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">Calendar</label>
                             <input type="date" id="date" onchange="dateChange()" />
+                            <div class="InputArea">
+                                <div class="ToggleUI">
+                                    <div class="ToggleTitle">
+                                        D-Day 표시
+                                    </div>
+                                    <label for="toggle" class="toggleSwitch">
+                                        <span class="toggleButton" id="DDay"></span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="TabUI">
-                            <ul class="TabList">
-                                <li class="TabItem Active" id="fontsize" value="16" data-tab="Tab-1">초대문구1</li>
-                                <li class="TabItem" id="fontsize" value="20" data-tab="Tab-2">초대문구2</li>
-                                <li class="TabItem" id="fontsize" value="24" data-tab="Tab-3">초대문구3</li>
-                            </ul>
+                        <!-- 예식 시간 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">예식 시간</label>
+                            <div class="NameBox">
+                                <select class="selectboxname" name="pets" id="select"
+                                    onchange="handleOnChange(this,'select-result2')">
+                                    <option value="base">오후</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="hamster">Hamster</option>
+                                    <option value="parrot">Parrot</option>
+                                    <option value="spider">Spider</option>
+                                    <option value="goldfish">Goldfish</option>
+                                </select>
+                                <select class="selectboxname" name="pets" id="select"
+                                    onchange="handleOnChange(this,'select-result2')">
+                                    <option value="base">1시</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="hamster">Hamster</option>
+                                    <option value="parrot">Parrot</option>
+                                    <option value="spider">Spider</option>
+                                    <option value="goldfish">Goldfish</option>
+                                </select>
+                                <select class="selectboxname" name="pets" id="select"
+                                    onchange="handleOnChange(this,'select-result2')">
+                                    <option value="base">30분</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="hamster">Hamster</option>
+                                    <option value="parrot">Parrot</option>
+                                    <option value="spider">Spider</option>
+                                    <option value="goldfish">Goldfish</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 예식장 이름 입력 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">예식장 명</label>
+                            <div class="NameBox">
+                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    onkeyup="printGroom()" placeholder="예식장 이름 입력">
+                            </div>
+                        </div>
+                        <!-- 예식장 주소 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">예식장 주소</label>
+                            <div class="InputArea">
+                                <div class="NameBox">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="주소 검색을 먼저 해주세요">
+                                    <button class="BtnBasic">
+                                        주소 검색
+                                    </button>
+                                </div>
+                                <!-- 네이버 지도 API -->
+                                <div class="map_area">
+                                    <div id="map"></div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -699,15 +765,196 @@
                         </div>
                     </div>
                     <div class="contents_detail">
-
-                        <div class="TabUI">
-                            <ul class="TabList">
-                                <li class="TabItem Active" id="fontsize" value="16" data-tab="Tab-1">초대문구1</li>
-                                <li class="TabItem" id="fontsize" value="20" data-tab="Tab-2">초대문구2</li>
-                                <li class="TabItem" id="fontsize" value="24" data-tab="Tab-3">초대문구3</li>
-                            </ul>
+                        <!-- 초대 글 제목 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">초대 글 제목</label>
+                            <div class="NameBox">
+                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    onkeyup="printGroom()" placeholder="초대합니다">
+                            </div>
                         </div>
 
+                        <!-- 초대 글 내용 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">샘플 텍스트 보기</label>
+                            <div class="InputArea">
+                                <div class="NameBox">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="초대 글 내용 입력">
+                                </div>
+                                <div class="NameBox">
+                                    <select class="selectboxname" name="pets" id="select"
+                                        onchange="handleOnChange(this,'select-result2')">
+                                        <option value="base">샘플 텍스트 보기</option>
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                        <option value="hamster">Hamster</option>
+                                        <option value="parrot">Parrot</option>
+                                        <option value="spider">Spider</option>
+                                        <option value="goldfish">Goldfish</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 계좌 정보 -->
+                <div class="DesignSection">
+                    <div class="section">
+                        <div class="section-mark">
+                            #1
+                        </div>
+                        <div class="section-title">
+                            초대 글
+                        </div>
+                    </div>
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
+                    </div>
+                    <div class="contents_detail">
+                        <!-- 계좌 제목 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">제목</label>
+                            <div class="InputArea">
+                                <div class="NameBox">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="마음 전하실 곳">
+                                </div>
+                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    onkeyup="printGroom()" placeholder="상세 내용 입력">
+                                <div class="NameBox">
+                                    <select class="selectboxname" name="pets" id="select"
+                                        onchange="handleOnChange(this,'select-result2')">
+                                        <option value="base">샘플 텍스트 보기</option>
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                        <option value="hamster">Hamster</option>
+                                        <option value="parrot">Parrot</option>
+                                        <option value="spider">Spider</option>
+                                        <option value="goldfish">Goldfish</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 구분선 -->
+                        <div class="bordercontentsline"></div>
+                        <!-- 그룹 명 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">그룹 명</label>
+                            <div class="InputArea">
+                                <div class="NameBox">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="신랑측 계좌번호">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 계좌 번호 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">계좌번호</label>
+                            <div class="InputArea">
+                                <div class="NameBox">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="은행">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="예금주">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 간편 송금 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">간편 송금</label>
+                            <div class="InputArea">
+                                <div class="ToggleUI">
+                                    <div class="ToggleTitle">
+                                        카카오 페이 송금 QA코드
+                                    </div>
+                                    <label for="toggle" class="toggleSwitch">
+                                        <span class="toggleButton" id=""></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 펼쳐두기 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">펼쳐두기</label>
+                            <div class="InputArea">
+                                <div class="ToggleUI">
+                                    <div class="ToggleTitle">
+                                        계좌 정보 펼쳐두기
+                                    </div>
+                                    <label for="toggle" class="toggleSwitch">
+                                        <span class="toggleButton" id=""></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 구분선 -->
+                        <div class="bordercontentsline"></div>
+                        <!-- 그룹 명 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">그룹 명</label>
+                            <div class="InputArea">
+                                <div class="NameBox">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="신부측 계좌번호">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 계좌 번호 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">계좌번호</label>
+                            <div class="InputArea">
+                                <div class="NameBox">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="은행">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="예금주">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 간편 송금 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">간편 송금</label>
+                            <div class="InputArea">
+                                <div class="ToggleUI">
+                                    <div class="ToggleTitle">
+                                        카카오 페이 송금 QA코드
+                                    </div>
+                                    <label for="toggle" class="toggleSwitch">
+                                        <span class="toggleButton" id=""></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 펼쳐두기 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">펼쳐두기</label>
+                            <div class="InputArea">
+                                <div class="ToggleUI">
+                                    <div class="ToggleTitle">
+                                        계좌 정보 펼쳐두기
+                                    </div>
+                                    <label for="toggle" class="toggleSwitch">
+                                        <span class="toggleButton" id=""></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="addcount">
+                            <button class="BtnBasic">계좌그룹 추가하기</button>
+                        </div>
                     </div>
                 </div>
 
@@ -730,22 +977,171 @@
                             모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
                         </div>
                     </div>
-                <div class="contents_detail">
-                    <!-- 사진 다중업로드 -->
-                    <div class="selectbox_detail">
-                        <label class="selectbox_label">
-                            Select Imgs (최대 20개까지 가능)
-                        </label>
-                        <label class="ImgGroupUpload_Btn" for="ImgBtn">
-                            <input type="file" id="ImgBtn" name="upload" multiple="multiple"
-                                class="form-control user_picked_files" accept="image/jpeg, image/png, image/jpg" />
-                            <label class="attatch" for="ImgBtn">편집하기</label>
-                        </label>
-                        <!-- <input type = "submit" class = "cvf_upload_btn btn btn-primary" value = "Upload" /> -->
-                        <ul class="cvf_uploaded_files"></ul>
+                    <div class="contents_detail">
+                        <!-- 갤러리 타입 선택 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="pet-select">갤러리 타입</label>
+                            <div class="TabUI">
+                                <ul class="TabListEffect">
+                                    <li class="TabItemEffect Active" id="NoneEffect">아치</li>
+                                    <li class="TabItemEffect" id="CherryblossomEffect">여정</li>
+                                    <li class="TabItemEffect" id="SnowEffect">투게더</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 사진 다중업로드 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label">
+                                사진
+                            </label>
+                            <div class="gallerypreview">
+                                <label class="ImgGroupUpload_Btn" for="ImgBtn">
+                                    <input type="file" id="ImgBtn" name="upload" multiple="multiple"
+                                        class="form-control user_picked_files" accept="image/jpeg, image/png, image/jpg" />
+                                    <div class="galleryupload">
+                                        <label class="attatch" for="ImgBtn">첨부할 파일을 여기에 끌어서 추가할 수 있어요</label>
+                                        <div class="info">(30장까지 추가 하실 수 있어요)</div>
+                                    </div>
+                                </label>
+                                <ul class="cvf_uploaded_files"></ul>
+                            </div>
+                            <!-- <input type = "submit" class = "cvf_upload_btn btn btn-primary" value = "Upload" /> -->
+                        </div>
+                        <!-- 확대방지 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">확대방지</label>
+                            <div class="InputArea">
+                                <div class="ToggleUI">
+                                    <div class="ToggleTitle">
+                                        이미지 확대 및 다운로드를 방지합니다
+                                    </div>
+                                    <label for="toggle" class="toggleSwitch">
+                                        <span class="toggleButton" id=""></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- Section 방명록 -->
+                <div class="DesignSection">
+                    <div class="section">
+                        <div class="section-mark">
+                            #8
+                        </div>
+                        <div class="section-title">
+                            방명록
+                        </div>
+                    </div>
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
+                    </div>
+                    <div class="contents_detail">
+
+                        <!-- 청첩장 URL 입력란 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">비밀번호</label>
+                            <div class="InputArea">
+                                <div class="NameBox">
+                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        onkeyup="printGroom()" placeholder="삭제 비밀번호">
+                                </div>
+                                <div class="info">※ 방명록을 삭제할 때 필요한 비밀번호에요</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Section 순서 변경 -->
+                <div class="DesignSection">
+                    <div class="section">
+                        <div class="section-mark">
+                            #8
+                        </div>
+                        <div class="section-title">
+                            순서 변경
+                        </div>
+                    </div>
+                    <div class="borderline"></div>
+                    <div class="coachmark">
+                        <div class="MarkIcon">
+                            💡
+                        </div>
+                        <div class="MarkText">
+                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                        </div>
+                    </div>
+                    <div class="contents_detail">
+
+                        <!-- 청첩장 URL 입력란 -->
+                        <div class="selectbox_detail">
+                            <div class="InputArea">
+                                <!-- 확대방지 -->
+                                <div class="selectbox_detail">
+                                    <div class="InputArea">
+                                        <div class="ToggleUI">
+                                            <div class="ToggleTitle">
+                                                방명록
+                                            </div>
+                                            <div class="orderlist">
+                                                <label for="toggle" class="toggleSwitch">
+                                                    <span class="toggleButton" id=""></span>
+                                                </label>
+                                                <img class="MenuIcon" src="../Resource/assets/menu.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                        <div class="ToggleUI">
+                                            <div class="ToggleTitle">
+                                                방명록
+                                            </div>
+                                            <div class="orderlist">
+                                                <label for="toggle" class="toggleSwitch">
+                                                    <span class="toggleButton" id=""></span>
+                                                </label>
+                                                <img class="MenuIcon" src="../Resource/assets/menu.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                        <div class="ToggleUI">
+                                            <div class="ToggleTitle">
+                                                방명록
+                                            </div>
+                                            <div class="orderlist">
+                                                <label for="toggle" class="toggleSwitch">
+                                                    <span class="toggleButton" id=""></span>
+                                                </label>
+                                                <img class="MenuIcon" src="../Resource/assets/menu.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                        <div class="ToggleUI">
+                                            <div class="ToggleTitle">
+                                                방명록
+                                            </div>
+                                            <div class="orderlist">
+                                                <label for="toggle" class="toggleSwitch">
+                                                    <span class="toggleButton" id=""></span>
+                                                </label>
+                                                <img class="MenuIcon" src="../Resource/assets/menu.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
         </div>

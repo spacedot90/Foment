@@ -21,98 +21,103 @@
   position: fixed;
   -ms-overflow-style: none;
 }
-.side_contents::-webkit-scrollbar{
-  display:none;
+
+.side_contents::-webkit-scrollbar {
+  display: none;
 }
 
-.TitleSection{
+.TitleSection {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 24px;
 }
-.DateTitle{
+
+.DateTitle {
   font-size: var(--Text-Title);
-  font-family:'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', serif;
   margin-bottom: 24px;
   color: var(--ColorBrand);
 }
 
-.changeMe, .WeddingBodyText{
+.changeMe,
+.WeddingBodyText {
   font-family: 'MapoFlowerIsland', serif;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: -0.025em;
 }
-.DateLocation{
+
+.DateLocation {
   display: flex;
   flex-direction: column;
   padding: 24px 48px;
   text-align: center;
 }
 
-.WeddingBodyText{
+.WeddingBodyText {
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.WeddingBodyTitle{
+.WeddingBodyTitle {
   font-family: 'MapoFlowerIsland', serif;
   font-size: 24px;
   padding: 12px;
   text-align: center;
 }
 
-.NameBox{
+.NameBox {
   width: 100%;
   display: flex;
   flex-direction: row;
   gap: 8px;
 }
-.InputArea{
+
+.InputArea {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.inputdescription{
+.inputdescription {
   font-size: var(--Text-SectionSubTitle);
   font-weight: 500;
   line-height: 20px;
 }
 
-.info{
+.info {
   font-size: var(--Text-Supported);
   font-weight: 400;
   line-height: 1.8;
   color: var(--ColorTextTertiary);
 }
 
-.sectiondes{
+.sectiondes {
   margin: 24px 0px 12px 0px;
 }
 
-.Divider{
+.Divider {
   width: 100%;
   height: 1px;
   background-color: var(--ColorBorder10);
   margin: 48px 0px;
 }
 
-.InvitationTextArea{
+.InvitationTextArea {
   text-align: center;
 }
 
-.FamilyInfo{
+.FamilyInfo {
   padding-bottom: 72px;
 }
 
 
 /* 갤러리 뷰 */
 
-.GalleryTitleArea{
+.GalleryTitleArea {
   display: none;
 }
 
@@ -125,30 +130,31 @@
   margin: 16px 0px 64px 0px;
 }
 
-.grid-item{
+.grid-item {
   background: var(--ColorBase);
   width: 100%;
   height: 132px;
 }
 
-.grid-thumb{
+.grid-thumb {
   width: 100%;
   height: 132px;
   object-fit: cover;
 }
 
-.contents2{
+.contents2 {
   display: flex;
   flex-direction: row;
   gap: 16px;
   align-items: center;
 }
 
-.inputtype1{
+.inputtype1 {
   gap: 8px;
   display: flex;
   flex-direction: row;
 }
+
 /* 캘린더 */
 
 .sec_cal {
@@ -242,7 +248,7 @@
 }
 
 .current.today {
-  background:var(--ColorBrand);
+  background: var(--ColorBrand);
   color: #fff !important;
 }
 
@@ -264,17 +270,11 @@
   color: #eee;
 }
 
-/* 지도 API */
-
-.map_area{
-  padding: 24px 0px;
+#map {
   width: 100%;
-  height: 400px;
+  height: 294px;
+  border-radius: var(--BorderRadius-Md);
 }
-.map{
-  height: 400px;
-}
-
 
 /* 아코디언 메뉴 */
 
@@ -310,28 +310,28 @@
 }
 
 /* 우측 콘텐츠 css */
-.RightContentsArea{
+.RightContentsArea {
   width: calc(100% - 448px);
   float: right;
 }
 
-#button{
+#button {
   display: block;
   cursor: pointer;
   transition: var(--transition);
 }
 
-#button:hover{
+#button:hover {
   opacity: 0.8;
 }
 
-#buttonpause{
+#buttonpause {
   display: none;
   cursor: pointer;
   transition: var(--transition);
 }
 
-#buttonpause:hover{
+#buttonpause:hover {
   opacity: 0.8;
 }
 
@@ -344,7 +344,7 @@
   box-shadow: 0px 1px 1px 0px #9fa6ab59;
 }
 
-.coachmark{
+.coachmark {
   display: flex;
   align-items: center;
   padding: 0px 16px;
@@ -357,7 +357,7 @@
   margin-bottom: 20px;
 }
 
-.MarkIcon{
+.MarkIcon {
   margin-right: 10px;
 }
 
@@ -386,16 +386,19 @@
   cursor: pointer;
 }
 
-.TabUI{
+.TabUI {
   width: 100%;
   background: var(--ColorBase);
   padding: 4px;
   border-radius: 8px;
   font-size: var(--Text-Button);
-  box-shadow: 0 0 0 1px var(--ColorBorderSolid) inset; 
+  box-shadow: 0 0 0 1px var(--ColorBorderSolid) inset;
 }
 
-ul.Tablist , ul.TabListFont , ul.TabListEffect , ul.TabListBGM{
+ul.Tablist,
+ul.TabListFont,
+ul.TabListEffect,
+ul.TabListBGM {
   gap: 8px;
   list-style-type: none;
   display: flex;
@@ -403,7 +406,10 @@ ul.Tablist , ul.TabListFont , ul.TabListEffect , ul.TabListBGM{
   margin: 0;
 }
 
-li.TabItem.Active , li.TabItemFont.Active , li.TabItemEffect.Active, li.TabItemBGM.Active{
+li.TabItem.Active,
+li.TabItemFont.Active,
+li.TabItemEffect.Active,
+li.TabItemBGM.Active {
   transition: var(--transition);
   width: 100%;
   cursor: pointer;
@@ -413,7 +419,10 @@ li.TabItem.Active , li.TabItemFont.Active , li.TabItemEffect.Active, li.TabItemB
   color: var(--ColorTextPrimary);
 }
 
-li.TabItem , li.TabItemFont , li.TabItemEffect, li.TabItemBGM{
+li.TabItem,
+li.TabItemFont,
+li.TabItemEffect,
+li.TabItemBGM {
   height: 40px;
   line-height: 40px;
   transition: var(--transition);
@@ -424,15 +433,20 @@ li.TabItem , li.TabItemFont , li.TabItemEffect, li.TabItemBGM{
   background-color: var(--ColorBase);
 }
 
-li.TabItem:hover , li.TabItemFont:hover , li.TabItemEffect:hover, li.TabItemBGM:hover{
+li.TabItem:hover,
+li.TabItemFont:hover,
+li.TabItemEffect:hover,
+li.TabItemBGM:hover {
   background-color: var(--ColorSurface);
 }
-.ImgSection{
+
+.ImgSection {
   display: flex;
   flex-direction: row;
   gap: 24px;
 }
-.TitleImgSection{
+
+.TitleImgSection {
   width: 100%;
 }
 
@@ -464,7 +478,7 @@ li.TabItem:hover , li.TabItemFont:hover , li.TabItemEffect:hover, li.TabItemBGM:
   color: #fff;
 }
 
-.uploadsrc{
+.uploadsrc {
   border-radius: var(--BorderRadius-Md);
   width: 196px;
 }
@@ -484,27 +498,35 @@ li.TabItem:hover , li.TabItemFont:hover , li.TabItemEffect:hover, li.TabItemBGM:
   margin-left: 20px;
 }
 
-#ImgBtn, #BgmBtn {
+#ImgBtn,
+#BgmBtn {
   display: none;
 }
-.edit{
+
+.edit {
   position: absolute;
   width: 196px;
 }
+
 .attatch {
   font-size: var(--Text-Button);
-  width: 196px;
-  height: 40px;
-  line-height: 40px;
+  height: 32px;
+  line-height: 32px;
   color: var(--ColorTextPrimary);
   cursor: pointer;
   text-align: center;
   border-radius: 0px 0px 8px 8px;
 }
-.photo_box{
+
+.photo_box {
   width: 196px;
 }
-.AttatchTitleImg{
+.addcount{
+  margin-top: 24px;
+  height: 48px;
+}
+
+.AttatchTitleImg {
   width: 196px;
   text-align: center;
   position: absolute;
@@ -516,7 +538,7 @@ li.TabItem:hover , li.TabItemFont:hover , li.TabItemEffect:hover, li.TabItemBGM:
   border-radius: 0px 0px 8px 8px;
 }
 
-.ImgGroupUpload_Btn, .BgmUpload_Btn {
+.BgmUpload_Btn {
   cursor: pointer;
   color: var(--ColorTextPrimary);
   text-align: center;
@@ -525,6 +547,32 @@ li.TabItem:hover , li.TabItemFont:hover , li.TabItemEffect:hover, li.TabItemBGM:
   border-radius: var(--BorderRadius-Xs);
   line-height: 40px;
   transition: var(--transition);
+}
+
+.ImgGroupUpload_Btn{
+  cursor: pointer;
+  color: var(--ColorTextPrimary);
+  text-align: center;
+  padding: 28px;
+  border: 3px solid var(--ColorBorderSolid);
+  border-style: dashed;
+  border-radius: var(--BorderRadius-Xs);
+  transition: var(--transition);
+}
+.ImgGroupUpload_Btn:hover{
+  background-color: var(--ColorBorderSolid);
+}
+
+.galleryupload{
+  display: flex;
+  flex-direction: column;
+}
+
+.gallerypreview{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
 
 .ImgGroupUpload_Btn:hover {
@@ -586,22 +634,25 @@ li.TabItem:hover , li.TabItemFont:hover , li.TabItemEffect:hover, li.TabItemBGM:
   width: auto;
 }
 
-.VideoEffect{
+.VideoEffect {
   position: absolute;
   min-width: 400px;
 }
-.AudioPlayPause{
+
+.AudioPlayPause {
   display: flex;
 }
-.AudioBGM{
+
+.AudioBGM {
   display: none;
 }
 
-.effects{
+.effects {
   mix-blend-mode: screen;
   min-width: 400px;
 }
-.AudioControl{
+
+.AudioControl {
   display: flex;
   justify-content: center;
   width: 32px;
@@ -613,6 +664,18 @@ li.TabItem:hover , li.TabItemFont:hover , li.TabItemEffect:hover, li.TabItemBGM:
 
 .image-container img {
   width: 100%
+}
+
+.orderlist{
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+}
+
+.MenuIcon{
+  width: 16px;
+  height: 16px;
 }
 
 

@@ -1,74 +1,82 @@
 window.onload = function () {
-        // 대표 이미지 업로드 크롭
-        $(function () {
-            var cropper;
-            // 사진 업로드 버튼
-            $('#photoBtn').on('change', function () {
-                $('.photo_them').css("display", "block");
-                $('#complete').css("display", "block");
-                $('.them_img').empty().append('<img id="image" src="">');
-                var image = $('#image');
-                var imgFile = $('#photoBtn').val();
-                var fileForm = /(.*?)\.(jpg|jpeg|png)$/;
-    
-                let BG = document.querySelector('.BgDimmed');
-    
-                // 이미지가 확장자 확인 후 노출
-                if (imgFile.match(fileForm)) {
-                    var reader = new FileReader();
-                    reader.onload = function (event) {
-                        image.attr("src", event.target.result);
-                        cropper = image.cropper({
-                            dragMode: 'move',
-                            viewMode: 1,
-                            aspectRatio: 200 / 300,
-                            autoCropArea: 0.9,
-                            minContainerWidth: 600,
-                            minContainerHeight: 600,
-                            restore: false,
-                            guides: true,
-                            center: true,
-                            highlight: true,
-                            cropBoxMovable: false,
-                            cropBoxResizable: false,
-                            toggleDragModeOnDblclick: false,
-                        });
-                    };
-                    BG.classList.toggle('is-active');
-                    reader.readAsDataURL(event.target.files[0]);
-                } else {
-                    alert("이미지 파일(jpg, png형식의 파일)만 올려주세요");
-                    $('#photoBtn').focus();
-                    $('.photo_them').css("display", "none");
-                    $('#complete').css("display", "none");
-                    return;
-                }
-            });
-    
-            // 대표이미지 업로드 버튼
-    
-            $('#complete').on('click', function () {
-                alert('선택하신 이미지로 대표이미지가 변경되었습니다.');
+
+    // 토글 스위치
+    let $toggle = document.querySelector(".toggleSwitch");
+
+    $toggle.onclick = () => {
+    $toggle.classList.toggle('active');
+    }
+
+    // 대표 이미지 업로드 크롭
+    $(function () {
+        var cropper;
+        // 사진 업로드 버튼
+        $('#photoBtn').on('change', function () {
+            $('.photo_them').css("display", "block");
+            $('#complete').css("display", "block");
+            $('.them_img').empty().append('<img id="image" src="">');
+            var image = $('#image');
+            var imgFile = $('#photoBtn').val();
+            var fileForm = /(.*?)\.(jpg|jpeg|png)$/;
+
+            let BG = document.querySelector('.BgDimmed');
+
+            // 이미지가 확장자 확인 후 노출
+            if (imgFile.match(fileForm)) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    image.attr("src", event.target.result);
+                    cropper = image.cropper({
+                        dragMode: 'move',
+                        viewMode: 1,
+                        aspectRatio: 200 / 300,
+                        autoCropArea: 0.9,
+                        minContainerWidth: 600,
+                        minContainerHeight: 600,
+                        restore: false,
+                        guides: true,
+                        center: true,
+                        highlight: true,
+                        cropBoxMovable: false,
+                        cropBoxResizable: false,
+                        toggleDragModeOnDblclick: false,
+                    });
+                };
+                BG.classList.toggle('is-active');
+                reader.readAsDataURL(event.target.files[0]);
+            } else {
+                alert("이미지 파일(jpg, png형식의 파일)만 올려주세요");
+                $('#photoBtn').focus();
                 $('.photo_them').css("display", "none");
                 $('#complete').css("display", "none");
-                var image = $('#image');
-                var result = $('#preview-image');
-                var canvas;
-                var BG = document.querySelector('.BgDimmed');
-    
-                if ($('input[type="file"]').val() != "") {
-                    canvas = image.cropper('getCroppedCanvas', {
-                        width: 1000,
-                        height: 1000,
-                    });
-                    BG.classList.toggle('is-active');
-                    result.attr('src', canvas.toDataURL("image/jpg"));
-                    $("#preview-image").attr('src', canvas.toDataURL("image/jpg"));
-                } else{
-                    console.log('오류가 있군..');
-                }
-            });
+                return;
+            }
         });
+
+        // 대표이미지 업로드 버튼
+
+        $('#complete').on('click', function () {
+            alert('선택하신 이미지로 대표이미지가 변경되었습니다.');
+            $('.photo_them').css("display", "none");
+            $('#complete').css("display", "none");
+            var image = $('#image');
+            var result = $('#preview-image');
+            var canvas;
+            var BG = document.querySelector('.BgDimmed');
+
+            if ($('input[type="file"]').val() != "") {
+                canvas = image.cropper('getCroppedCanvas', {
+                    width: 1000,
+                    height: 1000,
+                });
+                BG.classList.toggle('is-active');
+                result.attr('src', canvas.toDataURL("image/jpg"));
+                $("#preview-image").attr('src', canvas.toDataURL("image/jpg"));
+            } else {
+                console.log('오류가 있군..');
+            }
+        });
+    });
 
     // 지도
 
@@ -222,22 +230,22 @@ window.onload = function () {
         }
     });
 
-        // PlayButton
-        $(document).ready(function() {
-            var btn = $(".button"); 
-            btn.click(function() {               
-                if(this.id == 'button'){
-                    $('#button').hide();
-                    $('#buttonpause').show();
-                    console.log("잘 숨겨짐");
-                } else if(this.id == 'buttonpause'){
-                    $('#button').show();
-                    $('#buttonpause').hide();
-                } else{
-                    console.log("포즈버튼");
-                }
-            });
+    // PlayButton
+    $(document).ready(function () {
+        var btn = $(".button");
+        btn.click(function () {
+            if (this.id == 'button') {
+                $('#button').hide();
+                $('#buttonpause').show();
+                console.log("잘 숨겨짐");
+            } else if (this.id == 'buttonpause') {
+                $('#button').show();
+                $('#buttonpause').hide();
+            } else {
+                console.log("포즈버튼");
+            }
         });
+    });
 
 
     // 배경음악 탭
@@ -255,7 +263,7 @@ window.onload = function () {
         } else if (this.id == 'BaseAudio_2') {  //베이스오디오_2
             console.log('BaseAudio_2');
             $('.effects').attr("src", "../Resource/Audio/wedding_2.mp3");
-        }  else if (this.id == 'BaseAudio_3') {  //베이스오디오_3
+        } else if (this.id == 'BaseAudio_3') {  //베이스오디오_3
             console.log('BaseAudio_3');
             $('.effects').attr("src", "../Resource/Audio/wedding_3.mp3");
         }
@@ -263,7 +271,7 @@ window.onload = function () {
             console.log('null');
         }
     });
-        
+
 
     // 사진 다중업로드 JS
 
@@ -389,11 +397,11 @@ window.onload = function () {
                         // Hover시 삭제버튼
                         var HoverImg = document.getElementById('multiimg');
                         var DeleteImg = document.getElementById('deleteimg');
-                    
-                        HoverImg.onmouseover = function(){
+
+                        HoverImg.onmouseover = function () {
                             DeleteImg.style.opacity = "1";
                         }
-                        HoverImg.onmouseout = function(){
+                        HoverImg.onmouseout = function () {
                             DeleteImg.style.opacity = "0";
                         }
                     };
@@ -566,31 +574,31 @@ var dateChange = () => {
     }
 };
 
-    //--> 셀렉트 박스 선택
-    function handleOnChange(e, target) {
-        // 선택된 데이터의 텍스트값 가져오기
-        const text = e.options[e.selectedIndex].text;
-    
-        console.log(e.options);
-    
-        // 선택한 텍스트 출력
-        document.getElementById(target).innerText
-            = text;
-    }
-    
-    // Input 값 타이핑시 출력
-    function printGroom() {
-        let GroomFirstName = document.getElementById('GroomFirstNameInput').value;
-        let GroomLastName = document.getElementById('GroomLastNameInput').value;
-    
-        document.getElementById("GroomFirstName").innerText = GroomFirstName;
-        document.getElementById("GroomLastName").innerText = GroomLastName;
-    };
-    
-    function printBride() {
-        let BrideFirstName = document.getElementById('BrideFirstNameInput').value;
-        let BrideLastName = document.getElementById('BrideLastNameInput').value;
-    
-        document.getElementById("BrideFirstName").innerText = BrideFirstName;
-        document.getElementById("BrideLastName").innerText = BrideLastName;
-    };
+//--> 셀렉트 박스 선택
+function handleOnChange(e, target) {
+    // 선택된 데이터의 텍스트값 가져오기
+    const text = e.options[e.selectedIndex].text;
+
+    console.log(e.options);
+
+    // 선택한 텍스트 출력
+    document.getElementById(target).innerText
+        = text;
+}
+
+// Input 값 타이핑시 출력
+function printGroom() {
+    let GroomFirstName = document.getElementById('GroomFirstNameInput').value;
+    let GroomLastName = document.getElementById('GroomLastNameInput').value;
+
+    document.getElementById("GroomFirstName").innerText = GroomFirstName;
+    document.getElementById("GroomLastName").innerText = GroomLastName;
+};
+
+function printBride() {
+    let BrideFirstName = document.getElementById('BrideFirstNameInput').value;
+    let BrideLastName = document.getElementById('BrideLastNameInput').value;
+
+    document.getElementById("BrideFirstName").innerText = BrideFirstName;
+    document.getElementById("BrideLastName").innerText = BrideLastName;
+};

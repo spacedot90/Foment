@@ -14,7 +14,7 @@
     --Space-Lg: 32px;
 
     /* 컬러값 */
-    --ColorBrand: rgb(241,239,228,0.6);
+    --ColorBrand: rgb(241, 239, 228, 0.6);
     /* --ColorBase:#F1EFE4; */
     --ColorBase: #F5F7F7;
     --ColorSurface: #fff;
@@ -78,9 +78,9 @@ body {
 }
 
 .HeaderTitle {
-    font-size: var(--Text-Subtitle);
+    font-size: var(--Text-Supported);
     line-height: 56px;
-    color: var(--ColorTextSecondary);
+    color: var(--ColorTextTertiary);
 }
 
 .BtnBasic {
@@ -92,7 +92,8 @@ body {
     border-radius: var(--BorderRadius-Md);
     border: 1px solid var(--ColorBorder5);
     transition: var(--transition);
-    width: 200px;
+    width: 100%;
+    height: 100%;
 }
 
 .BtnBasic:hover {
@@ -133,7 +134,57 @@ body {
     transition: var(--transition);
     border-radius: var(--BorderRadius-Md);
 }
-.innerselectbox{
+.ToggleUI{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    background: var(--ColorBase);
+    border: 1px solid var(--ColorBorderSolid);
+    padding: 0px 16px;
+    height: 46px;
+    line-height: 46px;
+    border-radius: var(--BorderRadius-Md);
+    font-size: var(--Text-Supported);
+    color: var(--ColorTextPrimary);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggleSwitch {
+    width: 52px;
+    height: 32px;
+    display: block;
+    position: relative;
+    border-radius: 30px;
+    background-color: #E9E9EA;
+    cursor: pointer;
+  }
+  
+.toggleSwitch .toggleButton {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: #fff;
+}
+
+.toggleSwitch.active {
+background: #65C466;
+}
+
+.toggleSwitch.active .toggleButton {
+left: calc(100% - 30px);
+background: #fff;
+}
+
+.toggleSwitch, .toggleButton {
+transition: all 0.2s ease;
+}
+
+.innerselectbox {
     width: 100%;
     height: 100%;
     padding: 0px 12px;
@@ -145,13 +196,13 @@ body {
     border-radius: var(--BorderRadius-Md);
 }
 
-.checkboxsel{
+.checkboxsel {
     width: 20px;
     height: 20px;
     margin-left: 24px;
 }
 
-.checkselection{
+.checkselection {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -161,24 +212,26 @@ body {
     border-radius: var(--BorderRadius-Md);
 }
 
-.base:hover{
+.base:hover {
     border: 1px solid var(--ColorTextPrimary);
 }
 
 .selectbox_detail {
     display: flex;
     flex-direction: row;
+    gap: 8px;
     margin-top: 12px;
     /* margin-bottom: 16px; */
 }
-.section{
+
+.section {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     height: 28px;
 }
 
-.section-mark{
+.section-mark {
     color: var(--ColorTextPrimary);
     font-size: var(--Text-SectionTitle);
     font-weight: 500;
@@ -186,10 +239,16 @@ body {
     color: #5CB7AD;
 }
 
-.borderline{
+.borderline {
     height: 1px;
     background: var(--ColorBorder5);
     margin-bottom: 20px;
+}
+
+.bordercontentsline {
+    height: 1px;
+    background: var(--ColorBorder5);
+    margin: 24px 0px 24px 0px;
 }
 
 .selectbox_label {
@@ -198,7 +257,7 @@ body {
     font-weight: 500;
     line-height: 28px;
     min-width: 120px;
-    margin-right: 48px;
+    margin-right: 40px;
 }
 
 .selectgroup {
