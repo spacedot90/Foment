@@ -20,6 +20,7 @@
   overflow: scroll;
   position: fixed;
   -ms-overflow-style: none;
+  box-shadow: 0px 1px 1px 0px #9fa6ab59;
 }
 
 .side_contents::-webkit-scrollbar {
