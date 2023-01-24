@@ -385,10 +385,11 @@ window.onload = function () {
                         $('.cvf_uploaded_files').append(
                             "<li id='multiimg' file = '" + file.name + "'>" +
                             "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
-                            "<a href = '#' class = 'cvf_delete_image' id='deleteimg' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Delete.svg' /></a>" +
+                            "<a href = '#' class = 'cvf_delete_image' id='deleteimg' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
                             "</li>"
                         );
-
+                        
+                        $('.grid-container').css('display','grid');
                         $('.grid-container').append(
                             "<li class = 'grid-item' file = '" + file.name + "'>" +
                             "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
@@ -548,9 +549,9 @@ var dateChange = () => {
     let date_input = document.getElementById("date");
     let arr = date_input.value.split('-');
 
-    document.getElementById("DateTitle").innerText = arr[1] + "/" + arr[2];
-    document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
-    document.getElementById("TextDateCalendar").innerText = arr[1] + "월" + arr[2] + "일";
+    // document.getElementById("DateTitle").innerText = arr[1] + "/" + arr[2];
+    // document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
+    // document.getElementById("TextDateCalendar").innerText = arr[1] + "월" + arr[2] + "일";
 
     // 여기에다가 추가
     let currentMonthDate = document.querySelectorAll('.dates .current');

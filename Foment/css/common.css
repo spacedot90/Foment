@@ -3,8 +3,8 @@
     --Text-Title: 20px;
     --Text-Subtitle: 20px;
     --Text-SectionTitle: 18px;
-    --Text-Button: 14px;
-    --Text-Paragraph: 18px;
+    --Text-Button: 15px;
+    --Text-Paragraph: 15px;
     --Text-SectionSubTitle: 14px;
     --Text-Supported: 14px;
 
@@ -83,23 +83,33 @@ body {
     color: var(--ColorTextTertiary);
 }
 
-.BtnBasic {
+.BtnBasic, .BtnIcon {
     font-size: var(--Text-Button);
     cursor: pointer;
     background: var(--ColorBrand);
     color: var(--ColorTextPrimary);
-    padding: 0px 16px;
+    padding: 0px 24px;
     border-radius: var(--BorderRadius-Md);
     border: 1px solid var(--ColorBorder5);
     transition: var(--transition);
     width: 100%;
-    height: 100%;
+    height: 48px;
 }
 
-.BtnBasic:hover {
+.BtnBasic:hover , .BtnIcon:hover {
     opacity: 0.7;
 }
 
+.BtnIcon{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.BtnInnerIc{
+    width: 16px;
+    height: 16px;
+}
 
 
 /* 공통 css */
@@ -273,9 +283,15 @@ transition: all 0.2s ease;
 .footer {
     font-family: 'Cormorant Garamond', serif;
     position: relative;
-    height: 72px;
     text-align: center;
-    line-height: 72px;
-    font-size: var(--Text-supported);
+    font-size: 12px;
     Color: var(--ColorTextTertiary);
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    gap: 2px;
+}
+
+.footerlogo{
+    width: 69px;
 }
