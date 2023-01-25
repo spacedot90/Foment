@@ -184,8 +184,76 @@ window.onload = function () {
     });
 
 
-    // 탭 변경 UI JS
+    // 디자인 선택 탭
+    $('ul.TabListDesign li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
 
+        $('ul.TabListDesign li').removeClass('Active');     //선택 되있던 탭의 Active css를 제거하고 
+        $(this).addClass('Active');							////선택된 탭에 Active class를 삽입해줍니다.
+
+        if (this.id == 'DesignArch') {  // DesignArch 선택
+            console.log('DesignArch');
+            $('.TitleSection').show();
+        } else if (this.id == 'DesignTrip') {  // DesignTrip 선택
+            console.log('DesignTrip');
+            $('.TitleSection').hide();
+        } else if (this.id == 'DesignTogether') {  // DesignTogether 선택
+            console.log('DesignTogether');
+            $('.TitleSection').hide();
+        }
+        else {
+            console.log('null');
+        }
+    });
+
+    // 배경음악 탭
+    $('ul.TabListBGM li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
+
+        $('ul.TabListBGM li').removeClass('Active');     //선택 되있던 탭의 Active css를 제거하고 
+        $(this).addClass('Active');							////선택된 탭에 Active class를 삽입해줍니다.
+
+        if (this.id == 'NoneAudio') {  //BGM 미적용
+            console.log('아무것도 선택안된상태');
+            $('.audio').attr("src", "");
+            console.log($('.audio').attr("src"));
+        } else if (this.id == 'BaseAudio_1') {  //베이스오디오_1
+            console.log('BaseAudio_1');
+            $('.audio').attr("src", "../Resource/Audio/wedding_1.mp3");
+            console.log($('.audio').attr("src"));
+        } else if (this.id == 'BaseAudio_2') {  //베이스오디오_2
+            console.log('BaseAudio_2');
+            $('.audio').attr("src", "../Resource/Audio/wedding_2.mp3");
+        } else if (this.id == 'BaseAudio_3') {  //베이스오디오_3
+            console.log('BaseAudio_3');
+            $('.audio').attr("src", "../Resource/Audio/wedding_3.mp3");
+        }
+        else {
+            console.log('null');
+        }
+    });
+
+    // 이펙트 탭
+    $('ul.TabListEffect li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
+
+        $('ul.TabListEffect li').removeClass('Active');     //선택 되있던 탭의 Active css를 제거하고 
+        $(this).addClass('Active');							////선택된 탭에 Active class를 삽입해줍니다.
+
+        if (this.id == 'NoneEffect') {  //효과 미적용
+            console.log('아무것도 선택안된상태');
+            $('.effects').attr("src", "");
+        } else if (this.id == 'CherryblossomEffect') {  //벚꽃 효과 적용
+            console.log('체리블라썸');
+            $('.effects').attr("src", "../Resource/assets/Effect/effect_cherryblossom.png");
+        } else if (this.id == 'SnowEffect') {  // 눈 효과 적용
+            console.log('스노우');
+            $('.effects').attr("src", "../Resource/effects/snow_00.mp4");
+        }
+        else {
+            console.log('null');
+        }
+    });
+
+
+    // 폰트 크기 탭
 
     $('ul.TabList li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
         var tab_id = $(this).attr('data-tab');
@@ -209,27 +277,6 @@ window.onload = function () {
         $('.sec_cal').css("font-size", $(this).val() + "px");
     });
 
-    // 이펙트 탭
-    $('ul.TabListEffect li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
-
-        $('ul.TabListEffect li').removeClass('Active');     //선택 되있던 탭의 Active css를 제거하고 
-        $(this).addClass('Active');							////선택된 탭에 Active class를 삽입해줍니다.
-
-        if (this.id == 'NoneEffect') {  //효과 미적용
-            console.log('아무것도 선택안된상태');
-            $('.effects').attr("src", "");
-        } else if (this.id == 'CherryblossomEffect') {  //벚꽃 효과 적용
-            console.log('체리블라썸');
-            $('.effects').attr("src", "../Resource/effects/flower_00.mp4");
-        } else if (this.id == 'SnowEffect') {  // 눈 효과 적용
-            console.log('스노우');
-            $('.effects').attr("src", "../Resource/effects/snow_00.mp4");
-        }
-        else {
-            console.log('null');
-        }
-    });
-
     // PlayButton
     $(document).ready(function () {
         var btn = $(".button");
@@ -245,31 +292,6 @@ window.onload = function () {
                 console.log("포즈버튼");
             }
         });
-    });
-
-
-    // 배경음악 탭
-    $('ul.TabListBGM li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
-
-        $('ul.TabListBGM li').removeClass('Active');     //선택 되있던 탭의 Active css를 제거하고 
-        $(this).addClass('Active');							////선택된 탭에 Active class를 삽입해줍니다.
-
-        if (this.id == 'NoneAudio') {  //BGM 미적용
-            console.log('아무것도 선택안된상태');
-            $('.effects').attr("src", "");
-        } else if (this.id == 'BaseAudio_1') {  //베이스오디오_1
-            console.log('BaseAudio_1');
-            $('.effects').attr("src", "../Resource/Audio/wedding_1.mp3");
-        } else if (this.id == 'BaseAudio_2') {  //베이스오디오_2
-            console.log('BaseAudio_2');
-            $('.effects').attr("src", "../Resource/Audio/wedding_2.mp3");
-        } else if (this.id == 'BaseAudio_3') {  //베이스오디오_3
-            console.log('BaseAudio_3');
-            $('.effects').attr("src", "../Resource/Audio/wedding_3.mp3");
-        }
-        else {
-            console.log('null');
-        }
     });
 
 
