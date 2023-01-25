@@ -6,7 +6,7 @@
 
 /* 사이드 공통 */
 .side_contents {
-  font-family: 'Nanum Myeongjo', 'sanserif';
+  font-family: 'Jeju Myeongjo', serif;
   background: var(--ColorSurface);
   min-width: 336px;
   padding: 32px;
@@ -60,20 +60,20 @@
 
 .changeMe,
 .WeddingBodyText {
-  font-family: 'MapoFlowerIsland', serif;
-  font-size: 16px;
-  line-height: 1.5;
+  font-family: 'Jeju Myeongjo', serif;
+  font-size: 15px;
+  line-height: 1.8;
   letter-spacing: -0.025em;
 }
 .WeddingDateLocation{
-  width: calc(100% - 24px);
+  width: calc(100% - 25px);
   padding: 0px 12px 12px 12px;
 }
 .DateLocation {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 24px 24px 24px 24px;
+  gap: 2px;
+  padding: 24px 16px;
   border-color: rgba(160, 137, 107, 0.6);
   border-style: solid;
   border-top-width: 0px;
@@ -89,9 +89,9 @@
   padding: 0;
 }
 
-.WeddingBodyTitle {
-  font-family: 'MapoFlowerIsland', serif;
-  font-size: 16px;
+.WeddingBodyTitle, .year-month {
+  font-family: 'Jeju Myeongjo', serif;
+  font-size: 19px;
   padding: 12px;
   text-align: center;
 }
@@ -103,6 +103,10 @@
   gap: 8px;
 }
 
+.NameBox > .BtnBasic{
+  width: 200px;
+}
+
 .InputArea {
   width: 100%;
   display: flex;
@@ -112,6 +116,15 @@
 #InviteTitle{
   font-weight: 700;
   margin-bottom: 12px;
+}
+
+.AccountSection{
+  margin-bottom: 64px;
+}
+
+.relationship{
+  padding: 0px 10px;
+  color: var(--ColorTextTertiary);
 }
 
 .inputdescription {
@@ -190,7 +203,7 @@
 /* 캘린더 */
 
 .sec_cal {
-  font-family: 'MapoFlowerIsland', serif;
+  font-family: 'Jeju Myeongjo', serif;
   width: 100%;
   margin: 0 auto;
   padding: 48px 0px;
@@ -779,10 +792,10 @@ li.TabItemDesign:hover {
 }
 
 .innerframe{
-  left: 11px;
+  left: 12px;
   bottom: 0px;
-  width: calc(100% - 25px);
-  height: calc(100% - 16px);
+  width: calc(100% - 26px);
+  height: calc(100% - 14px);
   border-color: rgba(255, 255, 255, 0.8);
   border-style: solid;
   border-top-width: 1px;
@@ -795,6 +808,7 @@ li.TabItemDesign:hover {
 
 #preview-image{
   border-radius: 500px 500px 0px 0px;
+  object-fit: cover;
 }
 
 .image-container img {

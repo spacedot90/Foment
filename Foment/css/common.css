@@ -101,6 +101,7 @@ body {
 }
 
 .BtnIcon{
+    font-family: 'Jeju Myeongjo', serif;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -136,14 +137,91 @@ body {
 .base {
     width: 100%;
     height: 48px;
-    background: var(--ColorBase);
     border: 1px solid var(--ColorBorderSolid);
     padding: 16px;
     appearance: none;
     cursor: pointer;
     transition: var(--transition);
     border-radius: var(--BorderRadius-Md);
+    background: var(--ColorBase);
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
 }
+
+.base:focus{
+    background: var(--ColorSurface);
+}
+
+.innerselectbox {
+    width: 100%;
+    height: 100%;
+    padding: 0px 12px;
+    border: 1px solid var(--ColorBorderSolid);
+    appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: var(--BorderRadius-Md);
+}
+
+.selectboxname{
+    background: url('../Resource/assets/Icon/Arrow.svg') no-repeat 95% 50% , var(--ColorBase);
+    background-size: 16px 16px;
+}
+
+.innerselectbox{
+    background: url('../Resource/assets/Icon/Arrow.svg') no-repeat 80% 50% , var(--ColorSurface);
+    background-size: 12px 12px;
+}
+
+.selectboxname:hover , .innerselectbox:hover{
+    border: 1px solid var(--ColorTextPrimary);
+}
+
+
+/* input 숨겨준다 */
+input#check_btn{
+    display:none;
+    }
+  
+  input#check_btn + label{
+    cursor:pointer;
+   }
+  
+  input#check_btn + label > span{
+    vertical-align: middle;
+    padding-left: 5px;
+   }
+  
+  /* label:before에 체크하기 전 상태 CSS */
+  input#check_btn + label:before{
+    content:"";
+    display:inline-block;
+    width:16px;
+    height:16px;
+    border:1px solid var(--ColorBorder10);
+    background: var(--ColorSurface);
+    border-radius: 4px;
+    vertical-align:middle;
+    }
+    
+  /* label:before에 체크 된 상태 CSS */  
+  input#check_btn:checked + label:before{
+    content:"";
+    background-color:var(--ColorSurface);
+    border-color: var(--ColorBorder5);
+    background-image: url('../Resource/assets/Icon/Checkbox.svg');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    }
+
+    input#check_btn + label:hover{
+    border-color: var(--ColorTextPrimary);
+    }
+
+
 .ToggleUI{
     cursor: pointer;
     display: flex;
@@ -194,18 +272,6 @@ background: #fff;
 transition: all 0.2s ease;
 }
 
-.innerselectbox {
-    width: 100%;
-    height: 100%;
-    padding: 0px 12px;
-    background: var(--ColorSurface);
-    border: 1px solid var(--ColorBorderSolid);
-    appearance: none;
-    cursor: pointer;
-    transition: var(--transition);
-    border-radius: var(--BorderRadius-Md);
-}
-
 .checkboxsel {
     width: 20px;
     height: 20px;
@@ -220,6 +286,7 @@ transition: all 0.2s ease;
     background: var(--ColorBase);
     border: 1px solid var(--ColorBorderSolid);
     border-radius: var(--BorderRadius-Md);
+    gap: 16px;
 }
 
 .base:hover {
