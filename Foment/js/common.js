@@ -6,6 +6,7 @@ window.onload = function () {
     $toggle.onclick = () => {
     $toggle.classList.toggle('active');
     }
+    
 
     // 대표 이미지 업로드 크롭
     $(function () {
@@ -63,7 +64,7 @@ window.onload = function () {
             var result = $('#preview-image');
             var canvas;
             var BG = document.querySelector('.BgDimmed');
-
+            
             if ($('input[type="file"]').val() != "") {
                 canvas = image.cropper('getCroppedCanvas', {
                     width: 1000,
@@ -265,17 +266,22 @@ window.onload = function () {
         $(this).addClass('Active');								////선택된 탭에 Active class를 삽입해줍니다.
         $("#" + tab_id).addClass('Active');
     });
+    
 
     $('ul.TabListFont li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
 
         $('ul.TabListFont li').removeClass('Active');			//선택 되있던 탭의 Active css를 제거하고 
 
         $(this).addClass('Active');								////선택된 탭에 Active class를 삽입해줍니다.
-
         $('.WeddingBodyText').css("font-size", $(this).val() + "px");
         $('.WeddingBodyTitle').css("font-size", $(this).val() + "px");
-        $('.sec_cal').css("font-size", $(this).val() + "px");
+        $('.WeddingTitleText').css("font-size", $(this).val() + 5 +"px");
+        $('.sec_cal .cal_nav .year-month').css("font-size", $(this).val() + 5 + "px");
     });
+
+      
+
+
 
     // PlayButton
     $(document).ready(function () {
@@ -294,191 +300,156 @@ window.onload = function () {
         });
     });
 
+}
 
-    // 사진 다중업로드 JS
+// 사진 다중업로드 JS
 
-    var storedFiles = [];
-    //$('.cvf_order').hide();
+var storedFiles = [];
+//$('.cvf_order').hide();
 
-    // Apply sort function 
-    function cvf_reload_order() {
-        var order = $('.cvf_uploaded_files').sortable('toArray', { attribute: 'item' });
-        $('.cvf_hidden_field').val(order);
-    }
+// Apply sort function 
+function cvf_reload_order() {
+    var order = $('.cvf_uploaded_files').sortable('toArray', { attribute: 'item' });
+    $('.cvf_hidden_field').val(order);
+}
 
-    function cvf_add_order() {
-        $('.cvf_uploaded_files li').each(function (n) {
-            $(this).attr('item', n);
-        });
-    }
-
-
-    $(function () {
-        $('.cvf_uploaded_files').sortable({
-            cursor: 'move',
-            placeholder: 'highlight',
-            start: function (event, ui) {
-                ui.item.toggleClass('highlight');
-            },
-            stop: function (event, ui) {
-                ui.item.toggleClass('highlight');
-            },
-            update: function () {
-                //cvf_reload_order();
-            },
-            create: function () {
-                var list = this;
-                resize = function () {
-                    $(list).css('height', 'auto');
-                    $(list).height($(list).height());
-                };
-                // $(list).height($(list).height());
-                $(list).find('img').load(resize).error(resize);
-            }
-        });
-        $('.cvf_uploaded_files').disableSelection();
+function cvf_add_order() {
+    $('.cvf_uploaded_files li').each(function (n) {
+        $(this).attr('item', n);
     });
-
-    $('body').on('change', '.user_picked_files', function () {
-
-        var files = this.files;
-        var i = 0;
-
-        for (i = 0; i < files.length; i++) {
-            var readImg = new FileReader();
-            var file = files[i];
-
-            // // 이미지 확장자 확인 후 노출
-            //     var image = $('#ImgBtn');
-            //     var imgFile = $('.cvf_uploaded_files').val();
-            //     var fileForm = /(.*?)\.(jpg|jpeg|png)$/;
-
-            //     if(imgFile.match(fileForm)) {
-            //         var reader = new FileReader(); 
-            //         reader.onload = function(event) { 
-            //             imgFile.attr("src", event.target.result);
-            //         }; 
-            //         reader.readAsDataURL(event.target.files[0]);
-
-            //     } else{
-            //     alert("이미지 파일(jpg, png형식의 파일)만 올려주세요");
-            //     return; 
-            //     }
+}
 
 
-            // 이미지 삭제
-
-            $('body').on('click', 'a.cvf_delete_image', function (e) {
-                e.preventDefault();
-                var file = $(this).parent().attr('file');
-                var viewimg = document.getElementById('appendimg');
-
-                $(this).parent().remove('');
-                // $(viewimg).parent().remove('');
-                $(viewimg).remove(e.target.result);
-
-                var file = $(this).parent().attr('file');
-                for (var i = 0; i < storedFiles.length; i++) {
-                    if (storedFiles[i].name == file) {
-                        storedFiles.splice(i, 1);
-                        break;
-                    }
-                }
-
-                cvf_reload_order();
-
-            });
-
-
-            // 이미지 갯수 확인 후 노출
-            img_count = files.length;
-            if (img_count > 20) {
-                alert("이미지는 20개까지 첨부하실 수 있습니다.");
-                img_count = img_count - files.length;
-                return;
-            }
-
-            // 이미지 타입 매칭 후 노출
-            if (file.type.match('image.*')) {
-                storedFiles.push(file);
-                readImg.onload = (function (file) {
-                    return function (e) {
-                        $('.GalleryTitleArea').show();
-                        $('.cvf_uploaded_files').append(
-                            "<li id='multiimg' file = '" + file.name + "'>" +
-                            "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
-                            "<a href = '#' class = 'cvf_delete_image' id='deleteimg' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
-                            "</li>"
-                        );
-                        
-                        $('.grid-container').css('display','grid');
-                        $('.grid-container').append(
-                            "<li class = 'grid-item' file = '" + file.name + "'>" +
-                            "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
-                            "</li>"
-                        );
-                        // Hover시 삭제버튼
-                        var HoverImg = document.getElementById('multiimg');
-                        var DeleteImg = document.getElementById('deleteimg');
-
-                        HoverImg.onmouseover = function () {
-                            DeleteImg.style.opacity = "1";
-                        }
-                        HoverImg.onmouseout = function () {
-                            DeleteImg.style.opacity = "0";
-                        }
-                    };
-                })(file);
-                readImg.readAsDataURL(file);
-
-            } else {
-                alert('the file ' + file.name + ' is not an image<br/>');
-            }
-
-            if (files.length === (i + 1)) {
-                setTimeout(function () {
-                    cvf_add_order();
-                }, 1000);
-            }
-
+$(function () {
+    $('.cvf_uploaded_files').sortable({
+        cursor: 'move',
+        placeholder: 'highlight',
+        start: function (event, ui) {
+            ui.item.toggleClass('highlight');
+        },
+        stop: function (event, ui) {
+            ui.item.toggleClass('highlight');
+        },
+        update: function () {
+            //cvf_reload_order();
+        },
+        create: function () {
+            var list = this;
+            resize = function () {
+                $(list).css('height', 'auto');
+                $(list).height($(list).height());
+            };
+            // $(list).height($(list).height());
+            $(list).find('img').load(resize).error(resize);
         }
     });
+    $('.cvf_uploaded_files').disableSelection();
+});
+
+$('body').on('change', '.user_picked_files', function () {
+
+    var files = this.files;
+    var i = 0;
+
+    for (i = 0; i < files.length; i++) {
+        var readImg = new FileReader();
+        var file = files[i];
+
+        // // 이미지 확장자 확인 후 노출
+        //     var image = $('#ImgBtn');
+        //     var imgFile = $('.cvf_uploaded_files').val();
+        //     var fileForm = /(.*?)\.(jpg|jpeg|png)$/;
+
+        //     if(imgFile.match(fileForm)) {
+        //         var reader = new FileReader(); 
+        //         reader.onload = function(event) { 
+        //             imgFile.attr("src", event.target.result);
+        //         }; 
+        //         reader.readAsDataURL(event.target.files[0]);
+
+        //     } else{
+        //     alert("이미지 파일(jpg, png형식의 파일)만 올려주세요");
+        //     return; 
+        //     }
 
 
+        // 이미지 삭제
 
-    //   // AJAX Upload
-    //   $('body').on('click', '.cvf_upload_btn', function(e){
+        $('body').on('click', 'a.cvf_delete_image', function (e) {
+            e.preventDefault();
+            var file = $(this).parent().attr('file');
+            var viewimg = document.getElementById('appendimg');
 
-    //       e.preventDefault();
-    //       cvf_reload_order();
+            $(this).parent().remove('');
+            // $(viewimg).parent().remove('');
+            $(viewimg).remove(e.target.result);
 
-    //       //$(".cvf_uploaded_files").html('<p><img src = "loading.gif" class = "loader" /></p>');
-    //       var data = new FormData();
+            var file = $(this).parent().attr('file');
+            for (var i = 0; i < storedFiles.length; i++) {
+                if (storedFiles[i].name == file) {
+                    storedFiles.splice(i, 1);
+                    break;
+                }
+            }
 
-    //       var items_array = $('.cvf_hidden_field').val();
-    //       var items = items_array.split(',');
-    //       for (var i in items){
-    //           var item_number = items[i];
-    //           data.append('files' + i, storedFiles[item_number]);
-    //       }
+            cvf_reload_order();
 
-    //       $.ajax({
-    //           url: 'upload.php',
-    //           type: 'POST',
-    //           contentType: false,
-    //           data: data,
-    //           processData: false,
-    //           cache: false,
-    //           success: function(response, textStatus, jqXHR) {
-    //               //$(".cvf_uploaded_files").html('');                                               
-    //               //bootbox.alert('<br /><p class = "bg-success">File(s) uploaded successfully.</p>');
-    //               alert(jqXHR.responseText);
-    //           }
-    //       });
+        });
 
-    //   });  
 
-}
+        // 이미지 갯수 확인 후 노출
+        img_count = files.length;
+        if (img_count > 20) {
+            alert("이미지는 20개까지 첨부하실 수 있습니다.");
+            img_count = img_count - files.length;
+            return;
+        }
+
+        // 이미지 타입 매칭 후 노출
+        if (file.type.match('image.*')) {
+            storedFiles.push(file);
+            readImg.onload = (function (file) {
+                return function (e) {
+                    $('.GalleryTitleArea').show();
+                    $('.cvf_uploaded_files').append(
+                        "<li id='multiimg' file = '" + file.name + "'>" +
+                        "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
+                        "<a href = '#' class = 'cvf_delete_image' id='deleteimg' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
+                        "</li>"
+                    );
+                    
+                    $('.grid-container').css('display','grid');
+                    $('.grid-container').append(
+                        "<li class = 'grid-item' file = '" + file.name + "'>" +
+                        "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
+                        "</li>"
+                    );
+                    // Hover시 삭제버튼
+                    var HoverImg = document.getElementById('multiimg');
+                    var DeleteImg = document.getElementById('deleteimg');
+
+                    HoverImg.onmouseover = function () {
+                        DeleteImg.style.opacity = "1";
+                    }
+                    HoverImg.onmouseout = function () {
+                        DeleteImg.style.opacity = "0";
+                    }
+                };
+            })(file);
+            readImg.readAsDataURL(file);
+
+        } else {
+            alert('the file ' + file.name + ' is not an image<br/>');
+        }
+
+        if (files.length === (i + 1)) {
+            setTimeout(function () {
+                cvf_add_order();
+            }, 1000);
+        }
+
+    }
+});
 
 
 // 연동할 캘린더
@@ -609,19 +580,29 @@ function handleOnChange(e, target) {
         = text;
 }
 
-// Input 값 타이핑시 출력
-function printGroom() {
+// 신랑 성
+function printGroomFirst() {
     let GroomFirstName = document.getElementById('GroomFirstNameInput').value;
-    let GroomLastName = document.getElementById('GroomLastNameInput').value;
-
     document.getElementById("GroomFirstName").innerText = GroomFirstName;
+};
+// 신랑 이름
+function printGroomLast() {
+    let GroomLastName = document.getElementById('GroomLastNameInput').value;
     document.getElementById("GroomLastName").innerText = GroomLastName;
 };
-
-function printBride() {
+// 신부 성
+function printBrideFirst() {
     let BrideFirstName = document.getElementById('BrideFirstNameInput').value;
-    let BrideLastName = document.getElementById('BrideLastNameInput').value;
-
     document.getElementById("BrideFirstName").innerText = BrideFirstName;
+};
+// 신부 이름
+function printBrideLast() {
+    let BrideLastName = document.getElementById('BrideLastNameInput').value;
     document.getElementById("BrideLastName").innerText = BrideLastName;
+};
+
+function printURL() {
+    let PrintURL = document.getElementById('InputURL').value;
+
+    document.getElementById("CustomUrl").innerText = PrintURL;
 };

@@ -65,6 +65,15 @@
   line-height: 1.8;
   letter-spacing: -0.025em;
 }
+
+.WeddingTitleText, .sec_cal .cal_nav .year-month {
+  font-family: 'Jeju Myeongjo', serif;
+  font-size: 20px;
+  line-height: 1.8;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+
 .WeddingDateLocation{
   width: calc(100% - 25px);
   padding: 0px 12px 12px 12px;
@@ -131,6 +140,14 @@
   font-size: var(--Text-SectionSubTitle);
   font-weight: 500;
   line-height: 20px;
+}
+
+.DefaultUrl{
+  color: var(--ColorTextTertiary);
+}
+
+.CustomUrl{
+  color: var(--ColorTextSecondary);
 }
 
 .info {
@@ -333,6 +350,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: 16px;
 }
 
 .BoardFrom{

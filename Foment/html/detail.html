@@ -69,10 +69,10 @@
                     </div>
                     <div class="BrideGroom">
                         <div class="GroomName">
-                            <span class="WeddingBodyText" id="GroomFirstName">
+                            <span class="WeddingTitleText" id="GroomFirstName">
                                 신랑
                             </span>
-                            <span class="WeddingBodyText" id="GroomLastName">
+                            <span class="WeddingTitleText" id="GroomLastName">
                                 이름
                             </span>
                         </div>
@@ -82,10 +82,10 @@
                             </span>
                         </div>
                         <div class="BrideName">
-                            <span class="WeddingBodyText" id="BrideFirstName">
+                            <span class="WeddingTitleText" id="BrideFirstName">
                                 신부
                             </span>
-                            <span class="WeddingBodyText" id="BrideLastName">
+                            <span class="WeddingTitleText" id="BrideLastName">
                                 이름
                             </span>
                         </div>
@@ -122,7 +122,7 @@
             <!-- 초대문구 -->
             <div class="TabContent Active" id="Tab-1">
                 <div class="InvitationTextArea">
-                    <div class="WeddingBodyTitle" id="InviteTitle">
+                    <div class="WeddingTitleText" id="InviteTitle">
                         초대합니다
                     </div>
                     <div class="WeddingBodyText">
@@ -211,7 +211,7 @@
 
             <!-- 식장 위치 -->
             <div class="LocationSection">
-                <div class="WeddingBodyTitle">
+                <div class="WeddingTitleText">
                     식장 위치
                 </div>
                 <div class="WeddingBodyText">
@@ -224,7 +224,7 @@
 
             <!--계좌번호 영역-->
             <div class="AccountSection">
-                <div class="WeddingBodyTitle">
+                <div class="WeddingTitleText">
                     마음 전하실 곳
                 </div>
                 <div class="WeddingBodyText">
@@ -244,7 +244,7 @@
 
             <!-- 방명록 -->
             <div class="BoardSection">
-                <div class="WeddingBodyTitle">
+                <div class="WeddingTitleText">
                     방명록
                 </div>
                 <div class="BoardArea">
@@ -413,9 +413,9 @@
                             <label class="selectbox_label" for="pet-select">글자 크기</label>
                             <div class="TabUI">
                                 <ul class="TabListFont">
-                                    <li class="TabItemFont Active" value="16" data-tab="Tab-1">1</li>
-                                    <li class="TabItemFont" value="17" data-tab="Tab-3">2</li>
-                                    <li class="TabItemFont" value="18" data-tab="Tab-3">3</li>
+                                    <li class="TabItemFont Active" value="15" data-tab="Tab-1">기본</li>
+                                    <li class="TabItemFont" value="16" data-tab="Tab-3">중간</li>
+                                    <li class="TabItemFont" value="17" data-tab="Tab-3">크게</li>
                                 </ul>
                             </div>
                         </div>
@@ -449,13 +449,16 @@
                             <label class="selectbox_label" for="file">청첩장 URL(필수)</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
-                                        onkeyup="printGroom()" placeholder="URL 입력">
+                                    <input class="base" id="InputURL" name="base" type="base"
+                                        onkeyup="printURL()" placeholder="URL 입력">
                                     <button class="BtnBasic">
                                         중복 체크
                                     </button>
                                 </div>
-                                <div class="inputdescription">https://foment.co.kr/</div>
+                                <div class="inputdescription">
+                                    <span class="DefaultUrl">https://foment.co.kr/</span>
+                                    <span class="CustomUrl" id="CustomUrl"></span>
+                                </div>
                                 <div class="info">※ 영문,숫자 및 일부 특수문자(&+-)만 사용 가능합니다.</div>
                             </div>
                         </div>
@@ -554,9 +557,9 @@
                                 <div class="NameBox">
                                     <div class="inputtype1">
                                         <input class="base" id="GroomFirstNameInput" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="성">
+                                            onkeyup="printGroomFirst()" placeholder="성">
                                         <input class="base" id="GroomLastNameInput" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="이름">
+                                            onkeyup="printGroomLast()" placeholder="이름">
                                     </div>
                                     <select class="selectboxname" name="pets" id="select"
                                         onchange="handleOnChange(this,'select-result2')">
@@ -575,9 +578,9 @@
                                 <label class="selectbox_label" for="file">신랑 아버님</label>
                                 <div class="NameBox">
                                     <div class="inputtype1">
-                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        <input class="base" id="" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="성">
-                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                        <input class="base" id="" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
@@ -603,9 +606,9 @@
                                 <label class="selectbox_label" for="file">신랑 어머님</label>
                                 <div class="NameBox">
                                     <div class="inputtype1">
-                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        <input class="base" id="" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="성">
-                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                        <input class="base" id="" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
@@ -656,13 +659,13 @@
                         <div class="contents_detail">
                             <!-- 신랑 정보 -->
                             <div class="selectbox_detail">
-                                <label class="selectbox_label" for="file">신랑 성함 (필수)</label>
+                                <label class="selectbox_label" for="file">신부 성함 (필수)</label>
                                 <div class="NameBox">
                                     <div class="inputtype1">
-                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="성">
-                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="이름">
+                                        <input class="base" id="BrideFirstNameInput" name="base" type="base"
+                                            onkeyup="printBrideFirst()" placeholder="성">
+                                        <input class="base" id="BrideLastNameInput" name="base" type="base"
+                                            onkeyup="printBrideLast()" placeholder="이름">
                                     </div>
                                     <select class="selectboxname" name="pets" id="select"
                                         onchange="handleOnChange(this,'select-result2')">
@@ -681,9 +684,9 @@
                                 <label class="selectbox_label" for="file">신랑 아버님</label>
                                 <div class="NameBox">
                                     <div class="inputtype1">
-                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        <input class="base" id="" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="성">
-                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                        <input class="base" id="" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
@@ -709,9 +712,9 @@
                                 <label class="selectbox_label" for="file">신랑 어머님</label>
                                 <div class="NameBox">
                                     <div class="inputtype1">
-                                        <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                        <input class="base" id="" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="성">
-                                        <input class="base" id="GroomLastNameInput" name="base" type="base"
+                                        <input class="base" id="" name="base" type="base"
                                             onkeyup="printGroom()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
@@ -812,7 +815,7 @@
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">예식장 명</label>
                             <div class="NameBox">
-                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                <input class="base" id="" name="base" type="base"
                                     onkeyup="printGroom()" placeholder="예식장 이름 입력">
                             </div>
                         </div>
@@ -821,7 +824,7 @@
                             <label class="selectbox_label" for="file">예식장 주소</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="주소 검색을 먼저 해주세요">
                                     <button class="BtnBasic">
                                         주소 검색
@@ -861,7 +864,7 @@
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">초대 글 제목</label>
                             <div class="NameBox">
-                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                <input class="base" id="" name="base" type="base"
                                     onkeyup="printGroom()" placeholder="초대합니다">
                             </div>
                         </div>
@@ -871,7 +874,7 @@
                             <label class="selectbox_label" for="file">샘플 텍스트 보기</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="초대 글 내용 입력">
                                 </div>
                                 <div class="NameBox">
@@ -916,10 +919,10 @@
                             <label class="selectbox_label" for="file">제목</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="마음 전하실 곳">
                                 </div>
-                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                <input class="base" id="" name="base" type="base"
                                     onkeyup="printGroom()" placeholder="상세 내용 입력">
                                 <div class="NameBox">
                                     <select class="selectboxname" name="pets" id="select"
@@ -942,7 +945,7 @@
                             <label class="selectbox_label" for="file">그룹 명</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="신랑측 계좌번호">
                                 </div>
                             </div>
@@ -953,9 +956,9 @@
                             <label class="selectbox_label" for="file">계좌번호</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="은행">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="예금주">
                                 </div>
                             </div>
@@ -997,7 +1000,7 @@
                             <label class="selectbox_label" for="file">그룹 명</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="신부측 계좌번호">
                                 </div>
                             </div>
@@ -1008,9 +1011,9 @@
                             <label class="selectbox_label" for="file">계좌번호</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="은행">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="예금주">
                                 </div>
                             </div>
@@ -1142,7 +1145,7 @@
                             <label class="selectbox_label" for="file">비밀번호</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                    <input class="base" id="" name="base" type="base"
                                         onkeyup="printGroom()" placeholder="삭제 비밀번호">
                                 </div>
                                 <div class="info">※ 방명록을 삭제할 때 필요한 비밀번호에요</div>
@@ -1239,5 +1242,4 @@
         </div>
 
 </body>
-
 </html>
