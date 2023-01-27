@@ -660,3 +660,17 @@ function printURL() {
 
     document.getElementById("CustomUrl").innerText = PrintURL;
 };
+
+// 초대 제목
+function printInvite() {
+    let PrintInvite = document.getElementById('InviteTitleInput').value;
+
+    document.getElementById("InviteTitle").innerText = PrintInvite;
+};
+
+// 초대 문구
+function printInviteBody() {
+    let PrintInvite = document.getElementById('TextBoxInput').value;
+
+    document.getElementById("InviteBodyText").innerText = PrintInvite;
+};

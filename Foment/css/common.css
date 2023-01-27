@@ -154,7 +154,6 @@ body {
 }
 
 .innerselectbox {
-    width: 100%;
     height: 100%;
     padding: 0px 12px;
     border: 1px solid var(--ColorBorderSolid);
@@ -180,6 +179,21 @@ body {
     border: 1px solid var(--ColorTextPrimary);
 }
 
+.TextBox{
+    width: 100%;
+    height: 200px;
+    padding: 16px;
+    box-sizing: border-box;
+    border: solid 1px var(--ColorBorderSolid);
+    background-color: var(--ColorBase);
+    border-radius: var(--BorderRadius-Md);
+    font-size: var(--Text-Supported);
+    resize: none;
+}
+
+.TextBox:focus{
+    background-color: var(--ColorSurface);
+}
 
 /* input 숨겨준다 */
 input#check_btn{
