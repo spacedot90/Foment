@@ -161,18 +161,18 @@
             <!-- 가족정보 -->
             <div class="FamilyInfo">
                 <div class="WeddingBodyText">
-                    <span>강재만</span>
+                    <span id="GroomFatherFirstName">강</span><span id="GroomFatherLastName">신철</span>
                     <span>∙</span>
-                    <span>서미숙</span>
+                    <span id="GroomMotherFirstName">노</span><span id="GroomMotherLastName">미숙</span>
                     <span class="relationship">의 아들</span>
-                    <span>강석환</span>
+                    <span id="GroomFirstName2">강</span><span id="GroomLastName2">석환</span>
                 </div>
                 <div class="WeddingBodyText">
-                    <span>강재만</span>
+                    <span id="BrideFatherFirstName">김</span><span id="BrideFatherLastName">기춘</span>
                     <span>∙</span>
-                    <span>서미숙</span>
-                    <span class="relationship">의 아들</span>
-                    <span>강석환</span>
+                    <span id="BrideMotherFirstName">박</span><span id="BrideMotherLastName">동희</span>
+                    <span class="relationship">의 딸</span>
+                    <span id="BrideFirstName2">김</span><span id="BrideLastName2">예름</span>
                 </div>
             </div>
 
@@ -466,7 +466,7 @@
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">청첩장 제목</label>
                             <div class="NameBox">
-                                <input class="base" id="GroomFirstNameInput" name="base" type="base"
+                                <input class="base" id="" name="base" type="base"
                                     onkeyup="printGroom()" placeholder="청첩장 제목을 입력하세요">
                             </div>
                         </div>
@@ -563,13 +563,19 @@
                                     </div>
                                     <select class="selectboxname" name="pets" id="select"
                                         onchange="handleOnChange(this,'select-result2')">
-                                        <option value="base">옵션을 선택하세요</option>
-                                        <option value="dog">Dog</option>
-                                        <option value="cat">Cat</option>
-                                        <option value="hamster">Hamster</option>
-                                        <option value="parrot">Parrot</option>
-                                        <option value="spider">Spider</option>
-                                        <option value="goldfish">Goldfish</option>
+                                        <option value="base">아들</option>
+                                        <option value="dog">장남</option>
+                                        <option value="cat">차남</option>
+                                        <option value="hamster">삼남</option>
+                                        <option value="parrot">사남</option>
+                                        <option value="spider">오남</option>
+                                        <option value="goldfish">육남</option>
+                                        <option value="goldfish">칠남</option>
+                                        <option value="goldfish">팔남</option>
+                                        <option value="goldfish">막내</option>
+                                        <option value="goldfish">조카</option>
+                                        <option value="goldfish">손자</option>
+                                        <option value="goldfish">동생</option>
                                     </select>
                                 </div>
                             </div>
@@ -578,21 +584,16 @@
                                 <label class="selectbox_label" for="file">신랑 아버님</label>
                                 <div class="NameBox">
                                     <div class="inputtype1">
-                                        <input class="base" id="" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="성">
-                                        <input class="base" id="" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="이름">
+                                        <input class="base" id="GroomFatherFirstNameInput" name="base" type="base"
+                                            onkeyup="printGroomFatherFirst()" placeholder="성">
+                                        <input class="base" id="GroomFatherLastNameInput" name="base" type="base"
+                                            onkeyup="printGroomFatherLast()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
                                         <select class="innerselectbox" name="pets" id="select"
                                             onchange="handleOnChange(this,'select-result2')">
                                             <option value="base">故</option>
                                             <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="hamster">Hamster</option>
-                                            <option value="parrot">Parrot</option>
-                                            <option value="spider">Spider</option>
-                                            <option value="goldfish">Goldfish</option>
                                         </select>
                                         <div class="check_wrap">
                                             <input type="checkbox" id="check_btn"/>
@@ -606,21 +607,16 @@
                                 <label class="selectbox_label" for="file">신랑 어머님</label>
                                 <div class="NameBox">
                                     <div class="inputtype1">
-                                        <input class="base" id="" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="성">
-                                        <input class="base" id="" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="이름">
+                                        <input class="base" id="GroomMotherFirstNameInput" name="base" type="base"
+                                            onkeyup="printGroomMotherFirst()" placeholder="성">
+                                        <input class="base" id="GroomMotherLastNameInput" name="base" type="base"
+                                            onkeyup="printGroomMotherLast()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
                                         <select class="innerselectbox" name="pets" id="select"
                                             onchange="handleOnChange(this,'select-result2')">
                                             <option value="base">故</option>
                                             <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="hamster">Hamster</option>
-                                            <option value="parrot">Parrot</option>
-                                            <option value="spider">Spider</option>
-                                            <option value="goldfish">Goldfish</option>
                                         </select>
                                         <div class="check_wrap">
                                             <input type="checkbox" id="check_btn"/>
@@ -657,7 +653,7 @@
                             <img src="../Resource/mainasset/illust_bride.png" alt="">
                         </div>
                         <div class="contents_detail">
-                            <!-- 신랑 정보 -->
+                            <!-- 신부 정보 -->
                             <div class="selectbox_detail">
                                 <label class="selectbox_label" for="file">신부 성함 (필수)</label>
                                 <div class="NameBox">
@@ -669,25 +665,31 @@
                                     </div>
                                     <select class="selectboxname" name="pets" id="select"
                                         onchange="handleOnChange(this,'select-result2')">
-                                        <option value="base">옵션을 선택하세요</option>
-                                        <option value="dog">Dog</option>
-                                        <option value="cat">Cat</option>
-                                        <option value="hamster">Hamster</option>
-                                        <option value="parrot">Parrot</option>
-                                        <option value="spider">Spider</option>
-                                        <option value="goldfish">Goldfish</option>
+                                        <option value="base">딸</option>
+                                        <option value="dog">장녀</option>
+                                        <option value="cat">차녀</option>
+                                        <option value="hamster">삼녀</option>
+                                        <option value="parrot">사녀</option>
+                                        <option value="spider">오녀</option>
+                                        <option value="goldfish">육녀</option>
+                                        <option value="goldfish">칠녀</option>
+                                        <option value="goldfish">팔녀</option>
+                                        <option value="goldfish">막내</option>
+                                        <option value="goldfish">조카</option>
+                                        <option value="goldfish">손자</option>
+                                        <option value="goldfish">동생</option>
                                     </select>
                                 </div>
                             </div>
-                            <!-- 아버님 -->
+                            <!-- 신부 아버님 정보 -->
                             <div class="selectbox_detail">
-                                <label class="selectbox_label" for="file">신랑 아버님</label>
+                                <label class="selectbox_label" for="file">신부 아버님</label>
                                 <div class="NameBox">
                                     <div class="inputtype1">
-                                        <input class="base" id="" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="성">
-                                        <input class="base" id="" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="이름">
+                                        <input class="base" id="BrideFatherFirstNameInput" name="base" type="base"
+                                            onkeyup="printBrideFatherFirst()" placeholder="성">
+                                        <input class="base" id="BrideFatherLastNameInput" name="base" type="base"
+                                            onkeyup="printBrideFatherLast()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
                                         <select class="innerselectbox" name="pets" id="select"
@@ -707,15 +709,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- 어머님 -->
+                            <!-- 신부 어머님 정보 -->
                             <div class="selectbox_detail">
-                                <label class="selectbox_label" for="file">신랑 어머님</label>
+                                <label class="selectbox_label" for="file">신부 어머님</label>
                                 <div class="NameBox">
                                     <div class="inputtype1">
-                                        <input class="base" id="" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="성">
-                                        <input class="base" id="" name="base" type="base"
-                                            onkeyup="printGroom()" placeholder="이름">
+                                        <input class="base" id="BrideMotherFirstNameInput" name="base" type="base"
+                                            onkeyup="printBrideMotherFirst()" placeholder="성">
+                                        <input class="base" id="BrideMotherLastNameInput" name="base" type="base"
+                                            onkeyup="printBrideMotherLast()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
                                         <select class="innerselectbox" name="pets" id="select"

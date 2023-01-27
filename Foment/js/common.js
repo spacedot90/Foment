@@ -584,23 +584,77 @@ function handleOnChange(e, target) {
 function printGroomFirst() {
     let GroomFirstName = document.getElementById('GroomFirstNameInput').value;
     document.getElementById("GroomFirstName").innerText = GroomFirstName;
+    document.getElementById("GroomFirstName2").innerText = GroomFirstName;
 };
 // 신랑 이름
 function printGroomLast() {
     let GroomLastName = document.getElementById('GroomLastNameInput').value;
     document.getElementById("GroomLastName").innerText = GroomLastName;
+    document.getElementById("GroomLastName2").innerText = GroomLastName;
 };
+
+// 신랑 아버님 성
+function printGroomFatherFirst() {
+    let GroomFirstName = document.getElementById('GroomFatherFirstNameInput').value;
+    document.getElementById("GroomFatherFirstName").innerText = GroomFirstName;
+};
+// 신랑 아버님 이름
+function printGroomFatherLast() {
+    let GroomLastName = document.getElementById('GroomFatherLastNameInput').value;
+    document.getElementById("GroomFatherLastName").innerText = GroomLastName;
+};
+
+// 신랑 어머님 성
+function printGroomMotherFirst() {
+    let GroomFatherFirstName = document.getElementById('GroomMotherFirstNameInput').value;
+    document.getElementById("GroomMotherFirstName").innerText = GroomFatherFirstName;
+};
+// 신랑 어머님 이름
+function printGroomMotherLast() {
+    let GroomMotherLastName = document.getElementById('GroomMotherLastNameInput').value;
+    document.getElementById("GroomMotherLastName").innerText = GroomMotherLastName;
+};
+
+
 // 신부 성
 function printBrideFirst() {
     let BrideFirstName = document.getElementById('BrideFirstNameInput').value;
     document.getElementById("BrideFirstName").innerText = BrideFirstName;
+    document.getElementById("BrideFirstName2").innerText = BrideFirstName;
 };
 // 신부 이름
 function printBrideLast() {
     let BrideLastName = document.getElementById('BrideLastNameInput').value;
     document.getElementById("BrideLastName").innerText = BrideLastName;
+    document.getElementById("BrideLastName2").innerText = BrideLastName;
 };
 
+// 신부 아버님 성
+function printBrideFatherFirst() {
+    let BrideFatherFirstName = document.getElementById('BrideFatherFirstNameInput').value;
+    document.getElementById("BrideFatherFirstName").innerText = BrideFatherFirstName;
+};
+// 신부 아버님 이름
+function printBrideFatherLast() {
+    let BrideFatherLastName = document.getElementById('BrideFatherLastNameInput').value;
+    document.getElementById("BrideFatherLastName").innerText = BrideFatherLastName;
+};
+
+// 신부 어머님 성
+function printBrideMotherFirst() {
+    let BrideMotherFirstName = document.getElementById('BrideMotherFirstNameInput').value;
+    console.log(BrideMotherFirstName);
+    document.getElementById("BrideMotherFirstName").innerText = BrideMotherFirstName;
+};
+// 신부 어머님 이름
+function printBrideMotherLast() {
+    let BrideMotherLastName = document.getElementById('BrideMotherLastNameInput').value;
+    console.log(BrideMotherLastName);
+    document.getElementById("BrideMotherLastName").innerText = BrideMotherLastName;
+};
+
+
+// URL 입력필드
 function printURL() {
     let PrintURL = document.getElementById('InputURL').value;
 
