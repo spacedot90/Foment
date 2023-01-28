@@ -110,9 +110,13 @@
                 <div class="WeddingDateLocation">
                     <div class="DateLocation">
                         <div class="WeddingBodyText">
-                            2월 25일 토요일 오후 1시 30분
+                            <span class="WeddingDate" id="WeddingDateTitle">2월 25일</span>
+                            <span class="WeddingDay" id="WeddingDayTitle">토요일</span>
+                            <span class="AMPM" id="AMPM">오후</span>
+                            <span class="WeddingTime" id="WeddingTime">1시</span>
+                            <span class="WeddingMinute" id="WeddingMinute">30분</span>
                         </div>
-                        <div class="WeddingBodyText">
+                        <div class="WeddingBodyText" id="WeddingLocateTitle">
                             서울숲 보테가마지오 로스타뇨 홀 2F
                         </div>
                     </div>
@@ -164,14 +168,14 @@
                     <span id="GroomFatherFirstName">강</span><span id="GroomFatherLastName">신철</span>
                     <span>∙</span>
                     <span id="GroomMotherFirstName">노</span><span id="GroomMotherLastName">미숙</span>
-                    <span class="relationship">의 아들</span>
+                    <span class="relationship" id="GroomRelationship">의 아들</span>
                     <span id="GroomFirstName2">강</span><span id="GroomLastName2">석환</span>
                 </div>
                 <div class="WeddingBodyText">
                     <span id="BrideFatherFirstName">김</span><span id="BrideFatherLastName">기춘</span>
                     <span>∙</span>
                     <span id="BrideMotherFirstName">박</span><span id="BrideMotherLastName">동희</span>
-                    <span class="relationship">의 딸</span>
+                    <span class="relationship" id="BrideRelationship">의 딸</span>
                     <span id="BrideFirstName2">김</span><span id="BrideLastName2">예름</span>
                 </div>
             </div>
@@ -466,8 +470,8 @@
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">청첩장 제목</label>
                             <div class="NameBox">
-                                <input class="base" id="" name="base" type="base"
-                                    onkeyup="printGroom()" placeholder="청첩장 제목을 입력하세요">
+                                <input class="base" id="InvitationTitleInput" name="base" type="base"
+                                    onkeyup="InvitationTitleInput()" placeholder="청첩장 제목을 입력하세요">
                             </div>
                         </div>
                         <!-- 대표이미지, 공유이미지 영역 -->
@@ -561,8 +565,8 @@
                                         <input class="base" id="GroomLastNameInput" name="base" type="base"
                                             onkeyup="printGroomLast()" placeholder="이름">
                                     </div>
-                                    <select class="selectboxname" name="pets" id="select"
-                                        onchange="handleOnChange(this,'select-result2')">
+                                    <select class="selectboxname" name="groom" id="SelectGroomRelationship"
+                                        onchange="handleOnChange(this)">
                                         <option value="base">아들</option>
                                         <option value="dog">장남</option>
                                         <option value="cat">차남</option>
@@ -591,13 +595,12 @@
                                     </div>
                                     <div class="checkselection">
                                         <select class="innerselectbox" name="pets" id="select"
-                                            onchange="handleOnChange(this,'select-result2')">
+                                            onchange="handleOnChange(this)">
                                             <option value="base">故</option>
                                             <option value="dog">Dog</option>
                                         </select>
                                         <div class="check_wrap">
-                                            <input type="checkbox" id="check_btn"/>
-                                            <label for="check_btn"></label>
+                                            <input type="checkbox" id="myCheckbox">
                                         </div>
                                     </div>
                                 </div>
@@ -663,8 +666,8 @@
                                         <input class="base" id="BrideLastNameInput" name="base" type="base"
                                             onkeyup="printBrideLast()" placeholder="이름">
                                     </div>
-                                    <select class="selectboxname" name="pets" id="select"
-                                        onchange="handleOnChange(this,'select-result2')">
+                                    <select class="selectboxname" name="Bride" id="SelectBrideRelationship"
+                                        onchange="handleOnChange(this)">
                                         <option value="base">딸</option>
                                         <option value="dog">장녀</option>
                                         <option value="cat">차녀</option>
@@ -764,7 +767,7 @@
                     <div class="contents_detail">
 
                         <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">Calendar</label>
+                            <label class="selectbox_label" for="file">예식 일자</label>
                             <input type="date" id="date" onchange="dateChange()" />
                             <div class="InputArea">
                                 <div class="ToggleUI">
@@ -781,35 +784,34 @@
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">예식 시간</label>
                             <div class="NameBox">
-                                <select class="selectboxname" name="pets" id="select"
-                                    onchange="handleOnChange(this,'select-result2')">
-                                    <option value="base">오후</option>
-                                    <option value="dog">Dog</option>
-                                    <option value="cat">Cat</option>
-                                    <option value="hamster">Hamster</option>
-                                    <option value="parrot">Parrot</option>
-                                    <option value="spider">Spider</option>
-                                    <option value="goldfish">Goldfish</option>
+                                <select class="selectboxname" name="" id="SelectAMPM"
+                                    onchange="handleOnChange(this)">
+                                    <option value="오후">오후</option>
+                                    <option value="오전">오전</option>
                                 </select>
-                                <select class="selectboxname" name="pets" id="select"
-                                    onchange="handleOnChange(this,'select-result2')">
-                                    <option value="base">1시</option>
-                                    <option value="dog">Dog</option>
-                                    <option value="cat">Cat</option>
-                                    <option value="hamster">Hamster</option>
-                                    <option value="parrot">Parrot</option>
-                                    <option value="spider">Spider</option>
-                                    <option value="goldfish">Goldfish</option>
+                                <select class="selectboxname" name="" id="SelectTime"
+                                    onchange="handleOnChange(this)">
+                                    <option value="1시">1시</option>
+                                    <option value="2시">2시</option>
+                                    <option value="3시">3시</option>
+                                    <option value="4시">4시</option>
+                                    <option value="5시">5시</option>
+                                    <option value="6시">6시</option>
+                                    <option value="7시">7시</option>
+                                    <option value="8시">8시</option>
+                                    <option value="9시">9시</option>
+                                    <option value="10시">10시</option>
+                                    <option value="11시">11시</option>
+                                    <option value="12시">12시</option>
                                 </select>
-                                <select class="selectboxname" name="pets" id="select"
-                                    onchange="handleOnChange(this,'select-result2')">
-                                    <option value="base">30분</option>
-                                    <option value="dog">Dog</option>
-                                    <option value="cat">Cat</option>
-                                    <option value="hamster">Hamster</option>
-                                    <option value="parrot">Parrot</option>
-                                    <option value="spider">Spider</option>
-                                    <option value="goldfish">Goldfish</option>
+                                <select class="selectboxname" name="" id="SelectMinute"
+                                    onchange="handleOnChange(this)">
+                                    <option value="00분">00분</option>
+                                    <option value="10분">10분</option>
+                                    <option value="20분">20분</option>
+                                    <option value="30분">30분</option>
+                                    <option value="40분">40분</option>
+                                    <option value="50분">50분</option>
                                 </select>
                             </div>
                         </div>
@@ -817,8 +819,7 @@
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">예식장 명</label>
                             <div class="NameBox">
-                                <input class="base" id="" name="base" type="base"
-                                    onkeyup="printGroom()" placeholder="예식장 이름 입력">
+                                <textarea class="TextBox" id="WeddingLocateTitleInput" cols="20" rows="20" placeholder="예식장 이름, 층수 입력" onkeyup="WeddingLocationInput()"></textarea>
                             </div>
                         </div>
                         <!-- 예식장 주소 -->
@@ -879,10 +880,10 @@
                                     <textarea class="TextBox" id="TextBoxInput" cols="50" rows="10" placeholder="초대 글 내용 입력" onkeyup="printInviteBody()"></textarea>
                                 </div>
                                 <div class="NameBox">
-                                    <select class="selectboxname" name="pets" id="select"
+                                    <select class="selectboxname" name="pets" id="SelectSampleInvite"
                                         onchange="handleOnChange(this,'select-result2')">
                                         <option value="base">샘플 텍스트 보기</option>
-                                        <option value="dog">Dog</option>
+                                        <option value="DogDogDogDogogDog">Dog</option>
                                         <option value="cat">Cat</option>
                                         <option value="hamster">Hamster</option>
                                         <option value="parrot">Parrot</option>

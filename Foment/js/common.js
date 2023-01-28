@@ -132,8 +132,13 @@ window.onload = function () {
     }
 
 
-
-
+    // 초대합니다 입력박스
+    var selectBox = document.getElementById("SelectSampleInvite");
+    var inputBox = document.getElementById("TextBoxInput");
+  
+    selectBox.addEventListener("change", function() {
+      inputBox.value = selectBox.value;
+    });
 
     // 아코디언 메뉴
     var accModule = function () {
@@ -279,9 +284,6 @@ window.onload = function () {
         $('.sec_cal .cal_nav .year-month').css("font-size", $(this).val() + 5 + "px");
     });
 
-      
-
-
 
     // PlayButton
     $(document).ready(function () {
@@ -354,24 +356,6 @@ $('body').on('change', '.user_picked_files', function () {
     for (i = 0; i < files.length; i++) {
         var readImg = new FileReader();
         var file = files[i];
-
-        // // 이미지 확장자 확인 후 노출
-        //     var image = $('#ImgBtn');
-        //     var imgFile = $('.cvf_uploaded_files').val();
-        //     var fileForm = /(.*?)\.(jpg|jpeg|png)$/;
-
-        //     if(imgFile.match(fileForm)) {
-        //         var reader = new FileReader(); 
-        //         reader.onload = function(event) { 
-        //             imgFile.attr("src", event.target.result);
-        //         }; 
-        //         reader.readAsDataURL(event.target.files[0]);
-
-        //     } else{
-        //     alert("이미지 파일(jpg, png형식의 파일)만 올려주세요");
-        //     return; 
-        //     }
-
 
         // 이미지 삭제
 
@@ -450,6 +434,7 @@ $('body').on('change', '.user_picked_files', function () {
 
     }
 });
+
 
 
 // 연동할 캘린더
@@ -541,10 +526,18 @@ function calendarInit() {
 var dateChange = () => {
     let date_input = document.getElementById("date");
     let arr = date_input.value.split('-');
+    let date = new Date(arr[0], arr[1]-1, arr[2]);
+    let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    var dayName = days[date.getUTCDay()];;
+    console.log(dayName);
+    
 
     // document.getElementById("DateTitle").innerText = arr[1] + "/" + arr[2];
     // document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
-    // document.getElementById("TextDateCalendar").innerText = arr[1] + "월" + arr[2] + "일";
+    document.getElementById("TextDateCalendar").innerText = arr[1] - "0" + "월" + arr[2].replace(/0/g, "") + "일";
+    document.getElementById("WeddingDateTitle").innerText = arr[1] - "0" + "월" + arr[2].replace(/0/g, "") + "일";
+    document.getElementById("WeddingDayTitle").innerText = dayName;
+
 
     // 여기에다가 추가
     let currentMonthDate = document.querySelectorAll('.dates .current');
@@ -553,7 +546,7 @@ var dateChange = () => {
     });
 
     currentMonthDate[parseInt(date_input.value.split('-')[2]) - 1].classList.add('today');
-    console.log(date_input.value);
+    // console.log(date_input.value);
     // 지난달
     for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
         calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
@@ -568,16 +561,51 @@ var dateChange = () => {
     }
 };
 
-//--> 셀렉트 박스 선택
+
+// --> 셀렉트 박스 선택시 출력되는 값 정리
+
 function handleOnChange(e, target) {
-    // 선택된 데이터의 텍스트값 가져오기
-    const text = e.options[e.selectedIndex].text;
 
-    console.log(e.options);
+    // 신랑 신부 관계
+    let relationship = e.options[e.selectedIndex].text;
+    let RelationText = "의 " + "" + relationship
 
-    // 선택한 텍스트 출력
-    document.getElementById(target).innerText
-        = text;
+    // 선택된 셀렉트박스의 값이, 해당 아이디값과 일치하는지 검사
+    if (e.id === "SelectGroomRelationship") {
+        // 선택된 ID에 텍스트 출력
+        document.getElementById("GroomRelationship").innerText = RelationText;
+    } else if (e.id === "SelectBrideRelationship") {
+        // 선택된 ID에 텍스트 출력
+        document.getElementById("BrideRelationship").innerText = RelationText;
+    }
+
+    // 예식 시간 및 요일
+    let AMPM = e.options[e.selectedIndex].text;
+
+    if (e.id === "SelectAMPM") {
+        // 선택된 ID에 텍스트 출력
+        document.getElementById("AMPM").innerText = AMPM;
+    } else if (e.id === "SelectTime") {
+        // 선택된 ID에 텍스트 출력
+        document.getElementById("WeddingTime").innerText = AMPM;
+    } else if (e.id === "SelectMinute") {
+        // 선택된 ID에 텍스트 출력
+        document.getElementById("WeddingMinute").innerText = AMPM;
+    }
+    
+}
+
+// 예식장 명 입력
+function WeddingLocationInput(){
+    var WeddingLocateTitle = document.getElementById("WeddingLocateTitleInput").value;
+    document.getElementById("WeddingLocateTitle").innerText = WeddingLocateTitle;
+}
+
+
+// 청첩장 제목 입력
+function InvitationTitleInput(){
+    var inputTitleBox = document.getElementById("InvitationTitleInput");
+    document.title = inputTitleBox.value;
 }
 
 // 신랑 성
