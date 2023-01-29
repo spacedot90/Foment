@@ -140,39 +140,32 @@ window.onload = function () {
       inputBox.value = selectBox.value;
     });
 
+    // 계좌번호 그룹추가
+    document.getElementById("AddAccountBtn").addEventListener("click", function(){
+        var accountGroup = document.getElementById("AccountGroup");
+        var accountItem = document.createElement("div");
+        accountItem.classList.add("AccountItem");
+        accountGroup.appendChild(accountItem);
+        
+        var childDivs = document.querySelectorAll(".DetailItem");
+        var firstChild = childDivs[0];
+        accountItem.appendChild(firstChild.cloneNode(true));
+      });
+
     // 아코디언 메뉴
-    var accModule = function () {
+      var accordion = document.querySelector(".accordion");
 
-        // private member (비공개 멤버, 고유멤버)
-        let acc_wrap = $('.accodian'),
-            question = acc_wrap.find('h3'),
-            answer = question.next('div');
-
-        // privilieged member(공용 인터페이스)
-        return {
-            runInit: function () {
-                this.accHandler();
-            },
-            accHandler: function () {
-                let accodian = {
-                    targetClick: function (e) {
-                        var eTarget = $(e.currentTarget);
-                        if (eTarget.next().is(':visible')) {
-                            eTarget.next().slideUp();
-                            return;
-                        }
-                        // answer.slideUp();
-                        eTarget.next().slideDown();
-                    }
-                };
-                question.on('click', accodian.targetClick);
-            }
+      accordion.addEventListener("click", function(e) {
+        var target = e.target;
+        if (target.classList.contains("accordion-title")) {
+          var content = target.nextElementSibling;
+          if (content.style.display === "block") {
+            $(content).slideUp();
+          } else {
+            $(content).slideDown();
+          }
         }
-    }();
-
-    // 실행
-    accModule.runInit();
-
+      });
 
     // 서체 변경 JS
 

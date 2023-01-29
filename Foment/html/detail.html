@@ -234,16 +234,20 @@
                 <div class="WeddingBodyText">
                     신랑 신부에게 마음을 표현해 주세요
                 </div>
-                <ul class="accodian">
-                    <li class="accodian--box">
-                        <h3>신랑측 계좌번호</h3>
-                        <div>입력해보세요</div>
+                <ul class="accordion">
+                    <li>
+                      <a href="#" class="accordion-title">신랑측 계좌번호</a>
+                      <div class="accordion-content">
+                        <p>Content 1</p>
+                      </div>
                     </li>
-                    <li class="accodian--box">
-                        <h3>신부측 계좌번호</h3>
-                        <div>입력해보세요</div>
+                    <li>
+                      <a href="#" class="accordion-title">신부측 계좌번호</a>
+                      <div class="accordion-content">
+                        <p>Content 2</p>
+                      </div>
                     </li>
-                </ul>
+                  </ul>
             </div>
 
             <!-- 방명록 -->
@@ -940,117 +944,130 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 구분선 -->
-                        <div class="bordercontentsline"></div>
-                        <!-- 그룹 명 -->
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">그룹 명</label>
-                            <div class="InputArea">
-                                <div class="NameBox">
-                                    <input class="base" id="" name="base" type="base"
-                                        onkeyup="printGroom()" placeholder="신랑측 계좌번호">
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- 계좌 번호 -->
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">계좌번호</label>
-                            <div class="InputArea">
-                                <div class="NameBox">
-                                    <input class="base" id="" name="base" type="base"
-                                        onkeyup="printGroom()" placeholder="은행">
-                                    <input class="base" id="" name="base" type="base"
-                                        onkeyup="printGroom()" placeholder="예금주">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 간편 송금 -->
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">간편 송금</label>
-                            <div class="InputArea">
-                                <div class="ToggleUI">
-                                    <div class="ToggleTitle">
-                                        카카오 페이 송금 QA코드
+                        <div class="AccountGroup" id="AccountGroup">
+                            <!-- 그룹 명 -->
+                            <div class="AccountItem">
+                                <div class="DetailItem">
+                                    <!-- 구분선 -->
+                                    <div class="bordercontentsline"></div>
+                                    <!-- 그룹명 -->
+                                    <div class="selectbox_detail">
+                                        <label class="selectbox_label" for="file">그룹 명</label>
+                                        <div class="InputArea">
+                                            <div class="NameBox">
+                                                <input class="base" id="" name="base" type="base"
+                                                    onkeyup="printGroom()" placeholder="신랑측 계좌번호">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <label for="toggle" class="toggleSwitch">
-                                        <span class="toggleButton" id=""></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 펼쳐두기 -->
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">펼쳐두기</label>
-                            <div class="InputArea">
-                                <div class="ToggleUI">
-                                    <div class="ToggleTitle">
-                                        계좌 정보 펼쳐두기
-                                    </div>
-                                    <label for="toggle" class="toggleSwitch">
-                                        <span class="toggleButton" id=""></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- 구분선 -->
-                        <div class="bordercontentsline"></div>
-                        <!-- 그룹 명 -->
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">그룹 명</label>
-                            <div class="InputArea">
-                                <div class="NameBox">
-                                    <input class="base" id="" name="base" type="base"
-                                        onkeyup="printGroom()" placeholder="신부측 계좌번호">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 계좌 번호 -->
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">계좌번호</label>
-                            <div class="InputArea">
-                                <div class="NameBox">
-                                    <input class="base" id="" name="base" type="base"
-                                        onkeyup="printGroom()" placeholder="은행">
-                                    <input class="base" id="" name="base" type="base"
-                                        onkeyup="printGroom()" placeholder="예금주">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 간편 송금 -->
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">간편 송금</label>
-                            <div class="InputArea">
-                                <div class="ToggleUI">
-                                    <div class="ToggleTitle">
-                                        카카오 페이 송금 QA코드
+                                    <!-- 계좌 번호 -->
+                                    <div class="selectbox_detail">
+                                        <label class="selectbox_label" for="file">계좌번호</label>
+                                        <div class="InputArea">
+                                            <div class="NameBox">
+                                                <input class="base" id="" name="base" type="base"
+                                                    onkeyup="printGroom()" placeholder="은행">
+                                                <input class="base" id="" name="base" type="base"
+                                                    onkeyup="printGroom()" placeholder="예금주">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <label for="toggle" class="toggleSwitch">
-                                        <span class="toggleButton" id=""></span>
-                                    </label>
+
+                                    <!-- 간편 송금 -->
+                                    <div class="selectbox_detail">
+                                        <label class="selectbox_label" for="file">간편 송금</label>
+                                        <div class="InputArea">
+                                            <div class="ToggleUI">
+                                                <div class="ToggleTitle">
+                                                    카카오 페이 송금 QR코드
+                                                </div>
+                                                <label for="toggle" class="toggleSwitch">
+                                                    <span class="toggleButton" id=""></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 펼쳐두기 -->
+                                    <div class="selectbox_detail">
+                                        <label class="selectbox_label" for="file">펼쳐두기</label>
+                                        <div class="InputArea">
+                                            <div class="ToggleUI">
+                                                <div class="ToggleTitle">
+                                                    계좌 정보 펼쳐두기
+                                                </div>
+                                                <label for="toggle" class="toggleSwitch">
+                                                    <span class="toggleButton" id=""></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- 펼쳐두기 -->
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">펼쳐두기</label>
-                            <div class="InputArea">
-                                <div class="ToggleUI">
-                                    <div class="ToggleTitle">
-                                        계좌 정보 펼쳐두기
+
+                            <!-- 그룹 명 -->
+                            <div class="AccountItem">
+                                <div class="DetailItem">
+                                    <!-- 구분선 -->
+                                    <div class="bordercontentsline"></div>
+                                    <!-- 그룹명 -->
+                                    <div class="selectbox_detail">
+                                        <label class="selectbox_label" for="file">그룹 명</label>
+                                        <div class="InputArea">
+                                            <div class="NameBox">
+                                                <input class="base" id="" name="base" type="base"
+                                                    onkeyup="printGroom()" placeholder="신부측 계좌번호">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <label for="toggle" class="toggleSwitch">
-                                        <span class="toggleButton" id=""></span>
-                                    </label>
+
+                                    <!-- 계좌 번호 -->
+                                    <div class="selectbox_detail">
+                                        <label class="selectbox_label" for="file">계좌번호</label>
+                                        <div class="InputArea">
+                                            <div class="NameBox">
+                                                <input class="base" id="" name="base" type="base"
+                                                    onkeyup="printGroom()" placeholder="은행">
+                                                <input class="base" id="" name="base" type="base"
+                                                    onkeyup="printGroom()" placeholder="예금주">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 간편 송금 -->
+                                    <div class="selectbox_detail">
+                                        <label class="selectbox_label" for="file">간편 송금</label>
+                                        <div class="InputArea">
+                                            <div class="ToggleUI">
+                                                <div class="ToggleTitle">
+                                                    카카오 페이 송금 QR코드
+                                                </div>
+                                                <label for="toggle" class="toggleSwitch">
+                                                    <span class="toggleButton" id=""></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 펼쳐두기 -->
+                                    <div class="selectbox_detail">
+                                        <label class="selectbox_label" for="file">펼쳐두기</label>
+                                        <div class="InputArea">
+                                            <div class="ToggleUI">
+                                                <div class="ToggleTitle">
+                                                    계좌 정보 펼쳐두기
+                                                </div>
+                                                <label for="toggle" class="toggleSwitch">
+                                                    <span class="toggleButton" id=""></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="addcount">
-                            <button class="BtnBasic">계좌그룹 추가하기</button>
+                            <button class="BtnBasic" id="AddAccountBtn">계좌그룹 추가하기</button>
                         </div>
                     </div>
                 </div>
