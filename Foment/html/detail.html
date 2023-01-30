@@ -236,17 +236,45 @@
                 </div>
                 <ul class="accordion">
                     <li>
-                      <a href="#" class="accordion-title">신랑측 계좌번호</a>
-                      <div class="accordion-content">
-                        <p>Content 1</p>
-                      </div>
+                    <a href="#" class="accordion-title">신랑측 계좌번호</a>
+                        <div class="accordion-content" id="accodion-content">
+                            <div class="accodian-inner">
+                                <div class="accodian-info">
+                                    <div class="WeddingBodyText" id="accountinformation">
+                                        계좌정보
+                                    </div>
+                                    <div class="accounttarget">
+                                        <div class="WeddingBodyText" id="bankinfo">은행명</div>
+                                        <div class="WeddingBodyText" id="holderinfo">예금주</div>
+                                    </div>
+                                </div>
+                                <div class="accodian-btninfo">
+                                        <button class="Btnsmall" id="copybtn">복사하기</button>
+                                        <button class="Btnsmall" id="qrupload">QR코드</button>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                      <a href="#" class="accordion-title">신부측 계좌번호</a>
-                      <div class="accordion-content">
-                        <p>Content 2</p>
-                      </div>
-                    </li>
+                        <a href="#" class="accordion-title">신부측 계좌번호</a>
+                            <div class="accordion-content" id="accodion-content">
+                                <div class="accodian-inner">
+                                    <div class="accodian-info">
+                                        <div class="WeddingBodyText" id="accountinformation">
+                                            계좌정보
+                                        </div>
+                                        <div class="accounttarget">
+                                            <div class="WeddingBodyText" id="bankinfo">은행명</div>
+                                            <div class="WeddingBodyText" id="holderinfo">예금주</div>
+                                        </div>
+                                    </div>
+                                    <div class="accodian-btninfo">
+                                        <button class="Btnsmall" id="copybtn">복사하기</button>
+                                        <button class="Btnsmall" id="qrupload">QR코드</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                   </ul>
             </div>
 
@@ -626,8 +654,7 @@
                                             <option value="dog">Dog</option>
                                         </select>
                                         <div class="check_wrap">
-                                            <input type="checkbox" id="check_btn"/>
-                                            <label for="check_btn"></label>
+                                            <input type="checkbox" id="myCheckbox">
                                         </div>
                                     </div>
                                 </div>
@@ -710,8 +737,7 @@
                                             <option value="goldfish">Goldfish</option>
                                         </select>
                                         <div class="check_wrap">
-                                            <input type="checkbox" id="check_btn"/>
-                                            <label for="check_btn"></label>
+                                            <input type="checkbox" id="myCheckbox">
                                         </div>
                                     </div>
                                 </div>
@@ -738,8 +764,7 @@
                                             <option value="goldfish">Goldfish</option>
                                         </select>
                                         <div class="check_wrap">
-                                            <input type="checkbox" id="check_btn"/>
-                                            <label for="check_btn"></label>
+                                            <input type="checkbox" id="myCheckbox">
                                         </div>
                                     </div>
                                 </div>
@@ -778,8 +803,8 @@
                                     <div class="ToggleTitle">
                                         D-Day 표시
                                     </div>
-                                    <label for="toggle" class="toggleSwitch">
-                                        <span class="toggleButton" id="DDay"></span>
+                                    <label for="toggle" class="toggleSwitch" id="DDay">
+                                        <span class="toggleButton" id=""></span>
                                     </label>
                                 </div>
                             </div>
@@ -956,8 +981,8 @@
                                         <label class="selectbox_label" for="file">그룹 명</label>
                                         <div class="InputArea">
                                             <div class="NameBox">
-                                                <input class="base" id="" name="base" type="base"
-                                                    onkeyup="printGroom()" placeholder="신랑측 계좌번호">
+                                                <input class="base" id="AccountGroomInput" name="base" type="base"
+                                                    onkeyup="printAccountGroom()" placeholder="신랑측 계좌번호">
                                             </div>
                                         </div>
                                     </div>
@@ -983,7 +1008,7 @@
                                                 <div class="ToggleTitle">
                                                     카카오 페이 송금 QR코드
                                                 </div>
-                                                <label for="toggle" class="toggleSwitch">
+                                                <label for="toggle" class="toggleSwitch" id="KakaoQR">
                                                     <span class="toggleButton" id=""></span>
                                                 </label>
                                             </div>
@@ -997,7 +1022,7 @@
                                                 <div class="ToggleTitle">
                                                     계좌 정보 펼쳐두기
                                                 </div>
-                                                <label for="toggle" class="toggleSwitch">
+                                                <label for="toggle" class="toggleSwitch" id="AccountFold">
                                                     <span class="toggleButton" id=""></span>
                                                 </label>
                                             </div>
@@ -1129,8 +1154,8 @@
                                     <div class="ToggleTitle">
                                         이미지 확대 및 다운로드를 방지합니다
                                     </div>
-                                    <label for="toggle" class="toggleSwitch">
-                                        <span class="toggleButton" id=""></span>
+                                    <label for="toggle" class="toggleSwitch" id="BanFocus">
+                                        <span class="toggleButton"></span>
                                     </label>
                                 </div>
                             </div>

@@ -112,6 +112,22 @@ body {
     height: 16px;
 }
 
+.Btnsmall{
+    font-size: var(--Text-Supported);
+    cursor: pointer;
+    background: var(--ColorBrand);
+    color: var(--ColorTextPrimary);
+    padding: 0px 12px;
+    border-radius: var(--BorderRadius-Xs);
+    border: 1px solid var(--ColorBorder5);
+    transition: var(--transition);
+    height: 22px;
+}
+
+.Btnsmall:hover{
+    opacity: 0.7;
+}
+
 
 /* 공통 css */
 .main_contents {
@@ -213,46 +229,6 @@ body {
 .TextBox:focus{
     background-color: var(--ColorSurface);
 }
-
-/* input 숨겨준다 */
-input#check_btn{
-    display:none;
-    }
-  
-  input#check_btn + label{
-    cursor:pointer;
-   }
-  
-  input#check_btn + label > span{
-    vertical-align: middle;
-    padding-left: 5px;
-   }
-  
-  /* label:before에 체크하기 전 상태 CSS */
-  input#check_btn + label:before{
-    content:"";
-    display:inline-block;
-    width:16px;
-    height:16px;
-    border:1px solid var(--ColorBorder10);
-    background: var(--ColorSurface);
-    border-radius: 4px;
-    vertical-align:middle;
-    }
-    
-  /* label:before에 체크 된 상태 CSS */  
-  input#check_btn:checked + label:before{
-    content:"";
-    background-color:var(--ColorSurface);
-    border-color: var(--ColorBorder5);
-    background-image: url('../Resource/assets/Icon/Checkbox.svg')no-repeat 80% 50% , var(--ColorSurface);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    }
-
-    input#check_btn + label:hover{
-    border-color: var(--ColorTextPrimary);
-    }
 
 
 .ToggleUI{

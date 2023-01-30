@@ -129,7 +129,7 @@
 
 .AccountSection{
   width: 100%;
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
 
 .relationship{
@@ -223,6 +223,34 @@
   gap: 8px;
   display: flex;
   flex-direction: row;
+}
+.accodian-inner{
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.accodian-info{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.accounttarget{
+  gap: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.accodian-btninfo {
+  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#accountinformation, #bankinfo, #holderinfo{
+  text-align: left;
 }
 
 /* 캘린더 */
@@ -428,7 +456,8 @@
   display: block;
   font-size: var(--Text-Button);
   cursor: pointer;
-  background: var(--ColorBrand);
+  background: url('../Resource/assets/Icon/Arrow.svg')no-repeat 95% 50% , var(--ColorBrand);
+  background-size: 16px 16px;
   color: var(--ColorTextPrimary);
   border-radius: var(--BorderRadius-Md);
   border: 1px solid var(--ColorBorder5);
@@ -441,7 +470,7 @@
   display: none;
   font-size: var(--Text-Supported);
   color: var(--ColorTextPrimary);
-  padding: 16px 16px 24px 16px;
+  padding: 8px 16px 16px 16px;
 }
 
 .accordion-content p{

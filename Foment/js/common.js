@@ -1,12 +1,62 @@
 window.onload = function () {
 
-    // 토글 스위치
-    let $toggle = document.querySelector(".toggleSwitch");
+    // D-Day 표시 토글 스위치
+    let toggleDDay = document.getElementById('DDay');
+    let toggleQR = document.getElementById('KakaoQR');
 
-    $toggle.onclick = () => {
-    $toggle.classList.toggle('active');
+    toggleDDay.onclick = () => {
+        toggleDDay.classList.toggle('active');
     }
-    
+
+    toggleQR.onclick = () => {
+        toggleQR.classList.toggle('active');
+    }
+
+    // 아코디언 메뉴& 토글버튼
+    let toggleFold = document.getElementById('AccountFold'); // 토글버튼
+
+    toggleFold.onclick = () => {
+        toggleFold.classList.toggle('active');
+        let accordions = document.querySelectorAll(".accordion-content");
+        
+        accordions.forEach(accordion => {
+            if (accordion.style.display === "block") {
+            accordion.style.display = "none";
+            } else {
+            accordion.style.display = "block";
+            }
+        });
+        }
+        
+    var accordion = document.querySelector(".accordion"); //아코디언
+        accordion.addEventListener("click", function(e) {
+            e.preventDefault();
+            var target = e.target;
+            if (target.classList.contains("accordion-title")) {
+            var content = target.nextElementSibling;
+            if (content.style.display === "block") {
+                $(content).slideUp();
+            } else {
+                $(content).slideDown();
+            }
+            }
+        });
+
+
+
+    // 계좌번호 복사
+
+    document.getElementById('copybtn').addEventListener('click', function() {
+        var element = document.getElementById('accountinformation');
+        if(element){
+        var value = element.innerText;
+        navigator.clipboard.writeText(value).then(function() {
+            alert('계좌번호가 복사되었습니다.');
+        }, function(err) {
+            console.error('Failed to copy: ', err);
+        });
+        }
+    });
 
     // 대표 이미지 업로드 크롭
     $(function () {
@@ -150,21 +200,6 @@ window.onload = function () {
         var childDivs = document.querySelectorAll(".DetailItem");
         var firstChild = childDivs[0];
         accountItem.appendChild(firstChild.cloneNode(true));
-      });
-
-    // 아코디언 메뉴
-      var accordion = document.querySelector(".accordion");
-
-      accordion.addEventListener("click", function(e) {
-        var target = e.target;
-        if (target.classList.contains("accordion-title")) {
-          var content = target.nextElementSibling;
-          if (content.style.display === "block") {
-            $(content).slideUp();
-          } else {
-            $(content).slideDown();
-          }
-        }
       });
 
     // 서체 변경 JS
@@ -695,3 +730,11 @@ function printInviteBody() {
 
     document.getElementById("InviteBodyText").innerText = PrintInvite;
 };
+
+// 신랑측 계좌번호
+function printAccountGroom() {
+    let PrintAccount = document.getElementById('AccountGroomInput').value;
+
+    document.getElementById("accodion-content").innerText = PrintAccount;
+};
+  
