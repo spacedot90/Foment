@@ -1,16 +1,101 @@
 window.onload = function () {
 
-    // D-Day 표시 토글 스위치
-    let toggleDDay = document.getElementById('DDay');
-    let toggleQR = document.getElementById('KakaoQR');
+    // 신랑 아버지 상태값 체크박스 선택
+    document.getElementById('groomfatherstatus').addEventListener("click", function() {
+        var selectBoxes = document.getElementById("groomfatherstatustype");
+          if (this.checked) {
+            selectBoxes.removeAttribute("disabled");
+            selectBoxes.style.cursor = 'pointer';
+            selectBoxes.onmouseover = function () {
+                selectBoxes.style.border = '1px solid var(--ColorTextPrimary)';
+            }
+            selectBoxes.onmouseout = function () {
+                selectBoxes.style.border = '1px solid var(--ColorBorderSolid)';
+            }
+          } else {
+            selectBoxes.setAttribute("disabled", "disabled");
+            selectBoxes.style.cursor = 'not-allowed';
+        }
+      });
 
-    toggleDDay.onclick = () => {
-        toggleDDay.classList.toggle('active');
+    // 신랑 어머니 상태값 체크박스 선택
+    document.getElementById('groommotherstatus').addEventListener("click", function() {
+        var selectBoxes = document.getElementById("groommotherstatustype");
+        if (this.checked) {
+            selectBoxes.removeAttribute("disabled");
+            selectBoxes.style.cursor = 'pointer';
+            selectBoxes.onmouseover = function () {
+                selectBoxes.style.border = '1px solid var(--ColorTextPrimary)';
+            }
+            selectBoxes.onmouseout = function () {
+                selectBoxes.style.border = '1px solid var(--ColorBorderSolid)';
+            }
+        } else {
+            selectBoxes.setAttribute("disabled", "disabled");
+            selectBoxes.style.cursor = 'not-allowed';
+        }
+    });
+
+    // 신부 아버지 상태값 체크박스 선택
+    document.getElementById('bridefatherstatus').addEventListener("click", function() {
+    var selectBoxes = document.getElementById("bridefatherstatustype");
+        if (this.checked) {
+        selectBoxes.removeAttribute("disabled");
+        selectBoxes.style.cursor = 'pointer';
+        selectBoxes.onmouseover = function () {
+            selectBoxes.style.border = '1px solid var(--ColorTextPrimary)';
+        }
+        selectBoxes.onmouseout = function () {
+            selectBoxes.style.border = '1px solid var(--ColorBorderSolid)';
+        }
+        } else {
+        selectBoxes.setAttribute("disabled", "disabled");
+        selectBoxes.style.cursor = 'not-allowed';
     }
+    });
 
+    // 신부 어머니 상태값 체크박스 선택
+    document.getElementById('bridemotherstatus').addEventListener("click", function() {
+        var selectBoxes = document.getElementById("bridemotherstatustype");
+            if (this.checked) {
+            selectBoxes.removeAttribute("disabled");
+            selectBoxes.style.cursor = 'pointer';
+            selectBoxes.onmouseover = function () {
+                selectBoxes.style.border = '1px solid var(--ColorTextPrimary)';
+            }
+            selectBoxes.onmouseout = function () {
+                selectBoxes.style.border = '1px solid var(--ColorBorderSolid)';
+            }
+            } else {
+            selectBoxes.setAttribute("disabled", "disabled");
+            selectBoxes.style.cursor = 'not-allowed';
+        }
+        });
+      
+
+
+    
+    let toggleQR = document.getElementById('KakaoQR');
     toggleQR.onclick = () => {
         toggleQR.classList.toggle('active');
     }
+
+    // D-Day 표시 토글 스위치
+    let toggleDDay = document.getElementById('DDay');
+
+    toggleDDay.onclick = () => {
+        toggleDDay.classList.toggle('active');
+        let DDayClass = document.querySelectorAll(".dday");
+
+        DDayClass.forEach(DDayClass => {
+            if (DDayClass.style.display === "none") {
+                DDayClass.style.display = "block";
+            } else {
+                DDayClass.style.display = "none";
+            }
+        });
+        }
+
 
     // 아코디언 메뉴& 토글버튼
     let toggleFold = document.getElementById('AccountFold'); // 토글버튼
@@ -129,6 +214,138 @@ window.onload = function () {
         });
     });
 
+
+    // 사진 다중업로드 JS
+
+        var storedFiles = [];
+        //$('.cvf_order').hide();
+
+        // Apply sort function 
+        function cvf_reload_order() {
+            var order = $('.cvf_uploaded_files').sortable('toArray', { attribute: 'item' });
+            $('.cvf_hidden_field').val(order);
+        }
+
+        function cvf_add_order() {
+            $('.cvf_uploaded_files li').each(function (n) {
+                $(this).attr('item', n);
+            });
+        }
+
+
+        $(function () {
+            $('.cvf_uploaded_files').sortable({
+                cursor: 'move',
+                placeholder: 'highlight',
+                start: function (event, ui) {
+                    ui.item.toggleClass('highlight');
+                },
+                stop: function (event, ui) {
+                    ui.item.toggleClass('highlight');
+                },
+                update: function () {
+                    //cvf_reload_order();
+                },
+                create: function () {
+                    var list = this;
+                    resize = function () {
+                        $(list).css('height', 'auto');
+                        $(list).height($(list).height());
+                    };
+                    // $(list).height($(list).height());
+                    $(list).find('img').load(resize).error(resize);
+                }
+            });
+            $('.cvf_uploaded_files').disableSelection();
+        });
+
+        $('body').on('change', '.user_picked_files', function () {
+
+            var files = this.files;
+            var i = 0;
+
+            for (i = 0; i < files.length; i++) {
+                var readImg = new FileReader();
+                var file = files[i];
+
+                // 이미지 삭제
+
+                $('body').on('click', 'a.cvf_delete_image', function (e) {
+                    e.preventDefault();
+                    var file = $(this).parent().attr('file');
+                    var viewimg = document.getElementById('appendimg');
+
+                    $(this).parent().remove('');
+                    // $(viewimg).parent().remove('');
+                    $(viewimg).remove(e.target.result);
+
+                    var file = $(this).parent().attr('file');
+                    for (var i = 0; i < storedFiles.length; i++) {
+                        if (storedFiles[i].name == file) {
+                            storedFiles.splice(i, 1);
+                            break;
+                        }
+                    }
+
+                    cvf_reload_order();
+
+                });
+
+
+                // 이미지 갯수 확인 후 노출
+                img_count = files.length;
+                if (img_count > 20) {
+                    alert("이미지는 20개까지 첨부하실 수 있습니다.");
+                    img_count = img_count - files.length;
+                    return;
+                }
+
+                // 이미지 타입 매칭 후 노출
+                if (file.type.match('image.*')) {
+                    storedFiles.push(file);
+                    readImg.onload = (function (file) {
+                        return function (e) {
+                            $('.GalleryTitleArea').show();
+                            $('.cvf_uploaded_files').append(
+                                "<li id='multiimg' file = '" + file.name + "'>" +
+                                "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
+                                "<a href = '#' class = 'cvf_delete_image' id='deleteimg' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
+                                "</li>"
+                            );
+                            
+                            $('.grid-container').css('display','grid');
+                            $('.grid-container').append(
+                                "<li class = 'grid-item' file = '" + file.name + "'>" +
+                                "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
+                                "</li>"
+                            );
+                            // Hover시 삭제버튼
+                            var HoverImg = document.getElementById('multiimg');
+                            var DeleteImg = document.getElementById('deleteimg');
+
+                            HoverImg.onmouseover = function () {
+                                DeleteImg.style.opacity = "1";
+                            }
+                            HoverImg.onmouseout = function () {
+                                DeleteImg.style.opacity = "0";
+                            }
+                        };
+                    })(file);
+                    readImg.readAsDataURL(file);
+
+                } else {
+                    alert('the file ' + file.name + ' is not an image<br/>');
+                }
+
+                if (files.length === (i + 1)) {
+                    setTimeout(function () {
+                        cvf_add_order();
+                    }, 1000);
+                }
+
+            }
+        });
+
     // 지도
 
     //지도를 삽입할 HTML 요소 또는 HTML 요소의 id를 지정합니다.
@@ -207,13 +424,16 @@ window.onload = function () {
     $("#fs").change(function () {
         //alert($(this).val());
         $('.WeddingBodyText').css("font-family", $(this).val());
-        $('.WeddingBodyTitle').css("font-family", $(this).val());
+        $('.WeddingTitleText').css("font-family", $(this).val());
+        $('.year-month').css("font-family", $(this).val());
         $('.sec_cal').css("font-family", $(this).val());
+        $('.side_contents').css("font-family", $(this).val());
+        $('.BtnIcon').css("font-family", $(this).val());
     });
 
     $("#size").change(function () {
         $('.WeddingBodyText').css("font-size", $(this).val() + "px");
-        $('.WeddingBodyTitle').css("font-size", $(this).val() + "px");
+        $('.WeddingTitleText').css("font-size", $(this).val() + "px");
         $('.sec_cal').css("font-size", $(this).val() + "px");
     });
 
@@ -331,137 +551,6 @@ window.onload = function () {
     });
 
 }
-
-// 사진 다중업로드 JS
-
-var storedFiles = [];
-//$('.cvf_order').hide();
-
-// Apply sort function 
-function cvf_reload_order() {
-    var order = $('.cvf_uploaded_files').sortable('toArray', { attribute: 'item' });
-    $('.cvf_hidden_field').val(order);
-}
-
-function cvf_add_order() {
-    $('.cvf_uploaded_files li').each(function (n) {
-        $(this).attr('item', n);
-    });
-}
-
-
-$(function () {
-    $('.cvf_uploaded_files').sortable({
-        cursor: 'move',
-        placeholder: 'highlight',
-        start: function (event, ui) {
-            ui.item.toggleClass('highlight');
-        },
-        stop: function (event, ui) {
-            ui.item.toggleClass('highlight');
-        },
-        update: function () {
-            //cvf_reload_order();
-        },
-        create: function () {
-            var list = this;
-            resize = function () {
-                $(list).css('height', 'auto');
-                $(list).height($(list).height());
-            };
-            // $(list).height($(list).height());
-            $(list).find('img').load(resize).error(resize);
-        }
-    });
-    $('.cvf_uploaded_files').disableSelection();
-});
-
-$('body').on('change', '.user_picked_files', function () {
-
-    var files = this.files;
-    var i = 0;
-
-    for (i = 0; i < files.length; i++) {
-        var readImg = new FileReader();
-        var file = files[i];
-
-        // 이미지 삭제
-
-        $('body').on('click', 'a.cvf_delete_image', function (e) {
-            e.preventDefault();
-            var file = $(this).parent().attr('file');
-            var viewimg = document.getElementById('appendimg');
-
-            $(this).parent().remove('');
-            // $(viewimg).parent().remove('');
-            $(viewimg).remove(e.target.result);
-
-            var file = $(this).parent().attr('file');
-            for (var i = 0; i < storedFiles.length; i++) {
-                if (storedFiles[i].name == file) {
-                    storedFiles.splice(i, 1);
-                    break;
-                }
-            }
-
-            cvf_reload_order();
-
-        });
-
-
-        // 이미지 갯수 확인 후 노출
-        img_count = files.length;
-        if (img_count > 20) {
-            alert("이미지는 20개까지 첨부하실 수 있습니다.");
-            img_count = img_count - files.length;
-            return;
-        }
-
-        // 이미지 타입 매칭 후 노출
-        if (file.type.match('image.*')) {
-            storedFiles.push(file);
-            readImg.onload = (function (file) {
-                return function (e) {
-                    $('.GalleryTitleArea').show();
-                    $('.cvf_uploaded_files').append(
-                        "<li id='multiimg' file = '" + file.name + "'>" +
-                        "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
-                        "<a href = '#' class = 'cvf_delete_image' id='deleteimg' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
-                        "</li>"
-                    );
-                    
-                    $('.grid-container').css('display','grid');
-                    $('.grid-container').append(
-                        "<li class = 'grid-item' file = '" + file.name + "'>" +
-                        "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
-                        "</li>"
-                    );
-                    // Hover시 삭제버튼
-                    var HoverImg = document.getElementById('multiimg');
-                    var DeleteImg = document.getElementById('deleteimg');
-
-                    HoverImg.onmouseover = function () {
-                        DeleteImg.style.opacity = "1";
-                    }
-                    HoverImg.onmouseout = function () {
-                        DeleteImg.style.opacity = "0";
-                    }
-                };
-            })(file);
-            readImg.readAsDataURL(file);
-
-        } else {
-            alert('the file ' + file.name + ' is not an image<br/>');
-        }
-
-        if (files.length === (i + 1)) {
-            setTimeout(function () {
-                cvf_add_order();
-            }, 1000);
-        }
-
-    }
-});
 
 
 
@@ -737,4 +826,6 @@ function printAccountGroom() {
 
     document.getElementById("accodion-content").innerText = PrintAccount;
 };
+
+
   

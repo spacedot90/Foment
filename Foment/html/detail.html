@@ -196,6 +196,7 @@
                         <div class="day">일</div>
                     </div>
                     <div class="dates"></div>
+                    <div class="dday">결혼식이 3일 남았습니다.</div>
                 </div>
             </div>
 
@@ -626,13 +627,13 @@
                                             onkeyup="printGroomFatherLast()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
-                                        <select class="innerselectbox" name="pets" id="select"
+                                        <select disabled class="innerselectbox" id="groomfatherstatustype"
                                             onchange="handleOnChange(this)">
                                             <option value="base">故</option>
-                                            <option value="dog">Dog</option>
+                                            <option value="flower">국화꽃</option>
                                         </select>
                                         <div class="check_wrap">
-                                            <input type="checkbox" id="myCheckbox">
+                                            <input type="checkbox" id="groomfatherstatus">
                                         </div>
                                     </div>
                                 </div>
@@ -648,13 +649,13 @@
                                             onkeyup="printGroomMotherLast()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
-                                        <select class="innerselectbox" name="pets" id="select"
-                                            onchange="handleOnChange(this,'select-result2')">
+                                        <select disabled class="innerselectbox" id="groommotherstatustype"
+                                            onchange="handleOnChange(this)">
                                             <option value="base">故</option>
-                                            <option value="dog">Dog</option>
+                                            <option value="flower">국화꽃</option>
                                         </select>
                                         <div class="check_wrap">
-                                            <input type="checkbox" id="myCheckbox">
+                                            <input type="checkbox" id="groommotherstatus">
                                         </div>
                                     </div>
                                 </div>
@@ -726,18 +727,13 @@
                                             onkeyup="printBrideFatherLast()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
-                                        <select class="innerselectbox" name="pets" id="select"
-                                            onchange="handleOnChange(this,'select-result2')">
+                                        <select disabled class="innerselectbox" id="bridefatherstatustype"
+                                            onchange="handleOnChange(this)">
                                             <option value="base">故</option>
-                                            <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="hamster">Hamster</option>
-                                            <option value="parrot">Parrot</option>
-                                            <option value="spider">Spider</option>
-                                            <option value="goldfish">Goldfish</option>
+                                            <option value="flower">국화꽃</option>
                                         </select>
                                         <div class="check_wrap">
-                                            <input type="checkbox" id="myCheckbox">
+                                            <input type="checkbox" id="bridefatherstatus">
                                         </div>
                                     </div>
                                 </div>
@@ -753,18 +749,13 @@
                                             onkeyup="printBrideMotherLast()" placeholder="이름">
                                     </div>
                                     <div class="checkselection">
-                                        <select class="innerselectbox" name="pets" id="select"
-                                            onchange="handleOnChange(this,'select-result2')">
+                                        <select disabled class="innerselectbox" id="bridemotherstatustype"
+                                            onchange="handleOnChange(this)">
                                             <option value="base">故</option>
-                                            <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="hamster">Hamster</option>
-                                            <option value="parrot">Parrot</option>
-                                            <option value="spider">Spider</option>
-                                            <option value="goldfish">Goldfish</option>
+                                            <option value="flower">국화꽃</option>
                                         </select>
                                         <div class="check_wrap">
-                                            <input type="checkbox" id="myCheckbox">
+                                            <input type="checkbox" id="bridemotherstatus">
                                         </div>
                                     </div>
                                 </div>
@@ -803,7 +794,7 @@
                                     <div class="ToggleTitle">
                                         D-Day 표시
                                     </div>
-                                    <label for="toggle" class="toggleSwitch" id="DDay">
+                                    <label for="toggle" class="toggleSwitch active" id="DDay">
                                         <span class="toggleButton" id=""></span>
                                     </label>
                                 </div>

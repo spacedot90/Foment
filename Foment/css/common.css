@@ -210,8 +210,12 @@ body {
     background-size: 12px 12px;
 }
 
-.selectboxname:hover , .innerselectbox:hover{
+.selectboxname:hover{
     border: 1px solid var(--ColorTextPrimary);
+}
+
+.innerselectbox:hover{
+    cursor: not-allowed;
 }
 
 .TextBox{
@@ -224,6 +228,10 @@ body {
     border-radius: var(--BorderRadius-Md);
     font-size: var(--Text-Supported);
     resize: none;
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
 }
 
 .TextBox:focus{

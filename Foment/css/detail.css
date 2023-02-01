@@ -699,6 +699,13 @@ li.TabItemDesign:hover {
   height: 48px;
 }
 
+.dday{
+  width: 100%;
+  display: block;
+  padding: 32px 16px 16px 16px;
+  text-align: center;
+}
+
 .AttatchTitleImg {
   width: 196px;
   text-align: center;
