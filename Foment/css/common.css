@@ -189,6 +189,7 @@ body {
 }
 
 .innerselectbox {
+    width: 100%;
     height: 100%;
     padding: 0px 12px;
     border: 1px solid var(--ColorBorderSolid);
@@ -320,14 +321,16 @@ transition: all 0.2s ease;
 }
 
 .checkselection {
+    width: 35%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     padding: 8px 12px 8px 8px;
     background: var(--ColorBase);
     border: 1px solid var(--ColorBorderSolid);
     border-radius: var(--BorderRadius-Md);
-    gap: 16px;
+    gap: 12px;
 }
 
 .base:hover {

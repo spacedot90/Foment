@@ -484,7 +484,7 @@
 }
 
 #button {
-  display: block;
+  display: none;
   cursor: pointer;
   transition: var(--transition);
 }
@@ -494,7 +494,7 @@
 }
 
 #buttonpause {
-  display: none;
+  display: block;
   cursor: pointer;
   transition: var(--transition);
 }
@@ -683,8 +683,8 @@ li.TabItemDesign:hover {
 
 .attatch {
   font-size: var(--Text-Button);
-  height: 40px;
-  line-height: 40px;
+  height: 36px;
+  line-height: 36px;
   color: var(--ColorTextPrimary);
   cursor: pointer;
   text-align: center;
@@ -741,6 +741,8 @@ li.TabItemDesign:hover {
 }
 .ImgGroupUpload_Btn:hover{
   background-color: var(--ColorBorderSolid);
+  border: 3px solid var(--ColorBorder10);
+  border-style: dashed;;
 }
 
 .galleryupload{
@@ -752,7 +754,7 @@ li.TabItemDesign:hover {
   width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-y: hidden;
 }
 
 .ImgGroupUpload_Btn:hover {
@@ -1188,7 +1190,8 @@ li.TabItemDesign:hover {
 
 ul.cvf_uploaded_files {
   width: 100%;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
   list-style-type: none;
   margin: 20px 0 0 0;
   padding: 0;
@@ -1217,10 +1220,11 @@ ul.cvf_uploaded_files .ui-selected {
 }
 
 ul.cvf_uploaded_files .highlight {
-  /* border: 1px dashed #000;  */
-  /* width: 100%; */
-  background-color: #fff;
-  border-radius: 5px;
+  width: 32px;
+  height: 16px;
+  background-color: var(--ColorBase);
+  border: 4px solid var(--ColorBorder10);
+  border-radius: var(--BorderRadius-Lg);
 }
 
 ul.cvf_uploaded_files .delete-btn {

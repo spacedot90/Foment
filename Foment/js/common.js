@@ -2,8 +2,9 @@ window.onload = function () {
 
     // 신랑 아버지 상태값 체크박스 선택
     document.getElementById('groomfatherstatus').addEventListener("click", function() {
-        var selectBoxes = document.getElementById("groomfatherstatustype");
-          if (this.checked) {
+        let selectBoxes = document.getElementById("groomfatherstatustype");
+        let selectedValue = selectBoxes.value;
+        if (this.checked) {
             selectBoxes.removeAttribute("disabled");
             selectBoxes.style.cursor = 'pointer';
             selectBoxes.onmouseover = function () {
@@ -12,15 +13,24 @@ window.onload = function () {
             selectBoxes.onmouseout = function () {
                 selectBoxes.style.border = '1px solid var(--ColorBorderSolid)';
             }
-          } else {
+        } else {
             selectBoxes.setAttribute("disabled", "disabled");
             selectBoxes.style.cursor = 'not-allowed';
+            selectedValue = "";
         }
-      });
+        // 신랑 아버지 상태값
+        document.querySelector("#GroomFatherStatusInfo").innerText = selectedValue;
+    });
+    // 신랑 아버지 상태값 입력
+    document.getElementById("groomfatherstatustype").addEventListener("change", function() {
+        console.log(this.value);
+        document.querySelector("#GroomfatherStatusInfo").innerText = this.value;
+    });
 
     // 신랑 어머니 상태값 체크박스 선택
     document.getElementById('groommotherstatus').addEventListener("click", function() {
-        var selectBoxes = document.getElementById("groommotherstatustype");
+        let selectBoxes = document.getElementById("groommotherstatustype");
+        let selectedValue = selectBoxes.value;
         if (this.checked) {
             selectBoxes.removeAttribute("disabled");
             selectBoxes.style.cursor = 'pointer';
@@ -33,31 +43,23 @@ window.onload = function () {
         } else {
             selectBoxes.setAttribute("disabled", "disabled");
             selectBoxes.style.cursor = 'not-allowed';
+            selectedValue = "";
         }
+        // 신랑 어머니 상태값
+        document.querySelector("#GroomMotherStatusInfo").innerText = selectedValue;
     });
+    // 신랑 어머니 상태값 입력
+    document.getElementById("groommotherstatustype").addEventListener("change", function() {
+        console.log(this.value);
+        document.querySelector("#GroomMotherStatusInfo").innerText = this.value;
+    });
+
 
     // 신부 아버지 상태값 체크박스 선택
     document.getElementById('bridefatherstatus').addEventListener("click", function() {
-    var selectBoxes = document.getElementById("bridefatherstatustype");
+        let selectBoxes = document.getElementById("bridefatherstatustype");
+        let selectedValue = selectBoxes.value;
         if (this.checked) {
-        selectBoxes.removeAttribute("disabled");
-        selectBoxes.style.cursor = 'pointer';
-        selectBoxes.onmouseover = function () {
-            selectBoxes.style.border = '1px solid var(--ColorTextPrimary)';
-        }
-        selectBoxes.onmouseout = function () {
-            selectBoxes.style.border = '1px solid var(--ColorBorderSolid)';
-        }
-        } else {
-        selectBoxes.setAttribute("disabled", "disabled");
-        selectBoxes.style.cursor = 'not-allowed';
-    }
-    });
-
-    // 신부 어머니 상태값 체크박스 선택
-    document.getElementById('bridemotherstatus').addEventListener("click", function() {
-        var selectBoxes = document.getElementById("bridemotherstatustype");
-            if (this.checked) {
             selectBoxes.removeAttribute("disabled");
             selectBoxes.style.cursor = 'pointer';
             selectBoxes.onmouseover = function () {
@@ -66,11 +68,47 @@ window.onload = function () {
             selectBoxes.onmouseout = function () {
                 selectBoxes.style.border = '1px solid var(--ColorBorderSolid)';
             }
-            } else {
+        } else {
             selectBoxes.setAttribute("disabled", "disabled");
             selectBoxes.style.cursor = 'not-allowed';
+            selectedValue = "";
         }
-        });
+        // 신부 아버지 상태값
+        document.querySelector("#BridefatherStatusInfo").innerText = selectedValue;
+    });
+    // 신부 아버지 상태값 입력
+    document.getElementById("bridefatherstatustype").addEventListener("change", function() {
+        console.log(this.value);
+        document.querySelector("#BridefatherStatusInfo").innerText = this.value;
+    });
+
+
+    // 신부 아버지 상태값 체크박스 선택
+    document.getElementById('bridemotherstatus').addEventListener("click", function() {
+        let selectBoxes = document.getElementById("bridemotherstatustype");
+        let selectedValue = selectBoxes.value;
+        if (this.checked) {
+            selectBoxes.removeAttribute("disabled");
+            selectBoxes.style.cursor = 'pointer';
+            selectBoxes.onmouseover = function () {
+                selectBoxes.style.border = '1px solid var(--ColorTextPrimary)';
+            }
+            selectBoxes.onmouseout = function () {
+                selectBoxes.style.border = '1px solid var(--ColorBorderSolid)';
+            }
+        } else {
+            selectBoxes.setAttribute("disabled", "disabled");
+            selectBoxes.style.cursor = 'not-allowed';
+            selectedValue = "";
+        }
+        // 신부 아버지 상태값
+        document.querySelector("#BridemotherStatusInfo").innerText = selectedValue;
+    });
+    // 신부 아버지 상태값 입력
+    document.getElementById("bridemotherstatustype").addEventListener("change", function() {
+        console.log(this.value);
+        document.querySelector("#BridemotherStatusInfo").innerText = this.value;
+    });
       
 
 
@@ -192,25 +230,20 @@ window.onload = function () {
         // 대표이미지 업로드 버튼
 
         $('#complete').on('click', function () {
-            alert('선택하신 이미지로 대표이미지가 변경되었습니다.');
-            $('.photo_them').css("display", "none");
-            $('#complete').css("display", "none");
             var image = $('#image');
             var result = $('#preview-image');
             var canvas;
             var BG = document.querySelector('.BgDimmed');
-            
-            if ($('input[type="file"]').val() != "") {
-                canvas = image.cropper('getCroppedCanvas', {
-                    width: 1000,
-                    height: 1000,
-                });
-                BG.classList.toggle('is-active');
-                result.attr('src', canvas.toDataURL("image/jpg"));
-                $("#preview-image").attr('src', canvas.toDataURL("image/jpg"));
-            } else {
-                console.log('오류가 있군..');
-            }
+            canvas = image.cropper('getCroppedCanvas', {
+                width: 1000,
+                height: 1000
+            });
+            BG.classList.toggle('is-active');
+            result.attr('src', canvas.toDataURL("image/jpg"));
+            $("#preview-image").attr('src', canvas.toDataURL("image/jpg"));
+            alert('선택하신 이미지로 대표이미지가 변경되었습니다.');
+            $('.photo_them').css("display", "none");
+            $('#complete').css("display", "none");
         });
     });
 
@@ -220,7 +253,7 @@ window.onload = function () {
         var storedFiles = [];
         //$('.cvf_order').hide();
 
-        // Apply sort function 
+        // 사진 순서변경
         function cvf_reload_order() {
             var order = $('.cvf_uploaded_files').sortable('toArray', { attribute: 'item' });
             $('.cvf_hidden_field').val(order);
@@ -273,13 +306,11 @@ window.onload = function () {
                 $('body').on('click', 'a.cvf_delete_image', function (e) {
                     e.preventDefault();
                     var file = $(this).parent().attr('file');
-                    var viewimg = document.getElementById('appendimg');
+                    var viewimg = document.querySelector(".grid-item[file='" + file + "']");
 
-                    $(this).parent().remove('');
-                    // $(viewimg).parent().remove('');
-                    $(viewimg).remove(e.target.result);
-
-                    var file = $(this).parent().attr('file');
+                    $(this).parent().remove();
+                    $(viewimg).remove();
+                    
                     for (var i = 0; i < storedFiles.length; i++) {
                         if (storedFiles[i].name == file) {
                             storedFiles.splice(i, 1);
@@ -307,12 +338,12 @@ window.onload = function () {
                         return function (e) {
                             $('.GalleryTitleArea').show();
                             $('.cvf_uploaded_files').append(
-                                "<li id='multiimg' file = '" + file.name + "'>" +
+                                "<li class='multiimg' id='multiimg_" + file.name + "' file = '" + file.name + "'>" +
                                 "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
-                                "<a href = '#' class = 'cvf_delete_image' id='deleteimg' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
+                                "<a href = '#' class = 'cvf_delete_image' id='deleteimg_" + file.name + "' file = '" + file.name + "' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
                                 "</li>"
-                            );
-                            
+                             );
+                            $('.cvf_uploaded_files').css('overflow-x','scroll'); 
                             $('.grid-container').css('display','grid');
                             $('.grid-container').append(
                                 "<li class = 'grid-item' file = '" + file.name + "'>" +
@@ -320,20 +351,27 @@ window.onload = function () {
                                 "</li>"
                             );
                             // Hover시 삭제버튼
-                            var HoverImg = document.getElementById('multiimg');
-                            var DeleteImg = document.getElementById('deleteimg');
+                            var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
+                            var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
 
+                
                             HoverImg.onmouseover = function () {
-                                DeleteImg.style.opacity = "1";
-                            }
+                                if (DeleteImg) {
+                                    DeleteImg.style.opacity = "1";
+                                    console.log('over');
+                                }
+                            };
                             HoverImg.onmouseout = function () {
-                                DeleteImg.style.opacity = "0";
-                            }
+                                if (DeleteImg) {
+                                    DeleteImg.style.opacity = "0";
+                                    console.log('out');
+                                }
+                            };
                         };
                     })(file);
                     readImg.readAsDataURL(file);
-
-                } else {
+                }
+                 else {
                     alert('the file ' + file.name + ' is not an image<br/>');
                 }
 
@@ -485,6 +523,22 @@ window.onload = function () {
         }
     });
 
+        // PlayButton
+
+        var btn = $(".button");
+        btn.click(function () {
+            if (this.id == 'button') {
+                $('#button').hide();
+                $('#buttonpause').show();
+                console.log("잘 숨겨짐");
+            } else if (this.id == 'buttonpause') {
+                $('#button').show();
+                $('#buttonpause').hide();
+            } else {
+                console.log("포즈버튼");
+            }
+        });
+
     // 이펙트 탭
     $('ul.TabListEffect li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
 
@@ -532,23 +586,6 @@ window.onload = function () {
         $('.sec_cal .cal_nav .year-month').css("font-size", $(this).val() + 5 + "px");
     });
 
-
-    // PlayButton
-    $(document).ready(function () {
-        var btn = $(".button");
-        btn.click(function () {
-            if (this.id == 'button') {
-                $('#button').hide();
-                $('#buttonpause').show();
-                console.log("잘 숨겨짐");
-            } else if (this.id == 'buttonpause') {
-                $('#button').show();
-                $('#buttonpause').hide();
-            } else {
-                console.log("포즈버튼");
-            }
-        });
-    });
 
 }
 

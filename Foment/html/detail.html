@@ -165,18 +165,18 @@
             <!-- 가족정보 -->
             <div class="FamilyInfo">
                 <div class="WeddingBodyText">
-                    <span id="GroomFatherFirstName">강</span><span id="GroomFatherLastName">신철</span>
+                    <span class="statustype" id="GroomFatherStatusInfo"></span><span id="GroomFatherFirstName">김</span><span id="GroomFatherLastName">덕환</span>
                     <span>∙</span>
-                    <span id="GroomMotherFirstName">노</span><span id="GroomMotherLastName">미숙</span>
+                    <span class="statustype" id="GroomMotherStatusInfo"></span><span id="GroomMotherFirstName">조</span><span id="GroomMotherLastName">희연</span>
                     <span class="relationship" id="GroomRelationship">의 아들</span>
-                    <span id="GroomFirstName2">강</span><span id="GroomLastName2">석환</span>
+                    <span id="GroomFirstName2">신랑</span><span id="GroomLastName2">이름</span>
                 </div>
                 <div class="WeddingBodyText">
-                    <span id="BrideFatherFirstName">김</span><span id="BrideFatherLastName">기춘</span>
+                    <span class="statustype" id="BrideFatherStatusInfo"></span><span id="BrideFatherFirstName">곽</span><span id="BrideFatherLastName">상돈</span>
                     <span>∙</span>
-                    <span id="BrideMotherFirstName">박</span><span id="BrideMotherLastName">동희</span>
+                    <span class="statustype" id="BrideMotherStatusInfo"></span><span id="BrideMotherFirstName">최</span><span id="BrideMotherLastName">순자</span>
                     <span class="relationship" id="BrideRelationship">의 딸</span>
-                    <span id="BrideFirstName2">김</span><span id="BrideLastName2">예름</span>
+                    <span id="BrideFirstName2">신부</span><span id="BrideLastName2">이름</span>
                 </div>
             </div>
 
@@ -629,8 +629,8 @@
                                     <div class="checkselection">
                                         <select disabled class="innerselectbox" id="groomfatherstatustype"
                                             onchange="handleOnChange(this)">
-                                            <option value="base">故</option>
-                                            <option value="flower">국화꽃</option>
+                                            <option value="故">故</option>
+                                            <option value="국화꽃">국화꽃</option>
                                         </select>
                                         <div class="check_wrap">
                                             <input type="checkbox" id="groomfatherstatus">
@@ -651,8 +651,8 @@
                                     <div class="checkselection">
                                         <select disabled class="innerselectbox" id="groommotherstatustype"
                                             onchange="handleOnChange(this)">
-                                            <option value="base">故</option>
-                                            <option value="flower">국화꽃</option>
+                                            <option value="故">故</option>
+                                            <option value="국화꽃">국화꽃</option>
                                         </select>
                                         <div class="check_wrap">
                                             <input type="checkbox" id="groommotherstatus">
@@ -729,8 +729,8 @@
                                     <div class="checkselection">
                                         <select disabled class="innerselectbox" id="bridefatherstatustype"
                                             onchange="handleOnChange(this)">
-                                            <option value="base">故</option>
-                                            <option value="flower">국화꽃</option>
+                                            <option value="故">故</option>
+                                            <option value="꽃이미지">국화꽃</option>
                                         </select>
                                         <div class="check_wrap">
                                             <input type="checkbox" id="bridefatherstatus">
@@ -751,8 +751,8 @@
                                     <div class="checkselection">
                                         <select disabled class="innerselectbox" id="bridemotherstatustype"
                                             onchange="handleOnChange(this)">
-                                            <option value="base">故</option>
-                                            <option value="flower">국화꽃</option>
+                                            <option value="故">故</option>
+                                            <option value="국화꽃">국화꽃</option>
                                         </select>
                                         <div class="check_wrap">
                                             <input type="checkbox" id="bridemotherstatus">
