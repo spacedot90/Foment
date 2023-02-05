@@ -58,8 +58,8 @@
                 <!-- 오디오 조정 -->
                 <div class="AudioPlayPause">
                     <div class="AudioControl">
-                        <img src="../Resource/assets/Icon/BtnPlay.svg" alt="" class="button" id="button">
-                        <img src="../Resource/assets/Icon/BtnPause.svg" alt="" class="button" id="buttonpause">
+                        <img src="../Resource/assets/Icon/BtnPlay.svg" class="audiobutton" id="button">
+                        <img src="../Resource/assets/Icon/BtnPause.svg" class="audiobutton" id="buttonpause">
                     </div>
                 </div>
                 <!-- 타이틀 -->
@@ -196,7 +196,7 @@
                         <div class="day">일</div>
                     </div>
                     <div class="dates"></div>
-                    <div class="dday">결혼식이 3일 남았습니다.</div>
+                    <div class="dday" id="dday">결혼식이 3일 남았습니다.</div>
                 </div>
             </div>
 
@@ -236,28 +236,31 @@
                     신랑 신부에게 마음을 표현해 주세요
                 </div>
                 <ul class="accordion">
-                    <li>
-                    <a href="#" class="accordion-title">신랑측 계좌번호</a>
-                        <div class="accordion-content" id="accodion-content">
-                            <div class="accodian-inner">
-                                <div class="accodian-info">
-                                    <div class="WeddingBodyText" id="accountinformation">
-                                        계좌정보
+                    <li class="accordionitem" id="accordionitem1">
+                        <div class="licontents">
+                            <a href="#" class="accordion-title">신랑측 계좌번호</a>
+                            <div class="accordion-content" id="accodion-content">
+                                <div class="accodian-inner">
+                                    <div class="accodian-info">
+                                        <div class="WeddingBodyText" id="accountinformation">
+                                            계좌정보
+                                        </div>
+                                        <div class="accounttarget">
+                                            <div class="WeddingBodyText" id="bankinfo">은행명</div>
+                                            <div class="WeddingBodyText" id="holderinfo">예금주</div>
+                                        </div>
                                     </div>
-                                    <div class="accounttarget">
-                                        <div class="WeddingBodyText" id="bankinfo">은행명</div>
-                                        <div class="WeddingBodyText" id="holderinfo">예금주</div>
+                                    <div class="accodian-btninfo">
+                                            <button class="Btnsmall" id="copybtn">복사하기</button>
+                                            <button class="Btnsmall" id="qrupload">QR코드</button>
                                     </div>
-                                </div>
-                                <div class="accodian-btninfo">
-                                        <button class="Btnsmall" id="copybtn">복사하기</button>
-                                        <button class="Btnsmall" id="qrupload">QR코드</button>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <a href="#" class="accordion-title">신부측 계좌번호</a>
+                    <li class="accordionitem" id="accordionitem2">
+                        <div class="licontents">
+                            <a href="#" class="accordion-title">신부측 계좌번호</a>
                             <div class="accordion-content" id="accodion-content">
                                 <div class="accodian-inner">
                                     <div class="accodian-info">
@@ -275,7 +278,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </div>
+                    </li>
                   </ul>
             </div>
 
@@ -963,7 +967,7 @@
 
                         <div class="AccountGroup" id="AccountGroup">
                             <!-- 그룹 명 -->
-                            <div class="AccountItem">
+                            <div class="AccountItem" id="AccointItem1">
                                 <div class="DetailItem">
                                     <!-- 구분선 -->
                                     <div class="bordercontentsline"></div>
@@ -1023,7 +1027,7 @@
                             </div>
 
                             <!-- 그룹 명 -->
-                            <div class="AccountItem">
+                            <div class="AccountItem" id="AccointItem2">
                                 <div class="DetailItem">
                                     <!-- 구분선 -->
                                     <div class="bordercontentsline"></div>

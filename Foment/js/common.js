@@ -251,20 +251,6 @@ window.onload = function () {
     // 사진 다중업로드 JS
 
         var storedFiles = [];
-        //$('.cvf_order').hide();
-
-        // 사진 순서변경
-        function cvf_reload_order() {
-            var order = $('.cvf_uploaded_files').sortable('toArray', { attribute: 'item' });
-            $('.cvf_hidden_field').val(order);
-        }
-
-        function cvf_add_order() {
-            $('.cvf_uploaded_files li').each(function (n) {
-                $(this).attr('item', n);
-            });
-        }
-
 
         $(function () {
             $('.cvf_uploaded_files').sortable({
@@ -292,6 +278,36 @@ window.onload = function () {
             $('.cvf_uploaded_files').disableSelection();
         });
 
+        const dropzone = document.querySelector(".ImgGroupUpload_Btn");
+        console.log(dropzone);
+        
+        // Handle dragover event
+        dropzone.addEventListener("dragover", function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          dropzone.style.backgroundColor = "lightgray";
+        });
+        
+        // Handle dragleave event
+        dropzone.addEventListener("dragleave", function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          dropzone.style.backgroundColor = "";
+        });
+        
+        // Handle drop event
+        dropzone.addEventListener("drop", function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          dropzone.style.backgroundColor = "";
+          
+          // Get the dropped files
+          let files = Array.from(event.dataTransfer.files);
+          console.log(files);
+        });
+        
+
+        
         $('body').on('change', '.user_picked_files', function () {
 
             var files = this.files;
@@ -334,6 +350,7 @@ window.onload = function () {
                 // 이미지 타입 매칭 후 노출
                 if (file.type.match('image.*')) {
                     storedFiles.push(file);
+                    console.log();
                     readImg.onload = (function (file) {
                         return function (e) {
                             $('.GalleryTitleArea').show();
@@ -446,16 +463,36 @@ window.onload = function () {
     });
 
     // 계좌번호 그룹추가
+    var accountitemIdx = 3;
+    var accordionitemIdx = 3;
     document.getElementById("AddAccountBtn").addEventListener("click", function(){
+        if (accordionitemIdx >= 7) {
+            alert("최대 만들 수 있는 계좌그룹의 갯수를 초과하였습니다");
+            return;
+        }
         var accountGroup = document.getElementById("AccountGroup");
         var accountItem = document.createElement("div");
         accountItem.classList.add("AccountItem");
+        accountItem.id = "AccointItem" + accountitemIdx;
         accountGroup.appendChild(accountItem);
-        
+        accountitemIdx++;
+    
         var childDivs = document.querySelectorAll(".DetailItem");
         var firstChild = childDivs[0];
         accountItem.appendChild(firstChild.cloneNode(true));
-      });
+    
+        // Add the li element to the accordion
+        var accordion = document.querySelector(".accordion");
+        var newLi = document.createElement("li");
+        newLi.classList.add("accordionitem");
+        newLi.id = "accordionitem" + accordionitemIdx;
+        accordion.appendChild(newLi);
+        accordionitemIdx++;
+    
+        var childLi = document.querySelectorAll(".licontents");
+        var firstChildLi = childLi[0];
+        newLi.appendChild(firstChildLi.cloneNode(true));
+    });
 
     // 서체 변경 JS
 
@@ -523,21 +560,28 @@ window.onload = function () {
         }
     });
 
-        // PlayButton
+    // 재생,일시정지 버튼
 
-        var btn = $(".button");
-        btn.click(function () {
-            if (this.id == 'button') {
-                $('#button').hide();
-                $('#buttonpause').show();
-                console.log("잘 숨겨짐");
-            } else if (this.id == 'buttonpause') {
-                $('#button').show();
-                $('#buttonpause').hide();
-            } else {
-                console.log("포즈버튼");
-            }
-        });
+    var btn = document.querySelector(".AudioControl");
+    var playing = false;
+    
+    btn.addEventListener("click", function () {
+        var buttonplay = document.getElementById('button');
+        var buttonpause = document.getElementById('buttonpause');
+        // var music = new Audio("../Resource/Audio/wedding_1.mp3");
+    
+        if (!playing) {
+            buttonpause.style.display = "block";
+            buttonplay.style.display = "none";
+            playing = true;
+            // music.play();
+        } else {
+            buttonpause.style.display = "none";
+            buttonplay.style.display = "block";
+            playing = false;
+            // music.pause();
+        }
+    });
 
     // 이펙트 탭
     $('ul.TabListEffect li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
@@ -678,42 +722,43 @@ function calendarInit() {
 // 인풋 캘린더
 
 var dateChange = () => {
-    let date_input = document.getElementById("date");
-    let arr = date_input.value.split('-');
-    let date = new Date(arr[0], arr[1]-1, arr[2]);
+    let dateInput = document.getElementById("date");
+    let dateArr = dateInput.value.split('-');
+    let selectedDate = new Date(Date.UTC(dateArr[0], dateArr[1]-1, dateArr[2]));
+    selectedDate.setHours(selectedDate.getHours() + 9);  // 한국 표준시의 오프셋은 9시간
+    let todaydate = new Date();
     let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
-    var dayName = days[date.getUTCDay()];;
-    console.log(dayName);
-    
+    let dayName = days[selectedDate.getDay()];
 
-    // document.getElementById("DateTitle").innerText = arr[1] + "/" + arr[2];
-    // document.getElementById("TextDate").innerText = "추가할데이터 " + date_input.value + " 추가할데이터";
-    document.getElementById("TextDateCalendar").innerText = arr[1] - "0" + "월" + arr[2].replace(/0/g, "") + "일";
-    document.getElementById("WeddingDateTitle").innerText = arr[1] - "0" + "월" + arr[2].replace(/0/g, "") + "일";
+    if (selectedDate < todaydate) {
+        alert("오늘 날짜 이전의 날짜는 선택할 수 없습니다.");
+        return;
+    }
+
+    let monthDisplay = (parseInt(dateArr[1]) < 10) ? dateArr[1].replace("0", "") : dateArr[1];
+    let dateDisplay = (parseInt(dateArr[2]) < 10) ? dateArr[2].replace("0", "") : dateArr[2];
+
+    document.getElementById("TextDateCalendar").innerText = `${monthDisplay}월 ${dateDisplay}일`;
+    document.getElementById("WeddingDateTitle").innerText = `${monthDisplay}월 ${dateDisplay}일`;
     document.getElementById("WeddingDayTitle").innerText = dayName;
 
-
-    // 여기에다가 추가
-    let currentMonthDate = document.querySelectorAll('.dates .current');
-    currentMonthDate.forEach(r => {
-        r.classList.remove('today');
+    let currentMonthDates = document.querySelectorAll('.dates .current');
+    currentMonthDates.forEach(date => {
+        date.classList.remove('today');
     });
 
-    currentMonthDate[parseInt(date_input.value.split('-')[2]) - 1].classList.add('today');
-    // console.log(date_input.value);
-    // 지난달
-    for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
-        calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
-    }
-    // 이번달
-    for (var i = 1; i <= nextDate; i++) {
-        calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
-    }
-    // 다음달
-    for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
-        calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
-    }
+    let today = new Date();
+    let dDay = selectedDate - today;
+    let dDayInDays = Math.floor(dDay / (1000 * 60 * 60 * 24));
+    document.getElementById("dday").innerText = '결혼식이 '+ `${dDayInDays}` + '일 남았습니다.';
+
+    currentMonthDates[parseInt(dateInput.value.split('-')[2]) - 1].classList.add('today');
 };
+
+
+
+
+
 
 
 // --> 셀렉트 박스 선택시 출력되는 값 정리
