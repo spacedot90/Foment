@@ -303,7 +303,14 @@ window.onload = function () {
           
           // Get the dropped files
           let files = Array.from(event.dataTransfer.files);
-          console.log(files);
+          let file = $(this).parent().attr('file');
+          for (var i = 0; i < files.length; i++) {
+            if (files[i].name == file) {
+                files.splice(i, 1);
+                break;
+            }
+        }
+          console.log(i);
         });
         
 
