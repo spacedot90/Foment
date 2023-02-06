@@ -285,7 +285,7 @@ window.onload = function () {
         dropzone.addEventListener("dragover", function(event) {
           event.preventDefault();
           event.stopPropagation();
-          dropzone.style.backgroundColor = "lightgray";
+          dropzone.style.backgroundColor = "#eff0f5";
         });
         
         // Handle dragleave event
