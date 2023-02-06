@@ -300,21 +300,99 @@ window.onload = function () {
           event.preventDefault();
           event.stopPropagation();
           dropzone.style.backgroundColor = "";
-          
-          // Get the dropped files
           let files = Array.from(event.dataTransfer.files);
-          let file = $(this).parent().attr('file');
-          for (var i = 0; i < files.length; i++) {
-            if (files[i].name == file) {
-                files.splice(i, 1);
-                break;
+          var i = 0;
+
+          for (i = 0; i < files.length; i++) {
+            var readImg = new FileReader();
+            var file = files[i];
+            console.log(file);
+            // 이미지 삭제
+
+            $('body').on('click', 'a.cvf_delete_image', function (e) {
+                e.preventDefault();
+                var file = $(this).parent().attr('file');
+                var viewimg = document.querySelector(".grid-item[file='" + file + "']");
+
+                $(this).parent().remove();
+                $(viewimg).remove();
+                
+                for (var i = 0; i < storedFiles.length; i++) {
+                    if (storedFiles[i].name == file) {
+                        storedFiles.splice(i, 1);
+                        break;
+                    }
+                }
+
+                // cvf_reload_order();
+
+            });
+
+
+            // 이미지 갯수 확인 후 최대갯수 안내팝업 노출
+            img_count = files.length;
+            if (img_count > 20) {
+                alert("이미지는 20개까지 첨부하실 수 있습니다.");
+                img_count = img_count - files.length;
+                return;
             }
+
+            // 이미지 타입 매칭 후 노출
+            if (file.type.match('image.*')) {
+                storedFiles.push(file);
+                console.log();
+                readImg.onload = (function (file) {
+                    return function (e) {
+                        $('.GalleryTitleArea').show();
+                        $('.cvf_uploaded_files').append(
+                            "<li class='multiimg' id='multiimg_" + file.name + "' file = '" + file.name + "'>" +
+                            "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
+                            "<a href = '#' class = 'cvf_delete_image' id='deleteimg_" + file.name + "' file = '" + file.name + "' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
+                            "</li>"
+                         );
+                        $('.cvf_uploaded_files').css('overflow-x','scroll'); 
+                        $('.grid-container').css('display','grid');
+                        $('.grid-container').append(
+                            "<li class = 'grid-item' file = '" + file.name + "'>" +
+                            "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
+                            "</li>"
+                        );
+                        // Hover시 삭제버튼
+                        var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
+                        var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
+
+            
+                        HoverImg.onmouseover = function () {
+                            if (DeleteImg) {
+                                DeleteImg.style.opacity = "1";
+                                console.log('over');
+                            }
+                        };
+                        HoverImg.onmouseout = function () {
+                            if (DeleteImg) {
+                                DeleteImg.style.opacity = "0";
+                                console.log('out');
+                            }
+                        };
+                    };
+                })(file);
+                readImg.readAsDataURL(file);
+            }
+             else {
+                alert('the file ' + file.name + ' is not an image<br/>');
+            }
+
+            // if (files.length === (i + 1)) {
+            //     setTimeout(function () {
+            //         cvf_add_order();
+            //     }, 1000);
+            // }
+
         }
-          console.log(i);
         });
         
 
-        
+        // 버튼 눌러 다중이미지 업로드
         $('body').on('change', '.user_picked_files', function () {
 
             var files = this.files;
@@ -323,7 +401,7 @@ window.onload = function () {
             for (i = 0; i < files.length; i++) {
                 var readImg = new FileReader();
                 var file = files[i];
-
+                console.log(file);
                 // 이미지 삭제
 
                 $('body').on('click', 'a.cvf_delete_image', function (e) {
@@ -341,12 +419,12 @@ window.onload = function () {
                         }
                     }
 
-                    cvf_reload_order();
+                    // cvf_reload_order();
 
                 });
 
 
-                // 이미지 갯수 확인 후 노출
+                // 이미지 갯수 확인 후 최대갯수 안내팝업 노출
                 img_count = files.length;
                 if (img_count > 20) {
                     alert("이미지는 20개까지 첨부하실 수 있습니다.");
@@ -399,11 +477,11 @@ window.onload = function () {
                     alert('the file ' + file.name + ' is not an image<br/>');
                 }
 
-                if (files.length === (i + 1)) {
-                    setTimeout(function () {
-                        cvf_add_order();
-                    }, 1000);
-                }
+                // if (files.length === (i + 1)) {
+                //     setTimeout(function () {
+                //         cvf_add_order();
+                //     }, 1000);
+                // }
 
             }
         });
@@ -913,8 +991,21 @@ function printInviteBody() {
 function printAccountGroom() {
     let PrintAccount = document.getElementById('AccountGroomInput').value;
 
-    document.getElementById("accodion-content").innerText = PrintAccount;
+    document.getElementById("accountinformation").innerText = PrintAccount;
 };
 
+// 신랑측 은행
+function printBankGroom() {
+    let PrintAccount = document.getElementById('BankGroomInput').value;
+
+    document.getElementById("bankinfo").innerText = PrintAccount;
+};
+
+// 신랑측 예금주
+function printHolderGroom() {
+    let PrintAccount = document.getElementById('HolderGroomInput').value;
+
+    document.getElementById("holderinfo").innerText = PrintAccount;
+};
 
   
