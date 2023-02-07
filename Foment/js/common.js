@@ -357,6 +357,25 @@ window.onload = function () {
                             "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
                             "</li>"
                         );
+
+                        // 업로드한 이미지 상세보기
+
+                        let thumbnail = document.querySelector(".grid-thumb");
+                        let imageOverlay = document.querySelector(".BgDimmedImg");
+                        let fullImage = document.querySelector(".full-image");
+                        let closeButton = document.querySelector(".close-button");
+                        console.log(thumbnail);
+
+                        thumbnail.addEventListener("click", function() {
+                            imageOverlay.style.display = "block";
+                            fullImage.src = this.src;
+                            console.log(imageOverlay);
+                            });
+
+                        closeButton.addEventListener("click", function() {
+                            imageOverlay.style.display = "none";
+                            });
+
                         // Hover시 삭제버튼
                         var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
                         var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
@@ -437,6 +456,7 @@ window.onload = function () {
                     storedFiles.push(file);
                     console.log();
                     readImg.onload = (function (file) {
+
                         return function (e) {
                             $('.GalleryTitleArea').show();
                             $('.cvf_uploaded_files').append(
@@ -451,7 +471,26 @@ window.onload = function () {
                                 "<li class = 'grid-item' file = '" + file.name + "'>" +
                                 "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
                                 "</li>"
-                            );
+                            );  
+
+                            // 업로드한 이미지 상세보기
+
+                            let thumbnail = document.querySelector(".grid-thumb");
+                            let imageOverlay = document.querySelector("BgDimmedImg");
+                            // const fullImage = document.querySelector(".full-image");
+                            let closeButton = document.querySelector(".close-button");
+                            console.log(thumbnail);
+
+                            thumbnail.addEventListener("click", function() {
+                                imageOverlay.style.display = "block";
+                                fullImage.src = this.src;
+                                console.log(imageOverlay);
+                                });
+    
+                            closeButton.addEventListener("click", function() {
+                                imageOverlay.style.display = "none";
+                                });
+
                             // Hover시 삭제버튼
                             var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
                             var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
@@ -469,6 +508,7 @@ window.onload = function () {
                                     console.log('out');
                                 }
                             };
+
                         };
                     })(file);
                     readImg.readAsDataURL(file);
@@ -581,15 +621,58 @@ window.onload = function () {
 
     // 서체 변경 JS
 
-    $("#fs").change(function () {
-        //alert($(this).val());
-        $('.WeddingBodyText').css("font-family", $(this).val());
-        $('.WeddingTitleText').css("font-family", $(this).val());
-        $('.year-month').css("font-family", $(this).val());
-        $('.sec_cal').css("font-family", $(this).val());
-        $('.side_contents').css("font-family", $(this).val());
-        $('.BtnIcon').css("font-family", $(this).val());
-    });
+    const select = document.querySelector('#custom-select');
+    const optionsContainer = document.querySelector('#custom-options');
+    const options = optionsContainer.querySelectorAll(".custom-option");
+    
+    select.addEventListener('click', toggleOptions);
+    options.forEach(option => option.addEventListener('click', selectOption));
+    
+    function toggleOptions() {
+        if (optionsContainer.style.display === 'flex') {
+        //   optionsContainer.style.display = 'none';
+          optionsContainer.style.animation = 'slideDown 0.2s ease';
+        } else {
+          optionsContainer.style.display = 'flex';
+          optionsContainer.style.animation = 'slideUp 0.2s ease';
+        }
+      }
+    
+    function selectOption() {
+      select.value = this.dataset.value;
+      optionsContainer.style.display = 'none';
+      changeFontFamily(select.value);
+    }
+    
+    function changeFontFamily(fontFamily) {
+        const bodyTextElements = document.querySelectorAll('.WeddingBodyText');
+        bodyTextElements.forEach(element => element.style.fontFamily = fontFamily);
+      
+        const titleTextElements = document.querySelectorAll('.WeddingTitleText');
+        titleTextElements.forEach(element => element.style.fontFamily = fontFamily);
+      
+        const yearMonthElements = document.querySelectorAll('.year-month');
+        yearMonthElements.forEach(element => element.style.fontFamily = fontFamily);
+      
+        const secCalElements = document.querySelectorAll('.sec_cal');
+        secCalElements.forEach(element => element.style.fontFamily = fontFamily);
+      
+        const sideContentsElements = document.querySelectorAll('.side_contents');
+        sideContentsElements.forEach(element => element.style.fontFamily = fontFamily);
+      
+        const btnIconElements = document.querySelectorAll('.BtnIcon');
+        btnIconElements.forEach(element => element.style.fontFamily = fontFamily);
+      }
+    
+    document.addEventListener('click', hideOptions);
+
+        function hideOptions(event) {
+        if (!optionsContainer.contains(event.target) && !select.contains(event.target)) {
+            optionsContainer.style.display = 'none';
+        }
+        }
+
+    
 
     $("#size").change(function () {
         $('.WeddingBodyText').css("font-size", $(this).val() + "px");
@@ -835,18 +918,15 @@ var dateChange = () => {
     let today = new Date();
     let dDay = selectedDate - today;
     let dDayInDays = Math.floor(dDay / (1000 * 60 * 60 * 24));
-    document.getElementById("dday").innerText = '결혼식이 '+ `${dDayInDays}` + '일 남았습니다.';
+    let dDaycount = document.getElementById('dday');
+    dDaycount.innerText = '결혼식이 '+ `${dDayInDays}` + '일 남았습니다.';
+    dDayInDays.style.color = "red";
+    
 
     currentMonthDates[parseInt(dateInput.value.split('-')[2]) - 1].classList.add('today');
 };
 
 
-
-
-
-
-
-// --> 셀렉트 박스 선택시 출력되는 값 정리
 
 function handleOnChange(e, target) {
 

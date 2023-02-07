@@ -8,52 +8,97 @@
   <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <style>
-    #dropzone {
-  width: 500px;
-  height: 200px;
-  border: 2px solid black;
-  text-align: center;
-  line-height: 200px;
-}
+    #custom-select-container {
+      position: relative;
+      width: 200px;
+    }
+    
+    #custom-select {
+      width: 100%;
+      height: 40px;
+      padding: 10px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      color: #333;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    #custom-select option{
+      display: none;
+    }
+    
+    #custom-options {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      display: none;
+    }
+    
+    .custom-option {
+      padding: 10px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      color: #333;
+      cursor: pointer;
+    }
+    
+    .custom-option:hover {
+      background-color: #f2f2f2;
+    }
+    
+    
+    
   </style>
   <title>Document</title>
 </head>
 <body>
-    <div id="dropzone">
-        Drag and Drop Files Here
-      </div>
+
+  <div id="custom-select-container">
+    <select id="custom-select">
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+    </select>
+    <div id="custom-options">
+      <div class="custom-option" data-value="option1">Option 1</div>
+      <div class="custom-option" data-value="option2">Option 2</div>
+      <div class="custom-option" data-value="option3">Option 3</div>
+    </div>
+  </div>
   
+  
+  
+
   <script>
 
     
-const dropzone = document.getElementById("dropzone");
-
-// Handle dragover event
-dropzone.addEventListener("dragover", function(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  dropzone.style.backgroundColor = "lightgray";
-});
-
-// Handle dragleave event
-dropzone.addEventListener("dragleave", function(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  dropzone.style.backgroundColor = "";
-});
-
-// Handle drop event
-dropzone.addEventListener("drop", function(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  dropzone.style.backgroundColor = "";
-  
-  // Get the dropped files
-  let files = event.dataTransfer.files;
-  console.log(files);
-  
-  // Do something with the files (e.g., upload to a server)
-});
+    const select = document.querySelector('#custom-select');
+    const optionsContainer = document.querySelector('#custom-options');
+    const options = optionsContainer.querySelectorAll('.custom-option');
+    
+    select.addEventListener('click', toggleOptions);
+    options.forEach(option => option.addEventListener('click', selectOption));
+    
+    function toggleOptions() {
+      optionsContainer.style.display = optionsContainer.style.display === 'block' ? 'none' : 'block';
+    }
+    
+    function selectOption() {
+      select.value = this.dataset.value;
+      optionsContainer.style.display = 'none';
+    }
+    
 
 </script>
   

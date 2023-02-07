@@ -36,6 +36,10 @@
             <a href="javascript:void(0);" id="complete">업로드</a>
         </div>
     </div>
+    <div class="BgDimmedImg">
+        <img src="" alt="your-image-description" class="full-image">
+        <button class="close-button">X</button>
+      </div>
 
     <!-- 헤더 -->
     <div class="header">
@@ -196,7 +200,13 @@
                         <div class="day">일</div>
                     </div>
                     <div class="dates"></div>
-                    <div class="dday" id="dday">결혼식이 3일 남았습니다.</div>
+                    <div class="WeddingBodyText">
+                        <div class="ddaysection">
+                            <div class="ddaytext1">결혼식이 </div>
+                            <div class="dday" id="dday">3일</div>
+                            <div class="ddaytext1">남았습니다.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -438,14 +448,21 @@
 
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="pet-select">서체 선택</label>
-                            <form class="selectgroup" id="myform">
-                                <select class="selectboxname" id="fs">
-                                    <option value="jejumyeongjo">제주명조</option>
-                                    <option value="Chosunilbo_myungjo">조선일보명조</option>
-                                    <option value="MapoFlowerIsland">마포꽃섬</option>
-                                    <option value="Pretendard-Regular">프리텐다드</option>
+
+                            <div id="custom-select-container">
+                                <select id="custom-select">
+                                  <option value="jejumyeongjo">제주명조</option>
+                                  <option value="Chosunilbo_myungjo">조선일보명조</option>
+                                  <option value="MapoFlowerIsland">마포꽃섬</option>
+                                  <option value="Pretendard-Regular">프리텐다드</option>
                                 </select>
-                            </form>
+                                <div id="custom-options">
+                                  <div class="custom-option" data-value="jejumyeongjo">제주명조</div>
+                                  <div class="custom-option" data-value="Chosunilbo_myungjo">조선일보명조</div>
+                                  <div class="custom-option" data-value="MapoFlowerIsland">마포꽃섬</div>
+                                  <div class="custom-option" data-value="Pretendard-Regular">프리텐다드</div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="selectbox_detail">
