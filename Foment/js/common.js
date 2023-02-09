@@ -621,19 +621,20 @@ window.onload = function () {
 
     // 서체 변경 JS
 
-    const select = document.querySelector('#custom-select');
-    const optionsContainer = document.querySelector('#custom-options');
+    const select = document.querySelector('.custom-select');
+    const optionsContainer = document.querySelector('.custom-options');
     const options = optionsContainer.querySelectorAll(".custom-option");
     
     select.addEventListener('click', toggleOptions);
     options.forEach(option => option.addEventListener('click', selectOption));
     
     function toggleOptions() {
-        if (optionsContainer.style.display === 'flex') {
-        //   optionsContainer.style.display = 'none';
+        if (optionsContainer.style.display === 'grid') {
+            optionsContainer.style.display = 'none';
           optionsContainer.style.animation = 'slideDown 0.2s ease';
         } else {
-          optionsContainer.style.display = 'flex';
+          optionsContainer.style.display = 'none';
+          optionsContainer.style.display = 'grid';
           optionsContainer.style.animation = 'slideUp 0.2s ease';
         }
       }
@@ -642,6 +643,14 @@ window.onload = function () {
       select.value = this.dataset.value;
       optionsContainer.style.display = 'none';
       changeFontFamily(select.value);
+    }
+
+    document.addEventListener('click', hideOptions);
+
+    function hideOptions(event) {
+    if (!optionsContainer.contains(event.target) && !select.contains(event.target)) {
+        optionsContainer.style.display = 'none';
+    }
     }
     
     function changeFontFamily(fontFamily) {
@@ -663,14 +672,6 @@ window.onload = function () {
         const btnIconElements = document.querySelectorAll('.BtnIcon');
         btnIconElements.forEach(element => element.style.fontFamily = fontFamily);
       }
-    
-    document.addEventListener('click', hideOptions);
-
-        function hideOptions(event) {
-        if (!optionsContainer.contains(event.target) && !select.contains(event.target)) {
-            optionsContainer.style.display = 'none';
-        }
-        }
 
     
 
@@ -1052,6 +1053,51 @@ function printURL() {
 
     document.getElementById("CustomUrl").innerText = PrintURL;
 };
+
+
+
+    // 초대 셀렉트 박스
+
+    const selectInvite = document.querySelector('.custom-select');
+    const optionsContainerInvite = document.querySelector('.custom-options');
+    const optionsInvite = optionsContainerInvite.querySelectorAll(".custom-option");
+    
+    selectInvite.addEventListener('click', toggleOptions);
+    optionsInvite.forEach(option => option.addEventListener('click', selectOption));
+    
+    function toggleOptions() {
+        if (optionsContainerInvite.style.display === 'grid') {
+            optionsContainerInvite.style.display = 'none';
+            optionsContainerInvite.style.animation = 'slideDown 0.2s ease';
+        } else {
+            optionsContainerInvite.style.display = 'none';
+            optionsContainerInvite.style.display = 'grid';
+          optionsContainerInvite.style.animation = 'slideUp 0.2s ease';
+        }
+      }
+    
+    function selectOption() {
+      select.value = this.dataset.value;
+      optionsContainer.style.display = 'none';
+      changeFontFamily(select.value);
+    }
+
+    document.addEventListener('click', hideOptions);
+
+    function hideOptions(event) {
+    if (!optionsContainer.contains(event.target) && !select.contains(event.target)) {
+        optionsContainer.style.display = 'none';
+    }
+    }
+    
+    function changeFontFamily(fontFamily) {
+        const bodyTextElements = document.querySelectorAll('.WeddingBodyText');
+        bodyTextElements.forEach(element => element.style.fontFamily = fontFamily);
+      }
+
+
+
+
 
 // 초대 제목
 function printInvite() {

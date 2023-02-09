@@ -149,7 +149,7 @@ body {
 }
 
 .selectboxname,
-.base,#custom-select{
+.base{
     font-family: 'pretendard', sans-serif;
     width: 100%;
     height: 48px;
@@ -200,7 +200,7 @@ body {
     transition: var(--transition);
     border-radius: var(--BorderRadius-Md);
 }
-#custom-select{
+.custom-select{
     width: 100%;
     height: 48px;
     padding: 0px 16px;
@@ -224,16 +224,16 @@ body {
   
   @keyframes slideDown {
     from {
-      transform: translateY(20px);
+      transform: translateY(0px);
     }
     to {
-      transform: translateY(20px);
+      transform: translateY(-8px);
     }
   }
 
   
 
-.selectboxname, #custom-select{
+.selectboxname, .custom-select{
     background: url('../Resource/assets/Icon/Arrow.svg') no-repeat 95% 50% , var(--ColorBase);
     background-size: 16px 16px;
 }
@@ -243,7 +243,7 @@ body {
     background-size: 12px 12px;
 }
 
-.selectboxname:hover, #custom-select:hover{
+.selectboxname:hover, .custom-select:hover{
     border: 1px solid var(--ColorTextPrimary);
 }
 
@@ -253,17 +253,17 @@ body {
 
 /* 커스텀 셀렉트 박스 */
 
-#custom-select-container {
+.custom-select-container {
     position: relative;
     width: 100%;
   }
 
 
-  #custom-select option{
+  .custom-select option{
     display: none;
   }
   
-  #custom-options {
+  .custom-options {
     padding: 8px;
     position: absolute;
     top: calc(100% + 8px);
@@ -275,9 +275,14 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: none;
     animation-fill-mode: both;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
   }
   
   .custom-option {
+    line-height: 28px;
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     font-size: 16px;
     font-family: Arial, sans-serif;
@@ -289,6 +294,19 @@ body {
   .custom-option:hover {
     border-radius: var(--BorderRadius-Xs);
     background-color: var(--ColorBorderSolid);
+  }
+
+  #TypeJeju{
+    font-family: 'Jeju Myeongjo', serif;
+  }
+  #TypeChosunilbo{
+    font-family: 'Chosunilbo_myungjo', serif;
+  }
+  #TypeMapo{
+    font-family: 'MapoFlowerIsland', serif;
+  }
+  #TypePretendard{
+    font-family: 'Pretendard-Regular', serif;
   }
 
   /* 텍스트 박스 */
