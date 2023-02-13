@@ -578,14 +578,56 @@ window.onload = function () {
         });
     }
 
+       // 초대 셀렉트 박스
 
-    // 초대합니다 입력박스
-    var selectBox = document.getElementById("SelectSampleInvite");
-    var inputBox = document.getElementById("TextBoxInput");
-  
-    selectBox.addEventListener("change", function() {
-      inputBox.value = selectBox.value;
-    });
+       (function() {
+        let selectInvite = document.querySelector('#custom-select-invite');
+        let optionsContainerInvite = document.querySelector('#custom-options-invite');
+      
+        if (!selectInvite || !optionsContainerInvite) {
+          console.error("One or more elements could not be found in the HTML");
+          return;
+        }
+      
+        let optionsInvite = optionsContainerInvite.querySelectorAll(".custom-option");
+      
+        selectInvite.addEventListener('click', toggleOptions);
+        optionsInvite.forEach(option => option.addEventListener('click', selectOption));
+      
+        function toggleOptions() {
+          if (optionsContainerInvite.style.display === 'grid') {
+            optionsContainerInvite.style.display = 'none';
+            optionsContainerInvite.style.animation = 'slideDown 0.2s ease';
+          } else {
+            optionsContainerInvite.style.display = 'none';
+            optionsContainerInvite.style.display = 'grid';
+            optionsContainerInvite.style.animation = 'slideUp 0.2s ease';
+          }
+        }
+
+        function selectOption() {
+            selectInvite.value = this.dataset.value;
+            optionsContainerInvite.style.display = 'none';
+            console.log(selectInvite.value);
+            // 초대합니다 입력박스
+            var inputBox = document.getElementById("TextBoxInput");
+            var invitebody = document.getElementById("InviteBodyText");
+            inputBox.value = selectInvite.value;
+            invitebody.innerText = selectInvite.value;
+          }
+      
+          document.addEventListener('click', hideOptions);
+      
+          function hideOptions(event) {
+          if (!optionsContainerInvite.contains(event.target) && !selectInvite.contains(event.target)) {
+            optionsContainerInvite.style.display = 'none';
+          }
+          }
+
+            
+      })();
+      
+
 
     // 계좌번호 그룹추가
     var accountitemIdx = 3;
@@ -619,7 +661,7 @@ window.onload = function () {
         newLi.appendChild(firstChildLi.cloneNode(true));
     });
 
-    // 서체 변경 JS
+    // 서체 변경 셀렉트박스
 
     const select = document.querySelector('.custom-select');
     const optionsContainer = document.querySelector('.custom-options');
@@ -1054,46 +1096,6 @@ function printURL() {
     document.getElementById("CustomUrl").innerText = PrintURL;
 };
 
-
-
-    // 초대 셀렉트 박스
-
-    const selectInvite = document.querySelector('.custom-select');
-    const optionsContainerInvite = document.querySelector('.custom-options');
-    const optionsInvite = optionsContainerInvite.querySelectorAll(".custom-option");
-    
-    selectInvite.addEventListener('click', toggleOptions);
-    optionsInvite.forEach(option => option.addEventListener('click', selectOption));
-    
-    function toggleOptions() {
-        if (optionsContainerInvite.style.display === 'grid') {
-            optionsContainerInvite.style.display = 'none';
-            optionsContainerInvite.style.animation = 'slideDown 0.2s ease';
-        } else {
-            optionsContainerInvite.style.display = 'none';
-            optionsContainerInvite.style.display = 'grid';
-          optionsContainerInvite.style.animation = 'slideUp 0.2s ease';
-        }
-      }
-    
-    function selectOption() {
-      select.value = this.dataset.value;
-      optionsContainer.style.display = 'none';
-      changeFontFamily(select.value);
-    }
-
-    document.addEventListener('click', hideOptions);
-
-    function hideOptions(event) {
-    if (!optionsContainer.contains(event.target) && !select.contains(event.target)) {
-        optionsContainer.style.display = 'none';
-    }
-    }
-    
-    function changeFontFamily(fontFamily) {
-        const bodyTextElements = document.querySelectorAll('.WeddingBodyText');
-        bodyTextElements.forEach(element => element.style.fontFamily = fontFamily);
-      }
 
 
 
