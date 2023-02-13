@@ -528,26 +528,25 @@ window.onload = function () {
 
     // 지도
 
-    //지도를 삽입할 HTML 요소 또는 HTML 요소의 id를 지정합니다.
-    var mapDiv = document.getElementById('map'); // 'map'으로 선언해도 동일
+    // Get all elements with the class "mapinfo"
+    var mapDivs = document.querySelectorAll('.mapinfo');
 
-    //옵션 없이 지도 객체를 생성하면 서울 시청을 중심으로 하는 16 레벨의 지도가 생성됩니다.
-    var map = new naver.maps.Map(mapDiv);
+    // Loop through the elements and create a map for each one
+    mapDivs.forEach(function(mapDiv) {
+        var map = new naver.maps.Map(mapDiv, {
+            center: new naver.maps.LatLng(37.555073, 126.899030),
+            zoom: 14
+        });
 
-    var map = new naver.maps.Map('map', {
-
-        center: new naver.maps.LatLng(37.555073, 126.892030),
-
-        zoom: 17
-
-    });
-    // 마커 위치 표시
-
-    var marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(37.555073, 126.892030),
-        map: map
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(37.555073, 126.89030),
+            map: map
+        });
     });
 
+
+
+    
     //--> 확대방지
     document.body.addEventListener('touchstart', function (e) {
         if ((e.touches.length > 1) || e.targetTouches.length > 1) {
@@ -556,6 +555,8 @@ window.onload = function () {
             e.stopImmediatePropagation();
         }
     }, { passive: false });
+
+
 
     // --> 미리보기 팝업띄우기
 
@@ -608,12 +609,13 @@ window.onload = function () {
         function selectOption() {
             selectInvite.value = this.dataset.value;
             optionsContainerInvite.style.display = 'none';
-            console.log(selectInvite.value);
             // 초대합니다 입력박스
             var inputBox = document.getElementById("TextBoxInput");
             var invitebody = document.getElementById("InviteBodyText");
-            inputBox.value = selectInvite.value;
-            invitebody.innerText = selectInvite.value;
+            var childElement = this.querySelector(".optiondecription");
+            var childElementText = childElement.innerText;
+            inputBox.value = childElementText;
+            invitebody.innerText = childElementText;
           }
       
           document.addEventListener('click', hideOptions);
@@ -962,8 +964,8 @@ var dateChange = () => {
     let dDay = selectedDate - today;
     let dDayInDays = Math.floor(dDay / (1000 * 60 * 60 * 24));
     let dDaycount = document.getElementById('dday');
-    dDaycount.innerText = '결혼식이 '+ `${dDayInDays}` + '일 남았습니다.';
-    dDayInDays.style.color = "red";
+    dDaycount.innerText = `${dDayInDays}` + '일';
+    console.log(dDayInDays);
     
 
     currentMonthDates[parseInt(dateInput.value.split('-')[2]) - 1].classList.add('today');

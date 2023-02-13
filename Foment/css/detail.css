@@ -535,6 +535,10 @@
   height: 100vh;
 }
 
+.LocationSection{
+  margin-bottom: 64px;
+}
+
 .img {
   width: 100%;
 }

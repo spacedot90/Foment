@@ -19,8 +19,8 @@
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="https://fengyuanchen.github.io/cropper/js/cropper.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript"
-        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vy07krn7cz"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vy07krn7cz"></script>
+
     <script src="../js/common.js"></script>
 </head>
 
@@ -237,7 +237,7 @@
                     서울숲 보테가마지오 로스타뇨 홀 2F
                 </div>
                 <div class="map_area">
-                    <div id="map_contents"></div>
+                    <div class="mapinfo" id="map"></div>
                 </div>
             </div>
 
@@ -245,9 +245,6 @@
             <div class="AccountSection">
                 <div class="WeddingTitleText">
                     마음 전하실 곳
-                </div>
-                <div class="WeddingBodyText">
-                    신랑 신부에게 마음을 표현해 주세요
                 </div>
                 <ul class="accordion">
                     <li class="accordionitem" id="accordionitem1">
@@ -511,7 +508,7 @@
                             💡
                         </div>
                         <div class="MarkText">
-                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                            메인화면과 카카오톡 공유하기에서 보이게 될 정보들을 이곳에서 작성하실 수 있어요
                         </div>
                     </div>
                     <div class="contents_detail">
@@ -615,7 +612,7 @@
                             💡
                         </div>
                         <div class="MarkText">
-                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                            신랑님의 성함과 가족 정보를 입력하는 영역이에요
                         </div>
                     </div>
                     <div class="contents2">
@@ -715,7 +712,7 @@
                             💡
                         </div>
                         <div class="MarkText">
-                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                            신부님의 성함과 가족 정보를 입력하는 영역이에요
                         </div>
                     </div>
                     <div class="contents2">
@@ -816,7 +813,7 @@
                             💡
                         </div>
                         <div class="MarkText">
-                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                            진행 예정이신 예식 정보를 기입 해주세요
                         </div>
                     </div>
                     <div class="contents_detail">
@@ -872,7 +869,7 @@
                             <label class="selectbox_label" for="file">예식장 명</label>
                             <div class="NameBox">
                                 <textarea class="TextBox" id="WeddingLocateTitleInput" cols="20" rows="20"
-                                    placeholder="예식장 이름, 층수 입력" onkeyup="WeddingLocationInput()"></textarea>
+                                    placeholder="예식장 이름, 층수 입력 (ex. 서울숲 보테가마지오 로스타뇨 홀 2F)" onkeyup="WeddingLocationInput()"></textarea>
                             </div>
                         </div>
                         <!-- 예식장 주소 -->
@@ -880,15 +877,15 @@
                             <label class="selectbox_label" for="file">예식장 주소</label>
                             <div class="InputArea">
                                 <div class="NameBox">
-                                    <input class="base" id="" name="base" type="base" onkeyup="printGroom()"
+                                    <input class="base" id="SearchAddressInput" name="base" type="base" onkeyup="printGroom()"
                                         placeholder="주소 검색을 먼저 해주세요">
-                                    <button class="BtnBasic">
+                                    <button class="BtnBasic" id="SearchAddressBtn">
                                         주소 검색
                                     </button>
                                 </div>
                                 <!-- 네이버 지도 API -->
                                 <div class="map_area">
-                                    <div id="map"></div>
+                                    <div class="mapinfo" id="map"></div>
                                 </div>
                             </div>
                         </div>
@@ -912,7 +909,7 @@
                             💡
                         </div>
                         <div class="MarkText">
-                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                            초대 문구 작성이 어렵다면, 샘플 텍스트 보기를 통해 초대 문구를 간편히 작성할 수 있어요
                         </div>
                     </div>
                     <div class="contents_detail">
@@ -930,51 +927,71 @@
                             <label class="selectbox_label" for="file">샘플 텍스트 보기</label>
                             <div class="InputArea">
 
+                                <div class="NameBox">
+                                    <textarea class="TextBox" id="TextBoxInput" cols="50" rows="10" pattern="[^\s]+" required
+                                        placeholder="초대 글 내용 입력" onkeyup="printInviteBody()"></textarea>
+                                </div>
+
                                 <div class="custom-select-container" id="custom-select-container-invite">
 
                                     <select class="custom-select" id="custom-select-invite">
-                                        <option value="평생을 함께하고 싶은 사람이 생겼습니다.
-처음처럼 변치않는 마음으로 서로 아끼며
-예쁘게 살겠습니다.
-부디 함께하시어
-저희의 하나됨을 따듯한 미소로
-축복해주시기를 바랍니다.">샘플 텍스트보기 1</option>
-                                        <option value="DogDogDogDogogDog">샘플 텍스트보기 2</option>
+                                        <option value="샘플 텍스트보기 1">샘플 텍스트보기 1</option>
+                                        <option value="샘플 텍스트보기 2">샘플 텍스트보기 2</option>
+                                        <option value="샘플 텍스트보기 3">샘플 텍스트보기 3</option>
+                                        <option value="샘플 텍스트보기 4">샘플 텍스트보기 4</option>
                                     </select>
 
                                     <div class="custom-options" id="custom-options-invite">
-                                        <div class="custom-option" data-value="평생을 함께하고 싶은 사람이 생겼습니다.
+                                        <div class="custom-option" data-value="샘플 텍스트보기 1">
+                                            <div class="OptionTitle">
+                                                샘플 텍스트보기 1
+                                            </div>
+                                            <div class="optiondecription">평생을 함께하고 싶은 사람이 생겼습니다.
 처음처럼 변치않는 마음으로 서로 아끼며
 예쁘게 살겠습니다.
 부디 함께하시어
 저희의 하나됨을 따듯한 미소로
-축복해주시기를 바랍니다.">
-                                            <div class="OptionTitle">샘플 텍스트보기 1</div>
-                                            <div class="optiondecription">평생을 함께하고 싶은 사람이 생겼습니다.
-                                                처음처럼 변치않는 마음으로 서로 아끼며
-                                                예쁘게 살겠습니다.
-                                                부디 함께하시어
-                                                저희의 하나됨을 따듯한 미소로
-                                                축복해주시기를 바랍니다.</div>
+축복해주시기를 바랍니다.</div>
                                         </div>
-                                        <div class="custom-option" data-value="DogDogDogDogogDog"
-                                            id="custom-option-invite">
-                                            <div class="OptionTitle">샘플 텍스트보기 2</div>
+
+                                        <div class="custom-option" data-value="샘플 텍스트보기 1">
+                                            <div class="OptionTitle">
+                                                샘플 텍스트보기 1
+                                            </div>
                                             <div class="optiondecription">평생을 함께하고 싶은 사람이 생겼습니다.
-                                                처음처럼 변치않는 마음으로 서로 아끼며
-                                                예쁘게 살겠습니다.
-                                                부디 함께하시어
-                                                저희의 하나됨을 따듯한 미소로
-                                                축복해주시기를 바랍니다.</div>
+처음처럼 변치않는 마음으로 서로 아끼며
+예쁘게 살겠습니다.
+부디 함께하시어
+저희의 하나됨을 따듯한 미소로
+축복해주시기를 바랍니다.</div>
                                         </div>
+
+                                        <div class="custom-option" data-value="샘플 텍스트보기 1">
+                                            <div class="OptionTitle">
+                                                샘플 텍스트보기 1
+                                            </div>
+                                            <div class="optiondecription">평생을 함께하고 싶은 사람이 생겼습니다.
+처음처럼 변치않는 마음으로 서로 아끼며
+예쁘게 살겠습니다.
+부디 함께하시어
+저희의 하나됨을 따듯한 미소로
+축복해주시기를 바랍니다.</div>
+                                        </div>
+
+                                        <div class="custom-option" data-value="샘플 텍스트보기 1">
+                                            <div class="OptionTitle">
+                                                샘플 텍스트보기 1
+                                            </div>
+                                            <div class="optiondecription">평생을 함께하고 싶은 사람이 생겼습니다.
+처음처럼 변치않는 마음으로 서로 아끼며
+예쁘게 살겠습니다.
+부디 함께하시어
+저희의 하나됨을 따듯한 미소로
+축복해주시기를 바랍니다.</div>
+                                        </div>
+
                                     </div>
 
-                                </div>
-
-
-                                <div class="NameBox">
-                                    <textarea class="TextBox" id="TextBoxInput" cols="50" rows="10"
-                                        placeholder="초대 글 내용 입력" onkeyup="printInviteBody()"></textarea>
                                 </div>
                                 
                             </div>
@@ -998,34 +1015,10 @@
                             💡
                         </div>
                         <div class="MarkText">
-                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                            신랑 / 신부님 외에도 '계좌그룹 추가하기' 를 눌러 혼주분들의 계좌도 추가하실 수 있어요
                         </div>
                     </div>
                     <div class="contents_detail">
-                        <!-- 계좌 제목 -->
-                        <div class="selectbox_detail">
-                            <label class="selectbox_label" for="file">제목</label>
-                            <div class="InputArea">
-                                <div class="NameBox">
-                                    <input class="base" id="" name="base" type="base" onkeyup="printGroom()"
-                                        placeholder="마음 전하실 곳">
-                                </div>
-                                <input class="base" id="" name="base" type="base" onkeyup="printGroom()"
-                                    placeholder="상세 내용 입력">
-                                <div class="NameBox">
-                                    <select class="selectboxname" name="pets" id="select"
-                                        onchange="handleOnChange(this,'select-result2')">
-                                        <option value="base">샘플 텍스트 보기</option>
-                                        <option value="dog">Dog</option>
-                                        <option value="cat">Cat</option>
-                                        <option value="hamster">Hamster</option>
-                                        <option value="parrot">Parrot</option>
-                                        <option value="spider">Spider</option>
-                                        <option value="goldfish">Goldfish</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="AccountGroup" id="AccountGroup">
                             <!-- 그룹 명 -->
@@ -1170,7 +1163,7 @@
                             💡
                         </div>
                         <div class="MarkText">
-                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                            갤러리에 신랑 신부님의 아름다운 사진들을 추가해 보세요
                         </div>
                     </div>
                     <div class="contents_detail">
@@ -1237,7 +1230,7 @@
                             💡
                         </div>
                         <div class="MarkText">
-                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                            방명록에서는 하객분들께서 신랑신부님을 메시지로 축하할 수 있어요
                         </div>
                     </div>
                     <div class="contents_detail">
@@ -1273,7 +1266,7 @@
                             💡
                         </div>
                         <div class="MarkText">
-                            모바일 청첩장의 전체적인 디자인을 이곳에서 수정 하실 수 있어요 :)
+                            드래그 하여 청첩장 노출 순서를 변경하실 수 있어요
                         </div>
                     </div>
                     <div class="contents_detail">
