@@ -526,23 +526,22 @@ window.onload = function () {
             }
         });
 
-    // 지도
 
-    // Get all elements with the class "mapinfo"
-    var mapDivs = document.querySelectorAll('.mapinfo');
-
-    // Loop through the elements and create a map for each one
-    mapDivs.forEach(function(mapDiv) {
-        var map = new naver.maps.Map(mapDiv, {
-            center: new naver.maps.LatLng(37.555073, 126.899030),
-            zoom: 14
-        });
-
-        var marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(37.555073, 126.89030),
-            map: map
-        });
+    // 카카오맵 API
+    const mapDivs = document.querySelectorAll('.mapinfo');
+    const mapoptions = {
+      center: new kakao.maps.LatLng(37.559073, 126.91030),
+      level: 3
+    };
+    
+    for (let i = 0; i < mapDivs.length; i++) {
+      const map = new kakao.maps.Map(mapDivs[i], mapoptions);
+      var marker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(37.559073, 126.91030),
+        map: map
     });
+    }
+    
 
 
 
