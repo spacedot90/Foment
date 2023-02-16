@@ -527,22 +527,77 @@ window.onload = function () {
         });
 
 
-    // 카카오맵 API
-    const mapDivs = document.querySelectorAll('.mapinfo');
-    const mapoptions = {
-      center: new kakao.maps.LatLng(37.559073, 126.91030),
-      level: 3
-    };
-    
-    for (let i = 0; i < mapDivs.length; i++) {
-      const map = new kakao.maps.Map(mapDivs[i], mapoptions);
-      var marker = new kakao.maps.Marker({
-        position: new kakao.maps.LatLng(37.559073, 126.91030),
-        map: map
-    });
-    }
-    
+// 카카오지도 API
+const mapDivs = document.querySelectorAll('.mapinfo');
+const mapoptions = {
+  center: new kakao.maps.LatLng(37.559073, 126.91030),
+  level: 3
+};
 
+const markers = []; // 마커 객체를 저장할 배열
+const infowindows = []; // 인포윈도우 객체를 저장할 배열
+
+for (let i = 0; i < mapDivs.length; i++) {
+  const map = new kakao.maps.Map(mapDivs[i], mapoptions);
+
+  const searchInput = document.getElementById('SearchAddressInput');
+  const searchBtn = document.getElementById('SearchAddressBtn');
+
+  searchBtn.addEventListener('click', () => {
+    const query = searchInput.value;
+    if (query) {
+      // 이전에 생성된 마커와 인포윈도우를 삭제
+      markers.forEach((marker) => {
+        marker.setMap(null);
+      });
+      infowindows.forEach((infowindow) => {
+        infowindow.close();
+      });
+      markers.length = 0;
+      infowindows.length = 0;
+
+      const placesService = new kakao.maps.services.Places();
+      placesService.keywordSearch(query, (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          result.forEach((place) => {
+            const coords = new kakao.maps.LatLng(place.y, place.x);
+            const marker = new kakao.maps.Marker({
+              position: coords,
+              map: map
+            });
+            markers.push(marker);
+            const infowindow = new kakao.maps.InfoWindow({
+              content: `<div class="InfoWindow">${place.place_name}<br>${place.address_name}</div>`
+            });
+            infowindow.open(map, marker);
+            infowindows.push(infowindow);
+          });
+          const bounds = new kakao.maps.LatLngBounds();
+          markers.forEach((marker) => {
+            bounds.extend(marker.getPosition());
+          });
+          map.setBounds(bounds);
+        } else {
+            alert('주소 명이 올바르지 않습니다. 다시 검색해주세요');
+        }
+      });
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
 
 
     
