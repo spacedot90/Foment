@@ -536,6 +536,8 @@ const mapoptions = {
 
 const markers = []; // 마커 객체를 저장할 배열
 const infowindows = []; // 인포윈도우 객체를 저장할 배열
+console.log(markers);
+console.log(infowindows);
 
 for (let i = 0; i < mapDivs.length; i++) {
   const map = new kakao.maps.Map(mapDivs[i], mapoptions);
@@ -567,7 +569,8 @@ for (let i = 0; i < mapDivs.length; i++) {
             });
             markers.push(marker);
             const infowindow = new kakao.maps.InfoWindow({
-              content: `<div class="InfoWindow">${place.place_name}<br>${place.address_name}</div>`
+              content: `<div class="InfoWindow"><div class="InfoTitle">${place.place_name}</div>
+              <div class="InfoDes">${place.address_name}</div></div>`
             });
             infowindow.open(map, marker);
             infowindows.push(infowindow);
@@ -585,7 +588,18 @@ for (let i = 0; i < mapDivs.length; i++) {
   });
 }
 
-
+var infoTitle = document.querySelectorAll('.InfoTitle');
+infoTitle.forEach(function(e) {
+    var w = e.offsetWidth + 10;
+    var ml = w/2;
+    e.parentElement.style.top = "42px";
+    e.parentElement.style.left = "50%";
+    e.parentElement.style.marginLeft = -ml+"px";
+    e.parentElement.style.width = w+"px";
+    e.parentElement.previousSibling.style.display = "none";
+    e.parentElement.parentElement.style.border = "none";
+    e.parentElement.parentElement.style.background = "unset";
+});
 
 
 
