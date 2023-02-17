@@ -409,6 +409,7 @@
 }
 
 .NavigationItem{
+  font-family: 'pretendard', sans-serif;
   width: 100%;
   display: flex;
   justify-content: center;
