@@ -563,7 +563,7 @@ kakao.maps.load(() => {
           marker.getMap().setBounds(bounds);
         });
       } else {
-        alert('검색 결과가 없습니다.');
+        alert('해당 위치의 주소지를 검색할 수 없습니다. 마커 위치를 다시 배치해 주세요.');
       }
     }
   
@@ -597,9 +597,109 @@ kakao.maps.load(() => {
         });
       });
     }
+
+    // 네이버 지도 길찾기
+
+    // 'NaverNav' ID를 가진 클래스 선택
+    const naverNav = document.getElementById('NaverNav');
+    naverNav.addEventListener('click', () => {
+    const geocoder = new kakao.maps.services.Geocoder();
+    const position = markers[0].getPosition(); // Marker의 위치 가져오기
+    const lat = position.getLat();
+    const lng = position.getLng();
+
+    // Marker의 위치를 기반으로 주소값 가져오기
+    geocoder.coord2Address(lng, lat, (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+        const address = result[0].address.address_name;
+
+        // 네이버지도 검색 경로 URL 생성
+        const naverUrl = 'https://map.naver.com/v5/search/' + encodeURIComponent(address);
+
+        // 새 창에서 네이버지도 검색 경로 열기
+        window.open(naverUrl);
+        } else {
+        alert('주소를 찾을 수 없습니다.');
+        }
+    });
+    });
+
+    // 'KakaoNav' ID를 가진 클래스 선택
+    const kakaoNav = document.getElementById('KakaoNav');
+    kakaoNav.addEventListener('click', () => {
+    const geocoder = new kakao.maps.services.Geocoder();
+    const position = markers[0].getPosition(); // Marker의 위치 가져오기
+    const lat = position.getLat();
+    const lng = position.getLng();
+
+    // Marker의 위치를 기반으로 주소값 가져오기
+    geocoder.coord2Address(lng, lat, (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+        const address = result[0].address.address_name;
+
+        // 카카오맵 URL 생성
+        const kakaoUrl = 'https://map.kakao.com/link/search/' + encodeURIComponent(address);
+
+        // 카카오네비게이션 앱이 설치되어 있는지 확인
+        const isKakaoNavi = (function() {
+            const ua = navigator.userAgent.toLowerCase();
+            return (ua.indexOf('kakaonavi') > -1);
+        })();
+
+        if (isKakaoNavi) {
+            // 카카오네비게이션 앱이 설치되어 있으면 앱을 열고 해당 위치로 길 안내
+            window.location.href = 'kakaonavi://route?ep=' + lat + ',' + lng + '&by=CAR&name=' + encodeURIComponent(address);
+        } else {
+            // 카카오네비게이션 앱이 없으면 웹페이지에서 해당 위치로 검색 결과 표시
+            window.open(kakaoUrl);
+        }
+        } else {
+        alert('주소를 찾을 수 없습니다.');
+        }
+    });
+    });
+
+
+
+    // 'TmapNav' ID를 가진 클래스 선택
+    const tmapNav = document.getElementById('TmapNav');
+    tmapNav.addEventListener('click', () => {
+    const geocoder = new kakao.maps.services.Geocoder();
+    const position = markers[0].getPosition(); // Marker의 위치 가져오기
+    const lat = position.getLat();
+    const lng = position.getLng();
+
+    // Marker의 위치를 기반으로 주소값 가져오기
+    geocoder.coord2Address(lng, lat, (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+        const address = result[0].address.address_name;
+
+        // 티맵네비게이션 URL 생성
+        const tmapUrl = 'tmap://route?goalx=' + lng + '&goaly=' + lat + '&goalname=' + encodeURIComponent(address);
+
+        // 티맵네비게이션 앱이 설치되어 있는지 확인
+        const isTmap = (function() {
+            const ua = navigator.userAgent.toLowerCase();
+            return (ua.indexOf('tmap') > -1);
+        })();
+
+        if (isTmap) {
+            // 티맵네비게이션 앱이 설치되어 있으면 앱을 열고 주소값으로 길 안내
+            window.location.href = tmapUrl;
+        } else {
+            // 티맵네비게이션 앱이 없으면 모바일에서 확인 안내
+            confirm('모바일에서 확인하실 수 있습니다.');
+        }
+        } else {
+        alert('주소를 찾을 수 없습니다.');
+        }
+    });
+    });
+
+
   });
   
-  
+
   
   
 
