@@ -401,7 +401,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 24px;
+  height: 16px;
   padding: 12px 4px;
   background-color: var(--ColorBrand);
   font-size: var(--Text-Supported);
