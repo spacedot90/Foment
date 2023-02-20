@@ -92,6 +92,22 @@
   text-align: center;
 }
 
+.WeddingLocate{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+#AddressTitle{
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+#WeddingAddress{
+  color: var(--ColorTextTertiary);
+}
+
 .WeddingBodyText {
   text-align: center;
   margin: 0;
@@ -356,16 +372,16 @@
   height: 240px;
 }
 
-.sec_cal .cal_wrap .day:nth-child(7n -1) {
+.sec_cal .cal_wrap .day:nth-child(7n -6) {
   color: red;
 }
 
 .sec_cal .cal_wrap .day:nth-child(7n) {
-  color: red;
+  color: #333;
 }
 
 .sec_cal .cal_wrap .day.disable {
-  color: #999;
+  color: #fff;
 }
 
 #map {
@@ -757,8 +773,12 @@ li.TabItemDesign:hover {
   display: flex;
   justify-content: center;
   gap: 4px;
-  padding: 32px 16px 16px 16px;
+  padding: 6px 16px;
+  background: var(--ColorBrand);
+  border: 1px solid var(--ColorBorderSolid);
+  border-radius: var(--BorderRadius-Md);
   text-align: center;
+  margin-top: 12px;
 }
 #dday{
   color: #ff5000;

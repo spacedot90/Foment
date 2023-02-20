@@ -540,11 +540,13 @@ kakao.maps.load(() => {
   
     const searchInput = document.getElementById('SearchAddressInput');
     const searchBtn = document.getElementById('SearchAddressBtn');
+    const addressinfo = document.getElementById('WeddingAddress');
   
     searchBtn.addEventListener('click', () => {
       const postpopup = new daum.Postcode({
         oncomplete: function(data) {
           searchInput.value = data.address;
+          addressinfo.innerText = searchInput.value;
           const ps = new kakao.maps.services.Places(); // 장소 검색 객체 생성
           ps.keywordSearch(data.address, placesSearchCB);
         }
@@ -1011,89 +1013,96 @@ kakao.maps.load(() => {
 }
 
 
-
 // 연동할 캘린더
 
 $(document).ready(function () {
     calendarInit();
 });
-/*
-    달력 렌더링 할 때 필요한 정보 목록 
- 
-    현재 월(초기값 : 현재 시간)
-    금월 마지막일 날짜와 요일
-    전월 마지막일 날짜와 요일
-*/
-// calendar init 에 인풋값이 대치
+
 function calendarInit() {
 
-    // 날짜 정보 가져오기
-    var date = new Date(); // 현재 날짜(로컬 기준) 가져오기
-    var utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000); // uct 표준시 도출
-    var kstGap = 9 * 60 * 60 * 1000; // 한국 kst 기준시간 더하기
-    var today = new Date(utc + kstGap); // 한국 시간으로 date 객체 만들기(오늘)
+    var date = new Date();
+    var utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000);
+    var kstGap = 9 * 60 * 60 * 1000;
+    var today = new Date(utc + kstGap);
 
     var thisMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    // 달력에서 표기하는 날짜 객체
 
+    function renderCalendar(thisMonth) {
+        // 렌더링 코드는 그대로 유지
+               // 렌더링을 위한 데이터 정리
+               currentYear = thisMonth.getFullYear(); //달력 연도
+               currentMonth = thisMonth.getMonth(); //달력 월
+               currentDate = thisMonth.getDate(); // 달력 일
+           
+               // 이번 달의 첫 날과 마지막 날 구하기
+               var firstDay = new Date(currentYear, currentMonth, 1);
+               var lastDay = new Date(currentYear, currentMonth + 1, 0);
+           
+               // 이번 달의 첫 날이 무슨 요일인지 구하기 (0 = 일요일, 1 = 월요일, ...)
+               var firstDayOfWeek = firstDay.getDay();
+           
+               // 이전 달의 마지막 날 구하기
+               var prevMonthLastDay = new Date(currentYear, currentMonth, 0);
+               var prevMonthLastDate = prevMonthLastDay.getDate();
+           
+               // 다음 달의 첫 날 구하기
+               var nextMonthFirstDay = new Date(currentYear, currentMonth + 1, 1);
+           
+               // 현재 월 표기
+               $('.year-month').text((currentMonth + 1) + '월 ' + currentDate + '일');
+           
+               // 렌더링 html 요소 생성
+               var calendar = document.querySelector('.dates');
+               calendar.innerHTML = '';
+           
+               // 이전 달의 마지막 주
+               for (var i = firstDayOfWeek - 1; i >= 0; i--) {
+                   var date = prevMonthLastDate - i;
+                   calendar.innerHTML += '<div class="day prev disable">' + date + '</div>';
+               }
+           
+               // 이번 달
+               for (var i = 1; i <= lastDay.getDate(); i++) {
+                   var dayOfWeek = new Date(currentYear, currentMonth, i).getDay();
+                   var className = 'day current';
+                   if (dayOfWeek == 0) {
+                       className += ' sunday';
+                   } else if (dayOfWeek == 6) {
+                       className += ' saturday';
+                   }
+                   if (i == currentDate) {
+                       className += ' today';
+                   }
+                   calendar.innerHTML += '<div class="' + className + '">' + i + '</div>';
+               }
+       
+               // 다음 달의 첫 주
+               for (var i = 1; i <= 6 - lastDay.getDay(); i++) {
+                   var date = i;
+                   calendar.innerHTML += '<div class="day next disable">' + date + '</div>';
+               }
 
-    var currentYear = thisMonth.getFullYear(); // 달력에서 표기하는 연
-    var currentMonth = thisMonth.getMonth(); // 달력에서 표기하는 월
-    var currentDate = thisMonth.getDate(); // 달력에서 표기하는 일
-
-    // kst 기준 현재시간
-    // console.log(thisMonth);
-
-    // 캘린더 렌더링
-    renderCalender(thisMonth);
-
-    function renderCalender(thisMonth) {
-
-        // 렌더링을 위한 데이터 정리
-        currentYear = thisMonth.getFullYear();
-        currentMonth = thisMonth.getMonth();
-        currentDate = thisMonth.getDate();
-
-        // 이전 달의 마지막 날 날짜와 요일 구하기
-        var startDay = new Date(currentYear, currentMonth, 0);
-        var prevDate = startDay.getDate();
-        var prevDay = startDay.getDay();
-
-        // 이번 달의 마지막날 날짜와 요일 구하기
-        var endDay = new Date(currentYear, currentMonth + 1, 0);
-        var nextDate = endDay.getDate();
-        var nextDay = endDay.getDay();
-
-        // console.log(prevDate, prevDay, nextDate, nextDay);
-
-        // 현재 월 표기
-        $('.year-month').text((currentMonth + 1) + '월' + currentDate + '일');
-
-        // 렌더링 html 요소 생성
-        calendar = document.querySelector('.dates')
-        calendar.innerHTML = '';
-
-        // 지난달
-        for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
-            calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
-        }
-        // 이번달
-        for (var i = 1; i <= nextDate; i++) {
-            calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
-        }
-        // 다음달
-        for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
-            calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
-        }
-
-        // 오늘 날짜 표기
-        if (today.getMonth() == currentMonth) {
-            todayDate = today.getDate();
-            var currentMonthDate = document.querySelectorAll('.dates .current');
-            currentMonthDate[todayDate - 1].classList.add('today');
-        }
+               // 이번 달에 속하지 않는 날짜에 대한 클래스 지정
+           var prevMonthDates = document.querySelectorAll('.day.prev');
+           var nextMonthDates = document.querySelectorAll('.day.next');
+           for (var i = 0; i < prevMonthDates.length; i++) {
+               prevMonthDates[i].classList.add('disable');
+           }
+           for (var i = 0; i < nextMonthDates.length; i++) {
+               nextMonthDates[i].classList.add('disable');
+           }
+       
+               // 오늘 날짜 표기
+           if (today.getMonth() == currentMonth) {
+               var currentMonthDates = document.querySelectorAll('.dates .current');
+               currentMonthDates[today.getDate() - 1].classList.add('today');
+           }
+           
     }
 
+    // renderCalendar() 함수 호출
+    renderCalendar(thisMonth);
 }
 
 // 인풋 캘린더
@@ -1107,33 +1116,98 @@ var dateChange = () => {
     let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
     let dayName = days[selectedDate.getDay()];
 
+    console.log(selectedDate);
+
+    // 선택한 연,월,일 정리
+    // var KorDate = selectedDate.setHours(selectedDate.getHours() + 9);
+    var SelectYear = selectedDate.getFullYear();
+    var SelectMonth = selectedDate.getMonth();
+    var SelectDate = selectedDate.getDate();
+
+    console.log(SelectYear);
+    console.log(SelectMonth);
+    console.log(SelectDate);
+
+    // 선택한 달의 첫 날과 마지막 날 구하기
+    var SelectfirstDay = new Date(SelectYear, SelectMonth, 1);
+    var SelectlastDay = new Date(SelectYear, SelectMonth + 1, 0);
+    console.log(SelectfirstDay);
+    console.log(SelectlastDay);
+
+    // 선택한 달의 첫 날이 무슨 요일인지 구하기 (0 = 일요일, 1 = 월요일, ...)
+    var firstDayOfWeek = SelectfirstDay.getDay();
+    console.log(firstDayOfWeek);
+
+    // 선택한 달의 마지막 날 구하기
+    var prevMonthLastDay = new Date(SelectYear, SelectMonth, 0);
+    var prevMonthLastDate = prevMonthLastDay.getDate();
+
+    // 선택한 다음 달의 첫 날 구하기
+    var nextMonthFirstDay = new Date(SelectYear, SelectMonth + 1, 1);
+
+    // 렌더링 html 요소 생성
+    var calendar = document.querySelector('.dates');
+    calendar.innerHTML = '';
+
+    // 선택한 달의 마지막 주
+    for (var i = firstDayOfWeek - 1; i >= 0; i--) {
+        var date = prevMonthLastDate - i;
+        calendar.innerHTML += '<div class="day prev disable">' + date + '</div>';
+    }
+
+    // 선택한 이번 달
+    for (var i = 1; i <= SelectlastDay.getDate(); i++) {
+        var dayOfWeek = new Date(currentYear, currentMonth, i).getDay();
+        var className = 'day current';
+        if (dayOfWeek == 0) {
+            className += ' sunday';
+        } else if (dayOfWeek == 6) {
+            className += ' saturday';
+        }
+        if (i == currentDate) {
+            className += ' today';
+        }
+        calendar.innerHTML += '<div class="' + className + '">' + i + '</div>';
+    }
+
+    // 다음 달의 첫 주
+    for (var i = 1; i <= 6 - SelectlastDay.getDay(); i++) {
+        var date = i;
+        calendar.innerHTML += '<div class="day next disable">' + date + '</div>';
+    }
+
+
     if (selectedDate < todaydate) {
         alert("오늘 날짜 이전의 날짜는 선택할 수 없습니다.");
         return;
     }
 
+    // 날짜 표기 방법에 대한 정의 : 10보다 작으면 20 -> 2로 표기
     let monthDisplay = (parseInt(dateArr[1]) < 10) ? dateArr[1].replace("0", "") : dateArr[1];
     let dateDisplay = (parseInt(dateArr[2]) < 10) ? dateArr[2].replace("0", "") : dateArr[2];
 
+    // 영역별 월/일/요일 표기
     document.getElementById("TextDateCalendar").innerText = `${monthDisplay}월 ${dateDisplay}일`;
     document.getElementById("WeddingDateTitle").innerText = `${monthDisplay}월 ${dateDisplay}일`;
     document.getElementById("WeddingDayTitle").innerText = dayName;
 
+    // 갱신될때마다 Today 초기화
     let currentMonthDates = document.querySelectorAll('.dates .current');
     currentMonthDates.forEach(date => {
         date.classList.remove('today');
     });
 
+    // 디데이 관련 코드
     let today = new Date();
     let dDay = selectedDate - today;
     let dDayInDays = Math.floor(dDay / (1000 * 60 * 60 * 24));
     let dDaycount = document.getElementById('dday');
     dDaycount.innerText = `${dDayInDays}` + '일';
-    console.log(dDayInDays);
     
-
+    // 선택한 일자 표기
     currentMonthDates[parseInt(dateInput.value.split('-')[2]) - 1].classList.add('today');
 };
+
 
 
 
@@ -1172,6 +1246,14 @@ function handleOnChange(e, target) {
 function WeddingLocationInput(){
     var WeddingLocateTitle = document.getElementById("WeddingLocateTitleInput").value;
     document.getElementById("WeddingLocateTitle").innerText = WeddingLocateTitle;
+    document.getElementById("WeddingLocateTitleMap").innerText = WeddingLocateTitle;
+}
+
+// 예식장 층,홀 입력
+function WeddingHallInfoInput(){
+    var WeddingLocateTitle = document.getElementById("WeddingHallInfoInput").value;
+    document.getElementById("WeddingHallInfo").innerText = WeddingLocateTitle;
+    document.getElementById("WeddingHallInfoMap").innerText = WeddingLocateTitle;
 }
 
 

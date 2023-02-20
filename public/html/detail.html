@@ -122,8 +122,13 @@
                             <span class="WeddingTime" id="WeddingTime">1시</span>
                             <span class="WeddingMinute" id="WeddingMinute">30분</span>
                         </div>
-                        <div class="WeddingBodyText" id="WeddingLocateTitle">
-                            서울숲 보테가마지오 로스타뇨 홀 2F
+                        <div class="WeddingLocate">
+                            <div class="WeddingBodyText" id="WeddingLocateTitle">
+                                서울숲 보테가마지오
+                            </div>
+                            <div class="WeddingBodyText" id="WeddingHallInfo">
+                                로스타뇨 홀 2F
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,13 +202,13 @@
                 </div>
                 <div class="cal_wrap">
                     <div class="days">
+                        <div class="day">일</div>
                         <div class="day">월</div>
                         <div class="day">화</div>
                         <div class="day">수</div>
                         <div class="day">목</div>
                         <div class="day">금</div>
                         <div class="day">토</div>
-                        <div class="day">일</div>
                     </div>
                     <div class="dates"></div>
                     <div class="WeddingBodyText">
@@ -232,12 +237,18 @@
 
             <!-- 식장 위치 -->
             <div class="LocationSection">
-                <div class="WeddingTitleText">
+                <div class="WeddingTitleText" id="AddressTitle">
                     식장 위치
                 </div>
-                <div class="WeddingBodyText">
-                    서울숲 보테가마지오 로스타뇨 홀 2F
+                <div class="WeddingLocate">
+                    <div class="WeddingBodyText" id="WeddingLocateTitleMap">
+                        서울숲 보테가마지오
+                    </div>
+                    <div class="WeddingBodyText" id="WeddingHallInfoMap">
+                        로스타뇨 홀 2F
+                    </div>
                 </div>
+                <div class="WeddingBodyText" id="WeddingAddress">성동구 2가 1길 27</div>
                 <div class="map_area">
                     <div class="mapinfo" id="map"></div>
                     <div class="NavigationSection">
@@ -880,12 +891,22 @@
                                 </select>
                             </div>
                         </div>
+
                         <!-- 예식장 이름 입력 -->
                         <div class="selectbox_detail">
                             <label class="selectbox_label" for="file">예식장 명</label>
                             <div class="NameBox">
-                                <textarea class="TextBox" id="WeddingLocateTitleInput" cols="20" rows="20"
-                                    placeholder="예식장 이름, 층수 입력 (ex. 서울숲 보테가마지오 로스타뇨 홀 2F)" onkeyup="WeddingLocationInput()"></textarea>
+                                <input class="base" id="WeddingLocateTitleInput" name="base" type="base"
+                                    onkeyup="WeddingLocationInput()" placeholder="예식장 이름을 입력해주세요">
+                            </div>
+                        </div>
+
+                        <!-- 예식장 홀,층수 입력 -->
+                        <div class="selectbox_detail">
+                            <label class="selectbox_label" for="file">예식장 층과 홀</label>
+                            <div class="NameBox">
+                                <input class="base" id="WeddingHallInfoInput" name="base" type="base"
+                                    onkeyup="WeddingHallInfoInput()" placeholder="예식장 층과 홀 이름을 입력">
                             </div>
                         </div>
                         <!-- 예식장 주소 -->
