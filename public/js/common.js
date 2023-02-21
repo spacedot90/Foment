@@ -6,11 +6,11 @@ window.onload = function () {
     const targetElement = document.getElementById('scrollFamilyinfo');
 
     GroomFirstNameInput.addEventListener('click', () => {
-    targetElement.scrollIntoView({ behavior: 'smooth' });
+        targetElement.scrollIntoView({ behavior: 'smooth' });
     });
 
     // 신랑 아버지 상태값 체크박스 선택
-    document.getElementById('groomfatherstatus').addEventListener("click", function() {
+    document.getElementById('groomfatherstatus').addEventListener("click", function () {
         let selectBoxes = document.getElementById("groomfatherstatustype");
         let selectedValue = selectBoxes.value;
         if (this.checked) {
@@ -31,13 +31,13 @@ window.onload = function () {
         document.querySelector("#GroomFatherStatusInfo").innerText = selectedValue;
     });
     // 신랑 아버지 상태값 입력
-    document.getElementById("groomfatherstatustype").addEventListener("change", function() {
+    document.getElementById("groomfatherstatustype").addEventListener("change", function () {
         console.log(this.value);
         document.querySelector("#GroomfatherStatusInfo").innerText = this.value;
     });
 
     // 신랑 어머니 상태값 체크박스 선택
-    document.getElementById('groommotherstatus').addEventListener("click", function() {
+    document.getElementById('groommotherstatus').addEventListener("click", function () {
         let selectBoxes = document.getElementById("groommotherstatustype");
         let selectedValue = selectBoxes.value;
         if (this.checked) {
@@ -58,14 +58,14 @@ window.onload = function () {
         document.querySelector("#GroomMotherStatusInfo").innerText = selectedValue;
     });
     // 신랑 어머니 상태값 입력
-    document.getElementById("groommotherstatustype").addEventListener("change", function() {
+    document.getElementById("groommotherstatustype").addEventListener("change", function () {
         console.log(this.value);
         document.querySelector("#GroomMotherStatusInfo").innerText = this.value;
     });
 
 
     // 신부 아버지 상태값 체크박스 선택
-    document.getElementById('bridefatherstatus').addEventListener("click", function() {
+    document.getElementById('bridefatherstatus').addEventListener("click", function () {
         let selectBoxes = document.getElementById("bridefatherstatustype");
         let selectedValue = selectBoxes.value;
         if (this.checked) {
@@ -86,14 +86,14 @@ window.onload = function () {
         document.querySelector("#BridefatherStatusInfo").innerText = selectedValue;
     });
     // 신부 아버지 상태값 입력
-    document.getElementById("bridefatherstatustype").addEventListener("change", function() {
+    document.getElementById("bridefatherstatustype").addEventListener("change", function () {
         console.log(this.value);
         document.querySelector("#BridefatherStatusInfo").innerText = this.value;
     });
 
 
     // 신부 아버지 상태값 체크박스 선택
-    document.getElementById('bridemotherstatus').addEventListener("click", function() {
+    document.getElementById('bridemotherstatus').addEventListener("click", function () {
         let selectBoxes = document.getElementById("bridemotherstatustype");
         let selectedValue = selectBoxes.value;
         if (this.checked) {
@@ -114,14 +114,14 @@ window.onload = function () {
         document.querySelector("#BridemotherStatusInfo").innerText = selectedValue;
     });
     // 신부 아버지 상태값 입력
-    document.getElementById("bridemotherstatustype").addEventListener("change", function() {
+    document.getElementById("bridemotherstatustype").addEventListener("change", function () {
         console.log(this.value);
         document.querySelector("#BridemotherStatusInfo").innerText = this.value;
     });
-      
 
 
-    
+
+
     let toggleQR = document.getElementById('KakaoQR');
     toggleQR.onclick = () => {
         toggleQR.classList.toggle('active');
@@ -141,7 +141,7 @@ window.onload = function () {
                 DDayClass.style.display = "none";
             }
         });
-        }
+    }
 
 
     // 아코디언 메뉴& 토글버튼
@@ -150,43 +150,43 @@ window.onload = function () {
     toggleFold.onclick = () => {
         toggleFold.classList.toggle('active');
         let accordions = document.querySelectorAll(".accordion-content");
-        
+
         accordions.forEach(accordion => {
             if (accordion.style.display === "block") {
-            accordion.style.display = "none";
+                accordion.style.display = "none";
             } else {
-            accordion.style.display = "block";
+                accordion.style.display = "block";
             }
         });
-        }
-        
+    }
+
     var accordion = document.querySelector(".accordion"); //아코디언
-        accordion.addEventListener("click", function(e) {
-            e.preventDefault();
-            var target = e.target;
-            if (target.classList.contains("accordion-title")) {
+    accordion.addEventListener("click", function (e) {
+        e.preventDefault();
+        var target = e.target;
+        if (target.classList.contains("accordion-title")) {
             var content = target.nextElementSibling;
             if (content.style.display === "block") {
                 $(content).slideUp();
             } else {
                 $(content).slideDown();
             }
-            }
-        });
+        }
+    });
 
 
 
     // 계좌번호 복사
 
-    document.getElementById('copybtn').addEventListener('click', function() {
+    document.getElementById('copybtn').addEventListener('click', function () {
         var element = document.getElementById('accountinformation');
-        if(element){
-        var value = element.innerText;
-        navigator.clipboard.writeText(value).then(function() {
-            alert('계좌번호가 복사되었습니다.');
-        }, function(err) {
-            console.error('Failed to copy: ', err);
-        });
+        if (element) {
+            var value = element.innerText;
+            navigator.clipboard.writeText(value).then(function () {
+                alert('계좌번호가 복사되었습니다.');
+            }, function (err) {
+                console.error('Failed to copy: ', err);
+            });
         }
     });
 
@@ -259,60 +259,60 @@ window.onload = function () {
 
     // 사진 다중업로드 JS
 
-        var storedFiles = [];
+    var storedFiles = [];
 
-        $(function () {
-            $('.cvf_uploaded_files').sortable({
-                cursor: 'move',
-                placeholder: 'highlight',
-                start: function (event, ui) {
-                    ui.item.toggleClass('highlight');
-                },
-                stop: function (event, ui) {
-                    ui.item.toggleClass('highlight');
-                },
-                update: function () {
-                    //cvf_reload_order();
-                },
-                create: function () {
-                    var list = this;
-                    resize = function () {
-                        $(list).css('height', 'auto');
-                        $(list).height($(list).height());
-                    };
-                    // $(list).height($(list).height());
-                    $(list).find('img').load(resize).error(resize);
-                }
-            });
-            $('.cvf_uploaded_files').disableSelection();
+    $(function () {
+        $('.cvf_uploaded_files').sortable({
+            cursor: 'move',
+            placeholder: 'highlight',
+            start: function (event, ui) {
+                ui.item.toggleClass('highlight');
+            },
+            stop: function (event, ui) {
+                ui.item.toggleClass('highlight');
+            },
+            update: function () {
+                //cvf_reload_order();
+            },
+            create: function () {
+                var list = this;
+                resize = function () {
+                    $(list).css('height', 'auto');
+                    $(list).height($(list).height());
+                };
+                // $(list).height($(list).height());
+                $(list).find('img').load(resize).error(resize);
+            }
         });
+        $('.cvf_uploaded_files').disableSelection();
+    });
 
-        const dropzone = document.querySelector(".ImgGroupUpload_Btn");
-        console.log(dropzone);
-        
-        // Handle dragover event
-        dropzone.addEventListener("dragover", function(event) {
-          event.preventDefault();
-          event.stopPropagation();
-          dropzone.style.backgroundColor = "#eff0f5";
-        });
-        
-        // Handle dragleave event
-        dropzone.addEventListener("dragleave", function(event) {
-          event.preventDefault();
-          event.stopPropagation();
-          dropzone.style.backgroundColor = "";
-        });
-        
-        // Handle drop event
-        dropzone.addEventListener("drop", function(event) {
-          event.preventDefault();
-          event.stopPropagation();
-          dropzone.style.backgroundColor = "";
-          let files = Array.from(event.dataTransfer.files);
-          var i = 0;
+    const dropzone = document.querySelector(".ImgGroupUpload_Btn");
+    console.log(dropzone);
 
-          for (i = 0; i < files.length; i++) {
+    // Handle dragover event
+    dropzone.addEventListener("dragover", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        dropzone.style.backgroundColor = "#eff0f5";
+    });
+
+    // Handle dragleave event
+    dropzone.addEventListener("dragleave", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        dropzone.style.backgroundColor = "";
+    });
+
+    // Handle drop event
+    dropzone.addEventListener("drop", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        dropzone.style.backgroundColor = "";
+        let files = Array.from(event.dataTransfer.files);
+        var i = 0;
+
+        for (i = 0; i < files.length; i++) {
             var readImg = new FileReader();
             var file = files[i];
             console.log(file);
@@ -325,7 +325,7 @@ window.onload = function () {
 
                 $(this).parent().remove();
                 $(viewimg).remove();
-                
+
                 for (var i = 0; i < storedFiles.length; i++) {
                     if (storedFiles[i].name == file) {
                         storedFiles.splice(i, 1);
@@ -358,9 +358,9 @@ window.onload = function () {
                             "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
                             "<a href = '#' class = 'cvf_delete_image' id='deleteimg_" + file.name + "' file = '" + file.name + "' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
                             "</li>"
-                         );
-                        $('.cvf_uploaded_files').css('overflow-x','scroll'); 
-                        $('.grid-container').css('display','grid');
+                        );
+                        $('.cvf_uploaded_files').css('overflow-x', 'scroll');
+                        $('.grid-container').css('display', 'grid');
                         $('.grid-container').append(
                             "<li class = 'grid-item' file = '" + file.name + "'>" +
                             "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
@@ -375,21 +375,21 @@ window.onload = function () {
                         let closeButton = document.querySelector(".close-button");
                         console.log(thumbnail);
 
-                        thumbnail.addEventListener("click", function() {
+                        thumbnail.addEventListener("click", function () {
                             imageOverlay.style.display = "block";
                             fullImage.src = this.src;
                             console.log(imageOverlay);
-                            });
+                        });
 
-                        closeButton.addEventListener("click", function() {
+                        closeButton.addEventListener("click", function () {
                             imageOverlay.style.display = "none";
-                            });
+                        });
 
                         // Hover시 삭제버튼
                         var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
                         var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
 
-            
+
                         HoverImg.onmouseover = function () {
                             if (DeleteImg) {
                                 DeleteImg.style.opacity = "1";
@@ -406,7 +406,7 @@ window.onload = function () {
                 })(file);
                 readImg.readAsDataURL(file);
             }
-             else {
+            else {
                 alert('the file ' + file.name + ' is not an image<br/>');
             }
 
@@ -417,311 +417,297 @@ window.onload = function () {
             // }
 
         }
-        });
-        
+    });
 
-        // 버튼 눌러 다중이미지 업로드
-        $('body').on('change', '.user_picked_files', function () {
 
-            var files = this.files;
-            var i = 0;
+    // 버튼 눌러 다중이미지 업로드
+    $('body').on('change', '.user_picked_files', function () {
 
-            for (i = 0; i < files.length; i++) {
-                var readImg = new FileReader();
-                var file = files[i];
-                console.log(file);
-                // 이미지 삭제
+        var files = this.files;
+        var i = 0;
 
-                $('body').on('click', 'a.cvf_delete_image', function (e) {
-                    e.preventDefault();
-                    var file = $(this).parent().attr('file');
-                    var viewimg = document.querySelector(".grid-item[file='" + file + "']");
+        for (i = 0; i < files.length; i++) {
+            var readImg = new FileReader();
+            var file = files[i];
+            console.log(file);
+            // 이미지 삭제
 
-                    $(this).parent().remove();
-                    $(viewimg).remove();
-                    
-                    for (var i = 0; i < storedFiles.length; i++) {
-                        if (storedFiles[i].name == file) {
-                            storedFiles.splice(i, 1);
-                            break;
-                        }
+            $('body').on('click', 'a.cvf_delete_image', function (e) {
+                e.preventDefault();
+                var file = $(this).parent().attr('file');
+                var viewimg = document.querySelector(".grid-item[file='" + file + "']");
+
+                $(this).parent().remove();
+                $(viewimg).remove();
+
+                for (var i = 0; i < storedFiles.length; i++) {
+                    if (storedFiles[i].name == file) {
+                        storedFiles.splice(i, 1);
+                        break;
                     }
-
-                    // cvf_reload_order();
-
-                });
-
-
-                // 이미지 갯수 확인 후 최대갯수 안내팝업 노출
-                img_count = files.length;
-                if (img_count > 20) {
-                    alert("이미지는 20개까지 첨부하실 수 있습니다.");
-                    img_count = img_count - files.length;
-                    return;
                 }
 
-                // 이미지 타입 매칭 후 노출
-                if (file.type.match('image.*')) {
-                    storedFiles.push(file);
-                    console.log();
-                    readImg.onload = (function (file) {
+                // cvf_reload_order();
 
-                        return function (e) {
-                            $('.GalleryTitleArea').show();
-                            $('.cvf_uploaded_files').append(
-                                "<li class='multiimg' id='multiimg_" + file.name + "' file = '" + file.name + "'>" +
-                                "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
-                                "<a href = '#' class = 'cvf_delete_image' id='deleteimg_" + file.name + "' file = '" + file.name + "' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
-                                "</li>"
-                             );
-                            $('.cvf_uploaded_files').css('overflow-x','scroll'); 
-                            $('.grid-container').css('display','grid');
-                            $('.grid-container').append(
-                                "<li class = 'grid-item' file = '" + file.name + "'>" +
-                                "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
-                                "</li>"
-                            );  
+            });
 
-                            // 업로드한 이미지 상세보기
 
-                            let thumbnail = document.querySelector(".grid-thumb");
-                            let imageOverlay = document.querySelector("BgDimmedImg");
-                            // const fullImage = document.querySelector(".full-image");
-                            let closeButton = document.querySelector(".close-button");
-                            console.log(thumbnail);
-
-                            thumbnail.addEventListener("click", function() {
-                                imageOverlay.style.display = "block";
-                                fullImage.src = this.src;
-                                console.log(imageOverlay);
-                                });
-    
-                            closeButton.addEventListener("click", function() {
-                                imageOverlay.style.display = "none";
-                                });
-
-                            // Hover시 삭제버튼
-                            var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
-                            var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
-
-                
-                            HoverImg.onmouseover = function () {
-                                if (DeleteImg) {
-                                    DeleteImg.style.opacity = "1";
-                                    console.log('over');
-                                }
-                            };
-                            HoverImg.onmouseout = function () {
-                                if (DeleteImg) {
-                                    DeleteImg.style.opacity = "0";
-                                    console.log('out');
-                                }
-                            };
-
-                        };
-                    })(file);
-                    readImg.readAsDataURL(file);
-                }
-                 else {
-                    alert('the file ' + file.name + ' is not an image<br/>');
-                }
-
-                // if (files.length === (i + 1)) {
-                //     setTimeout(function () {
-                //         cvf_add_order();
-                //     }, 1000);
-                // }
-
+            // 이미지 갯수 확인 후 최대갯수 안내팝업 노출
+            img_count = files.length;
+            if (img_count > 20) {
+                alert("이미지는 20개까지 첨부하실 수 있습니다.");
+                img_count = img_count - files.length;
+                return;
             }
+
+            // 이미지 타입 매칭 후 노출
+            if (file.type.match('image.*')) {
+                storedFiles.push(file);
+                console.log();
+                readImg.onload = (function (file) {
+
+                    return function (e) {
+                        $('.GalleryTitleArea').show();
+                        $('.cvf_uploaded_files').append(
+                            "<li class='multiimg' id='multiimg_" + file.name + "' file = '" + file.name + "'>" +
+                            "<img class = 'img-thumb' src = '" + e.target.result + "' />" +
+                            "<a href = '#' class = 'cvf_delete_image' id='deleteimg_" + file.name + "' file = '" + file.name + "' title = 'Cancel'><img class = 'delete-btn' src = '../Resource/assets/Icon/Delete.svg' /></a>" +
+                            "</li>"
+                        );
+                        $('.cvf_uploaded_files').css('overflow-x', 'scroll');
+                        $('.grid-container').css('display', 'grid');
+                        $('.grid-container').append(
+                            "<li class = 'grid-item' file = '" + file.name + "'>" +
+                            "<img class = 'grid-thumb' id = 'appendimg' src = '" + e.target.result + "' />" +
+                            "</li>"
+                        );
+
+                        // 업로드한 이미지 상세보기
+
+                        let thumbnail = document.querySelector(".grid-thumb");
+                        let imageOverlay = document.querySelector("BgDimmedImg");
+                        // const fullImage = document.querySelector(".full-image");
+                        let closeButton = document.querySelector(".close-button");
+                        console.log(thumbnail);
+
+                        thumbnail.addEventListener("click", function () {
+                            imageOverlay.style.display = "block";
+                            fullImage.src = this.src;
+                            console.log(imageOverlay);
+                        });
+
+                        closeButton.addEventListener("click", function () {
+                            imageOverlay.style.display = "none";
+                        });
+
+                        // Hover시 삭제버튼
+                        var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
+                        var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
+
+
+                        HoverImg.onmouseover = function () {
+                            if (DeleteImg) {
+                                DeleteImg.style.opacity = "1";
+                                console.log('over');
+                            }
+                        };
+                        HoverImg.onmouseout = function () {
+                            if (DeleteImg) {
+                                DeleteImg.style.opacity = "0";
+                                console.log('out');
+                            }
+                        };
+
+                    };
+                })(file);
+                readImg.readAsDataURL(file);
+            }
+            else {
+                alert('the file ' + file.name + ' is not an image<br/>');
+            }
+
+            // if (files.length === (i + 1)) {
+            //     setTimeout(function () {
+            //         cvf_add_order();
+            //     }, 1000);
+            // }
+
+        }
+    });
+
+
+    // 카카오지도 API
+    kakao.maps.load(() => {
+        const mapDivs = document.querySelectorAll('.mapinfo');
+        const mapoptions = {
+            center: new kakao.maps.LatLng(37.559073, 126.91030),
+            level: 3
+        };
+
+        const markers = []; // 마커 객체를 저장할 배열
+        const infowindows = []; // 인포윈도우 객체를 저장할 배열
+
+        const searchInput = document.getElementById('SearchAddressInput');
+        const searchBtn = document.getElementById('SearchAddressBtn');
+        const addressinfo = document.getElementById('WeddingAddress');
+
+        searchBtn.addEventListener('click', () => {
+            const postpopup = new daum.Postcode({
+                oncomplete: function (data) {
+                    searchInput.value = data.address;
+                    addressinfo.innerText = searchInput.value;
+                    const ps = new kakao.maps.services.Places(); // 장소 검색 객체 생성
+                    ps.keywordSearch(data.address, placesSearchCB);
+                }
+            });
+            postpopup.open();
+        });
+
+        function placesSearchCB(data, status, pagination) {
+            if (status === kakao.maps.services.Status.OK) {
+                const place = data[0];
+                const bounds = new kakao.maps.LatLngBounds();
+                const newCenter = new kakao.maps.LatLng(place.y, place.x);
+                markers.forEach((marker) => {
+                    marker.setPosition(newCenter);
+                    bounds.extend(newCenter);
+                    marker.getMap().setBounds(bounds);
+                });
+            } else {
+                alert('해당 위치의 주소지를 검색할 수 없습니다. 마커 위치를 다시 배치해 주세요.');
+            }
+        }
+
+        for (let i = 0; i < mapDivs.length; i++) {
+            const map = new kakao.maps.Map(mapDivs[i], mapoptions);
+
+            const marker = new kakao.maps.Marker({
+                position: map.getCenter(),
+                draggable: true
+            });
+            marker.setMap(map);
+            markers.push(marker);
+
+            kakao.maps.event.addListener(marker, 'dragend', function () {
+                const position = marker.getPosition();
+                const lat = position.getLat();
+                const lng = position.getLng();
+                const latlng = new kakao.maps.LatLng(lat, lng);
+                marker.setPosition(latlng);
+                alert('선택하신 위치로 장소가 변경되었습니다. 예식 장소가 정확한지 꼭 확인해 주세요!');
+
+                const geocoder = new kakao.maps.services.Geocoder();
+                geocoder.coord2Address(lng, lat, (result, status) => {
+                    if (status === kakao.maps.services.Status.OK) {
+                        const address = result[0].address.address_name;
+                        const ps = new kakao.maps.services.Places(); // 장소 검색 객체 생성
+                        ps.keywordSearch(address, placesSearchCB);
+                    } else {
+                        alert('검색 결과가 없습니다.');
+                    }
+                });
+            });
+        }
+
+        // 네이버 지도 길찾기
+
+        // 'NaverNav' ID를 가진 클래스 선택
+        const naverNav = document.getElementById('NaverNav');
+        naverNav.addEventListener('click', () => {
+            const geocoder = new kakao.maps.services.Geocoder();
+            const position = markers[0].getPosition(); // Marker의 위치 가져오기
+            const lat = position.getLat();
+            const lng = position.getLng();
+
+            // Marker의 위치를 기반으로 주소값 가져오기
+            geocoder.coord2Address(lng, lat, (result, status) => {
+                if (status === kakao.maps.services.Status.OK) {
+                    const address = result[0].address.address_name;
+
+                    // 네이버지도 검색 경로 URL 생성
+                    const naverUrl = 'https://map.naver.com/v5/search/' + encodeURIComponent(address);
+
+                    // 새 창에서 네이버지도 검색 경로 열기
+                    window.open(naverUrl);
+                } else {
+                    alert('주소를 찾을 수 없습니다.');
+                }
+            });
+        });
+
+        // 'KakaoNav' ID를 가진 클래스 선택
+        const kakaoNav = document.getElementById('KakaoNav');
+        kakaoNav.addEventListener('click', () => {
+            const geocoder = new kakao.maps.services.Geocoder();
+            const position = markers[0].getPosition(); // Marker의 위치 가져오기
+            const lat = position.getLat();
+            const lng = position.getLng();
+
+            // Marker의 위치를 기반으로 주소값 가져오기
+            geocoder.coord2Address(lng, lat, (result, status) => {
+                if (status === kakao.maps.services.Status.OK) {
+                    const address = result[0].address.address_name;
+
+                    // 카카오맵 URL 생성
+                    const kakaoUrl = 'https://map.kakao.com/link/search/' + encodeURIComponent(address);
+
+                    // 카카오네비게이션 앱이 설치되어 있는지 확인
+                    const isKakaoNavi = (function () {
+                        const ua = navigator.userAgent.toLowerCase();
+                        return (ua.indexOf('kakaonavi') > -1);
+                    })();
+
+                    if (isKakaoNavi) {
+                        // 카카오네비게이션 앱이 설치되어 있으면 앱을 열고 해당 위치로 길 안내
+                        window.location.href = 'kakaonavi://route?ep=' + lat + ',' + lng + '&by=CAR&name=' + encodeURIComponent(address);
+                    } else {
+                        // 카카오네비게이션 앱이 없으면 웹페이지에서 해당 위치로 검색 결과 표시
+                        window.open(kakaoUrl);
+                    }
+                } else {
+                    alert('주소를 찾을 수 없습니다.');
+                }
+            });
         });
 
 
-// 카카오지도 API
-kakao.maps.load(() => {
-    const mapDivs = document.querySelectorAll('.mapinfo');
-    const mapoptions = {
-      center: new kakao.maps.LatLng(37.559073, 126.91030),
-      level: 3
-    };
-  
-    const markers = []; // 마커 객체를 저장할 배열
-    const infowindows = []; // 인포윈도우 객체를 저장할 배열
-  
-    const searchInput = document.getElementById('SearchAddressInput');
-    const searchBtn = document.getElementById('SearchAddressBtn');
-    const addressinfo = document.getElementById('WeddingAddress');
-  
-    searchBtn.addEventListener('click', () => {
-      const postpopup = new daum.Postcode({
-        oncomplete: function(data) {
-          searchInput.value = data.address;
-          addressinfo.innerText = searchInput.value;
-          const ps = new kakao.maps.services.Places(); // 장소 검색 객체 생성
-          ps.keywordSearch(data.address, placesSearchCB);
-        }
-      });
-      postpopup.open();
-    });
-  
-    function placesSearchCB(data, status, pagination) {
-      if (status === kakao.maps.services.Status.OK) {
-        const place = data[0];
-        const bounds = new kakao.maps.LatLngBounds();
-        const newCenter = new kakao.maps.LatLng(place.y, place.x);
-        markers.forEach((marker) => {
-          marker.setPosition(newCenter);
-          bounds.extend(newCenter);
-          marker.getMap().setBounds(bounds);
+
+        // 'TmapNav' ID를 가진 클래스 선택
+        const tmapNav = document.getElementById('TmapNav');
+        tmapNav.addEventListener('click', () => {
+            const geocoder = new kakao.maps.services.Geocoder();
+            const position = markers[0].getPosition(); // Marker의 위치 가져오기
+            const lat = position.getLat();
+            const lng = position.getLng();
+
+            // Marker의 위치를 기반으로 주소값 가져오기
+            geocoder.coord2Address(lng, lat, (result, status) => {
+                if (status === kakao.maps.services.Status.OK) {
+                    const address = result[0].address.address_name;
+
+                    // 티맵네비게이션 URL 생성
+                    const tmapUrl = 'tmap://route?goalx=' + lng + '&goaly=' + lat + '&goalname=' + encodeURIComponent(address);
+
+                    // 티맵네비게이션 앱이 설치되어 있는지 확인
+                    const isTmap = (function () {
+                        const ua = navigator.userAgent.toLowerCase();
+                        return (ua.indexOf('tmap') > -1);
+                    })();
+
+                    if (isTmap) {
+                        // 티맵네비게이션 앱이 설치되어 있으면 앱을 열고 주소값으로 길 안내
+                        window.location.href = tmapUrl;
+                    } else {
+                        // 티맵네비게이션 앱이 없으면 모바일에서 확인 안내
+                        confirm('모바일에서 확인하실 수 있습니다.');
+                    }
+                } else {
+                    alert('주소를 찾을 수 없습니다.');
+                }
+            });
         });
-      } else {
-        alert('해당 위치의 주소지를 검색할 수 없습니다. 마커 위치를 다시 배치해 주세요.');
-      }
-    }
-  
-    for (let i = 0; i < mapDivs.length; i++) {
-      const map = new kakao.maps.Map(mapDivs[i], mapoptions);
-  
-      const marker = new kakao.maps.Marker({
-        position: map.getCenter(),
-        draggable: true
-      });
-      marker.setMap(map);
-      markers.push(marker);
-  
-      kakao.maps.event.addListener(marker, 'dragend', function() {
-        const position = marker.getPosition();
-        const lat = position.getLat();
-        const lng = position.getLng();
-        const latlng = new kakao.maps.LatLng(lat, lng);
-        marker.setPosition(latlng);
-        alert('선택하신 위치로 장소가 변경되었습니다. 예식 장소가 정확한지 꼭 확인해 주세요!');
-  
-        const geocoder = new kakao.maps.services.Geocoder();
-        geocoder.coord2Address(lng, lat, (result, status) => {
-          if (status === kakao.maps.services.Status.OK) {
-            const address = result[0].address.address_name;
-            const ps = new kakao.maps.services.Places(); // 장소 검색 객체 생성
-            ps.keywordSearch(address, placesSearchCB);
-          } else {
-            alert('검색 결과가 없습니다.');
-          }
-        });
-      });
-    }
-
-    // 네이버 지도 길찾기
-
-    // 'NaverNav' ID를 가진 클래스 선택
-    const naverNav = document.getElementById('NaverNav');
-    naverNav.addEventListener('click', () => {
-    const geocoder = new kakao.maps.services.Geocoder();
-    const position = markers[0].getPosition(); // Marker의 위치 가져오기
-    const lat = position.getLat();
-    const lng = position.getLng();
-
-    // Marker의 위치를 기반으로 주소값 가져오기
-    geocoder.coord2Address(lng, lat, (result, status) => {
-        if (status === kakao.maps.services.Status.OK) {
-        const address = result[0].address.address_name;
-
-        // 네이버지도 검색 경로 URL 생성
-        const naverUrl = 'https://map.naver.com/v5/search/' + encodeURIComponent(address);
-
-        // 새 창에서 네이버지도 검색 경로 열기
-        window.open(naverUrl);
-        } else {
-        alert('주소를 찾을 수 없습니다.');
-        }
-    });
     });
 
-    // 'KakaoNav' ID를 가진 클래스 선택
-    const kakaoNav = document.getElementById('KakaoNav');
-    kakaoNav.addEventListener('click', () => {
-    const geocoder = new kakao.maps.services.Geocoder();
-    const position = markers[0].getPosition(); // Marker의 위치 가져오기
-    const lat = position.getLat();
-    const lng = position.getLng();
-
-    // Marker의 위치를 기반으로 주소값 가져오기
-    geocoder.coord2Address(lng, lat, (result, status) => {
-        if (status === kakao.maps.services.Status.OK) {
-        const address = result[0].address.address_name;
-
-        // 카카오맵 URL 생성
-        const kakaoUrl = 'https://map.kakao.com/link/search/' + encodeURIComponent(address);
-
-        // 카카오네비게이션 앱이 설치되어 있는지 확인
-        const isKakaoNavi = (function() {
-            const ua = navigator.userAgent.toLowerCase();
-            return (ua.indexOf('kakaonavi') > -1);
-        })();
-
-        if (isKakaoNavi) {
-            // 카카오네비게이션 앱이 설치되어 있으면 앱을 열고 해당 위치로 길 안내
-            window.location.href = 'kakaonavi://route?ep=' + lat + ',' + lng + '&by=CAR&name=' + encodeURIComponent(address);
-        } else {
-            // 카카오네비게이션 앱이 없으면 웹페이지에서 해당 위치로 검색 결과 표시
-            window.open(kakaoUrl);
-        }
-        } else {
-        alert('주소를 찾을 수 없습니다.');
-        }
-    });
-    });
-
-
-
-    // 'TmapNav' ID를 가진 클래스 선택
-    const tmapNav = document.getElementById('TmapNav');
-    tmapNav.addEventListener('click', () => {
-    const geocoder = new kakao.maps.services.Geocoder();
-    const position = markers[0].getPosition(); // Marker의 위치 가져오기
-    const lat = position.getLat();
-    const lng = position.getLng();
-
-    // Marker의 위치를 기반으로 주소값 가져오기
-    geocoder.coord2Address(lng, lat, (result, status) => {
-        if (status === kakao.maps.services.Status.OK) {
-        const address = result[0].address.address_name;
-
-        // 티맵네비게이션 URL 생성
-        const tmapUrl = 'tmap://route?goalx=' + lng + '&goaly=' + lat + '&goalname=' + encodeURIComponent(address);
-
-        // 티맵네비게이션 앱이 설치되어 있는지 확인
-        const isTmap = (function() {
-            const ua = navigator.userAgent.toLowerCase();
-            return (ua.indexOf('tmap') > -1);
-        })();
-
-        if (isTmap) {
-            // 티맵네비게이션 앱이 설치되어 있으면 앱을 열고 주소값으로 길 안내
-            window.location.href = tmapUrl;
-        } else {
-            // 티맵네비게이션 앱이 없으면 모바일에서 확인 안내
-            confirm('모바일에서 확인하실 수 있습니다.');
-        }
-        } else {
-        alert('주소를 찾을 수 없습니다.');
-        }
-    });
-    });
-
-
-  });
-  
-
-  
-  
-
-
-
-
-
-  
-
-
-    
     //--> 확대방지
     document.body.addEventListener('touchstart', function (e) {
         if ((e.touches.length > 1) || e.targetTouches.length > 1) {
@@ -754,31 +740,31 @@ kakao.maps.load(() => {
         });
     }
 
-       // 초대 셀렉트 박스
+    // 초대 셀렉트 박스
 
-       (function() {
+    (function () {
         let selectInvite = document.querySelector('#custom-select-invite');
         let optionsContainerInvite = document.querySelector('#custom-options-invite');
-      
+
         if (!selectInvite || !optionsContainerInvite) {
-          console.error("One or more elements could not be found in the HTML");
-          return;
+            console.error("One or more elements could not be found in the HTML");
+            return;
         }
-      
+
         let optionsInvite = optionsContainerInvite.querySelectorAll(".custom-option");
-      
+
         selectInvite.addEventListener('click', toggleOptions);
         optionsInvite.forEach(option => option.addEventListener('click', selectOption));
-      
+
         function toggleOptions() {
-          if (optionsContainerInvite.style.display === 'grid') {
-            optionsContainerInvite.style.display = 'none';
-            optionsContainerInvite.style.animation = 'slideDown 0.2s ease';
-          } else {
-            optionsContainerInvite.style.display = 'none';
-            optionsContainerInvite.style.display = 'grid';
-            optionsContainerInvite.style.animation = 'slideUp 0.2s ease';
-          }
+            if (optionsContainerInvite.style.display === 'grid') {
+                optionsContainerInvite.style.display = 'none';
+                optionsContainerInvite.style.animation = 'slideDown 0.2s ease';
+            } else {
+                optionsContainerInvite.style.display = 'none';
+                optionsContainerInvite.style.display = 'grid';
+                optionsContainerInvite.style.animation = 'slideUp 0.2s ease';
+            }
         }
 
         function selectOption() {
@@ -791,25 +777,25 @@ kakao.maps.load(() => {
             var childElementText = childElement.innerText;
             inputBox.value = childElementText;
             invitebody.innerText = childElementText;
-          }
-      
-          document.addEventListener('click', hideOptions);
-      
-          function hideOptions(event) {
-          if (!optionsContainerInvite.contains(event.target) && !selectInvite.contains(event.target)) {
-            optionsContainerInvite.style.display = 'none';
-          }
-          }
+        }
 
-            
-      })();
-      
+        document.addEventListener('click', hideOptions);
+
+        function hideOptions(event) {
+            if (!optionsContainerInvite.contains(event.target) && !selectInvite.contains(event.target)) {
+                optionsContainerInvite.style.display = 'none';
+            }
+        }
+
+
+    })();
+
 
 
     // 계좌번호 그룹추가
     var accountitemIdx = 3;
     var accordionitemIdx = 3;
-    document.getElementById("AddAccountBtn").addEventListener("click", function(){
+    document.getElementById("AddAccountBtn").addEventListener("click", function () {
         if (accordionitemIdx >= 7) {
             alert("최대 만들 수 있는 계좌그룹의 갯수를 초과하였습니다");
             return;
@@ -820,11 +806,11 @@ kakao.maps.load(() => {
         accountItem.id = "AccointItem" + accountitemIdx;
         accountGroup.appendChild(accountItem);
         accountitemIdx++;
-    
+
         var childDivs = document.querySelectorAll(".DetailItem");
         var firstChild = childDivs[0];
         accountItem.appendChild(firstChild.cloneNode(true));
-    
+
         // Add the li element to the accordion
         var accordion = document.querySelector(".accordion");
         var newLi = document.createElement("li");
@@ -832,7 +818,7 @@ kakao.maps.load(() => {
         newLi.id = "accordionitem" + accordionitemIdx;
         accordion.appendChild(newLi);
         accordionitemIdx++;
-    
+
         var childLi = document.querySelectorAll(".licontents");
         var firstChildLi = childLi[0];
         newLi.appendChild(firstChildLi.cloneNode(true));
@@ -843,56 +829,56 @@ kakao.maps.load(() => {
     const select = document.querySelector('.custom-select');
     const optionsContainer = document.querySelector('.custom-options');
     const options = optionsContainer.querySelectorAll(".custom-option");
-    
+
     select.addEventListener('click', toggleOptions);
     options.forEach(option => option.addEventListener('click', selectOption));
-    
+
     function toggleOptions() {
         if (optionsContainer.style.display === 'grid') {
             optionsContainer.style.display = 'none';
-          optionsContainer.style.animation = 'slideDown 0.2s ease';
+            optionsContainer.style.animation = 'slideDown 0.2s ease';
         } else {
-          optionsContainer.style.display = 'none';
-          optionsContainer.style.display = 'grid';
-          optionsContainer.style.animation = 'slideUp 0.2s ease';
+            optionsContainer.style.display = 'none';
+            optionsContainer.style.display = 'grid';
+            optionsContainer.style.animation = 'slideUp 0.2s ease';
         }
-      }
-    
+    }
+
     function selectOption() {
-      select.value = this.dataset.value;
-      optionsContainer.style.display = 'none';
-      changeFontFamily(select.value);
+        select.value = this.dataset.value;
+        optionsContainer.style.display = 'none';
+        changeFontFamily(select.value);
     }
 
     document.addEventListener('click', hideOptions);
 
     function hideOptions(event) {
-    if (!optionsContainer.contains(event.target) && !select.contains(event.target)) {
-        optionsContainer.style.display = 'none';
+        if (!optionsContainer.contains(event.target) && !select.contains(event.target)) {
+            optionsContainer.style.display = 'none';
+        }
     }
-    }
-    
+
     function changeFontFamily(fontFamily) {
         const bodyTextElements = document.querySelectorAll('.WeddingBodyText');
         bodyTextElements.forEach(element => element.style.fontFamily = fontFamily);
-      
+
         const titleTextElements = document.querySelectorAll('.WeddingTitleText');
         titleTextElements.forEach(element => element.style.fontFamily = fontFamily);
-      
+
         const yearMonthElements = document.querySelectorAll('.year-month');
         yearMonthElements.forEach(element => element.style.fontFamily = fontFamily);
-      
+
         const secCalElements = document.querySelectorAll('.sec_cal');
         secCalElements.forEach(element => element.style.fontFamily = fontFamily);
-      
+
         const sideContentsElements = document.querySelectorAll('.side_contents');
         sideContentsElements.forEach(element => element.style.fontFamily = fontFamily);
-      
+
         const btnIconElements = document.querySelectorAll('.BtnIcon');
         btnIconElements.forEach(element => element.style.fontFamily = fontFamily);
-      }
+    }
 
-    
+
 
     $("#size").change(function () {
         $('.WeddingBodyText').css("font-size", $(this).val() + "px");
@@ -952,12 +938,12 @@ kakao.maps.load(() => {
 
     var btn = document.querySelector(".AudioControl");
     var playing = false;
-    
+
     btn.addEventListener("click", function () {
         var buttonplay = document.getElementById('button');
         var buttonpause = document.getElementById('buttonpause');
         // var music = new Audio("../Resource/Audio/wedding_1.mp3");
-    
+
         if (!playing) {
             buttonpause.style.display = "block";
             buttonplay.style.display = "none";
@@ -1005,7 +991,7 @@ kakao.maps.load(() => {
         $(this).addClass('Active');								////선택된 탭에 Active class를 삽입해줍니다.
         $("#" + tab_id).addClass('Active');
     });
-    
+
 
     $('ul.TabListFont li').click(function () {							//선택자를 통해 tabs 메뉴를 클릭 이벤트를 지정해줍니다.
 
@@ -1014,7 +1000,7 @@ kakao.maps.load(() => {
         $(this).addClass('Active');								////선택된 탭에 Active class를 삽입해줍니다.
         $('.WeddingBodyText').css("font-size", $(this).val() + "px");
         $('.WeddingBodyTitle').css("font-size", $(this).val() + "px");
-        $('.WeddingTitleText').css("font-size", $(this).val() + 5 +"px");
+        $('.WeddingTitleText').css("font-size", $(this).val() + 5 + "px");
         $('.sec_cal .cal_nav .year-month').css("font-size", $(this).val() + 5 + "px");
     });
 
@@ -1039,75 +1025,75 @@ function calendarInit() {
 
     function renderCalendar(thisMonth) {
         // 렌더링 코드는 그대로 유지
-               // 렌더링을 위한 데이터 정리
-               currentYear = thisMonth.getFullYear(); //달력 연도
-               currentMonth = thisMonth.getMonth(); //달력 월
-               currentDate = thisMonth.getDate(); // 달력 일
-           
-               // 이번 달의 첫 날과 마지막 날 구하기
-               var firstDay = new Date(currentYear, currentMonth, 1);
-               var lastDay = new Date(currentYear, currentMonth + 1, 0);
-           
-               // 이번 달의 첫 날이 무슨 요일인지 구하기 (0 = 일요일, 1 = 월요일, ...)
-               var firstDayOfWeek = firstDay.getDay();
-           
-               // 이전 달의 마지막 날 구하기
-               var prevMonthLastDay = new Date(currentYear, currentMonth, 0);
-               var prevMonthLastDate = prevMonthLastDay.getDate();
-           
-               // 다음 달의 첫 날 구하기
-               var nextMonthFirstDay = new Date(currentYear, currentMonth + 1, 1);
-           
-               // 현재 월 표기
-               $('.year-month').text((currentMonth + 1) + '월 ' + currentDate + '일');
-           
-               // 렌더링 html 요소 생성
-               var calendar = document.querySelector('.dates');
-               calendar.innerHTML = '';
-           
-               // 이전 달의 마지막 주
-               for (var i = firstDayOfWeek - 1; i >= 0; i--) {
-                   var date = prevMonthLastDate - i;
-                   calendar.innerHTML += '<div class="day prev disable">' + date + '</div>';
-               }
-           
-               // 이번 달
-               for (var i = 1; i <= lastDay.getDate(); i++) {
-                   var dayOfWeek = new Date(currentYear, currentMonth, i).getDay();
-                   var className = 'day current';
-                   if (dayOfWeek == 0) {
-                       className += ' sunday';
-                   } else if (dayOfWeek == 6) {
-                       className += ' saturday';
-                   }
-                   if (i == currentDate) {
-                       className += ' today';
-                   }
-                   calendar.innerHTML += '<div class="' + className + '">' + i + '</div>';
-               }
-       
-               // 다음 달의 첫 주
-               for (var i = 1; i <= 6 - lastDay.getDay(); i++) {
-                   var date = i;
-                   calendar.innerHTML += '<div class="day next disable">' + date + '</div>';
-               }
+        // 렌더링을 위한 데이터 정리
+        currentYear = thisMonth.getFullYear(); //달력 연도
+        currentMonth = thisMonth.getMonth(); //달력 월
+        currentDate = thisMonth.getDate(); // 달력 일
 
-               // 이번 달에 속하지 않는 날짜에 대한 클래스 지정
-           var prevMonthDates = document.querySelectorAll('.day.prev');
-           var nextMonthDates = document.querySelectorAll('.day.next');
-           for (var i = 0; i < prevMonthDates.length; i++) {
-               prevMonthDates[i].classList.add('disable');
-           }
-           for (var i = 0; i < nextMonthDates.length; i++) {
-               nextMonthDates[i].classList.add('disable');
-           }
-       
-               // 오늘 날짜 표기
-           if (today.getMonth() == currentMonth) {
-               var currentMonthDates = document.querySelectorAll('.dates .current');
-               currentMonthDates[today.getDate() - 1].classList.add('today');
-           }
-           
+        // 이번 달의 첫 날과 마지막 날 구하기
+        var firstDay = new Date(currentYear, currentMonth, 1);
+        var lastDay = new Date(currentYear, currentMonth + 1, 0);
+
+        // 이번 달의 첫 날이 무슨 요일인지 구하기 (0 = 일요일, 1 = 월요일, ...)
+        var firstDayOfWeek = firstDay.getDay();
+
+        // 이전 달의 마지막 날 구하기
+        var prevMonthLastDay = new Date(currentYear, currentMonth, 0);
+        var prevMonthLastDate = prevMonthLastDay.getDate();
+
+        // 다음 달의 첫 날 구하기
+        var nextMonthFirstDay = new Date(currentYear, currentMonth + 1, 1);
+
+        // 현재 월 표기
+        $('.year-month').text((currentMonth + 1) + '월 ' + currentDate + '일');
+
+        // 렌더링 html 요소 생성
+        var calendar = document.querySelector('.dates');
+        calendar.innerHTML = '';
+
+        // 이전 달의 마지막 주
+        for (var i = firstDayOfWeek - 1; i >= 0; i--) {
+            var date = prevMonthLastDate - i;
+            calendar.innerHTML += '<div class="day prev disable">' + date + '</div>';
+        }
+
+        // 이번 달
+        for (var i = 1; i <= lastDay.getDate(); i++) {
+            var dayOfWeek = new Date(currentYear, currentMonth, i).getDay();
+            var className = 'day current';
+            if (dayOfWeek == 0) {
+                className += ' sunday';
+            } else if (dayOfWeek == 6) {
+                className += ' saturday';
+            }
+            if (i == currentDate) {
+                className += ' today';
+            }
+            calendar.innerHTML += '<div class="' + className + '">' + i + '</div>';
+        }
+
+        // 다음 달의 첫 주
+        for (var i = 1; i <= 6 - lastDay.getDay(); i++) {
+            var date = i;
+            calendar.innerHTML += '<div class="day next disable">' + date + '</div>';
+        }
+
+        // 이번 달에 속하지 않는 날짜에 대한 클래스 지정
+        var prevMonthDates = document.querySelectorAll('.day.prev');
+        var nextMonthDates = document.querySelectorAll('.day.next');
+        for (var i = 0; i < prevMonthDates.length; i++) {
+            prevMonthDates[i].classList.add('disable');
+        }
+        for (var i = 0; i < nextMonthDates.length; i++) {
+            nextMonthDates[i].classList.add('disable');
+        }
+
+        // 오늘 날짜 표기
+        if (today.getMonth() == currentMonth) {
+            var currentMonthDates = document.querySelectorAll('.dates .current');
+            currentMonthDates[today.getDate() - 1].classList.add('today');
+        }
+
     }
 
     // renderCalendar() 함수 호출
@@ -1119,7 +1105,7 @@ function calendarInit() {
 var dateChange = () => {
     let dateInput = document.getElementById("date");
     let dateArr = dateInput.value.split('-');
-    let selectedDate = new Date(Date.UTC(dateArr[0], dateArr[1]-1, dateArr[2]));
+    let selectedDate = new Date(Date.UTC(dateArr[0], dateArr[1] - 1, dateArr[2]));
     selectedDate.setHours(selectedDate.getHours() + 9);  // 한국 표준시의 오프셋은 9시간
     let todaydate = new Date();
     let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
@@ -1212,7 +1198,7 @@ var dateChange = () => {
     let dDayInDays = Math.floor(dDay / (1000 * 60 * 60 * 24));
     let dDaycount = document.getElementById('dday');
     dDaycount.innerText = `${dDayInDays}` + '일';
-    
+
     // 선택한 일자 표기
     currentMonthDates[parseInt(dateInput.value.split('-')[2]) - 1].classList.add('today');
 };
@@ -1248,18 +1234,18 @@ function handleOnChange(e, target) {
         // 선택된 ID에 텍스트 출력
         document.getElementById("WeddingMinute").innerText = AMPM;
     }
-    
+
 }
 
 // 예식장 명 입력
-function WeddingLocationInput(){
+function WeddingLocationInput() {
     var WeddingLocateTitle = document.getElementById("WeddingLocateTitleInput").value;
     document.getElementById("WeddingLocateTitle").innerText = WeddingLocateTitle;
     document.getElementById("WeddingLocateTitleMap").innerText = WeddingLocateTitle;
 }
 
 // 예식장 층,홀 입력
-function WeddingHallInfoInput(){
+function WeddingHallInfoInput() {
     var WeddingLocateTitle = document.getElementById("WeddingHallInfoInput").value;
     document.getElementById("WeddingHallInfo").innerText = WeddingLocateTitle;
     document.getElementById("WeddingHallInfoMap").innerText = WeddingLocateTitle;
@@ -1267,7 +1253,7 @@ function WeddingHallInfoInput(){
 
 
 // 청첩장 제목 입력
-function InvitationTitleInput(){
+function InvitationTitleInput() {
     var inputTitleBox = document.getElementById("InvitationTitleInput");
     document.title = inputTitleBox.value;
 }
@@ -1394,4 +1380,3 @@ function printHolderGroom() {
     document.getElementById("holderinfo").innerText = PrintAccount;
 };
 
-  
