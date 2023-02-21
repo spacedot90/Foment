@@ -335,13 +335,15 @@
 }
 
 .sec_cal .cal_wrap {
-  padding: 32px 0px;
+  padding: 16px 0px;
   position: relative;
   margin: 0 auto;
 }
 
 .sec_cal .cal_wrap .days {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 1fr 1fr 1fr */
+  justify-items: center;
   padding-bottom: 20px;
 }
 
@@ -353,7 +355,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% / 7);
+  width: 36px;
+  height: 36px;
   text-align: left;
   color: #333;
   font-size: 15px;
@@ -367,9 +370,10 @@
 }
 
 .sec_cal .cal_wrap .dates {
-  display: flex;
-  flex-flow: wrap;
-  height: 240px;
+  grid-template-columns: repeat(7, 1fr); /* 1fr 1fr 1fr */
+  justify-items: center;
+  display: grid;
+  grid-gap: 4px;
 }
 
 .sec_cal .cal_wrap .day:nth-child(7n -6) {
@@ -778,7 +782,7 @@ li.TabItemDesign:hover {
   border: 1px solid var(--ColorBorderSolid);
   border-radius: var(--BorderRadius-Md);
   text-align: center;
-  margin-top: 12px;
+  margin-top: 16px;
 }
 #dday{
   color: #ff5000;

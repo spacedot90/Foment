@@ -1,5 +1,14 @@
 window.onload = function () {
 
+    // 타겟 이동 요소 정리
+    // // 신랑 성
+    const GroomFirstNameInput = document.getElementById('GroomFirstNameInput');
+    const targetElement = document.getElementById('scrollFamilyinfo');
+
+    GroomFirstNameInput.addEventListener('click', () => {
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+    });
+
     // 신랑 아버지 상태값 체크박스 선택
     document.getElementById('groomfatherstatus').addEventListener("click", function() {
         let selectBoxes = document.getElementById("groomfatherstatustype");
@@ -1269,6 +1278,7 @@ function printGroomFirst() {
     document.getElementById("GroomFirstName").innerText = GroomFirstName;
     document.getElementById("GroomFirstName2").innerText = GroomFirstName;
 };
+
 // 신랑 이름
 function printGroomLast() {
     let GroomLastName = document.getElementById('GroomLastNameInput').value;
