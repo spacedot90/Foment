@@ -1,13 +1,82 @@
 window.onload = function () {
 
     // 타겟 이동 요소 정리
-    // // 신랑 성
-    const GroomFirstNameInput = document.getElementById('GroomFirstNameInput');
-    const targetElement = document.getElementById('scrollFamilyinfo');
 
-    GroomFirstNameInput.addEventListener('click', () => {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-    });
+    // // 신랑쪽 정보 입력시 스크롤
+    const groomInputs = [
+        document.getElementById('GroomFirstNameInput'),
+        document.getElementById('GroomLastNameInput'),
+        document.getElementById('SelectGroomRelationship'),
+        document.getElementById('GroomFatherFirstNameInput'),
+        document.getElementById('GroomFatherLastNameInput'),
+        document.getElementById('GroomMotherFirstNameInput'),
+        document.getElementById('GroomMotherLastNameInput'),
+        document.getElementById('groomfatherstatus'),
+        document.getElementById('groommotherstatus')
+      ];
+    
+
+      groomInputs.forEach(Grooms => {
+        Grooms.addEventListener('click', () => {
+        const targetElement = document.getElementById('scrollFamilyinfo');
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+      
+    // // 신부쪽 정보 입력시 스크롤
+    const BrideInputs = [
+        document.getElementById('BrideFirstNameInput'),
+        document.getElementById('BrideLastNameInput'),
+        document.getElementById('SelectBrideRelationship'),
+        document.getElementById('BrideFatherFirstNameInput'),
+        document.getElementById('BrideFatherLastNameInput'),
+        document.getElementById('BrideMotherFirstNameInput'),
+        document.getElementById('BrideMotherLastNameInput'),
+        document.getElementById('bridefatherstatus'),
+        document.getElementById('bridemotherstatus')
+      ];
+    
+
+      BrideInputs.forEach(Bride => {
+        Bride.addEventListener('click', () => {
+        const targetElement = document.getElementById('scrollFamilyinfo');
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+    // // 예식정보 입력시 스크롤
+    const WeddingInputs = [
+        document.getElementById('date'),
+        document.getElementById('SelectAMPM'),
+        document.getElementById('SelectTime'),
+        document.getElementById('SelectMinute')
+      ];
+    
+
+      WeddingInputs.forEach(Wedding => {
+        Wedding.addEventListener('click', () => {
+        const targetElement = document.getElementById('TextDateCalendar');
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    
+    
+    // // 예식장 명, 층, 홀 입력시 스크롤
+    const WeddingInfoInputs = [
+        document.getElementById('WeddingLocateTitleInput'),
+        document.getElementById('WeddingHallInfoInput'),
+        document.getElementById('SearchAddressInput'),
+        document.getElementById('SearchAddressBtn')
+        ];
+    
+
+        WeddingInfoInputs.forEach(WeddingInfo => {
+        WeddingInfo.addEventListener('click', () => {
+        const targetElement = document.querySelector('.LocationSection');
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+        });
+
 
     // 신랑 아버지 상태값 체크박스 선택
     document.getElementById('groomfatherstatus').addEventListener("click", function () {
@@ -1092,6 +1161,12 @@ function calendarInit() {
         if (today.getMonth() == currentMonth) {
             var currentMonthDates = document.querySelectorAll('.dates .current');
             currentMonthDates[today.getDate() - 1].classList.add('today');
+
+            let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+            var currentday = days[today.getDay()];
+        
+            document.getElementById("CalWeddingDayTitle").innerText = currentday
+            document.getElementById("WeddingDateTitle").innerText = (currentMonth + 1) + '월 ' + currentDate + '일';
         }
 
     }
@@ -1131,7 +1206,6 @@ var dateChange = () => {
 
     // 선택한 달의 첫 날이 무슨 요일인지 구하기 (0 = 일요일, 1 = 월요일, ...)
     var firstDayOfWeek = SelectfirstDay.getDay();
-    console.log(firstDayOfWeek);
 
     // 선택한 달의 마지막 날 구하기
     var prevMonthLastDay = new Date(SelectYear, SelectMonth, 0);
@@ -1184,6 +1258,7 @@ var dateChange = () => {
     // 영역별 월/일/요일 표기
     document.getElementById("TextDateCalendar").innerText = `${monthDisplay}월 ${dateDisplay}일`;
     document.getElementById("WeddingDateTitle").innerText = `${monthDisplay}월 ${dateDisplay}일`;
+    document.getElementById("CalWeddingDayTitle").innerText = dayName;
     document.getElementById("WeddingDayTitle").innerText = dayName;
 
     // 갱신될때마다 Today 초기화
@@ -1227,12 +1302,15 @@ function handleOnChange(e, target) {
     if (e.id === "SelectAMPM") {
         // 선택된 ID에 텍스트 출력
         document.getElementById("AMPM").innerText = AMPM;
+        document.getElementById("CalAMPM").innerText = AMPM;
     } else if (e.id === "SelectTime") {
         // 선택된 ID에 텍스트 출력
         document.getElementById("WeddingTime").innerText = AMPM;
+        document.getElementById("CalWeddingTime").innerText = AMPM;
     } else if (e.id === "SelectMinute") {
         // 선택된 ID에 텍스트 출력
         document.getElementById("WeddingMinute").innerText = AMPM;
+        document.getElementById("CalWeddingMinute").innerText = AMPM;
     }
 
 }

@@ -94,6 +94,7 @@ body {
     transition: var(--transition);
     width: 100%;
     height: 48px;
+    letter-spacing: -0.04em;
 }
 
 .BtnBasic:hover , .BtnIcon:hover {
@@ -301,8 +302,8 @@ body {
     background-color: var(--ColorBorderSolid);
   }
 
-  #TypeJeju{
-    font-family: 'Jeju Myeongjo', serif;
+  #TypeGowun{
+    font-family: 'GowunDodum-Regular', serif;
   }
   #TypeChosunilbo{
     font-family: 'Chosunilbo_myungjo', serif;

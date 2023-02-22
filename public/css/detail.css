@@ -6,7 +6,8 @@
 
 /* 사이드 공통 */
 .side_contents {
-  font-family: 'Jeju Myeongjo', serif;
+  font-family: 'GowunDodum-Regular', serif;
+  letter-spacing: -0.04em;
   background: var(--ColorSurface);
   min-width: 336px;
   padding: 32px;
@@ -60,18 +61,18 @@
 
 .changeMe,
 .WeddingBodyText {
-  font-family: 'Jeju Myeongjo', serif;
   font-size: 15px;
   line-height: 1.8;
-  letter-spacing: -0.025em;
 }
 
 .WeddingTitleText, .sec_cal .cal_nav .year-month {
-  font-family: 'Jeju Myeongjo', serif;
   font-size: 20px;
   line-height: 1.8;
-  letter-spacing: -0.025em;
   text-align: center;
+}
+
+#CalDayTime{
+  color: var(--ColorTextTertiary);
 }
 
 .WeddingDateLocation{
@@ -97,11 +98,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 4px;
 }
 #AddressTitle{
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 #WeddingAddress{
@@ -115,7 +115,6 @@
 }
 
 .WeddingBodyTitle, .year-month {
-  font-family: 'Jeju Myeongjo', serif;
   font-size: 19px;
   padding: 12px;
   text-align: center;
@@ -273,7 +272,6 @@
 /* 캘린더 */
 
 .sec_cal {
-  font-family: 'Jeju Myeongjo', serif;
   width: 100%;
   margin: 0 auto;
   padding: 48px 0px;
@@ -335,16 +333,18 @@
 }
 
 .sec_cal .cal_wrap {
+  border-top: 1px solid var(--ColorBorder5);
+  border-bottom: 1px solid var(--ColorBorder5);
+  margin-top: 12px;
   padding: 16px 0px;
   position: relative;
-  margin: 0 auto;
 }
 
 .sec_cal .cal_wrap .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr); /* 1fr 1fr 1fr */
   justify-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 16px;
 }
 
 .sec_cal .cal_wrap::after {
