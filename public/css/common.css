@@ -265,8 +265,10 @@ body {
   }
   
   .custom-options {
+    max-height: 360px;
+    overflow-y: scroll;
     z-index: 1001;
-    padding: 16px;
+    padding: 24px;
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
@@ -277,7 +279,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: none;
     animation-fill-mode: both;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
     text-align: center;
   }
   
@@ -291,10 +293,12 @@ body {
     color: #333;
     cursor: pointer;
     transition: var(--transition);
+    border-bottom: 1px solid var(--ColorBorder5);
   }
 
   .OptionTitle{
     font-weight: bold;
+    margin-bottom: 12px;
   }
   
   .custom-option:hover {

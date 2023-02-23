@@ -696,6 +696,22 @@ li.TabItemDesign:hover {
   width: 100%;
 }
 
+.dot{
+  margin: 0px 4px;
+}
+
+.BrideFamilyStatusInfo, .GroomFamilyStatusInfo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ImgMum{
+  width: 24px;
+  height: 24px;
+  display: none;
+}
+
 .TabContent {
   display: none;
   padding: 60px 0px;

@@ -94,15 +94,25 @@ window.onload = function () {
         } else {
             selectBoxes.setAttribute("disabled", "disabled");
             selectBoxes.style.cursor = 'not-allowed';
+            selectBoxes.value = "故";
             selectedValue = "";
+            document.getElementById('GroomFatherMum').style.display = "none";
         }
         // 신랑 아버지 상태값
         document.querySelector("#GroomFatherStatusInfo").innerText = selectedValue;
-    });
-    // 신랑 아버지 상태값 입력
-    document.getElementById("groomfatherstatustype").addEventListener("change", function () {
-        console.log(this.value);
-        document.querySelector("#GroomfatherStatusInfo").innerText = this.value;
+
+        // 선택시 신랑 어머니 상태값
+        document.getElementById("groomfatherstatustype").addEventListener("change", function () {
+            console.log(this.value);
+            if(this.value === "국화꽃"){
+                document.getElementById('GroomFatherMum').style.display = "block";
+                document.querySelector("#GroomFatherStatusInfo").innerText = "";
+            }if(this.value === "故"){
+                document.getElementById('GroomFatherMum').style.display = "none";
+                document.querySelector("#GroomFatherStatusInfo").innerText = "故";
+            } else{
+            }
+            });
     });
 
     // 신랑 어머니 상태값 체크박스 선택
@@ -121,15 +131,25 @@ window.onload = function () {
         } else {
             selectBoxes.setAttribute("disabled", "disabled");
             selectBoxes.style.cursor = 'not-allowed';
+            selectBoxes.value = "故";
             selectedValue = "";
+            document.getElementById('GroomMotherMum').style.display = "none";
         }
         // 신랑 어머니 상태값
         document.querySelector("#GroomMotherStatusInfo").innerText = selectedValue;
-    });
-    // 신랑 어머니 상태값 입력
-    document.getElementById("groommotherstatustype").addEventListener("change", function () {
-        console.log(this.value);
-        document.querySelector("#GroomMotherStatusInfo").innerText = this.value;
+
+        // 선택시 신랑 어머니 상태값
+        document.getElementById("groommotherstatustype").addEventListener("change", function () {
+            console.log(this.value);
+            if(this.value === "국화꽃"){
+                document.getElementById('GroomMotherMum').style.display = "block";
+                document.querySelector("#GroomMotherStatusInfo").innerText = "";
+            }if(this.value === "故"){
+                document.getElementById('GroomMotherMum').style.display = "none";
+                document.querySelector("#GroomMotherStatusInfo").innerText = "故";
+            } else{
+            }
+            });
     });
 
 
@@ -149,19 +169,29 @@ window.onload = function () {
         } else {
             selectBoxes.setAttribute("disabled", "disabled");
             selectBoxes.style.cursor = 'not-allowed';
+            selectBoxes.value = "故";
             selectedValue = "";
+            document.getElementById('BrideFatherMum').style.display = "none";
         }
-        // 신부 아버지 상태값
+        // 신부 아버지 상태값 체크시
         document.querySelector("#BridefatherStatusInfo").innerText = selectedValue;
-    });
-    // 신부 아버지 상태값 입력
-    document.getElementById("bridefatherstatustype").addEventListener("change", function () {
+
+        // 선택시 신부 아버지 상태값
+        document.getElementById("bridefatherstatustype").addEventListener("change", function () {
         console.log(this.value);
-        document.querySelector("#BridefatherStatusInfo").innerText = this.value;
+        if(this.value === "국화꽃"){
+            document.getElementById('BrideFatherMum').style.display = "block";
+            document.querySelector("#BridefatherStatusInfo").innerText = "";
+        }if(this.value === "故"){
+            document.getElementById('BrideFatherMum').style.display = "none";
+            document.querySelector("#BridefatherStatusInfo").innerText = "故";
+        } else{
+        }
+        });
     });
 
 
-    // 신부 아버지 상태값 체크박스 선택
+    // 신부 어머니 상태값 체크박스 선택
     document.getElementById('bridemotherstatus').addEventListener("click", function () {
         let selectBoxes = document.getElementById("bridemotherstatustype");
         let selectedValue = selectBoxes.value;
@@ -177,15 +207,26 @@ window.onload = function () {
         } else {
             selectBoxes.setAttribute("disabled", "disabled");
             selectBoxes.style.cursor = 'not-allowed';
+            selectBoxes.value = "故";
             selectedValue = "";
+            document.getElementById('BrideMotherMum').style.display = "none";
         }
-        // 신부 아버지 상태값
-        document.querySelector("#BridemotherStatusInfo").innerText = selectedValue;
-    });
-    // 신부 아버지 상태값 입력
-    document.getElementById("bridemotherstatustype").addEventListener("change", function () {
-        console.log(this.value);
-        document.querySelector("#BridemotherStatusInfo").innerText = this.value;
+
+         // 신부 어머니 상태값 체크시
+         document.querySelector("#BrideMotherStatusInfo").innerText = selectedValue;
+
+        // 선택시 신부 어머니 상태값
+        document.getElementById("bridemotherstatustype").addEventListener("change", function () {
+            console.log(this.value);
+            if(this.value === "국화꽃"){
+                document.getElementById('BrideMotherMum').style.display = "block";
+                document.querySelector("#BrideMotherStatusInfo").innerText = "";
+            }if(this.value === "故"){
+                document.getElementById('BrideMotherMum').style.display = "none";
+                document.querySelector("#BrideMotherStatusInfo").innerText = "故";
+            } else{
+            }
+            });
     });
 
 

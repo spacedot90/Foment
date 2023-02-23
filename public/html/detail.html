@@ -176,22 +176,32 @@
             <!-- 가족정보 -->
             <div class="FamilyInfo" id="scrollFamilyinfo">
                 <div class="WeddingBodyText">
-                    <span class="statustype" id="GroomFatherStatusInfo"></span><span
-                        id="GroomFatherFirstName">김</span><span id="GroomFatherLastName">덕환</span>
-                    <span>∙</span>
-                    <span class="statustype" id="GroomMotherStatusInfo"></span><span
-                        id="GroomMotherFirstName">조</span><span id="GroomMotherLastName">희연</span>
-                    <span class="relationship" id="GroomRelationship">의 아들</span>
-                    <span id="GroomFirstName2">신랑</span><span id="GroomLastName2">이름</span>
+                    <div class="GroomFamilyStatusInfo" id="GroomFamilyStatusInfo">
+                        <span class="statustype" id="GroomFatherStatusInfo"></span>
+                        <img class="ImgMum" id="GroomFatherMum" src="../Resource/assets/Icon/mum.png" alt="">
+                        <span id="GroomFatherFirstName">김</span><span id="GroomFatherLastName">덕환</span>
+                        <span class="dot">∙</span>
+                        <img class="ImgMum" id="GroomMotherMum" src="../Resource/assets/Icon/mum.png" alt="">
+                        <span class="statustype" id="GroomMotherStatusInfo"></span>
+                        <span id="GroomMotherFirstName">조</span><span id="GroomMotherLastName">희연</span>
+                        <span class="relationship" id="GroomRelationship">의 아들</span>
+                        <span id="GroomFirstName2">신랑</span><span id="GroomLastName2">이름</span>
+                    </div>
                 </div>
                 <div class="WeddingBodyText">
-                    <span class="statustype" id="BrideFatherStatusInfo"></span><span
-                        id="BrideFatherFirstName">곽</span><span id="BrideFatherLastName">상돈</span>
-                    <span>∙</span>
-                    <span class="statustype" id="BrideMotherStatusInfo"></span><span
-                        id="BrideMotherFirstName">최</span><span id="BrideMotherLastName">순자</span>
-                    <span class="relationship" id="BrideRelationship">의 딸</span>
-                    <span id="BrideFirstName2">신부</span><span id="BrideLastName2">이름</span>
+                    <div class="BrideFamilyStatusInfo" id="BrideFamilyStatusInfo">
+                        <span class="statustype" id="BrideFatherStatusInfo"></span>
+                        <img class="ImgMum" id="BrideFatherMum" src="../Resource/assets/Icon/mum.png" alt="">
+                        <span id="BrideFatherFirstName">곽</span>
+                        <span id="BrideFatherLastName">상돈</span>
+                        <span class="dot">∙</span>
+                        <span class="statustype" id="BrideMotherStatusInfo"></span>
+                        <img class="ImgMum" id="BrideMotherMum" src="../Resource/assets/Icon/mum.png" alt="">
+                        <span id="BrideMotherFirstName">최</span>
+                        <span id="BrideMotherLastName">순자</span>
+                        <span class="relationship" id="BrideRelationship">의 딸</span>
+                        <span id="BrideFirstName2">신부</span><span id="BrideLastName2">이름</span>
+                    </div>
                 </div>
             </div>
 
@@ -795,7 +805,7 @@
                                         <select disabled class="innerselectbox" id="bridefatherstatustype"
                                             onchange="handleOnChange(this)">
                                             <option value="故">故</option>
-                                            <option value="꽃이미지">국화꽃</option>
+                                            <option value="국화꽃">국화꽃</option>
                                         </select>
                                         <div class="check_wrap">
                                             <input type="checkbox" id="bridefatherstatus">
