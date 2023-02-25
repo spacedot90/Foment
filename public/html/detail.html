@@ -525,9 +525,9 @@
                             <label class="selectbox_label" for="pet-select">글자 크기</label>
                             <div class="TabUI">
                                 <ul class="TabListFont">
-                                    <li class="TabItemFont Active" value="15" data-tab="Tab-1">기본</li>
-                                    <li class="TabItemFont" value="16" data-tab="Tab-3">중간</li>
-                                    <li class="TabItemFont" value="17" data-tab="Tab-3">크게</li>
+                                    <li class="TabItemFont Active" value="14" data-tab="Tab-1">기본</li>
+                                    <li class="TabItemFont" value="15" data-tab="Tab-3">중간</li>
+                                    <li class="TabItemFont" value="16" data-tab="Tab-3">크게</li>
                                 </ul>
                             </div>
                         </div>
@@ -586,54 +586,66 @@
                         <div class="ImgSection">
                             <div class="TitleImgSection">
                                 <div class="sectiondes">
-                                    <label class="selectbox_label" for="file">청첩장 URL(필수)</label>
+                                    <label class="selectbox_label" for="file">대표이미지 등록 (필수)</label>
                                     <div class="info">
                                         98x98픽셀 이상, 4MB 이하의 사진이 권장됩니다.<br>PNG 또는 JPG 파일을 사용하세요.
                                     </div>
                                 </div>
 
                                 <!-- 메인 사진업로드 -->
-                                <div class="photo_box">
-                                    <label class="upload_btn" for="photoBtn">
-                                        <div class="upload">
-                                            <div class="uploadarea">
-                                                <div class="edit">
-                                                    <label class="AttatchTitleImg" for="photoBtn">편집하기</label>
+                                <div class="KakaoSection">
+                                    <div class="photo_box">
+                                        <label class="upload_btn" for="photoBtn">
+                                            <div class="upload">
+                                                <div class="uploadarea">
+                                                    <div class="edit">
+                                                        <label class="AttatchTitleImg" for="photoBtn">클릭 후 업로드</label>
+                                                    </div>
+                                                    <img class="uploadsrc" src="../Resource/mainasset/WeddingTitleImg.jpg"
+                                                        alt="">
                                                 </div>
-                                                <img class="uploadsrc" src="../Resource/mainasset/WeddingTitleImg.jpg"
-                                                    alt="">
+                                                <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
+                                                    capture="camera" id="photoBtn">
                                             </div>
-                                            <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
-                                                capture="camera" id="photoBtn">
-                                        </div>
-                                    </label>
+                                        </label>
+                                    </div>
                                 </div>
 
                             </div>
+                            <!-- 카카오 공유하기 미리보기 -->
                             <div class="TitleImgSection">
                                 <div class="sectiondes">
-                                    <label class="selectbox_label" for="file">청첩장 URL(필수)</label>
+                                    <label class="selectbox_label" for="file">카카오 공유화면 미리보기 예시</label>
                                     <div class="info">
-                                        98x98픽셀 이상, 4MB 이하의 사진이 권장됩니다.<br>PNG 또는 JPG 파일을 사용하세요.
+                                        대표 이미지를 등록하시면<br>카카오 공유하기 화면이 위와 같이 노출됩니다.
                                     </div>
                                 </div>
                                 <!-- 메인 사진업로드 -->
-                                <div class="photo_box">
-                                    <label class="upload_btn" for="photoBtn">
-                                        <div class="upload">
-                                            <div class="uploadarea">
-                                                <div class="edit">
-                                                    <label class="AttatchTitleImg" for="photoBtn">편집하기</label>
+                                        <div class="kakaoShareArea">
+                                            <div class="KakaoSection">
+                                                <div class="KaKaoShare">
+                                                    <img class="KaKaosrc" src="../Resource/mainasset/WeddingTitleImg.jpg" alt="">
+                                                    <div class="ShareText">
+                                                        <div class="kakaoTitle">1월14일 현석 ♥ 성희 결혼합니다.</div>
+                                                        <div class="buttonGroups">
+                                                            <div class="buttonArea">모바일 청첩장</div>
+                                                            <div class="buttonArea">위치 보기</div>
+                                                        </div>
+                                                        <div class="FomentArea">
+                                                            <div class="corparea">
+                                                                <div class="Corplogo">
+                                                                    <img src="../Resource/assets/Icon/icon_tmap.png" alt="">
+                                                                </div>
+                                                                <div class="corpname">포먼트 모바일 청첩장</div>
+                                                            </div>
+                                                            <div class="Corpicon">
+                                                                <img src="../Resource/assets/Icon/Arrow.svg" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <img class="uploadsrc" src="../Resource/mainasset/WeddingTitleImg.jpg"
-                                                    alt="">
                                             </div>
-                                            <input type="file" name="photoBtn" accept="image/jpeg, image/png, image/jpg"
-                                                capture="camera" id="photoBtn">
                                         </div>
-                                    </label>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -1226,9 +1238,8 @@
                             <label class="selectbox_label" for="pet-select">갤러리 타입</label>
                             <div class="TabUI">
                                 <ul class="TabListDesign">
-                                    <li class="TabItemDesign Active" id="DesignArch">아치</li>
-                                    <li class="TabItemDesign" id="DesignTrip">여정</li>
-                                    <li class="TabItemDesign" id="DesignTogether">투게더</li>
+                                    <li class="TabItemDesign Active" id="DesignArch">바둑판형 갤러리</li>
+                                    <li class="TabItemDesign" id="DesignTrip">슬라이드형 갤러리</li>
                                 </ul>
                             </div>
                         </div>

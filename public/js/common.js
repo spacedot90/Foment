@@ -1,8 +1,8 @@
 window.onload = function () {
 
-    // 타겟 이동 요소 정리
+    // --> 타겟 이동 요소 정리
 
-    // // 신랑쪽 정보 입력시 스크롤
+    // 신랑쪽 정보 입력시 스크롤
     const groomInputs = [
         document.getElementById('GroomFirstNameInput'),
         document.getElementById('GroomLastNameInput'),
@@ -23,7 +23,7 @@ window.onload = function () {
         });
       });
       
-    // // 신부쪽 정보 입력시 스크롤
+    // 신부쪽 정보 입력시 스크롤
     const BrideInputs = [
         document.getElementById('BrideFirstNameInput'),
         document.getElementById('BrideLastNameInput'),
@@ -44,7 +44,7 @@ window.onload = function () {
         });
       });
 
-    // // 예식정보 입력시 스크롤
+    // 예식정보 입력시 스크롤
     const WeddingInputs = [
         document.getElementById('date'),
         document.getElementById('SelectAMPM'),
@@ -61,7 +61,7 @@ window.onload = function () {
       });
     
     
-    // // 예식장 명, 층, 홀 입력시 스크롤
+    // 예식장 명, 층, 홀 입력시 스크롤
     const WeddingInfoInputs = [
         document.getElementById('WeddingLocateTitleInput'),
         document.getElementById('WeddingHallInfoInput'),
@@ -76,7 +76,22 @@ window.onload = function () {
             targetElement.scrollIntoView({ behavior: 'smooth' });
         });
         });
+        
 
+    // 초대 글 작성시 스크롤
+    const InviteInfoInputs = [
+        document.getElementById('InviteTitleInput'),
+        document.getElementById('TextBoxInput'),
+        document.getElementById('custom-select-container-invite'),
+        ];
+    
+
+        InviteInfoInputs.forEach(InviteInfo => {
+        InviteInfo.addEventListener('click', () => {
+        const targetElement = document.querySelector('.TabContent');
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+        });
 
     // 신랑 아버지 상태값 체크박스 선택
     document.getElementById('groomfatherstatus').addEventListener("click", function () {
@@ -360,6 +375,8 @@ window.onload = function () {
             BG.classList.toggle('is-active');
             result.attr('src', canvas.toDataURL("image/jpg"));
             $("#preview-image").attr('src', canvas.toDataURL("image/jpg"));
+            $(".uploadsrc").attr('src', canvas.toDataURL("image/jpg"));
+            $(".KaKaosrc").attr('src', canvas.toDataURL("image/jpg"));
             alert('선택하신 이미지로 대표이미지가 변경되었습니다.');
             $('.photo_them').css("display", "none");
             $('#complete').css("display", "none");
@@ -367,10 +384,8 @@ window.onload = function () {
     });
 
 
-    // 사진 다중업로드 JS
-
+    // 다중업로드한 사진 순서 바꾸기 이동
     var storedFiles = [];
-
     $(function () {
         $('.cvf_uploaded_files').sortable({
             cursor: 'move',
@@ -381,40 +396,88 @@ window.onload = function () {
             stop: function (event, ui) {
                 ui.item.toggleClass('highlight');
             },
-            update: function () {
-                //cvf_reload_order();
+            update: function (event, ui) {
+                // 현재 파일의 순서를 배열로 가져옵니다
+                var currentOrder = $(this).sortable('toArray');
+                console.log(currentOrder);
+                // storedFiles 배열을 초기화합니다
+                storedFiles = [];
+                // .grid-container를 비웁니다
+                $('.grid-container').empty();
+                
+                // 현재 순서대로 .grid-container에 파일을 추가하고, storedFiles 배열에 파일을 저장합니다
+                for (var i = 0; i < currentOrder.length; i++) {
+                    // FileReader 객체를 생성합니다.
+                    var reader = new FileReader();
+                    // File 객체를 생성하고, FileReader 객체에 전달합니다.
+                    var file = new File([storedFiles[currentOrder[i]]], currentOrder[i]);
+                    storedFiles.push(file);
+                    
+                    // 파일의 내용을 읽어오는 것이 완료되면 실행될 함수를 정의합니다.
+                    reader.onload = (function (file) {
+                        var imgElements = document.querySelectorAll('.img-thumb'); // 클래스명은 img-class로 가정
+                        var dataUrl = imgElements[i].src;
+                        console.log(dataUrl); // 선택된 각 img 요소의 src 값을 출력
+                            $('.grid-container').css('display', 'grid');
+                            $('.grid-container').append(
+                                "<li class = 'grid-item' file = '" + file.name + "'>" +
+                                "<img class = 'grid-thumb' file = '" + file.name + "' id = 'appendimg' src = '" + dataUrl + "' />" +
+                                "</li>"
+                            );
+                    })(file);
+                    // 파일의 내용을 data URL로 읽어옵니다.
+                    reader.readAsDataURL(file);
+                }   
             },
             create: function () {
-                var list = this;
-                resize = function () {
-                    $(list).css('height', 'auto');
-                    $(list).height($(list).height());
-                };
-                // $(list).height($(list).height());
-                $(list).find('img').load(resize).error(resize);
             }
         });
-        $('.cvf_uploaded_files').disableSelection();
     });
+    
+    // $('#complete').on('click', function () {
+    //     var image = $('#image');
+    //     var result = $('#preview-image');
+    //     var canvas;
+    //     var BG = document.querySelector('.BgDimmed');
+    //     canvas = image.cropper('getCroppedCanvas', {
+    //         width: 1000,
+    //         height: 1000
+    //     });
+    //     BG.classList.toggle('is-active');
+    //     result.attr('src', canvas.toDataURL("image/jpg"));
+    //     $("#preview-image").attr('src', canvas.toDataURL("image/jpg"));
+    //     $(".uploadsrc").attr('src', canvas.toDataURL("image/jpg"));
+    //     $(".KaKaosrc").attr('src', canvas.toDataURL("image/jpg"));
+    //     alert('선택하신 이미지로 대표이미지가 변경되었습니다.');
+    //     $('.photo_them').css("display", "none");
+    //     $('#complete').css("display", "none");
+    // });
 
+
+
+    
+    
+    // 끌어서 업로드
     const dropzone = document.querySelector(".ImgGroupUpload_Btn");
     console.log(dropzone);
 
-    // Handle dragover event
+    // 이미지 드래그해서 업로드
     dropzone.addEventListener("dragover", function (event) {
         event.preventDefault();
         event.stopPropagation();
         dropzone.style.backgroundColor = "#eff0f5";
     });
 
-    // Handle dragleave event
+    // 이미지 드래그 놨을때
     dropzone.addEventListener("dragleave", function (event) {
         event.preventDefault();
         event.stopPropagation();
         dropzone.style.backgroundColor = "";
     });
 
-    // Handle drop event
+    
+
+    // 이미지 드래그 업로드 완료시
     dropzone.addEventListener("drop", function (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -459,9 +522,11 @@ window.onload = function () {
             // 이미지 타입 매칭 후 노출
             if (file.type.match('image.*')) {
                 storedFiles.push(file);
-                console.log();
+                console.log(storedFiles);
                 readImg.onload = (function (file) {
                     return function (e) {
+                        console.log(e);
+                        console.log(e.target.result)
                         $('.GalleryTitleArea').show();
                         $('.cvf_uploaded_files').append(
                             "<li class='multiimg' id='multiimg_" + file.name + "' file = '" + file.name + "'>" +
@@ -470,6 +535,7 @@ window.onload = function () {
                             "</li>"
                         );
                         $('.cvf_uploaded_files').css('overflow-x', 'scroll');
+                        $('.cvf_uploaded_files').css('overflow-y', 'hidden');
                         $('.grid-container').css('display', 'grid');
                         $('.grid-container').append(
                             "<li class = 'grid-item' file = '" + file.name + "'>" +
@@ -483,7 +549,6 @@ window.onload = function () {
                         let imageOverlay = document.querySelector(".BgDimmedImg");
                         let fullImage = document.querySelector(".full-image");
                         let closeButton = document.querySelector(".close-button");
-                        console.log(thumbnail);
 
                         thumbnail.addEventListener("click", function () {
                             imageOverlay.style.display = "block";
@@ -497,19 +562,18 @@ window.onload = function () {
 
                         // Hover시 삭제버튼
                         var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
+                        console.log(HoverImg);
                         var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
 
 
                         HoverImg.onmouseover = function () {
                             if (DeleteImg) {
                                 DeleteImg.style.opacity = "1";
-                                console.log('over');
                             }
                         };
                         HoverImg.onmouseout = function () {
                             if (DeleteImg) {
                                 DeleteImg.style.opacity = "0";
-                                console.log('out');
                             }
                         };
                     };
@@ -585,6 +649,7 @@ window.onload = function () {
                             "</li>"
                         );
                         $('.cvf_uploaded_files').css('overflow-x', 'scroll');
+                        $('.cvf_uploaded_files').css('overflow-y', 'hidden');
                         $('.grid-container').css('display', 'grid');
                         $('.grid-container').append(
                             "<li class = 'grid-item' file = '" + file.name + "'>" +
@@ -598,12 +663,10 @@ window.onload = function () {
                         let imageOverlay = document.querySelector("BgDimmedImg");
                         // const fullImage = document.querySelector(".full-image");
                         let closeButton = document.querySelector(".close-button");
-                        console.log(thumbnail);
 
                         thumbnail.addEventListener("click", function () {
                             imageOverlay.style.display = "block";
                             fullImage.src = this.src;
-                            console.log(imageOverlay);
                         });
 
                         closeButton.addEventListener("click", function () {
@@ -618,13 +681,11 @@ window.onload = function () {
                         HoverImg.onmouseover = function () {
                             if (DeleteImg) {
                                 DeleteImg.style.opacity = "1";
-                                console.log('over');
                             }
                         };
                         HoverImg.onmouseout = function () {
                             if (DeleteImg) {
                                 DeleteImg.style.opacity = "0";
-                                console.log('out');
                             }
                         };
 
@@ -635,13 +696,6 @@ window.onload = function () {
             else {
                 alert('the file ' + file.name + ' is not an image<br/>');
             }
-
-            // if (files.length === (i + 1)) {
-            //     setTimeout(function () {
-            //         cvf_add_order();
-            //     }, 1000);
-            // }
-
         }
     });
 

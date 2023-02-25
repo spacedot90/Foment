@@ -61,7 +61,7 @@
 
 .changeMe,
 .WeddingBodyText {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -359,7 +359,7 @@
   height: 36px;
   text-align: left;
   color: #333;
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
   border-radius: 50%;
 }
@@ -689,7 +689,7 @@ li.TabItemDesign:hover {
 .ImgSection {
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: 48px;
 }
 
 .TitleImgSection {
@@ -744,6 +744,7 @@ li.TabItemDesign:hover {
 .uploadsrc {
   border-radius: var(--BorderRadius-Md);
   width: 196px;
+  height: 280px;
 }
 
 .upload_btn .upload {
@@ -767,6 +768,7 @@ li.TabItemDesign:hover {
 }
 
 .edit {
+  font-size: var(--Text-Button);
   position: absolute;
   width: 196px;
 }
@@ -783,7 +785,17 @@ li.TabItemDesign:hover {
 
 .photo_box {
   width: 196px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 360px;
 }
+.uploadarea{
+  display: flex;
+  justify-content: center;
+}
+
 .addcount{
   margin-top: 24px;
   height: 48px;
@@ -808,9 +820,9 @@ li.TabItemDesign:hover {
   width: 196px;
   text-align: center;
   position: absolute;
-  height: 44px;
-  line-height: 44px;
-  top: 221;
+  height: 40px;
+  line-height: 40px;
+  top: 240px;
   background: rgb(0, 0, 0, 0.6);
   cursor: pointer;
   border-radius: 0px 0px 8px 8px;
@@ -971,7 +983,7 @@ li.TabItemDesign:hover {
 }
 
 .image-container img {
-  width: 100%
+  width: 100%;
 }
 
 .orderlist{
@@ -1288,8 +1300,9 @@ li.TabItemDesign:hover {
 
 ul.cvf_uploaded_files {
   width: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  height: 100%;
+  overflow-x: none;
+  overflow-y: none;
   list-style-type: none;
   margin: 20px 0 0 0;
   padding: 0;
@@ -1313,13 +1326,19 @@ ul.cvf_uploaded_files li img.img-thumb {
   height: 100px;
 }
 
+.img-thumb{
+  width: 100%;
+  height: 120px;
+}
+
+
 ul.cvf_uploaded_files .ui-selected {
   background: red;
 }
 
 ul.cvf_uploaded_files .highlight {
-  width: 32px;
-  height: 16px;
+  width: 92px;
+  height: 92px;
   background-color: var(--ColorBase);
   border: 4px solid var(--ColorBorder10);
   border-radius: var(--BorderRadius-Lg);
@@ -1378,4 +1397,85 @@ ul.cvf_uploaded_files .delete-btn {
   border: none;
   color: black;
   cursor: pointer;
+}
+
+/* 카카오 공유하기 */
+
+.kakaoShareArea{
+  width: 100%;
+}
+.KakaoSection{
+  border: 1px solid var(--ColorBorder5);
+  border-radius: var(--BorderRadius-Md);
+  height: calc(100% - 160px);
+  background: var(--ColorBrand);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+.KaKaosrc{
+  min-width: 220px;
+  max-width: 220px;
+  height: 298px;
+  border-radius: 8px 8px 0px 0px;
+  object-fit: cover;
+}
+.ShareText{
+  width: 100%;
+  max-width: 220px;
+  background: var(--ColorSurface);
+  border-radius: 0px 0px 8px 8px;
+}
+.kakaoTitle{
+  font-size: 12px;
+  padding: 10px;
+}
+.corparea{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.KaKaoShare{
+  border-radius: 8px;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05);
+}
+.buttonArea{
+  font-size: 13px;
+  text-align: center;
+  background: var(--ColorBase);
+  border-radius: var(--BorderRadius-Xs);
+  border: 1px solid var(--ColorBorder5);
+  padding: 10px;
+  width: 100%;
+}
+.buttonGroups{
+  display: flex;
+  padding: 0px 10px 10px 10px;
+  gap: 4px;
+}
+.corpname{
+  font-size: 12px;
+}
+.FomentArea{
+  border-radius: 0px 0px 8px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: var(--ColorSurface);
+  border-top: 1px solid var(--ColorBorder5);
+}
+.Corplogo img, .Corpicon img{
+  width: 16px;
+  height: 16px;
+}
+
+.Corpicon img{
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
 }
