@@ -383,6 +383,37 @@ window.onload = function () {
         });
     });
 
+    // 클래스 영역 순서바꾸기
+
+    $(function () {
+        $('.InputArea').sortable({
+          cursor: 'move',
+          placeholder: 'highlight',
+          start: function (event, ui) {
+            ui.item.toggleClass('highlight');
+          },
+          stop: function (event, ui) {
+            ui.item.toggleClass('highlight');
+          },
+          update: function (event, ui) {
+            // 선택할 클래스 이름 변수 지정
+            const selectedClassNames = ['sec_cal', 'LocationSection'];
+      
+            // 선택된 클래스 이름을 가진 HTML 요소만 선택하여 selectedElements 배열에 저장
+            const selectedElements = Array.from(document.querySelectorAll(selectedClassNames.map(className => `.${className}`).join(',')))
+              .filter(element => selectedClassNames.every(className => element.classList.contains(className)));
+      
+            // 선택된 요소 배열 출력
+            console.log(selectedElements);
+          },
+          create: function () {}
+        });
+      });
+      
+
+
+
+
 
     // 다중업로드한 사진 순서 바꾸기 이동
     var storedFiles = [];
@@ -433,28 +464,6 @@ window.onload = function () {
             }
         });
     });
-    
-    // $('#complete').on('click', function () {
-    //     var image = $('#image');
-    //     var result = $('#preview-image');
-    //     var canvas;
-    //     var BG = document.querySelector('.BgDimmed');
-    //     canvas = image.cropper('getCroppedCanvas', {
-    //         width: 1000,
-    //         height: 1000
-    //     });
-    //     BG.classList.toggle('is-active');
-    //     result.attr('src', canvas.toDataURL("image/jpg"));
-    //     $("#preview-image").attr('src', canvas.toDataURL("image/jpg"));
-    //     $(".uploadsrc").attr('src', canvas.toDataURL("image/jpg"));
-    //     $(".KaKaosrc").attr('src', canvas.toDataURL("image/jpg"));
-    //     alert('선택하신 이미지로 대표이미지가 변경되었습니다.');
-    //     $('.photo_them').css("display", "none");
-    //     $('#complete').css("display", "none");
-    // });
-
-
-
     
     
     // 끌어서 업로드
