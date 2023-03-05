@@ -270,7 +270,7 @@ body {
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    width: calc(100% - 32px);
+    width: calc(100% - 50px);
     background-color: var(--ColorSurface);
     border-radius: var(--BorderRadius-Md);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -289,7 +289,7 @@ body {
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    width: calc(100% - 32px);
+    width: calc(100% - 50px);
     background-color: var(--ColorSurface);
     border-radius: var(--BorderRadius-Md);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

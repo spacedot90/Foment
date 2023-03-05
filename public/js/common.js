@@ -387,28 +387,58 @@ window.onload = function () {
 
     $(function () {
         $('.InputArea').sortable({
-          cursor: 'move',
-          placeholder: 'highlight',
-          start: function (event, ui) {
-            ui.item.toggleClass('highlight');
-          },
-          stop: function (event, ui) {
-            ui.item.toggleClass('highlight');
-          },
-          update: function (event, ui) {
-            // 선택할 클래스 이름 변수 지정
-            const selectedClassNames = ['sec_cal', 'LocationSection'];
-      
-            // 선택된 클래스 이름을 가진 HTML 요소만 선택하여 selectedElements 배열에 저장
-            const selectedElements = Array.from(document.querySelectorAll(selectedClassNames.map(className => `.${className}`).join(',')))
-              .filter(element => selectedClassNames.every(className => element.classList.contains(className)));
-      
-            // 선택된 요소 배열 출력
-            console.log(selectedElements);
-          },
-          create: function () {}
+            cursor: 'move',
+            placeholder: 'highlight',
+            start: function (event, ui) {
+                ui.item.toggleClass('highlight');
+            },
+            stop: function (event, ui) {
+                ui.item.toggleClass('highlight');
+            },
+            update: function (event, ui) {
+                const inviteArea = document.querySelector('.side_contents');
+                const childElements = inviteArea.querySelectorAll('.side_contents > *');
+                
+                const classOrderArray = [];
+                
+                childElements.forEach((el) => {
+                  const classList = el.classList;
+                  if (classList.length > 0) {
+                    classOrderArray.push(Array.from(classList));
+                  }
+                });
+                
+                console.log(classOrderArray);                
+                
+                
+                // 현재 순서대로 .grid-container에 파일을 추가하고, storedFiles 배열에 파일을 저장합니다
+                for (var i = 0; i < currentOrder.length; i++) {
+                    // FileReader 객체를 생성합니다.
+                    var reader = new FileReader();
+                    // File 객체를 생성하고, FileReader 객체에 전달합니다.
+                    var file = new File([storedFiles[currentOrder[i]]], currentOrder[i]);
+                    storedFiles.push(file);
+                    
+                    // 파일의 내용을 읽어오는 것이 완료되면 실행될 함수를 정의합니다.
+                    reader.onload = (function (file) {
+                        var imgElements = document.querySelectorAll('.img-thumb'); // 클래스명은 img-class로 가정
+                        var dataUrl = imgElements[i].src;
+                        console.log(dataUrl); // 선택된 각 img 요소의 src 값을 출력
+                            $('.grid-container').css('display', 'grid');
+                            $('.grid-container').append(
+                                "<li class = 'grid-item' file = '" + file.name + "'>" +
+                                "<img class = 'grid-thumb' file = '" + file.name + "' id = 'appendimg' src = '" + dataUrl + "' />" +
+                                "</li>"
+                            );
+                    })(file);
+                    // 파일의 내용을 data URL로 읽어옵니다.
+                    reader.readAsDataURL(file);
+                }   
+            },
+            create: function () {
+            }
         });
-      });
+    });
       
 
 

@@ -58,18 +58,34 @@
   
    <script type="text/javascript">
     $(document).ready(function() {
-			$(".sortable-list").sortable({
-				connectWith: ".sortable-list",
-				update: function(event, ui) {
-					if (ui.item.hasClass("sort1")) {
-						var index = ui.item.index();
-						if (index > 0) {
-							$(".sortable-container_left .item1").insertAfter($(".sortable-container_left .item2").eq(index - 1));
-						}
-					}
-				}
-			}).disableSelection();
-		});
+      $(".sortable-list").sortable({
+        connectWith: ".sortable-list",
+        update: function(event, ui) {
+          if (ui.item.hasClass("sort1")) {
+            var index = ui.item.index();
+            if (index > 0) {
+              $(".sortable-container_left .item1").insertAfter($(".sortable-container_left .item2").eq(index - 1));
+            }
+          } else if (ui.item.hasClass("sort2")) {
+            var index = ui.item.index();
+            if (index > 0) {
+              $(".sortable-container_left .item2").insertAfter($(".sortable-container_left .item3").eq(index - 1));
+            }
+          } else if (ui.item.hasClass("sort3")) {
+            var index = ui.item.index();
+            if (index > 0) {
+              $(".sortable-container_left .item3").insertAfter($(".sortable-container_left .item4").eq(index - 1));
+            }
+          } else if (ui.item.hasClass("sort4")) {
+            var index = ui.item.index();
+            if (index < 3) {
+              $(".sortable-container_left .item4").insertBefore($(".sortable-container_left .item3").eq(index));
+            }
+          }
+        }
+      }).disableSelection();
+    });
+    
     
     
     

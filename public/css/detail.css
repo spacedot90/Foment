@@ -171,6 +171,9 @@
   font-weight: 400;
   line-height: 1.8;
   color: var(--ColorTextTertiary);
+  white-space: nowrap; /* 텍스트가 줄 바꿈 되지 않도록 설정 */
+  overflow: hidden; /* 컨테이너 요소를 넘치는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 말줄임 표시 */
 }
 
 .sectiondes {
