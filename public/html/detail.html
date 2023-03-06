@@ -134,7 +134,7 @@
                 </div>
             </div>
 
-            <div class="InviteArea">
+            <div class="InviteArea" data-id="Toggle_Invite">
                 <!-- 초대문구 -->
                 <div class="InviteContentsArea">
                     <div class="TabContent Active" id="Tab-1">
@@ -209,7 +209,7 @@
             </div>
 
             <!-- 캘린더 -->
-            <div class="sec_cal">
+            <div class="sec_cal" data-id="Toggle_Calendar">
                 <div class="cal_nav">
                     <div class="year-month" id="TextDateCalendar"></div>
                 </div>
@@ -250,12 +250,12 @@
                         GALLERY
                     </div>
                 </div>
-                <ul class="grid-container">
+                <ul class="grid-container" data-id="Toggle_Gallery">
                 </ul>
             </div>
 
             <!-- 식장 위치 -->
-            <div class="LocationSection">
+            <div class="LocationSection" data-id="Toggle_WeddingLocation">
                 <div class="WeddingTitleText" id="AddressTitle">
                     식장 위치
                 </div>
@@ -288,7 +288,7 @@
             </div>
 
             <!--계좌번호 영역-->
-            <div class="AccountSection">
+            <div class="AccountSection" data-id="Toggle_Account">
                 <div class="WeddingTitleText">
                     마음 전하실 곳
                 </div>
@@ -341,7 +341,7 @@
             </div>
 
             <!-- 방명록 -->
-            <div class="BoardSection">
+            <div class="BoardSection" data-id="Toggle_Board">
                 <div class="WeddingTitleText">
                     방명록
                 </div>
@@ -399,10 +399,9 @@
                         <img class="BtnInnerIc" src="../Resource/assets/Icon/Edit.svg" alt="">
                     </button>
                 </div>
-            </div>
-
-            <div class="SectionLine">
-                <div class="borderline"></div>
+                <div class="SectionLine">
+                    <div class="borderline"></div>
+                </div>
             </div>
 
 
@@ -1341,12 +1340,12 @@
 
                         <!-- 청첩장 URL 입력란 -->
                         <div class="selectbox_detail">
-                            <div class="InputArea">
+                            <div class="ToggleSection">
                                 <!-- 확대방지 -->
                                 <div class="selectbox_detail">
-                                    <div class="InputArea">
+                                    <div class="ToggleArea">
 
-                                        <div class="ToggleUI">
+                                        <div class="ToggleUI" data-id="Toggle_Invite">
                                             <div class="ToggleTitle">
                                                 초대합니다
                                             </div>
@@ -1358,7 +1357,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="ToggleUI">
+                                        <div class="ToggleUI" data-id="Toggle_Calendar">
                                             <div class="ToggleTitle">
                                                 캘린더
                                             </div>
@@ -1370,7 +1369,19 @@
                                             </div>
                                         </div>
 
-                                        <div class="ToggleUI">
+                                        <div class="ToggleUI" data-id="Toggle_Gallery">
+                                            <div class="ToggleTitle">
+                                                갤러리
+                                            </div>
+                                            <div class="orderlist">
+                                                <label for="toggle" class="toggleSwitch">
+                                                    <span class="toggleButton" id=""></span>
+                                                </label>
+                                                <img class="MenuIcon" src="../Resource/assets/Icon/menu.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                        <div class="ToggleUI" data-id="Toggle_WeddingLocation">
                                             <div class="ToggleTitle">
                                                 식장 위치
                                             </div>
@@ -1382,7 +1393,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="ToggleUI">
+                                        <div class="ToggleUI" data-id="Toggle_Account">
                                             <div class="ToggleTitle">
                                                 계좌번호
                                             </div>
@@ -1394,7 +1405,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="ToggleUI">
+                                        <div class="ToggleUI" data-id="Toggle_Board">
                                             <div class="ToggleTitle">
                                                 방명록
                                             </div>

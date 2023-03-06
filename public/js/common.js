@@ -386,59 +386,43 @@ window.onload = function () {
     // 클래스 영역 순서바꾸기
 
     $(function () {
-        $('.InputArea').sortable({
-            cursor: 'move',
-            placeholder: 'highlight',
-            start: function (event, ui) {
-                ui.item.toggleClass('highlight');
-            },
-            stop: function (event, ui) {
-                ui.item.toggleClass('highlight');
-            },
-            update: function (event, ui) {
-                const inviteArea = document.querySelector('.side_contents');
-                const childElements = inviteArea.querySelectorAll('.side_contents > *');
-                
-                const classOrderArray = [];
-                
-                childElements.forEach((el) => {
-                  const classList = el.classList;
-                  if (classList.length > 0) {
-                    classOrderArray.push(Array.from(classList));
-                  }
-                });
-                
-                console.log(classOrderArray);                
-                
-                
-                // 현재 순서대로 .grid-container에 파일을 추가하고, storedFiles 배열에 파일을 저장합니다
-                for (var i = 0; i < currentOrder.length; i++) {
-                    // FileReader 객체를 생성합니다.
-                    var reader = new FileReader();
-                    // File 객체를 생성하고, FileReader 객체에 전달합니다.
-                    var file = new File([storedFiles[currentOrder[i]]], currentOrder[i]);
-                    storedFiles.push(file);
-                    
-                    // 파일의 내용을 읽어오는 것이 완료되면 실행될 함수를 정의합니다.
-                    reader.onload = (function (file) {
-                        var imgElements = document.querySelectorAll('.img-thumb'); // 클래스명은 img-class로 가정
-                        var dataUrl = imgElements[i].src;
-                        console.log(dataUrl); // 선택된 각 img 요소의 src 값을 출력
-                            $('.grid-container').css('display', 'grid');
-                            $('.grid-container').append(
-                                "<li class = 'grid-item' file = '" + file.name + "'>" +
-                                "<img class = 'grid-thumb' file = '" + file.name + "' id = 'appendimg' src = '" + dataUrl + "' />" +
-                                "</li>"
-                            );
-                    })(file);
-                    // 파일의 내용을 data URL로 읽어옵니다.
-                    reader.readAsDataURL(file);
-                }   
-            },
-            create: function () {
-            }
+        $('.ToggleArea').sortable({
+          cursor: 'move',
+          placeholder: 'highlight',
+          start: function (event, ui) {
+            ui.item.toggleClass('highlight');
+          },
+          stop: function (event, ui) {
+            ui.item.toggleClass('highlight');
+          },
+          update: function (event, ui) {
+            const inputArea = document.querySelector('.ToggleArea');
+            const inputChildElements = Array.from(inputArea.querySelectorAll('.ToggleArea > *'));
+            const contentsArea = document.querySelector('.side_contents');
+            const contentsChildElements = Array.from(contentsArea.querySelectorAll('.side_contents > *:not(.TitleSection):not(.ShareSection):not(.footer)'));
+                  
+            // inputChildElements 배열의 순서에 따라 contentsChildElements 배열 순서를 동기화
+            inputChildElements.forEach((inputChildElement, index) => {
+              const inputId = inputChildElement.dataset.id;
+              const contentsChildElement = contentsChildElements.find(contentsChildElement => contentsChildElement.dataset.id === inputId);
+              console.log(inputId);
+              console.log(contentsChildElement);
+              if (contentsChildElement) {
+                contentsArea.appendChild(contentsChildElement);
+              }
+            });
+          },
+          create: function () {
+          }
         });
-    });
+      });
+      
+      
+      
+      
+      
+      
+      
       
 
 
