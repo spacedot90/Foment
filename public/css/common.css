@@ -25,6 +25,7 @@
     --ColorBorder5: #0000000d;
     --ColorBorder10: #0000001a;
     --ColorBorderSolid: #EFF0F5;
+    --ColorTintBlack: #111111;
 
     /* R값 */
     --BorderRadius-Xs: 4px;
@@ -137,6 +138,7 @@ body {
     gap: 24px;
     margin: 0 auto;
     padding: 96px 20px 40px 20px;
+    margin-bottom: 80px;
 }
 
 .section-title {
@@ -575,4 +577,93 @@ transition: all 0.2s ease;
 
 .footerlogo{
     width: 69px;
+}
+
+/* 바텀네비게이션 */
+
+.BottomNavigation{
+    position: fixed;
+    height: 80px;
+    background-color: var(--ColorSurface);
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid var(--ColorBorder5);
+}
+.BottomNavInnerWrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 10001;
+    gap: 48px;
+    padding: 0px 20px;
+}
+
+.Progress{
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+}
+
+.ProgressBar{
+    width: 100%;
+    height: 6px;
+    background: var(--ColorBorder10);
+    border-radius:16px;
+}
+
+.ProgressPercent{
+    height: 6px;
+    width: 200px;
+    z-index: 1001;
+    background: var(--ColorTextPrimary);
+    border-radius:16px;
+}
+
+.ProgressDes{
+    width: 15%;
+    font-size: var(--Text-Supported);
+    color: var(--ColorTextPrimary);
+}
+
+.ProgressSave{
+    width: 200px;
+    height: 60px;
+    background: var(--ColorTintBlack);
+    border-radius: 100px;
+    border: none;
+    font-size: var(--Text-Button);
+    color: var(--ColorSurface);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.ProgressTemporarySave{
+    width: 200px;
+    height: 60px;
+    border-radius: 100px;
+    border: 1px solid var(--ColorBorder10);
+    font-size: var(--Text-Button);
+    color: var(--ColorTextPrimary);
+    background: var(--ColorSurface);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.ProgressTemporarySave:hover{
+    background: var(--ColorBorder5);
+    border: 1px solid var(--ColorBorder10);
+}
+
+.ProgressSave:hover{
+    opacity: 0.9;
+}
+
+.NavButtonGroups{
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }

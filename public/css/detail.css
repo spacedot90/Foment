@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: space-between;
   color: var(--ColorTextPrimary);
-  max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 280px);
   overflow: scroll;
   position: fixed;
   -ms-overflow-style: none;
@@ -26,6 +26,10 @@
 
 .side_contents::-webkit-scrollbar {
   display: none;
+}
+
+.contents_detail{
+  width: 100%;
 }
 
 .TitleSection {
@@ -244,6 +248,7 @@
 }
 
 .inputtype1 {
+  width: 100%;
   gap: 8px;
   display: flex;
   flex-direction: row;
@@ -404,6 +409,7 @@
 .map_area{
   margin-top: 12px;
   border: 1px solid var(--ColorBorder10);
+  z-index: 0;
 }
 
 .mapdes{
@@ -608,9 +614,7 @@
 }
 
 .right_contents {
-  /* font-family:'Cormorant Garamond', serif; */
   width: 100%;
-  height: 100vh;
 }
 
 .LocationSection{
@@ -1433,8 +1437,7 @@ ul.cvf_uploaded_files .delete-btn {
   padding: 24px;
 }
 .KaKaosrc{
-  min-width: 220px;
-  max-width: 220px;
+  width: 100%;
   height: 298px;
   border-radius: 8px 8px 0px 0px;
   object-fit: cover;
@@ -1495,4 +1498,30 @@ ul.cvf_uploaded_files .delete-btn {
   -ms-transform: rotate(270deg);
   -o-transform: rotate(270deg);
   transform: rotate(270deg);
+}
+
+
+/* Tablet 구간 */
+@media screen and (max-width: 1200px) {
+  .side_contents{
+    display: none;
+  }
+  .RightContentsArea{
+    width: 100%;
+  }
+  .ImgSection{
+    flex-direction: column;
+  }
+  .selectbox_detail{
+    flex-direction: column;
+  }
+}
+/* Mobile 구간 */
+@media screen and (max-width: 560px) {
+  .main_contents{
+    padding: 56px 0px 40px 0px;
+  }
+  .DesignSection{
+    border-radius: 0px;
+  }
 }
