@@ -398,8 +398,9 @@ window.onload = function () {
           update: function (event, ui) {
             const inputArea = document.querySelector('.ToggleArea');
             const inputChildElements = Array.from(inputArea.querySelectorAll('.ToggleArea > *'));
-            const contentsArea = document.querySelector('.side_contents');
-            const contentsChildElements = Array.from(contentsArea.querySelectorAll('.side_contents > *:not(.TitleSection):not(.ShareSection):not(.footer)'));
+            const contentsArea = document.querySelector('.OrderSection');
+            const contentsChildElements = Array.from(contentsArea.querySelectorAll('.OrderSection > *'));
+            console.log(contentsChildElements);
                   
             // inputChildElements 배열의 순서에 따라 contentsChildElements 배열 순서를 동기화
             inputChildElements.forEach((inputChildElement, index) => {
