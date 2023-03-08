@@ -26,6 +26,7 @@
     --ColorBorder10: #0000001a;
     --ColorBorderSolid: #EFF0F5;
     --ColorTintBlack: #111111;
+    --ColorTintRed: #ff0000;
 
     /* R값 */
     --BorderRadius-Xs: 4px;
@@ -149,6 +150,16 @@ body {
 
 .section-subtitle {
     font-size: var(--Text-Subtitle);
+}
+.sectionFront{
+    display: flex;
+    align-items: center;
+}
+
+.sectionBack{
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .selectboxname,
@@ -517,6 +528,7 @@ transition: all 0.2s ease;
 
 .section {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     height: 28px;
@@ -528,6 +540,16 @@ transition: all 0.2s ease;
     font-weight: 500;
     margin-right: 4px;
     color: #5CB7AD;
+}
+
+.WarningDes{
+    font-size: var(--Text-Supported);
+    color: var(--ColorTintRed);
+}
+
+.WarnImg{
+    width: 14px;
+    height: 14px;
 }
 
 .borderline {
