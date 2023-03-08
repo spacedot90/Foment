@@ -102,7 +102,7 @@
 }
 
 .BgDimmed.is-active {
-    z-index: 1000;
+    z-index: 1001;
     display: flex;
     justify-content: center;
     align-items: center;

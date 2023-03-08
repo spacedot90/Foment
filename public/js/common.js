@@ -1,4 +1,32 @@
 window.onload = function () {
+    // 미리보기 버튼 클릭시 화면
+    let PreviewBtn = document.querySelector(".ProgressTemporarySave"); //미리보기 버튼
+    PreviewBtn.addEventListener("click", function () {
+        let Dimmed = document.getElementById('PreviewDimmed');
+        let appendTarget = document.querySelector('.PreviewPage');
+        let appendClasses = document.querySelectorAll('.side_contents');
+        console.log(appendClasses);
+
+        Array.from(appendClasses).forEach(function (item) {
+            let cloneItem = item.cloneNode(true);
+            cloneItem.style.zIndex = 10003; // z-index 변경
+            cloneItem.style.top = "10%"; // top 값 변경
+            appendTarget.appendChild(cloneItem);
+        });
+
+        Dimmed.classList.toggle('is-active');
+
+        // Add event listener to toggle the "is-active" class of the Dimmed element
+        Dimmed.addEventListener("click", function () {
+            Dimmed.classList.toggle('is-active');
+            // Remove cloned elements
+            Array.from(appendTarget.querySelectorAll('.side_contents')).forEach(function (item) {
+                item.remove();
+            });
+        });
+    });
+
+    
 
     // --> 타겟 이동 요소 정리
 
@@ -327,7 +355,7 @@ window.onload = function () {
             var imgFile = $('#photoBtn').val();
             var fileForm = /(.*?)\.(jpg|jpeg|png)$/;
 
-            let BG = document.querySelector('.BgDimmed');
+            let BG = document.getElementById('CropDimmed');
 
             // 이미지가 확장자 확인 후 노출
             if (imgFile.match(fileForm)) {
@@ -367,7 +395,7 @@ window.onload = function () {
             var image = $('#image');
             var result = $('#preview-image');
             var canvas;
-            var BG = document.querySelector('.BgDimmed');
+            var BG = document.getElementById('CropDimmed');
             canvas = image.cropper('getCroppedCanvas', {
                 width: 1000,
                 height: 1000

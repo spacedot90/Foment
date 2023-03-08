@@ -1399,6 +1399,10 @@ ul.cvf_uploaded_files .delete-btn {
   display: none;
   z-index: 1001;
 }
+.PreviewPage{
+  display: flex;
+  justify-content: center;
+}
 
 .full-image {
   position: absolute;
