@@ -72,7 +72,7 @@ body {
 
 .LogoSymbol {
     width: 96px;
-    margin-right: 48px;
+    margin-right: 40px;
 }
 
 .SymbolLink {
@@ -225,6 +225,30 @@ body {
     cursor: pointer;
     transition: var(--transition);
     border-radius: var(--BorderRadius-Md);
+}
+.LoginWrap{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.LoginInfo{
+    color: var(--ColorTextPrimary);
+    font-size: var(--Text-Button); 
+}
+.LoginBound{
+    height: 8px;
+    width: 1px;
+    background-color: var(--ColorBorder10);
+}
+
+.LoginBtn{
+    padding: 8px 0px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ColorTextTertiary);
+    font-size: var(--Text-Button); 
 }
 
 @keyframes slideUp {
