@@ -4,6 +4,7 @@ window.onload = function () {
     let Dimmed = document.getElementById('PreviewDimmed');
     let PreviewPageTarget = document.querySelector('.PreviewPage');
     let sideContents = document.querySelectorAll('.side_contents');
+    let DeleteBtn = document.querySelector('.close-button');
     let sideContentsArray = Array.from(sideContents).sort((a, b) => {
         return a.getAttribute('data-order') - b.getAttribute('data-order');
       });
@@ -16,6 +17,7 @@ window.onload = function () {
         let cloneItem = item.cloneNode(true);
         cloneItem.style.zIndex = 10003; // z-index 변경
         cloneItem.style.top = "10%"; // top 값 변경
+        DeleteBtn.style.display = "block";
         ScrollPrevent.style.overflow = "hidden";
         PreviewPageTarget.appendChild(cloneItem);
       });
@@ -26,12 +28,24 @@ window.onload = function () {
     // Add event listener to toggle the "is-active" class of the Dimmed element
     Dimmed.addEventListener("click", function (event) {
     Dimmed.classList.toggle('is-active');
-    ScrollPrevent.style.overflow = "scroll";
+    ScrollPrevent.style.overflowY = "scroll";
+    DeleteBtn.style.display = "none";
     // Remove cloned elements
     Array.from(PreviewPageTarget.querySelectorAll('.side_contents')).forEach(function (item) {
         item.remove();
     });
     });
+
+    DeleteBtn.addEventListener("click", function (event) {
+        Dimmed.classList.toggle('is-active');
+        console.log(Dimmed.classList.toggle('is-active'));
+        ScrollPrevent.style.overflow = "scroll";
+        DeleteBtn.style.display = "none";
+        // Remove cloned elements
+        Array.from(PreviewPageTarget.querySelectorAll('.side_contents')).forEach(function (item) {
+            item.remove();
+        });
+        });
 
     
 
@@ -320,19 +334,20 @@ window.onload = function () {
         });
     }
 
-    var accordion = document.querySelector(".accordion"); //아코디언
-    accordion.addEventListener("click", function (e) {
-        e.preventDefault();
-        var target = e.target;
-        if (target.classList.contains("accordion-title")) {
-            var content = target.nextElementSibling;
-            if (content.style.display === "block") {
-                $(content).slideUp();
-            } else {
-                $(content).slideDown();
-            }
+    var accordion = document.querySelector(".accordion");
+    accordion.addEventListener("click", function(e) {
+      e.preventDefault();
+      var target = e.target;
+      if (target.classList.contains("accordion-title")) {
+        var content = target.nextElementSibling;
+        if (content.style.display === "block") {
+          $(content).slideUp();
+        } else {
+          $(content).slideDown();
         }
+      }
     });
+    
 
 
 
@@ -605,12 +620,13 @@ window.onload = function () {
                         // 업로드한 이미지 상세보기
 
                         let thumbnail = document.querySelector(".grid-thumb");
-                        let imageOverlay = document.querySelector(".BgDimmedImg");
+                        let imageOverlay = document.getElementById("GalleryPreview");
                         let fullImage = document.querySelector(".full-image");
                         let closeButton = document.querySelector(".close-button");
 
                         thumbnail.addEventListener("click", function () {
                             imageOverlay.style.display = "block";
+                            imageOverlay.style.zIndex = "10001";
                             fullImage.src = this.src;
                             console.log(imageOverlay);
                         });

@@ -1414,6 +1414,10 @@ ul.cvf_uploaded_files .delete-btn {
 }
 
 .close-button {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -1422,6 +1426,11 @@ ul.cvf_uploaded_files .delete-btn {
   color: black;
   cursor: pointer;
   z-index: 10004;
+  transition: var(--transition);
+}
+
+.close-button:hover{
+  background-color: var(--ColorBrand);
 }
 
 /* 카카오 공유하기 */
