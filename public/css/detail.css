@@ -1421,6 +1421,7 @@ ul.cvf_uploaded_files .delete-btn {
   border: none;
   color: black;
   cursor: pointer;
+  z-index: 10004;
 }
 
 /* 카카오 공유하기 */

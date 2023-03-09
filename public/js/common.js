@@ -1,29 +1,36 @@
 window.onload = function () {
+
+    let ScrollPrevent = document.body;
+    let Dimmed = document.getElementById('PreviewDimmed');
+    let PreviewPageTarget = document.querySelector('.PreviewPage');
+    let sideContents = document.querySelectorAll('.side_contents');
+    let sideContentsArray = Array.from(sideContents).sort((a, b) => {
+        return a.getAttribute('data-order') - b.getAttribute('data-order');
+      });
+    
     // 미리보기 버튼 클릭시 화면
     let PreviewBtn = document.querySelector(".ProgressTemporarySave"); //미리보기 버튼
     PreviewBtn.addEventListener("click", function () {
-        let Dimmed = document.getElementById('PreviewDimmed');
-        let appendTarget = document.querySelector('.PreviewPage');
-        let appendClasses = document.querySelectorAll('.side_contents');
-        console.log(appendClasses);
-
-        Array.from(appendClasses).forEach(function (item) {
-            let cloneItem = item.cloneNode(true);
-            cloneItem.style.zIndex = 10003; // z-index 변경
-            cloneItem.style.top = "10%"; // top 값 변경
-            appendTarget.appendChild(cloneItem);
-        });
-
-        Dimmed.classList.toggle('is-active');
-
-        // Add event listener to toggle the "is-active" class of the Dimmed element
-        Dimmed.addEventListener("click", function () {
-            Dimmed.classList.toggle('is-active');
-            // Remove cloned elements
-            Array.from(appendTarget.querySelectorAll('.side_contents')).forEach(function (item) {
-                item.remove();
-            });
-        });
+    
+      sideContentsArray.forEach(function (item) {
+        let cloneItem = item.cloneNode(true);
+        cloneItem.style.zIndex = 10003; // z-index 변경
+        cloneItem.style.top = "10%"; // top 값 변경
+        ScrollPrevent.style.overflow = "hidden";
+        PreviewPageTarget.appendChild(cloneItem);
+      });
+    
+      Dimmed.classList.toggle('is-active');
+    });
+    
+    // Add event listener to toggle the "is-active" class of the Dimmed element
+    Dimmed.addEventListener("click", function (event) {
+    Dimmed.classList.toggle('is-active');
+    ScrollPrevent.style.overflow = "scroll";
+    // Remove cloned elements
+    Array.from(PreviewPageTarget.querySelectorAll('.side_contents')).forEach(function (item) {
+        item.remove();
+    });
     });
 
     
