@@ -15,7 +15,7 @@ window.onload = function () {
         });
       }
       
-      const observer = new IntersectionObserver(entries => {
+      let observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.intersectionRatio > 0) {
             entry.target.classList.add('is-visible');
@@ -25,13 +25,13 @@ window.onload = function () {
         });
       });
       
-      const fadeinParents = document.querySelectorAll('.side_contents');
+      let fadeinParents = document.querySelectorAll('.side_contents');
       observeElements(observer, fadeinParents);
       
-      const fadeinElements = document.querySelectorAll('.side_contents > *');
+      let fadeinElements = document.querySelectorAll('.side_contents > *');
       observeElements(observer, fadeinElements);
       
-      const OrderSection = document.querySelectorAll('.OrderSection > *');
+      let OrderSection = document.querySelectorAll('.OrderSection > *');
       observeElements(observer, OrderSection);
       
 
@@ -65,6 +65,14 @@ window.onload = function () {
       });
     
       Dimmed.classList.toggle('is-active');
+      let fadeinParents = document.querySelectorAll('.side_contents');
+      observeElements(observer, fadeinParents);
+      
+      let fadeinElements = document.querySelectorAll('.side_contents > *');
+      observeElements(observer, fadeinElements);
+      
+      let OrderSection = document.querySelectorAll('.OrderSection > *');
+      observeElements(observer, OrderSection);
     });
     
     // Add event listener to toggle the "is-active" class of the Dimmed element
