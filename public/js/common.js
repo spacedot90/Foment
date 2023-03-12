@@ -34,7 +34,6 @@ window.onload = function () {
       const OrderSection = document.querySelectorAll('.OrderSection > *');
       observeElements(observer, OrderSection);
       
-      
 
     // 미리보기 화면 코드
 
@@ -52,6 +51,9 @@ window.onload = function () {
     // 미리보기 버튼 클릭시 화면
     let PreviewBtn = document.querySelector(".ProgressTemporarySave"); //미리보기 버튼
     PreviewBtn.addEventListener("click", function () {
+
+        // clear any existing content from the preview page
+        PreviewPageTarget.innerHTML = '';
     
       sideContentsArray.forEach(function (item) {
         let cloneItem = item.cloneNode(true);
@@ -1622,19 +1624,46 @@ function printHolderGroom() {
 
     document.getElementById("holderinfo").innerText = PrintAccount;
 };
+    // // 네이버 로그인 시 정보값
+    // var naver_id_login = new naver_id_login("ZwV8tMKR9goChugNiuqV", "http://localhost:5500/public/html/detail.html");
+    // // 접근 토큰 값 출력
+    // console.log(naver_id_login.oauthParams.access_token);
+    // // 네이버 사용자 프로필 조회
+    // naver_id_login.get_naver_userprofile("naverSignInCallback()");
+    // // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+    // function naverSignInCallback() {
+    // console.log(naver_id_login.getProfileData('email'));
+    // console.log(naver_id_login.getProfileData('nickname'));
+    // console.log(naver_id_login.getProfileData('age'));
+    // }
+    // // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id={클라이언트 아이디}&client_secret={클라이언트 시크릿}&access_token={접근 토큰}&service_provider=NAVER
+    // // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=ZwV8tMKR9goChugNiuqV&client_secret=7HgwuyY9it&access_token=AAAAOFZpVKAZqB4n6S-iaXVCD_iG9UUxiep-2GuXxKbR21eMHiTRQeh95Q_FbSHkWs9y_NdqfYGoFsPXwvLoocXSPNo&state=3470a679-d0f7-4ff5-bf18-8b73532a97b4&service_provider=NAVER
 
-    // 네이버 로그인 시 정보값
 
-    var naver_id_login = new naver_id_login("ZwV8tMKR9goChugNiuqV", "http://localhost:5500/public/html/detail.html");
-    // 접근 토큰 값 출력
-    console.log(naver_id_login.oauthParams.access_token);
-    // 네이버 사용자 프로필 조회
-    naver_id_login.get_naver_userprofile("naverSignInCallback()");
-    // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-    function naverSignInCallback() {
-    console.log(naver_id_login.getProfileData('email'));
-    console.log(naver_id_login.getProfileData('nickname'));
-    console.log(naver_id_login.getProfileData('age'));
-    }
-    // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id={클라이언트 아이디}&client_secret={클라이언트 시크릿}&access_token={접근 토큰}&service_provider=NAVER
-    // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=ZwV8tMKR9goChugNiuqV&client_secret=7HgwuyY9it&access_token=AAAAOFZpVKAZqB4n6S-iaXVCD_iG9UUxiep-2GuXxKbR21eMHiTRQeh95Q_FbSHkWs9y_NdqfYGoFsPXwvLoocXSPNo&state=3470a679-d0f7-4ff5-bf18-8b73532a97b4&service_provider=NAVER
+    // 저장 버튼 클릭시 정적 파일 형성 Post 
+
+    function saveProgress() {
+        // 현재 페이지 URL을 가져온다.
+        let htmlURL = document.getElementById('InputURL');
+        const url = htmlURL.value;
+        
+        // Ajax 요청을 생성한다.
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/save-progress');
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        
+        // 요청 본문에 URL 정보를 담는다.
+        const data = JSON.stringify({ url });
+        console.log(data);
+        
+        // 요청을 보낸다.
+        xhr.send(data);
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const saveButton = document.querySelector('.ProgressSave');
+        saveButton.addEventListener('click', () => {
+          saveProgress();
+        });
+      });
+      
