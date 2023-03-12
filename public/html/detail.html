@@ -22,7 +22,8 @@
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="https://fengyuanchen.github.io/cropper/js/cropper.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
     <script src="../js/common.js"></script>
 </head>
 
@@ -48,7 +49,7 @@
     </div>
     <div class="BgDimmed" id="GalleryPreview">
         <img src="" alt="your-image-description" class="full-image">
-        <button class="close-button">
+        <button class="close-button" id="GalleryPreviewExit">
             <img src="../Resource/assets/Icon/Del.svg" alt="">
         </button>
     </div>
@@ -67,7 +68,7 @@
             <div class="LoginWrap">
                 <div class="LoginInfo">seokhkang</div>
                 <div class="LoginBound"></div>
-                <div class="Login">
+                <div class="LogOut" id="LogoutBtn">
                     <button class="LoginBtn">로그아웃</button>
                 </div>
             </div>
@@ -86,7 +87,7 @@
                     </div>
                 </div>
                 <!-- 타이틀 -->
-                <div class="TitleSection">
+                <div class="TitleSectionWrap">
                     <div class="TitleDeco">
                         <img class="DecorationImg" src="../Resource/assets/Icon/deco.svg" alt="">
                     </div>
@@ -1489,7 +1490,7 @@
                     </div>
                 </div>
                 <div class="NavButtonGroups">
-                    <button class="ProgressTemporarySave">미리보기</button>
+                    <button class="ProgressTemporarySave">청첩장 미리보기</button>
                     <button class="ProgressSave">저장하기</button>
                 </div>
             </div>

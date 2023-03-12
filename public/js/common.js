@@ -1,5 +1,43 @@
 window.onload = function () {
 
+    // 네이버 로그아웃
+
+    const logout = document.getElementById('LogoutBtn');
+    console.log(logout);
+    logout.addEventListener('click', () => {
+    location.replace("http://localhost:5500/public/html/index.html");
+    // 로그아웃 처리 코드
+    });
+      
+    function observeElements(observer, elements) {
+        elements.forEach(element => {
+          observer.observe(element);
+        });
+      }
+      
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.intersectionRatio > 0) {
+            entry.target.classList.add('is-visible');
+          } else {
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      });
+      
+      const fadeinParents = document.querySelectorAll('.side_contents');
+      observeElements(observer, fadeinParents);
+      
+      const fadeinElements = document.querySelectorAll('.side_contents > *');
+      observeElements(observer, fadeinElements);
+      
+      const OrderSection = document.querySelectorAll('.OrderSection > *');
+      observeElements(observer, OrderSection);
+      
+      
+
+    // 미리보기 화면 코드
+
     let ScrollPrevent = document.body;
     let Dimmed = document.getElementById('PreviewDimmed');
     let PreviewPageTarget = document.querySelector('.PreviewPage');
@@ -8,6 +46,8 @@ window.onload = function () {
     let sideContentsArray = Array.from(sideContents).sort((a, b) => {
         return a.getAttribute('data-order') - b.getAttribute('data-order');
       });
+
+      
     
     // 미리보기 버튼 클릭시 화면
     let PreviewBtn = document.querySelector(".ProgressTemporarySave"); //미리보기 버튼
@@ -470,13 +510,26 @@ window.onload = function () {
       
       
       
+    // 이미지 상세보기에 대한 코드 정리
+    function showImagePreview(thumbnails) {
+        let imageOverlay = document.getElementById("GalleryPreview");
+        let fullImage = document.querySelector(".full-image");
+        let closeButton = document.getElementById("GalleryPreviewExit");
       
+        thumbnails.forEach(function (thumbnail) {
+          thumbnail.addEventListener("click", function (event) {
+            event.preventDefault();
+            imageOverlay.style.display = "block";
+            imageOverlay.style.zIndex = "10001";
+            fullImage.src = this.src;
+            closeButton.style.display = "block";
+          });
+        });
       
-      
-      
-      
-
-
+        closeButton.addEventListener("click", function () {
+          imageOverlay.style.display = "none";
+        });
+      }      
 
 
 
@@ -521,6 +574,9 @@ window.onload = function () {
                                 "</li>"
                             );
                     })(file);
+                    let thumbnails = document.querySelectorAll(".grid-thumb");
+                    showImagePreview(thumbnails);
+
                     // 파일의 내용을 data URL로 읽어옵니다.
                     reader.readAsDataURL(file);
                 }   
@@ -529,7 +585,40 @@ window.onload = function () {
             }
         });
     });
+
+    // 호버시 삭제버튼 노출 함수 정리
+    function addHoverDeleteButton(file) {
+        var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
+        var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
+      
+        HoverImg.onmouseover = function () {
+          if (DeleteImg) {
+            DeleteImg.style.opacity = "1";
+          }
+        };
+        HoverImg.onmouseout = function () {
+          if (DeleteImg) {
+            DeleteImg.style.opacity = "0";
+          }
+        };
+      }
     
+    // 클릭시 삭제 함수 정리
+    function deleteImage(e) {
+        e.preventDefault();
+        var file = $(this).parent().attr('file');
+        var viewimg = document.querySelector(".grid-item[file='" + file + "']");
+        console.log('이미지삭제');
+        $(this).parent().remove();
+        $(viewimg).remove();
+    
+        for (var i = 0; i < storedFiles.length; i++) {
+            if (storedFiles[i].name == file) {
+                storedFiles.splice(i, 1);
+                break;
+            }
+        }
+    }
     
     // 끌어서 업로드
     const dropzone = document.querySelector(".ImgGroupUpload_Btn");
@@ -565,24 +654,7 @@ window.onload = function () {
             console.log(file);
             // 이미지 삭제
 
-            $('body').on('click', 'a.cvf_delete_image', function (e) {
-                e.preventDefault();
-                var file = $(this).parent().attr('file');
-                var viewimg = document.querySelector(".grid-item[file='" + file + "']");
-
-                $(this).parent().remove();
-                $(viewimg).remove();
-
-                for (var i = 0; i < storedFiles.length; i++) {
-                    if (storedFiles[i].name == file) {
-                        storedFiles.splice(i, 1);
-                        break;
-                    }
-                }
-
-                // cvf_reload_order();
-
-            });
+            $('body').on('click', 'a.cvf_delete_image', deleteImage);
 
 
             // 이미지 갯수 확인 후 최대갯수 안내팝업 노출
@@ -596,11 +668,8 @@ window.onload = function () {
             // 이미지 타입 매칭 후 노출
             if (file.type.match('image.*')) {
                 storedFiles.push(file);
-                console.log(storedFiles);
                 readImg.onload = (function (file) {
                     return function (e) {
-                        console.log(e);
-                        console.log(e.target.result)
                         $('.GalleryTitleArea').show();
                         $('.cvf_uploaded_files').append(
                             "<li class='multiimg' id='multiimg_" + file.name + "' file = '" + file.name + "'>" +
@@ -618,39 +687,13 @@ window.onload = function () {
                         );
 
                         // 업로드한 이미지 상세보기
+                        let thumbnails = document.querySelectorAll(".grid-thumb");
+                        showImagePreview(thumbnails);
 
-                        let thumbnail = document.querySelector(".grid-thumb");
-                        let imageOverlay = document.getElementById("GalleryPreview");
-                        let fullImage = document.querySelector(".full-image");
-                        let closeButton = document.querySelector(".close-button");
+                        // 호버시 삭제
+                        addHoverDeleteButton(file)
+                        
 
-                        thumbnail.addEventListener("click", function () {
-                            imageOverlay.style.display = "block";
-                            imageOverlay.style.zIndex = "10001";
-                            fullImage.src = this.src;
-                            console.log(imageOverlay);
-                        });
-
-                        closeButton.addEventListener("click", function () {
-                            imageOverlay.style.display = "none";
-                        });
-
-                        // Hover시 삭제버튼
-                        var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
-                        console.log(HoverImg);
-                        var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
-
-
-                        HoverImg.onmouseover = function () {
-                            if (DeleteImg) {
-                                DeleteImg.style.opacity = "1";
-                            }
-                        };
-                        HoverImg.onmouseout = function () {
-                            if (DeleteImg) {
-                                DeleteImg.style.opacity = "0";
-                            }
-                        };
                     };
                 })(file);
                 readImg.readAsDataURL(file);
@@ -658,12 +701,6 @@ window.onload = function () {
             else {
                 alert('the file ' + file.name + ' is not an image<br/>');
             }
-
-            // if (files.length === (i + 1)) {
-            //     setTimeout(function () {
-            //         cvf_add_order();
-            //     }, 1000);
-            // }
 
         }
     });
@@ -681,24 +718,7 @@ window.onload = function () {
             console.log(file);
             // 이미지 삭제
 
-            $('body').on('click', 'a.cvf_delete_image', function (e) {
-                e.preventDefault();
-                var file = $(this).parent().attr('file');
-                var viewimg = document.querySelector(".grid-item[file='" + file + "']");
-
-                $(this).parent().remove();
-                $(viewimg).remove();
-
-                for (var i = 0; i < storedFiles.length; i++) {
-                    if (storedFiles[i].name == file) {
-                        storedFiles.splice(i, 1);
-                        break;
-                    }
-                }
-
-                // cvf_reload_order();
-
-            });
+            $('body').on('click', 'a.cvf_delete_image', deleteImage);
 
 
             // 이미지 갯수 확인 후 최대갯수 안내팝업 노출
@@ -733,36 +753,11 @@ window.onload = function () {
                         );
 
                         // 업로드한 이미지 상세보기
+                        let thumbnails = document.querySelectorAll(".grid-thumb");
+                        showImagePreview(thumbnails);
 
-                        let thumbnail = document.querySelector(".grid-thumb");
-                        let imageOverlay = document.querySelector("BgDimmedImg");
-                        // const fullImage = document.querySelector(".full-image");
-                        let closeButton = document.querySelector(".close-button");
-
-                        thumbnail.addEventListener("click", function () {
-                            imageOverlay.style.display = "block";
-                            fullImage.src = this.src;
-                        });
-
-                        closeButton.addEventListener("click", function () {
-                            imageOverlay.style.display = "none";
-                        });
-
-                        // Hover시 삭제버튼
-                        var HoverImg = document.querySelector(".multiimg[file='" + file.name + "']");
-                        var DeleteImg = document.querySelector(".cvf_delete_image[file='" + file.name + "']");
-
-
-                        HoverImg.onmouseover = function () {
-                            if (DeleteImg) {
-                                DeleteImg.style.opacity = "1";
-                            }
-                        };
-                        HoverImg.onmouseout = function () {
-                            if (DeleteImg) {
-                                DeleteImg.style.opacity = "0";
-                            }
-                        };
+                        // 호버시 삭제
+                        addHoverDeleteButton(file)
 
                     };
                 })(file);
@@ -1628,3 +1623,18 @@ function printHolderGroom() {
     document.getElementById("holderinfo").innerText = PrintAccount;
 };
 
+    // 네이버 로그인 시 정보값
+
+    var naver_id_login = new naver_id_login("ZwV8tMKR9goChugNiuqV", "http://localhost:5500/public/html/detail.html");
+    // 접근 토큰 값 출력
+    console.log(naver_id_login.oauthParams.access_token);
+    // 네이버 사용자 프로필 조회
+    naver_id_login.get_naver_userprofile("naverSignInCallback()");
+    // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+    function naverSignInCallback() {
+    console.log(naver_id_login.getProfileData('email'));
+    console.log(naver_id_login.getProfileData('nickname'));
+    console.log(naver_id_login.getProfileData('age'));
+    }
+    // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id={클라이언트 아이디}&client_secret={클라이언트 시크릿}&access_token={접근 토큰}&service_provider=NAVER
+    // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=ZwV8tMKR9goChugNiuqV&client_secret=7HgwuyY9it&access_token=AAAAOFZpVKAZqB4n6S-iaXVCD_iG9UUxiep-2GuXxKbR21eMHiTRQeh95Q_FbSHkWs9y_NdqfYGoFsPXwvLoocXSPNo&state=3470a679-d0f7-4ff5-bf18-8b73532a97b4&service_provider=NAVER
