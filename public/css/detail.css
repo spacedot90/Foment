@@ -1549,6 +1549,58 @@ ul.cvf_uploaded_files .delete-btn {
   justify-content: center;
 }
 
+.SavedArea{
+  display: flex;
+  justify-content: center;
+}
+
+.ModalSaveComplete{
+  display: none;
+}
+
+.ModalSaveComplete.is-active{
+  top: 40%;
+  padding: 32px;
+  background: var(--ColorSurface);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100011;
+  gap: 32px;
+  border-radius: var(--BorderRadius-Lg);
+}
+
+.ModalTextWrap{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ModalTitle{
+  font-size: var(--Text-SectionSubTitle);
+  color: var(--ColorTextPrimary);
+  text-align: center;
+}
+
+.ModalDes{
+  font-size: var(--Text-Paragraph);
+  text-align: center;
+  color: var(--ColorTextPrimary);
+}
+
+.SavedView{
+  width: 200px;
+  height: 60px;
+  background: var(--ColorTintBlack);
+  border-radius: 100px;
+  border: none;
+  font-size: var(--Text-Button);
+  color: var(--ColorSurface);
+  cursor: pointer;
+  transition: var(--transition);
+}
 /* Tablet 구간 */
 @media screen and (max-width: 1200px) {
   .side_contents{

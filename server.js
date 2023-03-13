@@ -20,16 +20,15 @@ app.use(bodyParser.json());
 app.post('/save-progress', (req, res) => {
   // URL 정보를 가져온다.
   const url = req.body.url;
-  const sideContents = req.body.sideContents; 
+  const sideContents = req.body.sideContents;
 
   // html/detail.html 파일을 읽어온다
   const detailHtml = fs.readFileSync("public/html/detail.html", "utf8");
   const $ = cheerio.load(detailHtml);
 
   // detailHtml 안에 있는 특정 클래스를 사용하여 HTML을 생성한다.
-  const elementsWithClass = sideContents;
   const headerWithClass = $("head *");
-  const classHtml = elementsWithClass.toString();
+  // const classHtml = sideContents.toString();
   const html = `<!DOCTYPE html>
   <html>
     <head>
@@ -37,7 +36,7 @@ app.post('/save-progress', (req, res) => {
     </head>
     <body>
       <div class="AppView" id="Appview">
-        ${classHtml}
+        ${sideContents}
       </div>
       <div class="BgView"></div>
     </body>
@@ -45,6 +44,7 @@ app.post('/save-progress', (req, res) => {
 
   // URL에서 파일명을 추출한다.
   const fileName = url.split('/').pop() + '.html';
+  console.log(fileName);
 
   // 파일을 저장한다.
   const filePath = path.join(dataDir, fileName);
@@ -63,4 +63,5 @@ app.post('/save-progress', (req, res) => {
 app.listen(3000, () => {
   console.log('서버가 시작되었습니다.');
 });
+
 

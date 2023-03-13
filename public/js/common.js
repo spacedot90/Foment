@@ -1650,33 +1650,71 @@ function printHolderGroom() {
     // // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=ZwV8tMKR9goChugNiuqV&client_secret=7HgwuyY9it&access_token=AAAAOFZpVKAZqB4n6S-iaXVCD_iG9UUxiep-2GuXxKbR21eMHiTRQeh95Q_FbSHkWs9y_NdqfYGoFsPXwvLoocXSPNo&state=3470a679-d0f7-4ff5-bf18-8b73532a97b4&service_provider=NAVER
 
 
+
+
     // 저장 버튼 클릭시 정적 파일 형성 Post 
 
     function saveProgress() {
         // 현재 페이지 URL을 가져온다.
         let htmlURL = document.getElementById('InputURL');
-        const url = htmlURL.value;
-        const sideContents = document.querySelector('.side_contents').outerHTML;
-        console.log(sideContents);
+        let url = htmlURL.value;
+        let sideContents = document.querySelector('.side_contents').outerHTML;
         // Ajax 요청을 생성한다.
-        const xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open('POST', '/save-progress');
         xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
         
         // 요청 본문에 URL 정보를 담는다.
-        const data = JSON.stringify({ url:url, sideContents:sideContents});
-        console.log(data);
+        const data = JSON.stringify({
+            url:url, 
+            sideContents:sideContents
+        });
         
         // 요청을 보낸다.
         xhr.send(data);
       }
       
       document.addEventListener('DOMContentLoaded', () => {
-        const saveButton = document.querySelector('.ProgressSave');
+        let saveButton = document.querySelector('.ProgressSave');
+        let saveAlert = document.querySelector('.ModalSaveComplete');
+        let scrollPrevent = document.body;
+        let dimmed = document.getElementById('SaveCompleteDimmed');
+        let deleteBtn = document.querySelector('.close-button');
+      
+        let toggleElements = () => {
+          dimmed.classList.toggle('is-active');
+          saveAlert.classList.toggle('is-active');
+          scrollPrevent.style.overflowY = 'scroll';
+          deleteBtn.style.display = 'none';
+        };
+      
         if (saveButton) {
-        // 클래스가 존재하는 경우에만 실행되는 코드
-            saveButton.addEventListener('click', () => {
+          saveButton.addEventListener('click', () => {
             saveProgress();
+            toggleElements();
+
+            let htmlURL = document.getElementById('InputURL');
+            let url = htmlURL.value;
+            console.log(htmlURL);
+            let templateURL = `http://localhost:3000/data/${url}.html`
+            console.log(templateURL);
+    
+            let savedViewButton = document.querySelector('.SavedView');
+            console.log(savedViewButton);
+            savedViewButton.addEventListener('click', () => {
+                if (templateURL) {
+                    window.open(templateURL, '_blank');
+                }
+                else{
+                    console.log('실패');
+                }
+            });        
+            if (dimmed) {
+              dimmed.addEventListener('click', toggleElements);
+            }
+            if (deleteBtn) {
+              deleteBtn.addEventListener('click', toggleElements);
+            }
           });
         }
       });
