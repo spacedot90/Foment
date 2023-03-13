@@ -39,6 +39,7 @@ app.post('/save-progress', (req, res) => {
       <div class="AppView" id="Appview">
         ${classHtml}
       </div>
+      <div class="BgView"></div>
     </body>
   </html>`;
 
