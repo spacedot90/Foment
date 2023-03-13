@@ -1,13 +1,15 @@
 window.onload = function () {
 
     // 네이버 로그아웃
-
     const logout = document.getElementById('LogoutBtn');
-    console.log(logout);
-    logout.addEventListener('click', () => {
-    location.replace("http://localhost:5500/public/html/index.html");
-    // 로그아웃 처리 코드
-    });
+    if (logout) {
+        // 클래스가 존재하는 경우에만 실행되는 코드
+        console.log(logout);
+        logout.addEventListener('click', () => {
+        location.replace("http://localhost:5500/public/html/index.html");
+        // 로그아웃 처리 코드
+        });
+    }
       
     function observeElements(observer, elements) {
         elements.forEach(element => {
@@ -50,52 +52,52 @@ window.onload = function () {
     
     // 미리보기 버튼 클릭시 화면
     let PreviewBtn = document.querySelector(".ProgressTemporarySave"); //미리보기 버튼
-    PreviewBtn.addEventListener("click", function () {
 
-        // clear any existing content from the preview page
-        PreviewPageTarget.innerHTML = '';
-    
-      sideContentsArray.forEach(function (item) {
-        let cloneItem = item.cloneNode(true);
-        cloneItem.style.zIndex = 10003; // z-index 변경
-        cloneItem.style.top = "10%"; // top 값 변경
-        DeleteBtn.style.display = "block";
-        ScrollPrevent.style.overflow = "hidden";
-        PreviewPageTarget.appendChild(cloneItem);
-      });
-    
-      Dimmed.classList.toggle('is-active');
-      let fadeinParents = document.querySelectorAll('.side_contents');
-      observeElements(observer, fadeinParents);
-      
-      let fadeinElements = document.querySelectorAll('.side_contents > *');
-      observeElements(observer, fadeinElements);
-      
-      let OrderSection = document.querySelectorAll('.OrderSection > *');
-      observeElements(observer, OrderSection);
-    });
-    
-    // Add event listener to toggle the "is-active" class of the Dimmed element
-    Dimmed.addEventListener("click", function (event) {
-    Dimmed.classList.toggle('is-active');
-    ScrollPrevent.style.overflowY = "scroll";
-    DeleteBtn.style.display = "none";
-    // Remove cloned elements
-    Array.from(PreviewPageTarget.querySelectorAll('.side_contents')).forEach(function (item) {
-        item.remove();
-    });
-    });
+    if (PreviewBtn) {
+        PreviewBtn.addEventListener('click', function() {
+          // 클릭 이벤트 처리 코드
+            PreviewPageTarget.innerHTML = '';
+        
+            sideContentsArray.forEach(function (item) {
+            let cloneItem = item.cloneNode(true);
+            cloneItem.style.zIndex = 10003; // z-index 변경
+            cloneItem.style.top = "10%"; // top 값 변경
+            DeleteBtn.style.display = "block";
+            ScrollPrevent.style.overflow = "hidden";
+            PreviewPageTarget.appendChild(cloneItem);
+            });
+        
+            Dimmed.classList.toggle('is-active');
+            let fadeinParents = document.querySelectorAll('.side_contents');
+            observeElements(observer, fadeinParents);
+            
+            let fadeinElements = document.querySelectorAll('.side_contents > *');
+            observeElements(observer, fadeinElements);
+            
+            let OrderSection = document.querySelectorAll('.OrderSection > *');
+            observeElements(observer, OrderSection);
+        });
+      }
 
-    DeleteBtn.addEventListener("click", function (event) {
+      function toggleElements() {
         Dimmed.classList.toggle('is-active');
-        console.log(Dimmed.classList.toggle('is-active'));
-        ScrollPrevent.style.overflow = "scroll";
+        ScrollPrevent.style.overflowY = "scroll";
         DeleteBtn.style.display = "none";
         // Remove cloned elements
         Array.from(PreviewPageTarget.querySelectorAll('.side_contents')).forEach(function (item) {
             item.remove();
         });
-        });
+      }
+      
+      if(Dimmed){
+        // Add event listener to toggle the "is-active" class of the Dimmed element
+        Dimmed.addEventListener("click", toggleElements);
+      }
+      
+      if(DeleteBtn){
+        DeleteBtn.addEventListener("click", toggleElements);
+      }
+      
 
     
 
@@ -1654,14 +1656,15 @@ function printHolderGroom() {
         // 현재 페이지 URL을 가져온다.
         let htmlURL = document.getElementById('InputURL');
         const url = htmlURL.value;
-        
+        const sideContents = document.querySelector('.side_contents').outerHTML;
+        console.log(sideContents);
         // Ajax 요청을 생성한다.
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/save-progress');
         xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
         
         // 요청 본문에 URL 정보를 담는다.
-        const data = JSON.stringify({ url });
+        const data = JSON.stringify({ url:url, sideContents:sideContents});
         console.log(data);
         
         // 요청을 보낸다.
@@ -1670,8 +1673,11 @@ function printHolderGroom() {
       
       document.addEventListener('DOMContentLoaded', () => {
         const saveButton = document.querySelector('.ProgressSave');
-        saveButton.addEventListener('click', () => {
-          saveProgress();
-        });
+        if (saveButton) {
+        // 클래스가 존재하는 경우에만 실행되는 코드
+            saveButton.addEventListener('click', () => {
+            saveProgress();
+          });
+        }
       });
       

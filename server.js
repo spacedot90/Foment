@@ -20,13 +20,14 @@ app.use(bodyParser.json());
 app.post('/save-progress', (req, res) => {
   // URL 정보를 가져온다.
   const url = req.body.url;
+  const sideContents = req.body.sideContents; 
 
   // html/detail.html 파일을 읽어온다
   const detailHtml = fs.readFileSync("public/html/detail.html", "utf8");
   const $ = cheerio.load(detailHtml);
 
   // detailHtml 안에 있는 특정 클래스를 사용하여 HTML을 생성한다.
-  const elementsWithClass = $(".side_contents");
+  const elementsWithClass = sideContents;
   const headerWithClass = $("head *");
   const classHtml = elementsWithClass.toString();
   const html = `<!DOCTYPE html>
@@ -35,7 +36,9 @@ app.post('/save-progress', (req, res) => {
       ${headerWithClass}
     </head>
     <body>
-      ${classHtml}
+      <div class="AppView" id="Appview">
+        ${classHtml}
+      </div>
     </body>
   </html>`;
 

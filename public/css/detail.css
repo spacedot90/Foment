@@ -50,6 +50,11 @@
   align-items: center;
 }
 
+#Appview > .side_contents{
+  max-height: 100vh;
+  border-radius : 0px;
+}
+
 .DecorationImg{
   width: 102px;
   height: 31px;
@@ -1538,7 +1543,11 @@ ul.cvf_uploaded_files .delete-btn {
   transform: translateY(0);
 }
 
-
+.AppView{
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
 
 /* Tablet 구간 */
 @media screen and (max-width: 1200px) {
